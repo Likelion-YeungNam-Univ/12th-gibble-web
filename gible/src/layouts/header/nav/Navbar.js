@@ -34,6 +34,7 @@ const Navigation = styled.div`
 const Buttons = styled.div`
     display: flex;
     justify-content: center;
+    
     /* 버튼 간격 조절 */
     gap: 400px; 
     
@@ -44,7 +45,13 @@ const Buttons = styled.div`
         font-size: 20px; 
         font-weight: 700; 
         cursor: pointer; 
+
+        /*포인터 올릴 시에 밑줄*/
+        &:hover {
+            text-decoration: underline; 
+        } 
     }
+      
 
 `;
 
