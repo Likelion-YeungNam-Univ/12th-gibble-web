@@ -10,7 +10,7 @@ const authSlice = createSlice({
         setRefreshToken: (state, action) => {
             state.refreshToken = action.payload;
         },
-        logout: (state, ) => {
+        logout: (state) => {
             state.accessToken = null;
             state.refreshToken = null;
         }
