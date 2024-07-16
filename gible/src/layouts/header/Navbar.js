@@ -9,7 +9,14 @@ const Navigationbar = () => {
             </Redbox>
            
             <LoginBox>
-              <StyledBox />
+                <Login>
+                    <button>로그인</button>
+                </Login>
+                <Search>
+                    <search>
+                     <input type="text" placeholder="검색어를 입력해주세요" />
+                    </search>
+                </Search>
             </LoginBox>
         
             <Navigation>
@@ -49,15 +56,48 @@ const Warning = styled.div`
 
 const LoginBox = styled.div`
     display: flex; 
-    justify-content: center; 
+    justify-content: flex-end;
     align-items: center; 
-`;
-
-const StyledBox = styled.div`
     height: 60px;
     flex-shrink: 0;
     background: #FFF;
     width: 100%; 
+
+
+`;
+
+const Login = styled.div`
+    padding: 0px 80px;
+
+    button {
+        background: none; 
+        border: none; 
+        color: #767676; 
+        font-size: 16px; 
+        font-weight: 400; 
+        cursor: pointer; 
+        text-align: center;
+
+
+        /*포인터 올릴 시에 밑줄*/
+        &:hover {
+            text-decoration: underline; 
+        } 
+`;
+
+
+const Search = styled.div`
+    padding: 0px 80px;
+
+    input {
+        border-radius: 8px;
+        background: #F6F6F6;
+        border: none; 
+
+        padding: 15px 8px 15px 10px;
+        font-size: 14px; 
+        width: 200px; 
+    }
 `;
 
 
