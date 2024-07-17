@@ -62,10 +62,10 @@ const SignUp02 = () => {
         </StepBox>
         <SubTitleBox>
           <SubTitleTitle>회원 정보 입력</SubTitleTitle>
-          <GuidMessage>
+          <GuideMessage>
             <span style={{ color: "red" }}>*</span>
             <span>은 필수 입력 항목입니다.</span>
-          </GuidMessage>
+          </GuideMessage>
         </SubTitleBox>
         <StyledHr1 />
         <UserInformationBox>
@@ -259,7 +259,7 @@ const SubTitleTitle = styled.div`
   margin-bottom: 20px;
 `;
 
-const GuidMessage = styled.div`
+const GuideMessage = styled.div`
   display: flex;
   justify-content: right;
   color: #767676;
