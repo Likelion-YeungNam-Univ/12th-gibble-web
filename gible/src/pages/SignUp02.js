@@ -170,6 +170,8 @@ export default SignUp02;
 
 const Box = styled.div`
   padding: 5% 15%;
+  display: flex;
+  justify-content: center;
 `;
 
 const Center = styled.div``;
