@@ -18,4 +18,4 @@ const authSlice = createSlice({
 })
 
 export const { setAccessToken, setRefreshToken, logout } = authSlice.actions; // action을 생성해주는 action creator 
-export default authSlice.reducer;
+export default authSlice;

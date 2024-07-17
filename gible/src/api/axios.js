@@ -1,6 +1,6 @@
 import axios from 'axios'
+import { apiServer } from '@/config/api'
 
-export default axios.create({
-    baseURL : 'http://1.1.1.1'
+export const axios = axios.create({
+    baseURL: apiServer
 })
-
