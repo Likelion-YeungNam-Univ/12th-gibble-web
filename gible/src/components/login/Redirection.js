@@ -12,7 +12,7 @@ const Redirection = () => {
     useEffect(() => {
         /*
           apiClient.post('/kakaologin', {
-            clientId : loginConfig.CLIENT_ID,
+            clientId : loginConfig.REST_API_KEY,
             code
           })
         */
