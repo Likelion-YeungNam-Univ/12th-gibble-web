@@ -1,6 +1,8 @@
 import axios from 'axios'
 import { apiServer } from '@/config/api'
 
-export const axios = axios.create({
+const apiClient = axios.create({
     baseURL: apiServer
 })
+
+export default apiClient;
