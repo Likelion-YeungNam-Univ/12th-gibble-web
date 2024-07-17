@@ -25,7 +25,7 @@ export const getAuthAxios = () => {
                 const refreshToken = state.authSlice.refreshToken;
 
                 try {
-                    const response = await axios.post(`${apiServer}/token`, {
+                    const response = await axios.post(`${apiServer}/auth/token`, {
                         refreshToken: refreshToken,
                     });
 
