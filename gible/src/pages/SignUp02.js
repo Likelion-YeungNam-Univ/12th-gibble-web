@@ -17,7 +17,7 @@ const SignUp02 = () => {
           </Description>
         </TitleBox>
         <StepBox>
-          <StepTextBox style={{ color: "red" }}>
+          <StepTextBox>
             <StepText>STEP 01</StepText>
             <StepDescription>약관동의</StepDescription>
           </StepTextBox>
@@ -86,7 +86,7 @@ const SignUp02 = () => {
                   비밀번호<span style={{ color: "red" }}>*</span>
                 </UserInformationName>
                 <UserInformationInput
-                  type="text"
+                  type="password"
                   placeholder="비밀번호를 입력해주세요."
                 />
               </UserInformationPasswordForm>
@@ -101,7 +101,7 @@ const SignUp02 = () => {
                 비밀번호 확인<span style={{ color: "red" }}>*</span>
               </UserInformationName>
               <UserInformationInput
-                type="text"
+                type="password"
                 placeholder="비밀번호를 한번 더 입력해주세요."
               />
             </UserInformationForm>
