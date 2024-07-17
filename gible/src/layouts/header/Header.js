@@ -1,11 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const Navigationbar = () => {
+const Header = () => {
     return (
         <div className='Headers'>
             <Redbox>
-                <Warning>일정관리와 관련된 작업은 2023년 6월 24일 이후 로그인하여야 하며, 현재 시점에는 가능합니다.</Warning>
+                <Warning>혈액관리법 개정에 따라 2022년 09월 24일 이후 최초 발급된 헌혈증서부터 잃어버리거나 훼손 시 재발급 가능합니다</Warning>
             </Redbox>
            
             <LoginBox>
@@ -140,4 +140,4 @@ const Buttons = styled.div`
 
 
 
-export default Navigationbar;
+export default Header;
