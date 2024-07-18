@@ -19,6 +19,8 @@ const Wrapper = styled.div`
     justify-content : center;
     align-items : center;
     background-color : #FAE300;
+    box-sizing : border-box;
+    padding : 15px 0;
     
     border-radius : 8px;
     position : relative;
