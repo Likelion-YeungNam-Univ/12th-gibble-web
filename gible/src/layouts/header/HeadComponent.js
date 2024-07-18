@@ -1,14 +1,16 @@
 import React from 'react'
 import styled from 'styled-components'
 import SearchBox from './SearchBox';
+import { useNavigate } from 'react-router-dom';
 
 const HeadComponent = () => {
+    const navigate = useNavigate();
   return (
       <Wrapper>
           <Container>
-              <HeadLogo />
+              <HeadLogo onClick={() => navigate('/')}/>
               <Util>
-                  <Text>로그인</Text>
+                  <Text onClick={() => navigate('/login')}>로그인</Text>
                   <SearchBox></SearchBox>
               </Util>
           </Container>
@@ -30,6 +32,8 @@ const HeadLogo = styled.div`
     background-color : #f1f1f1;
     width : 188px;
     height : 36px;
+
+    cursor: pointer;
 `
 
 const Util = styled.div`
@@ -43,6 +47,12 @@ const Util = styled.div`
 const Text = styled.div`
     color : #767676;
     font-size : 16px;
+    cursor: pointer;
+
+    &:hover{
+        color : #111;
+        font-weight : bold;
+    }
 
 `;
 

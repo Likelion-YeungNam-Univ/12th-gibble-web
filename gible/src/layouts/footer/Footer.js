@@ -17,14 +17,14 @@ const Footer = () => {
 }
 
 const Wrapper = styled.div`
-    height : 200px;
+    height : 190px;
     background-color : #343434;
     display : flex;
     gap : 30px;
     box-sizing : border-box;
     padding : 30px 250px;
     width : 100%;
-    position : absolute;
+    position : relative;
     bottom : 0;
 `
 
