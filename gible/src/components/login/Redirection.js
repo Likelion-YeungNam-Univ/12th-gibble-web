@@ -18,8 +18,8 @@ const Redirection = () => {
         */
       
         // response받아서 setIsLoaded 호출
-    
-        navigate('/');
+      alert('loginSucceed');
+      navigate('/');
     }, [])
 
   return (
