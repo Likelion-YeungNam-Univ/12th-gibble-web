@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { ReactComponent as chevron } from "@/assets/chevron-right.svg";
 
 const SignUp02 = () => {
   return (
@@ -21,40 +22,12 @@ const SignUp02 = () => {
             <StepText>STEP 01</StepText>
             <StepDescription>약관동의</StepDescription>
           </StepTextBox>
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="36"
-            height="36"
-            viewBox="0 0 36 36"
-            fill="none"
-          >
-            <path
-              d="M14.4869 28.8652L25.3521 18L14.4869 7.13485"
-              stroke="#767676"
-              stroke-width="3.62173"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            />
-          </svg>
+          <Chevron />
           <StepTextBox>
             <StepText style={{ color: "red" }}>STEP 02</StepText>
             <StepDescription>기본정보입력</StepDescription>
           </StepTextBox>
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="36"
-            height="36"
-            viewBox="0 0 36 36"
-            fill="none"
-          >
-            <path
-              d="M14.4869 28.8652L25.3521 18L14.4869 7.13485"
-              stroke="#767676"
-              stroke-width="3.62173"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            />
-          </svg>
+          <Chevron />
           <StepTextBox>
             <StepText>STEP 03</StepText>
             <StepDescription>가입완료</StepDescription>
@@ -244,6 +217,12 @@ const StepDescription = styled.div`
   font-weight: 500;
   line-height: var(--18, 26px); /* 144.444% */
   letter-spacing: -0.45px;
+`;
+
+const Chevron = styled(chevron)`
+  width: var(--26, 36px);
+  height: var(--26, 36px);
+  flex-shrink: 0;
 `;
 
 const SubTitleBox = styled.div`

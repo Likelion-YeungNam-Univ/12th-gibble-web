@@ -1,5 +1,7 @@
 import React from "react";
 import styled from "styled-components";
+import { ReactComponent as chevron } from "@/assets/chevron-right.svg";
+import { ReactComponent as check } from "@/assets/circle-check-solid.svg";
 
 const SignUp03 = () => {
   return (
@@ -13,57 +15,19 @@ const SignUp03 = () => {
             <StepText>STEP 01</StepText>
             <StepDescription>약관동의</StepDescription>
           </StepTextBox>
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="36"
-            height="36"
-            viewBox="0 0 36 36"
-            fill="none"
-          >
-            <path
-              d="M14.4869 28.8652L25.3521 18L14.4869 7.13485"
-              stroke="#767676"
-              stroke-width="3.62173"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            />
-          </svg>
+          <Chevron />
           <StepTextBox>
             <StepText>STEP 02</StepText>
             <StepDescription>기본정보입력</StepDescription>
           </StepTextBox>
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="36"
-            height="36"
-            viewBox="0 0 36 36"
-            fill="none"
-          >
-            <path
-              d="M14.4869 28.8652L25.3521 18L14.4869 7.13485"
-              stroke="#767676"
-              stroke-width="3.62173"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            />
-          </svg>
+          <Chevron />
           <StepTextBox style={{ color: "red" }}>
             <StepText>STEP 03</StepText>
             <StepDescription>가입완료</StepDescription>
           </StepTextBox>
         </StepBox>
       </Center>
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 512 512"
-        width={56}
-        height={56}
-      >
-        <path
-          fill="#f42e3d"
-          d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM369 209L241 337c-9.4 9.4-24.6 9.4-33.9 0l-64-64c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0l47 47L335 175c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9z"
-        />
-      </svg>
+      <Check />
       <WelcomeTitle>
         <span style={{ color: "red" }}>기블</span>의 회원이 되신것을 환영합니다{" "}
       </WelcomeTitle>
@@ -144,6 +108,18 @@ const StepDescription = styled.div`
   font-weight: 500;
   line-height: var(--18, 26px); /* 144.444% */
   letter-spacing: -0.45px;
+`;
+
+const Chevron = styled(chevron)`
+  width: var(--26, 36px);
+  height: var(--26, 36px);
+  flex-shrink: 0;
+`;
+
+const Check = styled(check)`
+  width: 56px;
+  height: 56px;
+  flex-shrink: 0;
 `;
 
 const WelcomeTitle = styled.div`
