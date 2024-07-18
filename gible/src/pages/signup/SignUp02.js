@@ -129,7 +129,7 @@ const SignUp02 = () => {
               <MarkietingCheckBox type="checkbox" />{" "}
               <CheckBoxText>SNS 수신 동의</CheckBoxText>
               <MarkietingCheckBox type="checkbox" />{" "}
-              <CheckBoxText>E-Main 수신 동의</CheckBoxText>
+              <CheckBoxText>E-Mail 수신 동의</CheckBoxText>
             </MarketingCheckBoxBox>
           </MarketingBox>
           <SignUpBtn type="button">회원 가입</SignUpBtn>
