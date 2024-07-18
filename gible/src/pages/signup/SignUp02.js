@@ -23,8 +23,8 @@ const SignUp02 = () => {
             <StepDescription>약관동의</StepDescription>
           </StepTextBox>
           <Chevron />
-          <StepTextBox>
-            <StepText style={{ color: "red" }}>STEP 02</StepText>
+          <StepTextBox style={{ color: "red" }}>
+            <StepText>STEP 02</StepText>
             <StepDescription>기본정보입력</StepDescription>
           </StepTextBox>
           <Chevron />
