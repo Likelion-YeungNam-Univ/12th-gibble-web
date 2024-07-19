@@ -23,10 +23,8 @@ const PageContainer = styled.div`
 `;
 
 const Content = styled.div`
-  flex: 1;
   display : flex;
-  width : 100%;
-  min-height : 100%;
+  flex : 1;
 `;
 
 export default Layout
