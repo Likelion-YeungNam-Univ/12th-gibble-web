@@ -25,8 +25,8 @@ const PageContainer = styled.div`
 const Content = styled.div`
   flex: 1;
   display : flex;
-  justify-content : center;
-  align-items : center;
+  width : 100%;
+  min-height : 100%;
 `;
 
 export default Layout
