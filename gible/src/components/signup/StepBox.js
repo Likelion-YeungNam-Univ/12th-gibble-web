@@ -1,13 +1,13 @@
 import React from "react";
 import styled from "styled-components";
-import { ReactComponent as chevron } from "@/assets/chevron-right.svg";
+import { ReactComponent as chevron } from "@/assets/signup/chevron-right.svg";
 
-const SignUpStepBox = (number) => {
+const StepBox = (number) => {
   console.log(number.number);
   return (
-    <StepBox>
+    <Box>
       {number.number === 1 ? (
-        <StepTextBox style={{ color: "red" }}>
+        <StepTextBox style={{ color: "var(--main-color)" }}>
           <StepText>STEP 01</StepText>
           <StepDescription>약관동의</StepDescription>
         </StepTextBox>
@@ -19,7 +19,7 @@ const SignUpStepBox = (number) => {
       )}
       <Chevron />
       {number.number === 2 ? (
-        <StepTextBox style={{ color: "red" }}>
+        <StepTextBox style={{ color: "var(--main-color)" }}>
           <StepText>STEP 02</StepText>
           <StepDescription>기본정보입력</StepDescription>
         </StepTextBox>
@@ -32,7 +32,7 @@ const SignUpStepBox = (number) => {
 
       <Chevron />
       {number.number === 3 ? (
-        <StepTextBox style={{ color: "red" }}>
+        <StepTextBox style={{ color: "var(--main-color)" }}>
           <StepText>STEP 03</StepText>
           <StepDescription>가입완료</StepDescription>
         </StepTextBox>
@@ -42,13 +42,13 @@ const SignUpStepBox = (number) => {
           <StepDescription>가입완료</StepDescription>
         </StepTextBox>
       )}
-    </StepBox>
+    </Box>
   );
 };
 
-export default SignUpStepBox;
+export default StepBox;
 
-const StepBox = styled.div`
+const Box = styled.div`
   color: #767676;
   border-radius: 6px;
   border: 1px solid #dbdbdb;

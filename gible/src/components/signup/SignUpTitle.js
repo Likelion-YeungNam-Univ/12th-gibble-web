@@ -6,8 +6,9 @@ const SignUpTitle = () => {
     <TitleBox>
       <Title>회원가입</Title>
       <SubTitle>
-        <span style={{ color: "red" }}>한 장의 기부</span>가 누군가에겐
-        <span style={{ color: "red" }}> 큰 힘</span>이 됩니다.
+        <span style={{ color: "var(--main-color)" }}>한 장의 기부</span>가
+        누군가에겐
+        <span style={{ color: "var(--main-color)" }}> 큰 힘</span>이 됩니다.
       </SubTitle>
       <Description>
         기블 홈페이지 회원이 되신다면 더욱 편리하게 서비스 이용이 가능합니다.
