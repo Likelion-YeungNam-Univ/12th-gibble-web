@@ -91,7 +91,7 @@ const InformationBox = ({ setStep }) => {
 export default InformationBox;
 
 const UserInformationBox = styled.div`
-  padding: 0px 20%;
+  padding: 0px 15%;
 `;
 
 const UserInformationFormBox = styled.div`
@@ -111,7 +111,7 @@ const UserInformationForm = styled.div`
 `;
 
 const UserInformationName = styled.div`
-  width: 20%;
+  width: 146px;
   height: 100%;
   display: flex;
   align-items: center;
@@ -123,7 +123,7 @@ const UserInformationName = styled.div`
 `;
 
 const UserInformationInput = styled.input`
-  width: 50%;
+  width: 420px;
   height: 100%;
   border-radius: 6px;
   border: 1px solid #dbdbdb;
@@ -133,13 +133,14 @@ const UserInformationInput = styled.input`
   line-height: var(--18, 26px); /* 144.444% */
   letter-spacing: -0.45px;
   padding: 0px 30px;
+  font-family: pretendard;
   &::placeholder {
     color: #dbdbdb;
   }
 `;
 
 const UserInformationBtn = styled.button`
-  width: 20%;
+  width: 150px;
   height: 100%;
   display: inline-flex;
   padding: 14px 24px;
@@ -154,6 +155,7 @@ const UserInformationBtn = styled.button`
   line-height: var(--18, 26px); /* 144.444% */
   letter-spacing: -0.45px;
   border: none;
+  font-family: pretendard;
 `;
 
 const UserInformationPasswordFormBox = styled.div`
@@ -177,7 +179,7 @@ const PasswordGuide = styled.div`
   font-weight: 500;
   line-height: var(--18, 26px); /* 144.444% */
   letter-spacing: -0.45px;
-  padding-left: 22%;
+  padding-left: 19%;
 `;
 
 const StyleHr2 = styled.hr`

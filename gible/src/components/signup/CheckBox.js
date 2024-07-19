@@ -17,6 +17,7 @@ const Box = styled.input`
   margin: 10px;
   accent-color: var(--main-color);
   border-radius: 5px;
+  font-family: pretendard;
 `;
 
 export default CheckBox;

@@ -39,4 +39,5 @@ const Button = styled.button`
   border: none;
   width: 160px;
   height: 54px;
+  font-family : pretendard;
 `;

@@ -27,6 +27,7 @@ const Box = styled.button`
   padding: 10px;
   border: none;
   width: 100%;
+  font-family: pretendard;
   &:hover {
     background: var(--main-color);
     color: white;

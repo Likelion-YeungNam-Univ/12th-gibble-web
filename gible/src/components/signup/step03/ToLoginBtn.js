@@ -30,4 +30,5 @@ const Btn = styled.button`
   line-height: var(--18, 26px); /* 144.444% */
   letter-spacing: -0.45px;
   border: none;
+  font-family: pretendard;
 `;

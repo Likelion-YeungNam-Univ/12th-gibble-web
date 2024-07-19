@@ -1,11 +1,13 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom'
 import styled from 'styled-components'
 
 const Navbar = () => {
+  const navigate = useNavigate();
   return (
       <Wrapper>
           <Category>커뮤니티</Category>
-          <Category>이벤트</Category>
+          <Category onClick={()=>navigate('/event')}>이벤트</Category>
           <Category>사업 소개</Category>
     </Wrapper>
   )
@@ -26,6 +28,7 @@ const Category = styled.div`
     font-size : 20px;
     color : #111;
     font-weight: bold;
+    cursor: pointer;
 `
 
 export default Navbar
