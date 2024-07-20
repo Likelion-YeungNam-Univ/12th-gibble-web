@@ -10,13 +10,20 @@ const InformationBox = ({ setStep }) => {
         <UserInformationFormBox>
           <UserInformationForm>
             <UserInformationName>
-              아이디<span style={{ color: "var(--main-color)" }}>*</span>
+              이메일<span style={{ color: "var(--main-color)" }}>*</span>
             </UserInformationName>
             <UserInformationInput
               type="text"
-              placeholder="아이디를 입력해주세요"
+              placeholder="이메일을 입력해주세요."
             />
-            <UserInformationBtn type="button">ID 중복확인</UserInformationBtn>
+            <UserInformationBtn type="button">인증하기</UserInformationBtn>
+          </UserInformationForm>
+          <UserInformationForm>
+            <UserInformationName></UserInformationName>
+            <UserInformationInput
+              type="text"
+              placeholder="인증번호 6자리를 입력해주세요."
+            />
           </UserInformationForm>
           <UserInformationPasswordFormBox>
             <UserInformationPasswordForm>
@@ -60,23 +67,6 @@ const InformationBox = ({ setStep }) => {
             <UserInformationInput
               type="text"
               placeholder="휴대폰번호를 입력해주세요."
-            />
-          </UserInformationForm>
-          <UserInformationForm>
-            <UserInformationName>
-              이메일<span style={{ color: "var(--main-color)" }}>*</span>
-            </UserInformationName>
-            <UserInformationInput
-              type="text"
-              placeholder="이메일을 입력해주세요."
-            />
-            <UserInformationBtn type="button">인증하기</UserInformationBtn>
-          </UserInformationForm>
-          <UserInformationForm>
-            <UserInformationName></UserInformationName>
-            <UserInformationInput
-              type="text"
-              placeholder="인증번호 6자리를 입력해주세요."
             />
           </UserInformationForm>
         </UserInformationFormBox>
