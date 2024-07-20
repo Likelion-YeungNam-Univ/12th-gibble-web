@@ -1,10 +1,11 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Layout from "./layouts/Layout";
 import GlobalStyle from "./GloablStyle";
+import Layout from "@/layouts/Layout";
 import Login from "@/pages/login/Login";
 import Redirection from "@/components/login/Redirection";
-import EventList from "./pages/event/EventList";
+import EventList from "@/pages/event/EventList";
 import SignUp from "@/pages/signup/SignUp";
+import Error from "@/pages/error/Error";
 
 function App() {
   return (
@@ -16,7 +17,8 @@ function App() {
             <Route path="login" element={<Login />} />
             <Route path="kakaologin" element={<Redirection />} />
             <Route path="event" element={<EventList />} />
-            <Route path="signup/" element={<SignUp />} />
+            <Route path="signup" element={<SignUp />} />
+            <Route path="*" element={<Error />} />
           </Route>
         </Routes>
       </BrowserRouter>
