@@ -1,7 +1,7 @@
 import apiClient from "@/api/axios";
 import loginConfig from "@/config/loginConfig";
 import { setAccessToken, setRefreshToken } from "@/store/authSlice";
-import store from '@/store/store';
+import store from '/store/store';
 
 const loginResponseHandler = async (dispatch, code) => {
     
@@ -14,16 +14,16 @@ const loginResponseHandler = async (dispatch, code) => {
         console.log('responseStatus',response.status);
 
         if (response.data.statusCode === 510) { // 추가 정보 필요
-            dispatch(setAccessToken(response.data.accessToken));
-            dispatch(setRefreshToken(response.data.refreshToken));
-            const state = store.getState();
-            console.log(state);
             return {
                 statusCode: response.data.statusCode,
                 // message
             }
         }
         else {                                  // 로그인
+            dispatch(setAccessToken(response.data.accessToken));
+            dispatch(setRefreshToken(response.data.refreshToken));
+            const state = store.getState();
+            console.log(state);
             return {
                 statusCode: response.status,
                 // message
