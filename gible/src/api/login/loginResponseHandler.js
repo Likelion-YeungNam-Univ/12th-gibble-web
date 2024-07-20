@@ -1,7 +1,7 @@
 import apiClient from "@/api/axios";
 import loginConfig from "@/config/loginConfig";
 import { setAccessToken, setRefreshToken } from "@/store/authSlice";
-import store from '/store/store';
+import store from '@/store/store';
 
 const loginResponseHandler = async (dispatch, code) => {
     
