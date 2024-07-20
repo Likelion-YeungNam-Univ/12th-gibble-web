@@ -1,1 +1,1 @@
-export const apiServer = process.env.REACT_APP_API_SERVER;
+export const apiServer = process.env.REACT_APP_BASE_URL;
