@@ -1,22 +1,19 @@
 import React from "react";
 import styled from "styled-components";
 import MarketingBox from "./MarketingBox";
-import SignUpBtn from "./SignUpBtn";
+import InputComponent from "../InputComponent";
+import InputLabel from "../InputLabel";
+import ButtonComponent from "../ButtonComponent";
 
-const InformationBox = ({ setStep }) => {
+const InformationBox = ({ setStepNum }) => {
   return (
     <>
       <UserInformationBox>
         <UserInformationFormBox>
           <UserInformationForm>
-            <UserInformationName>
-              이메일<span style={{ color: "var(--main-color)" }}>*</span>
-            </UserInformationName>
-            <UserInformationInput
-              type="text"
-              placeholder="이메일을 입력해주세요."
-            />
-            <UserInformationBtn type="button">인증하기</UserInformationBtn>
+            <InputLabel text={"이메일"} isEssential={true} />
+            <InputComponent type={"text"} placeholder={"이메일을 입력해주세요."}/>
+            <ButtonComponent text={"인증하기"} onClick={()=> console.log('clicked')} />
           </UserInformationForm>
           <UserInformationForm>
             <UserInformationName></UserInformationName>
@@ -27,13 +24,8 @@ const InformationBox = ({ setStep }) => {
           </UserInformationForm>
           <UserInformationPasswordFormBox>
             <UserInformationPasswordForm>
-              <UserInformationName>
-                비밀번호<span style={{ color: "var(--main-color)" }}>*</span>
-              </UserInformationName>
-              <UserInformationInput
-                type="password"
-                placeholder="비밀번호를 입력해주세요."
-              />
+            <InputLabel text={"비밀번호"} isEssential={true} />
+            <InputComponent type={"text"} placeholder={"비밀번호를 입력해주세요."}/>
             </UserInformationPasswordForm>
             <PasswordGuide>
               영문, 숫자, 특수문자 중 2가지 이상을 활용하여 10~ 15자리로
@@ -42,43 +34,40 @@ const InformationBox = ({ setStep }) => {
           </UserInformationPasswordFormBox>
 
           <UserInformationForm>
-            <UserInformationName>
-              비밀번호 확인<span style={{ color: "var(--main-color)" }}>*</span>
-            </UserInformationName>
-            <UserInformationInput
-              type="password"
-              placeholder="비밀번호를 한번 더 입력해주세요."
-            />
+          <InputLabel text={"비밀번호 확인"} isEssential={true} />
+          <InputComponent type={"text"} placeholder={"비밀번호를 한 번 더 입력해주세요."}/>
           </UserInformationForm>
 
           <UserInformationForm>
-            <UserInformationName>
-              성명<span style={{ color: "var(--main-color)" }}>*</span>
-            </UserInformationName>
-            <UserInformationInput
-              type="text"
-              placeholder="성명을 입력해주세요."
-            />
+          <InputLabel text={"성명"} isEssential={true} />
+          <InputComponent type={"text"} placeholder={"성명을 입력해주세요."}/>
           </UserInformationForm>
           <UserInformationForm>
-            <UserInformationName>
-              휴대폰 번호<span style={{ color: "var(--main-color)" }}>*</span>
-            </UserInformationName>
-            <UserInformationInput
-              type="text"
-              placeholder="휴대폰번호를 입력해주세요."
-            />
+          <InputLabel text={"휴대폰 번호"} isEssential={true} />
+          <InputComponent type={"text"} placeholder={"휴대폰 번호를 입력해주세요."}/>
           </UserInformationForm>
         </UserInformationFormBox>
         <StyleHr2 />
         <MarketingBox />
-        <SignUpBtn setStep={setStep} />
+        <ButtonComponent text={"회원가입"} onClick={()=>setStepNum(prev => prev+1)} customStyles={buttonStyle}></ButtonComponent>
       </UserInformationBox>
     </>
   );
 };
 
 export default InformationBox;
+
+const buttonStyle = `
+  width : 100%;
+  background: #f4f4f4;
+  color: #767676;
+  transition: 0.2s;
+
+  &:hover {
+    background: var(--main-color);
+    color: #fff;
+  }
+`
 
 const UserInformationBox = styled.div`
   padding: 0px 15%;
@@ -127,25 +116,6 @@ const UserInformationInput = styled.input`
   &::placeholder {
     color: #dbdbdb;
   }
-`;
-
-const UserInformationBtn = styled.button`
-  width: 150px;
-  height: 100%;
-  display: inline-flex;
-  padding: 14px 24px;
-  justify-content: center;
-  align-items: center;
-  border-radius: 6px;
-  background: var(--main-color);
-  color: #fff;
-  font-size: 18px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: var(--18, 26px); /* 144.444% */
-  letter-spacing: -0.45px;
-  border: none;
-  font-family: pretendard;
 `;
 
 const UserInformationPasswordFormBox = styled.div`

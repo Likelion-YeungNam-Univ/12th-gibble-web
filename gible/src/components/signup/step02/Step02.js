@@ -1,12 +1,12 @@
 import React from "react";
-import InformationTitle from "./InformationTitle";
+import Description from "./Description";
 import InformationBox from "./InformationBox";
 
-const Step02 = ({ setStep }) => {
+const Step02 = ({ setStepNum }) => {
   return (
     <>
-      <InformationTitle />
-      <InformationBox setStep={setStep} />
+      <Description />
+      <InformationBox setStepNum={setStepNum} />
     </>
   );
 };
