@@ -1,38 +1,32 @@
 import React from "react";
 import styled from "styled-components";
 import { useState } from "react";
-import SignUpTitle from "@/components/signup/SignUpTitle";
-import StepBox from "@/components/signup/StepBox";
+import Description from "@/components/signup/Description";
+import StepBox from "@/components/signup/stepbox/StepBox";
 import Step01 from "@/components/signup/step01/Step01";
 import Step02 from "@/components/signup/step02/Step02";
 import Step03 from "@/components/signup/step03/Step03";
 
 const SignUp = () => {
-  const [step, setStep] = useState(1);
+  const [stepNum, setStepNum] = useState(1);
 
   return (
-    <Box>
-      <Center>
-        <SignUpTitle />
-        <StepBox number={step} />
-        {step === 1 ? (
-          <Step01 setStep={setStep} />
-        ) : step === 2 ? (
-          <Step02 setStep={setStep} />
-        ) : (
-          <Step03 />
-        )}
-      </Center>
-    </Box>
+    <Wrapper>
+        <Description />
+        <StepBox number={stepNum} />
+          {stepNum === 1 && <Step01 setStepNum={setStepNum} />}
+          {stepNum === 2 && <Step02 setStepNum={setStepNum} />}
+          {stepNum === 3 && <Step03/>}
+      </Wrapper>
   );
 };
 
-export default SignUp;
-
-const Box = styled.div`
-  padding: 5% 15%;
+const Wrapper = styled.div`
+  width : 100%;
   display: flex;
-  justify-content: center;
+  flex-direction : column;
+  box-sizing : border-box;
+  padding : 120px 20%;
 `;
 
-const Center = styled.div``;
+export default SignUp;

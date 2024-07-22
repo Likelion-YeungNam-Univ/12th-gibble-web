@@ -15,7 +15,7 @@ const Navbar = () => {
 
 const Wrapper = styled.div`
     box-sizing : border-box;
-    padding : 20px 300px;
+    padding : 20px 20%;
     border-top : 1px solid #dbdbdb;
     border-bottom : 1px solid #dbdbdb;
 
