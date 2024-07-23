@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { ReactComponent as Search} from '@/assets/search.svg'
+import { ReactComponent as Search} from '@/assets/svg/search.svg'
 
 const SearchBox = () => {
   return (

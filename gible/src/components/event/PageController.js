@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
-import { ReactComponent as LeftMove } from '@/assets/left-move.svg'
-import { ReactComponent as RightMove } from '@/assets/right-move.svg'
+import { ReactComponent as LeftMove } from '@/assets/svg/left-move.svg'
+import { ReactComponent as RightMove } from '@/assets/svg/right-move.svg'
 
 const PageController = () => {
   return (

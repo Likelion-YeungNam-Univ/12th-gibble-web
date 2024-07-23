@@ -1,7 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-
-import { ReactComponent as chevron } from "@/assets/signup/chevron-right.svg";
+import { ReactComponent as chevron } from "@/assets/svg/chevron-right.svg";
 import StepBoxCategory from "./StepBoxCategory";
 
 const StepBox = ({ number }) => {
