@@ -1,6 +1,6 @@
 import React from "react";
 import Description from "./Description";
-import InformationBox from "./InformationBox";
+import InformationBox from "./InformationForm";
 
 const Step02 = ({ setStepNum }) => {
   return (

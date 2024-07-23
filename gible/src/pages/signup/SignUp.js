@@ -12,21 +12,21 @@ const SignUp = () => {
 
   return (
     <Wrapper>
-        <Description />
-        <StepBox number={stepNum} />
-          {stepNum === 1 && <Step01 setStepNum={setStepNum} />}
-          {stepNum === 2 && <Step02 setStepNum={setStepNum} />}
-          {stepNum === 3 && <Step03/>}
-      </Wrapper>
+      <Description />
+      <StepBox number={stepNum} />
+      {stepNum === 1 && <Step01 setStepNum={setStepNum} />}
+      {stepNum === 2 && <Step02 setStepNum={setStepNum} />}
+      {stepNum === 3 && <Step03 />}
+    </Wrapper>
   );
 };
 
 const Wrapper = styled.div`
-  width : 100%;
+  width: 100%;
   display: flex;
-  flex-direction : column;
-  box-sizing : border-box;
-  padding : 120px 20%;
+  flex-direction: column;
+  box-sizing: border-box;
+  padding: 120px 17%;
 `;
 
 export default SignUp;

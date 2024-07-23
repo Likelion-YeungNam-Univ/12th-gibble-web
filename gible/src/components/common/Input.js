@@ -1,11 +1,17 @@
-import React from 'react'
-import styled from 'styled-components'
+import React from "react";
+import styled, { css } from "styled-components";
 
-const Input = ({type, placeholder}) => {
+const Input = ({ type, placeholder, value, maxLength, customStyles }) => {
   return (
-      <InputComponent type={type}  placeholder={placeholder}></InputComponent>
-  )
-}
+    <InputComponent
+      type={type}
+      placeholder={placeholder}
+      defaultValue={value}
+      maxLength={maxLength}
+      $customStyles={customStyles}
+    ></InputComponent>
+  );
+};
 
 const InputComponent = styled.input`
   width: 420px;
@@ -22,6 +28,21 @@ const InputComponent = styled.input`
   &::placeholder {
     color: #dbdbdb;
   }
-`
+
+  ${(props) =>
+    props.$customStyles &&
+    css`
+      ${props.$customStyles}
+    `}
+
+  &::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+  &::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+`;
 
 export default Input;
