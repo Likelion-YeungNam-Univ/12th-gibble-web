@@ -6,6 +6,7 @@ import Redirection from "@/components/login/Redirection";
 import EventList from "@/pages/event/EventList";
 import SignUp from "@/pages/signup/SignUp";
 import Error from "@/pages/error/Error";
+import NewPost from "@/pages/post/NewPost";
 
 function App() {
   return (
@@ -18,6 +19,9 @@ function App() {
             <Route path="kakaologin" element={<Redirection />} />
             <Route path="event" element={<EventList />} />
             <Route path="signup" element={<SignUp />} />
+            <Route path="post/">
+              <Route path="new" element={<NewPost/>} />
+            </Route>
             <Route path="*" element={<Error />} />
           </Route>
         </Routes>
