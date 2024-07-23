@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { ReactComponent as KakaoLogo } from '@/assets/kakaoLogo.svg'
+import { ReactComponent as KakaoLogo } from '@/assets/svg/kakaoLogo.svg'
 import { loginHandler } from '@/api/login/loginHandler'
 
 const KakaoLoginButton = () => {

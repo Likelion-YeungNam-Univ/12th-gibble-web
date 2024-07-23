@@ -1,7 +1,7 @@
 import React from "react";
 import ButtonComponent from "../ButtonComponent";
 import styled from "styled-components";
-import { ReactComponent as Check } from "@/assets/signup/circle-check-solid.svg";
+import { ReactComponent as Check } from "@/assets/svg/circle-check-solid.svg";
 
 const Step03 = () => {
   return (
