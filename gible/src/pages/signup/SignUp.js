@@ -26,7 +26,7 @@ const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
-  padding: 120px 17%;
+  padding: 156px 17%;
 `;
 
 export default SignUp;

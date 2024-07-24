@@ -1,8 +1,13 @@
 import React from "react";
-import Input from "@/components/common/Input";
 import styled from "styled-components";
+import { useState } from "react";
+import Input from "@/components/common/Input";
 
 const InputPhoneNum = () => {
+  const [phoneNum1, setPhoneNum1] = useState("010");
+  const [phoneNum2, setPhoneNum2] = useState("");
+  const [phoneNum3, setPhoneNum3] = useState("");
+
   const Hypen = () => {
     return <Hyp>-</Hyp>;
   };
@@ -11,15 +16,30 @@ const InputPhoneNum = () => {
     <Wrapper>
       <Input
         type={"number"}
-        value={"010"}
         placeholder={"010"}
-        maxLength={"3"}
         customStyles={InputStyle}
+        maxLength={"3"}
+        setter={setPhoneNum1}
+        content={phoneNum1}
       />
       <Hypen />
-      <Input placeholder={"0000"} customStyles={InputStyle} />
+      <Input
+        type={"number"}
+        placeholder={"0000"}
+        customStyles={InputStyle}
+        maxLength={"4"}
+        setter={setPhoneNum2}
+        content={phoneNum2}
+      />
       <Hypen />
-      <Input placeholder={"0000"} customStyles={InputStyle} />
+      <Input
+        type={"number"}
+        placeholder={"0000"}
+        customStyles={InputStyle}
+        maxLength={"4"}
+        setter={setPhoneNum3}
+        content={phoneNum3}
+      />
     </Wrapper>
   );
 };

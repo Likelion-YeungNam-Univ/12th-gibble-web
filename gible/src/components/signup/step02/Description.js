@@ -14,7 +14,9 @@ const Description = () => {
   );
 };
 
-const Wrapper = styled.div``;
+const Wrapper = styled.div`
+  width: 100%;
+`;
 
 const Title = styled.div`
   font-size: 24px;
@@ -22,8 +24,8 @@ const Title = styled.div`
   font-weight: 600;
   line-height: var(--24, 34px); /* 141.667% */
   letter-spacing: -0.6px;
-  margin-bottom: 20px;
-  margin-top: 40px;
+  margin-bottom: 30px;
+  margin-top: 30px;
 `;
 
 const GuideMessage = styled.div`
@@ -39,7 +41,7 @@ const GuideMessage = styled.div`
 
 const StyledHr = styled.hr`
   border: none;
-  background: var(--gray-color);
+  background: var(--main-color);
   height: 2px;
 `;
 

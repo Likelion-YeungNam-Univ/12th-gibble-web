@@ -32,7 +32,7 @@ const Wrapper = styled.div`
   align-items: center;
   box-sizing: border-box;
   padding: 25px 10%;
-  margin-bottom: 40px;
+  margin-bottom: 30px;
 `;
 
 const Chevron = styled(chevron)`

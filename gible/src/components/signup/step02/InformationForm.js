@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
-import MarketingBox from "./MarketingBox";
+import { useState } from "react";
+import MarketingBox from "./CheckMail";
 import Input from "@/components/common/Input";
 import InputLabel from "../InputLabel";
 import Button from "@/components/common/Button";
@@ -8,6 +9,9 @@ import InputPhoneNum from "./InputPhoneNum";
 
 const InformationForm = ({ setStepNum }) => {
   const testMail = "ex) ab123@naver.com";
+
+  const [name, setName] = useState("");
+  const [nickname, setNickname] = useState("");
 
   return (
     <Wrapper>
@@ -18,11 +22,21 @@ const InformationForm = ({ setStepNum }) => {
         </Info>
         <Info>
           <InputLabel text={"성명"} isEssential={true} />
-          <Input type={"text"} placeholder={"이름을 입력해주세요."} />
+          <Input
+            type={"text"}
+            placeholder={"이름을 입력해주세요."}
+            content={name}
+            setter={setName}
+          />
         </Info>
         <Info>
           <InputLabel text={"닉네임"} isEssential={true} />
-          <Input type={"text"} placeholder={"닉네임을 확인해주세요."} />
+          <Input
+            type={"text"}
+            placeholder={"닉네임을 확인해주세요."}
+            content={nickname}
+            setter={setNickname}
+          />
           <Button text={"중복확인"} />
         </Info>
         <Info>
@@ -32,11 +46,6 @@ const InformationForm = ({ setStepNum }) => {
       </InfoWrapper>
       <StyleHr2 />
       <MarketingBox />
-      <Button
-        text={"회원가입"}
-        onClick={() => setStepNum((prev) => prev + 1)}
-        customStyles={buttonStyle}
-      ></Button>
     </Wrapper>
   );
 };
@@ -44,11 +53,11 @@ const InformationForm = ({ setStepNum }) => {
 export default InformationForm;
 
 const Wrapper = styled.div`
-  padding: 0px 15%;
+  padding: 0px 19%;
 `;
 
 const InfoWrapper = styled.div`
-  padding: 30px 0px;
+  margin: 60px 0px 30px 0px;
   display: flex;
   flex-direction: column;
   gap: 24px;
@@ -83,16 +92,4 @@ const StyleHr2 = styled.hr`
   border: none;
   height: 1px;
   background: #dbdbdb;
-`;
-
-const buttonStyle = `
-  width : 100%;
-  background: #f4f4f4;
-  color: #767676;
-  transition: 0.2s;
-
-  &:hover {
-    background: var(--main-color);
-    color: #fff;
-  }
 `;

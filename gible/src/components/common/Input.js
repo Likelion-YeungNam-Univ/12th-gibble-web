@@ -1,15 +1,29 @@
 import React from "react";
 import styled, { css } from "styled-components";
 
-const Input = ({ type, placeholder, value, maxLength, customStyles }) => {
+const Input = ({
+  type,
+  placeholder,
+  customStyles,
+  content,
+  setter,
+  maxLength,
+}) => {
+  const setHandler = (e) => {
+    if (maxLength) {
+      if (e.target.value.length <= maxLength) setter(e.target.value);
+    } else setter(e.target.value);
+  };
+
   return (
     <InputComponent
       type={type}
       placeholder={placeholder}
-      defaultValue={value}
-      maxLength={maxLength}
       $customStyles={customStyles}
-    ></InputComponent>
+      value={content}
+      onChange={(e) => setHandler(e)}
+      maxLength={maxLength}
+    />
   );
 };
 

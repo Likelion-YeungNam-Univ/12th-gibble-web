@@ -2,36 +2,32 @@ import React from "react";
 import styled from "styled-components";
 import CheckBox from "../CheckBox";
 
-const MarketingBox = () => {
+const CheckMail = () => {
   return (
-    <Box>
-      <MarketingTitle>
-        마케팅 정보 수신 동의
-        <span style={{ color: "#767676" }}>&nbsp;(선택)</span>
-      </MarketingTitle>
-      <MarketingSubTitle>
-        서비스와 커뮤니티 관련 빠른 소식안내, 이벤트 안내 등 다양한 정보를
-        제공합니다.
-      </MarketingSubTitle>
-      <MarketingCheckBoxBox>
-        <CheckBox type="checkbox" /> <CheckBoxText>SNS 수신 동의</CheckBoxText>
-        <CheckBox type="checkbox" />{" "}
+    <Wrapper>
+      <Title>
+        메일 수신 동의
+        <span style={{ color: "var(--gray-color)" }}>&nbsp;(선택)</span>
+      </Title>
+      <SubTitle>메일 수신 동의 시 게시글 업로드 알림을 제공합니다.</SubTitle>
+      <Description>
+        <CheckBox />
         <CheckBoxText>E-Mail 수신 동의</CheckBoxText>
-      </MarketingCheckBoxBox>
-    </Box>
+      </Description>
+    </Wrapper>
   );
 };
 
-export default MarketingBox;
+export default CheckMail;
 
-const Box = styled.div`
+const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   gap: 10px;
   margin-bottom: 100px;
 `;
 
-const MarketingTitle = styled.div`
+const Title = styled.div`
   font-size: 18px;
   font-style: normal;
   font-weight: 500;
@@ -40,7 +36,7 @@ const MarketingTitle = styled.div`
   margin-top: 20px;
 `;
 
-const MarketingSubTitle = styled.div`
+const SubTitle = styled.div`
   color: #767676;
   font-size: 18px;
   font-style: normal;
@@ -49,7 +45,7 @@ const MarketingSubTitle = styled.div`
   letter-spacing: -0.45px;
 `;
 
-const MarketingCheckBoxBox = styled.div`
+const Description = styled.div`
   display: flex;
   align-items: center;
   font-size: 18px;
