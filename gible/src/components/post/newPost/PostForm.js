@@ -3,8 +3,7 @@ import styled from 'styled-components'
 import InputForm from './InputForm'
 import TextAreaForm from './TextAreaForm'
 import InputFormFix from './InputFormFix'
-import InputFormNotice from './InputFormNotice'
-import TextAreaFormNotice from './TextAreaFormNotice'
+import { TitleNotice, ContentNotice } from './FormNotice'
 
 const PostForm = () => {
 
@@ -16,11 +15,11 @@ const PostForm = () => {
       <Wrapper>
           <TextCount>{title.length}/30</TextCount>
           <InputForm text={'제목'} isEssential={true} condition={'(30자 이하)'} content={title} setter={setTitle} maxLength={30} />
-          <InputFormNotice/>
+          <TitleNotice/>
           
           <TextCount>{content.length}/500</TextCount>
           <TextAreaForm text={'내용'} isEssential={true} content={content} condition={'(500자 이하)'} setter={setContent} maxLength={500}></TextAreaForm>
-          <TextAreaFormNotice/>
+          <ContentNotice/>
 
           <InputFormFix text={'이름'} content={'홍길동'} />
           <InputFormFix text={'전화번호'} content={'010-1234-5678'} />

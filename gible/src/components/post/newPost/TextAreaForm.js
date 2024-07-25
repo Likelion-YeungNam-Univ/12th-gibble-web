@@ -1,6 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
 import InputLabel from '../../common/InputLabel'
+import InputContainer from './common/InputContainer'
+import Label from './common/Label'
 
 const TextAreaForm = ({ text, isEssential, condition, content, setter, maxLength }) => {
     const inputHandler = (e) => {
@@ -9,7 +11,7 @@ const TextAreaForm = ({ text, isEssential, condition, content, setter, maxLength
         }
     }
   return (
-      <InputContainer>
+      <InputContainer alignItems={'start'}>
             <Label>
                 <InputLabel text={text} isEssential={isEssential} />
               {condition && <Condition>{condition}</Condition>}
@@ -17,22 +19,7 @@ const TextAreaForm = ({ text, isEssential, condition, content, setter, maxLength
             <TextArea type="text" placeholder={`${text}를 입력해주세요.`} onChange={(e) => inputHandler(e)} value={content}></TextArea>
       </InputContainer>
   )
-}
-
-const InputContainer = styled.div`
-    display: flex;
-    justify-content: space-between;
-    align-items : start;
-    min-height : 50px;
-    margin-bottom : 10px;
-`
-
-const Label = styled.div`
-    width : 20%;
-    height : 100%;
-    display : flex;
-    align-items: center;
-`
+};
 
 const Condition = styled.div`
     font-size : 18px;

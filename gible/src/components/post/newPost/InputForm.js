@@ -2,6 +2,8 @@ import React from 'react'
 import InputLabel from '../../common/InputLabel';
 import styled from 'styled-components';
 import Input from '../InputForPost';
+import Label from './common/Label';
+import InputContainer from './common/InputContainer';
 
 const InputForm = ({ text, isEssential, condition, content, setter, maxLength}) => {
   return (
@@ -21,21 +23,6 @@ const InputForm = ({ text, isEssential, condition, content, setter, maxLength}) 
       </InputContainer>
   )
 }
-
-const InputContainer = styled.div`
-    display: flex;
-    justify-content: space-between;
-    align-items : center;
-    min-height : 50px;
-    margin-bottom : 10px;
-`
-
-const Label = styled.div`
-    width : 20%;
-    height : 100%;
-    display : flex;
-    align-items: center;
-`
 
 const Condition = styled.div`
     font-size : 18px;
