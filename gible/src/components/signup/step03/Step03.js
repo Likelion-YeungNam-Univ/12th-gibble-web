@@ -1,5 +1,5 @@
 import React from "react";
-import ButtonComponent from "../ButtonComponent";
+import Button from "@/components/common/Button";
 import styled from "styled-components";
 import { ReactComponent as Check } from "@/assets/svg/circle-check-solid.svg";
 
@@ -7,7 +7,10 @@ const Step03 = () => {
   return (
     <Wrapper>
       <CheckImg />
-      <Title><span style={{ color: "var(--main-color)" }}>기블</span>의 회원이되신것을 환영합니다</Title>
+      <Title>
+        <span style={{ color: "var(--main-color)" }}>기블</span>의
+        회원이되신것을 환영합니다
+      </Title>
       <Description>
         홍길동님의 회원가입이 성공적으로 완료 되었습니다.
         <br />
@@ -20,23 +23,23 @@ const Step03 = () => {
         </span>
         에서 가능합니다.
       </Notice>
-      <ButtonComponent text={"로그인 바로가기"} onClick={()=> console.log('clicked')}/>
+      <Button text={"로그인 바로하기"} onClick={() => console.log("clicked")} />
     </Wrapper>
   );
 };
 
 const Wrapper = styled.div`
-  display : flex;
-  flex-direction : column;
-  justify-content : center;
-  align-items : center;
-  margin-top : 30px;
-`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 30px;
+`;
 
 const CheckImg = styled(Check)`
-    width: 56px;
-    height: 56px;
-`
+  width: 56px;
+  height: 56px;
+`;
 
 const Title = styled.div`
   text-align: center;
@@ -46,7 +49,7 @@ const Title = styled.div`
   line-height: 58px; /* 120.833% */
   letter-spacing: -1.2px;
   margin-top: 38px;
-`
+`;
 
 const Description = styled.div`
   color: #767676;
@@ -56,11 +59,11 @@ const Description = styled.div`
   font-weight: 500;
   line-height: 29px; /* 131.818% */
   letter-spacing: -0.55px;
-  margin : 50px 0;
-`
+  margin: 50px 0;
+`;
 
 const Notice = styled.div`
-  box-sizing:  border-box;
+  box-sizing: border-box;
   padding: 10px 24px;
   display: flex;
   justify-content: center;
@@ -75,6 +78,6 @@ const Notice = styled.div`
   line-height: var(--18, 26px); /* 144.444% */
   letter-spacing: -0.45px;
   margin-bottom: 48px;
-`
+`;
 
 export default Step03;

@@ -3,7 +3,13 @@ import styled from 'styled-components'
 
 const PageNotice = ({ location }) => {
     return (
-    <Wrapper>{location.first} &gt; {location.second} &gt; {location.third}</Wrapper>
+    <Wrapper>
+      {
+      location.map((el,idx) => {
+          return (idx !== location.length-1) ? `${el} > ` : el;
+      })
+      
+    }</Wrapper>
   )
 }
 
