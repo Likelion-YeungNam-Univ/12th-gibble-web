@@ -32,4 +32,4 @@ const Button = ({ text, onClick, customStyles }) => {
   );
 };
 
-export default Button; 
+export default Button;
