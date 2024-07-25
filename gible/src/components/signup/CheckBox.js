@@ -14,7 +14,7 @@ const Box = styled.input`
   font-weight: 300;
   line-height: var(--24, 34px);
   letter-spacing: -0.6px;
-  margin: 10px;
+  margin: 10px 10px 10px 0px;
   accent-color: var(--main-color);
   border-radius: 5px;
   font-family: pretendard;
