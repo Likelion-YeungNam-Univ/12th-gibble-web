@@ -51,7 +51,7 @@ const Notice = () => {
 export default Notice;
 
 const Box = styled.div`
-  margin: 20px 0;
+  margin : 20px 0;
 `;
 
 const AgreementBox = styled.div`
