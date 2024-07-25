@@ -2,7 +2,7 @@ import PageNotice from '@/components/common/PageNotice'
 import Separator from '@/components/common/Separator'
 import React from 'react'
 import styled from 'styled-components'
-import Content from '../../components/post/Content';
+import Content from '../../components/post/post/Content';
 
 const Post = () => {
   return (
