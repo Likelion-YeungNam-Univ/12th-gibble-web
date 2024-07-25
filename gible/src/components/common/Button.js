@@ -1,14 +1,6 @@
 import React from "react";
 import styled, { css } from "styled-components";
 
-const Button = ({ text, onClick, customStyles }) => {
-  return (
-    <ButtonComponent onClick={onClick} $customStyles={customStyles}>
-      {text}
-    </ButtonComponent>
-  );
-};
-
 const ButtonComponent = styled.button`
   display: inline-flex;
   box-sizing: border-box;
@@ -33,5 +25,13 @@ const ButtonComponent = styled.button`
       ${props.$customStyles}
     `}
 `;
+
+const Button = ({ text, onClick, customStyles }) => {
+  return (
+    <ButtonComponent onClick={onClick} $customStyles={customStyles}>
+      {text}
+    </ButtonComponent>
+  );
+};
 
 export default Button;
