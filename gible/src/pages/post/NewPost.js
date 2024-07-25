@@ -6,7 +6,7 @@ import Button from '@/components/common/Button';
 import NewPostSeparator from '../../components/post/newPost/NewPostSeparator';
 
 const NewPost = () => {
-    const location = {first: 'Home', second: '커뮤니티', third : '게시글 작성'}
+    const location = ['Home', '커뮤니티', '헌혈증 기부', '게시글 작성']
   return (
       <Wrapper>
           <PageNotice location={location} />
@@ -25,7 +25,7 @@ const NewPost = () => {
 const Wrapper = styled.div`
     width : 100%;
     min-height : 100%;
-    padding : 10px;
+    padding : 0 10%;
 `
 
 const Content = styled.div`
@@ -41,7 +41,7 @@ const ContentNotice = styled.div`
 
 const Form = styled.div`
     box-sizing : border-box;
-    padding : 0 10%;
+    padding : 0 50px;
 `
 
 const ButtonStyle = `
