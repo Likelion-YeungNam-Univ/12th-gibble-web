@@ -1,9 +1,9 @@
 import React from 'react'
 import styled from 'styled-components'
 import PageNotice from '@/components/common/PageNotice';
-import PostForm from '@/components/post/PostForm';
+import PostForm from '@/components/post/newPost/PostForm';
 import Button from '@/components/common/Button';
-import NewPostSeparator from '../../components/post/NewPostSeparator';
+import NewPostSeparator from '../../components/post/newPost/NewPostSeparator';
 
 const NewPost = () => {
     const location = {first: 'Home', second: '커뮤니티', third : '게시글 작성'}
@@ -49,6 +49,14 @@ const ButtonStyle = `
     margin-left : 15%;
     margin-top : 67px;
     margin-bottom : 150px;
+    background-color: #f4f4f4;
+    transition: 0.3s;
+    color: var(--gray-color);
+    font-weight: 700;
+    &:hover{
+        background-color: var(--main-color);
+        color : #fff;
+    }
     
 `
 
