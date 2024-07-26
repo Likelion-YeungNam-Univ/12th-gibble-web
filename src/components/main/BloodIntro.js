@@ -20,7 +20,7 @@ const BloodIntro = () => {
 const Wrapper = styled.div`
     display: flex;
     flex-direction: column;
-    width: 800px;
+    width: 1920px;
     height: 750px;
     background-color: #ffff;
     justify-content: center;

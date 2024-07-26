@@ -18,7 +18,7 @@ const Community = () => {
 const Wrapper = styled.div`
     display: flex;
     flex-direction: column;
-    width: 1440px;
+    width: 1920px;
     height: 1000px;
     background-color: #ffff;
     justify-content: center;
