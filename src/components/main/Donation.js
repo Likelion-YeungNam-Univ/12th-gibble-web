@@ -87,14 +87,12 @@ const Images = styled.div`
 const Image1 = styled.img`
     width : 480px;
     height : 690px;
-    background-color: #dcdcdc;
 `;
 
 
 const Image2 = styled.img`
     width : 480px;
     height : 690px;
-    background-color: #dcdddd;
 `;
 
 

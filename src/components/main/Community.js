@@ -10,7 +10,6 @@ const Community = () => {
             </MainText>
             <Boxs>
                 <Box1></Box1>
-
             </Boxs>
         </Wrapper>
     );
