@@ -1,34 +1,7 @@
-import React from "react";
 import styled, { css } from "styled-components";
 
-const Input = ({
-  type,
-  placeholder,
-  customStyles,
-  content,
-  setter,
-  maxLength,
-}) => {
-  const setHandler = (e) => {
-    if (maxLength) {
-      if (e.target.value.length <= maxLength) setter(e.target.value);
-    } else setter(e.target.value);
-  };
-
-  return (
-    <InputComponent
-      type={type}
-      placeholder={placeholder}
-      $customStyles={customStyles}
-      value={content}
-      onChange={(e) => setHandler(e)}
-      maxLength={maxLength}
-    />
-  );
-};
-
-const InputComponent = styled.input`
-  width: 420px;
+const Input = styled.input`
+  width: 100%;
   height: 100%;
   border-radius: 6px;
   border: 1px solid #dbdbdb;
@@ -49,7 +22,8 @@ const InputComponent = styled.input`
       ${props.$customStyles}
     `}
 
-  &::-webkit-inner-spin-button {
+    /* type=number일 시 상하 이동 버튼 삭제 */
+  &::-webkit-inner-spin-button { 
     -webkit-appearance: none;
     margin: 0;
   }
