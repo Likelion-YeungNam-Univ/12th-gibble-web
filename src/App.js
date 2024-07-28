@@ -8,6 +8,8 @@ import SignUp from "@/pages/signup/SignUp";
 import Error from "@/pages/error/Error";
 import NewPost from "@/pages/post/NewPost";
 import Post from "@/pages/post/Post";
+import Main from "./pages/main/Main";
+
 
 function App() {
   return (
@@ -16,6 +18,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Layout />}>
+            <Route path="main" element={<Main />} />
             <Route path="login" element={<Login />} />
             <Route path="kakaologin" element={<Redirection />} />
             <Route path="event" element={<EventList />} />
