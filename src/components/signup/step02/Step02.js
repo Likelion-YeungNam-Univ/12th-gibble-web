@@ -2,18 +2,12 @@ import React from "react";
 import styled from "styled-components";
 import Description from "./Description";
 import InformationBox from "./InformationForm";
-import Button from "@/components/common/Button";
 
 const Step02 = ({ setStepNum }) => {
   return (
     <Wrapper>
       <Description />
       <InformationBox setStepNum={setStepNum} />
-      <Button
-        text={"회원가입"}
-        onClick={() => setStepNum((prev) => prev + 1)}
-        customStyles={buttonStyle}
-      ></Button>
     </Wrapper>
   );
 };

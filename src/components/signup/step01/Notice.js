@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-import CheckBox from "../CheckBox";
 
 const Notice = () => {
   return (
@@ -92,10 +91,6 @@ const Notice = () => {
           고지 받고 개인정보 처리에 동의합니다
         </Description>
       </NoticeBox>
-      <CheckBoxWrapper>
-        <CheckBox type="checkbox" />
-        <span>동의합니다.</span>
-      </CheckBoxWrapper>
     </Wrraper>
   );
 };
@@ -133,9 +128,4 @@ const Description = styled.div`
   letter-spacing: -0.5px;
 `;
 
-const CheckBoxWrapper = styled.div`
-  display: flex;
-  justify-content: right;
-  margin: 12px 0px;
-  align-items: center;
-`;
+
