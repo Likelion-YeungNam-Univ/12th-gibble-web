@@ -1,44 +1,266 @@
-import React, { useState } from 'react'
-import styled from 'styled-components'
-import InputForm from './InputForm'
-import TextAreaForm from './TextAreaForm'
-import InputFormFix from './InputFormFix'
-import { TitleNotice, ContentNotice } from './FormNotice'
+import React from "react";
+import styled from "styled-components";
+import { useForm } from "react-hook-form";
+import InputLabel from "@/components/common/InputLabel";
+import Input from "@/components/common/Input";
+import InputFormFix from "./InputFormFix";
+import { TitleNotice, ContentNotice } from "./FormNotice";
+import Button from "@/components/common/Button";
+import Error from "./Error";
 
 const PostForm = () => {
+  const {
+    register,
+    handleSubmit,
+    watch,
+    formState: { isSubmitting, isSubmitted, errors },
+  } = useForm({
+    mode: "onSubmit",
+  });
 
-    const [title, setTitle] = useState("");
-    const [content, setContent] = useState("");
-    const [required, setRequired] = useState(""); // parseInt 필요
-    const [location, setLocation] = useState("");
+  const title = watch("title", "");
+  const content = watch("content", "");
+
   return (
-      <Wrapper>
-          <TextCount>{title.length}/30</TextCount>
-          <InputForm text={'제목'} isEssential={true} condition={'(30자 이하)'} content={title} setter={setTitle} maxLength={30} />
-          <TitleNotice/>
-          
-          <TextCount>{content.length}/500</TextCount>
-          <TextAreaForm text={'내용'} isEssential={true} content={content} condition={'(500자 이하)'} setter={setContent} maxLength={500}></TextAreaForm>
-          <ContentNotice/>
+    <Wrapper
+      onSubmit={handleSubmit((data) => {
+        console.log("data", data);
+        alert(JSON.stringify(data));
+      })}
+    >
+      <FormWrapper>
+        <TextCount>{title.length}/30</TextCount>
+        <InputWrapper>
+          <InputLabel
+            text={"제목"}
+            isEssential={true}
+            condition={"(30자 이하)"}
+          />
 
-          <InputFormFix text={'이름'} content={'홍길동'} />
-          <InputFormFix text={'전화번호'} content={'010-1234-5678'} />
-          
-          <InputForm text={'필요 개수'} isEssential={true} content={required} setter={setRequired} />
-          <InputForm text={'헌혈증 수령 주소'} isEssential={true} content={location} setter={setLocation} />
+          <Input
+            type="text"
+            placeholder="제목을 입력해 주세요."
+            $customStyles={
+              errors.title
+                ? {
+                    width: "75%",
+                    height: "52px",
+                    padding: "0 24px",
+                    border: "1px solid var(--main-color)",
+                  }
+                : {
+                    width: "75%",
+                    height: "52px",
+                    padding: "0 24px",
+                  }
+            }
+            {...register("title", {
+              required: "제목을 입력해주세요.",
+              minLength: {
+                value: 1,
+                message: "최소 1자 이상",
+              },
+              maxLength: {
+                value: 30,
+                message: "최대 30자 이하",
+              },
+            })}
+          />
+        </InputWrapper>
+        {errors.title && <Error text={errors.title.message} />}
+        <TitleNotice />
+
+        <TextCount>{content.length}/500</TextCount>
+        <InputWrapper>
+          <InputLabel
+            text={"내용"}
+            isEssential={true}
+            condition={"(500자 이하)"}
+          />
+          <TextArea
+            type="text"
+            placeholder="환자와 작성자의 정보 / 현재 상황 / 질병 상세 설명 / 기부 방법 등을 적어주세요."
+            $customStyles={
+              errors.content
+                ? {
+                    width: "75%",
+                    height: "585px",
+                    padding: "0 24px",
+                    display: "flex",
+                    "flex-shrink": "0",
+                    border: "1px solid var(--main-color)",
+                  }
+                : {
+                    width: "75%",
+                    height: "585px",
+                    padding: "0 24px",
+                    display: "flex",
+                    "flex-shrink": "0",
+                  }
+            }
+            {...register("content", {
+              required: "내용을 입력해주세요.",
+              minLength: {
+                value: 1,
+                message: "최소 1자 이상",
+              },
+              maxLength: {
+                value: 500,
+                message: "최대 500자 이하",
+              },
+            })}
+          />
+        </InputWrapper>
+        {errors.content && <Error text={errors.content.message} />}
+        <ContentNotice />
+
+        <InputFormFix text={"이름"} content={"홍길동"} />
+        <InputFormFix text={"전화번호"} content={"010-1234-5678"} />
+
+        <InputWrapper style={{ "margin-top": "32px" }}>
+          <InputLabel text={"필요 개수"} isEssential={true} />
+          <Input
+            type="number"
+            placeholder="필요한 헌혈증 개수를 입력해주세요."
+            $customStyles={
+              errors.number
+                ? {
+                    width: "75%",
+                    height: "52px",
+                    padding: "0 24px",
+                    display: "flex",
+                    "flex-shrink": "0",
+                    border: "1px solid var(--main-color)",
+                  }
+                : {
+                    width: "75%",
+                    height: "52px",
+                    padding: "0 24px",
+                    display: "flex",
+                    "flex-shrink": "0",
+                  }
+            }
+            {...register("number", {
+              required: "희망 개수를 입력해주세요.",
+              minLength: {
+                value: 1,
+                message: "최소 0 이상의 숫자",
+              },
+              maxLength: {
+                value: 2,
+                message: "99 이하의 숫자",
+              },
+            })}
+          />
+        </InputWrapper>
+        {errors.number && <Error text={errors.number.message} />}
+
+        <InputWrapper style={{ "margin-top": "32px" }}>
+          <InputLabel text={"헌혈증 수령주소"} isEssential={true} />
+          <Input
+            type="text"
+            placeholder="위치를 입력해주세요."
+            $customStyles={
+              errors.address
+                ? {
+                    width: "75%",
+                    height: "52px",
+                    padding: "0 24px",
+                    display: "flex",
+                    "flex-shrink": "0",
+                    border: "1px solid var(--main-color)",
+                  }
+                : {
+                    width: "75%",
+                    height: "52px",
+                    padding: "0 24px",
+                    display: "flex",
+                    "flex-shrink": "0",
+                  }
+            }
+            {...register("address", {
+              required: "위치를 입력해주세요.",
+              minLength: {
+                value: 1,
+                message: "최소 1자 이상",
+              },
+              maxLength: {
+                value: 50,
+                message: "최대 50자 이하",
+              },
+            })}
+          />
+        </InputWrapper>
+        {errors.address && <Error text={errors.address.message} />}
+        {/*<InputForm
+        text={"필요 개수"}
+        isEssential={true}
+        content={required}
+        setter={setRequired}
+      />
+      <InputForm
+        text={"헌혈증 수령 주소"}
+        isEssential={true}
+        content={location}
+        setter={setLocation}
+      />*/}
+      </FormWrapper>
+      <Button
+        type="submit"
+        $customStyles={{
+          width: "100%",
+          background: "#f4f4f4",
+          color: "var(--gray-color)",
+          "margin-top": "108px",
+          transition: "0.2s",
+          "&:hover": {
+            background: "var(--main-color)",
+            color: "#fff",
+          },
+        }}
+      >
+        작성하기
+      </Button>
     </Wrapper>
-  )
-}
+  );
+};
 
-const Wrapper = styled.div`
-    margin-bottom : 30px;
-`
+const Wrapper = styled.form``;
+
+const FormWrapper = styled.div`
+  margin: 0 168px;
+`;
 
 const TextCount = styled.div`
-    text-align : end;
-    font-size : 14px;
-    margin-bottom : 15px;
-    margin-top : 30px;
-`
+  text-align: end;
+  font-size: 14px;
+  margin-bottom: 15px;
+  margin-top: 30px;
+  color: var(--gray-color);
+`;
 
-export default PostForm
+const InputWrapper = styled.div`
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+`;
+
+const TextArea = styled.textarea`
+  width: 75%;
+  height: 561px;
+  padding: 24px;
+  border-radius: 6px;
+  border: 1px solid #dbdbdb;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: var(--18, 26px); /* 144.444% */
+  letter-spacing: -0.45px;
+  font-family: pretendard;
+  resize: none;
+  &::placeholder {
+    color: #dbdbdb;
+  }
+`;
+
+export default PostForm;
