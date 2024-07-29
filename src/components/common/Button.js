@@ -17,6 +17,10 @@ const Button = styled.button`
   border: none;
   font-family : pretendard;
   cursor: pointer;
+  &:disabled{
+    cursor: default;
+    background-color : #ccc;
+  }
 
   ${props => props.$customStyles && css`
     ${props.$customStyles}
