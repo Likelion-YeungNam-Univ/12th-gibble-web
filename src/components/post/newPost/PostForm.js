@@ -40,20 +40,12 @@ const PostForm = () => {
           <Input
             type="text"
             placeholder="제목을 입력해 주세요."
-            $customStyles={
-              errors.title
-                ? {
-                    width: "75%",
-                    height: "52px",
-                    padding: "0 24px",
-                    border: "1px solid var(--main-color)",
-                  }
-                : {
-                    width: "75%",
-                    height: "52px",
-                    padding: "0 24px",
-                  }
-            }
+            style={errors.title && { border: "1px solid var(--main-color)" }}
+            $customStyles={{
+              width: "75%",
+              height: "52px",
+              padding: "0 24px",
+            }}
             {...register("title", {
               required: "제목을 입력해주세요.",
               minLength: {
@@ -105,24 +97,14 @@ const PostForm = () => {
           <Input
             type="number"
             placeholder="필요한 헌혈증 개수를 입력해주세요."
-            $customStyles={
-              errors.number
-                ? {
-                    width: "75%",
-                    height: "52px",
-                    padding: "0 24px",
-                    display: "flex",
-                    "flex-shrink": "0",
-                    border: "1px solid var(--main-color)",
-                  }
-                : {
-                    width: "75%",
-                    height: "52px",
-                    padding: "0 24px",
-                    display: "flex",
-                    "flex-shrink": "0",
-                  }
-            }
+            style={errors.number && { border: "1px solid var(--main-color)" }}
+            $customStyles={{
+              width: "75%",
+              height: "52px",
+              padding: "0 24px",
+              display: "flex",
+              "flex-shrink": "0",
+            }}
             {...register("number", {
               required: "희망 개수를 입력해주세요.",
               minLength: {
@@ -143,24 +125,14 @@ const PostForm = () => {
           <Input
             type="text"
             placeholder="위치를 입력해주세요."
-            $customStyles={
-              errors.address
-                ? {
-                    width: "75%",
-                    height: "52px",
-                    padding: "0 24px",
-                    display: "flex",
-                    "flex-shrink": "0",
-                    border: "1px solid var(--main-color)",
-                  }
-                : {
-                    width: "75%",
-                    height: "52px",
-                    padding: "0 24px",
-                    display: "flex",
-                    "flex-shrink": "0",
-                  }
-            }
+            style={errors.address && { border: "1px solid var(--main-color)" }}
+            $customStyles={{
+              width: "75%",
+              height: "52px",
+              padding: "0 24px",
+              display: "flex",
+              "flex-shrink": "0",
+            }}
             {...register("address", {
               required: "위치를 입력해주세요.",
               minLength: {
@@ -175,18 +147,6 @@ const PostForm = () => {
           />
         </InputWrapper>
         {errors.address && <Error text={errors.address.message} />}
-        {/*<InputForm
-        text={"필요 개수"}
-        isEssential={true}
-        content={required}
-        setter={setRequired}
-      />
-      <InputForm
-        text={"헌혈증 수령 주소"}
-        isEssential={true}
-        content={location}
-        setter={setLocation}
-      />*/}
       </FormWrapper>
       <Button
         type="submit"
