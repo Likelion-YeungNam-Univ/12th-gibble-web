@@ -1,9 +1,9 @@
 import React from 'react'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 
-const InputLabel = ({ text, isEssential }) => {
+const InputLabel = ({ text, isEssential, customStyles }) => {
   return (
-      <Wrapper>{text} { isEssential ? <span style={{color : "var(--main-color)"}}> * </span> : null }</Wrapper>
+      <Wrapper $customStyles={customStyles}>{text} { isEssential ? <span style={{color : "var(--main-color)"}}> * </span> : null }</Wrapper>
   )
 }
 
@@ -17,6 +17,10 @@ const Wrapper = styled.label`
   font-weight: 500;
   line-height: var(--18, 26px); /* 144.444% */
   letter-spacing: -0.45px;
+  
+  ${props => props.$customStyles && css`
+      ${props.customStyles}
+  `}
 `
 
 export default InputLabel
