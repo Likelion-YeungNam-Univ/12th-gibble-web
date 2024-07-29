@@ -80,24 +80,7 @@ const PostForm = () => {
           <TextArea
             type="text"
             placeholder="환자와 작성자의 정보 / 현재 상황 / 질병 상세 설명 / 기부 방법 등을 적어주세요."
-            $customStyles={
-              errors.content
-                ? {
-                    width: "75%",
-                    height: "585px",
-                    padding: "0 24px",
-                    display: "flex",
-                    "flex-shrink": "0",
-                    border: "1px solid var(--main-color)",
-                  }
-                : {
-                    width: "75%",
-                    height: "585px",
-                    padding: "0 24px",
-                    display: "flex",
-                    "flex-shrink": "0",
-                  }
-            }
+            style={errors.content && { border: "1px solid var(--main-color)" }}
             {...register("content", {
               required: "내용을 입력해주세요.",
               minLength: {
