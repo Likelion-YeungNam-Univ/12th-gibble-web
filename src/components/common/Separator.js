@@ -10,7 +10,7 @@ const Separator = ({title}) => {
             <SearchBar>
                 <Input placeholder='검색어를 입력해주세요'></Input>
             </SearchBar>
-            <Button text={'검색하기'} onClick={()=>console.log('clicked')} customStyles={`height : 54px`}></Button>
+            <Button  onClick={()=>console.log('clicked')} $customStyles={`height : 54px`}>검색하기</Button>
           </SearchContainer>
           
     </Wrapper>
