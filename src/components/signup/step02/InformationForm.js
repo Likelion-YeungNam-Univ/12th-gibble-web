@@ -10,86 +10,117 @@ import { useNavigate } from "react-router-dom";
 import store from "@/store/store";
 
 const InformationForm = ({ setStepNum }) => {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors, isSubmitted, isValid },
+  } = useForm({ mode: "onSubmit" });
 
-    const {
-      register,
-      handleSubmit,
-      formState: {errors, isSubmitted, isValid}
-    } = useForm({ mode: "onSubmit"} );
-
-    const navigate = useNavigate();
-    const state = store.getState();
-    console.log('state',state);
+  const navigate = useNavigate();
+  const state = store.getState();
+  console.log("state", state);
 
   return (
-    <Wrapper 
+    <Wrapper
       noValidate
       onSubmit={handleSubmit(async (data) => {
         const email = state.authSlice.email;
         const result = await signupHandler({
-          name : data.name,
-          nickname : data.nickname,
-          email,
-          emailAgree : data.emailAgree,
-          phoneNumber : data.phoneNumber1 + '-' + data.phoneNumber2 + '-' + data.phoneNumber3
+          name: data.name,
+          nickname: data.nickname,
+          email: email,
+          emailAgree: data.emailAgree,
+          phoneNumber:
+            data.phoneNumber1 +
+            "-" +
+            data.phoneNumber2 +
+            "-" +
+            data.phoneNumber3,
         });
 
-        if(result.statusCode === 200){
-          setStepNum(prev => prev+1)
-        }
-        else{
-          navigate('/error')
+        if (result.statusCode === 200) {
+          setStepNum((prev) => prev + 1);
+        } else {
+          navigate("/error");
         }
       })}
     >
       <FormContainer>
         {/* 이메일 */}
-        <InputContainer>  
-          <InputLabel text={"이메일"} isEssential={true} $customStyles={`width: 30%`} />
-          <Mail value={state.authSlice.email} disabled={true}/>
+        <InputContainer>
+          <InputLabel
+            text={"이메일"}
+            isEssential={true}
+            $customStyles={`width: 30%`}
+          />
+          <Mail value={state.authSlice.email} disabled={true} />
         </InputContainer>
 
         {/* 성명 */}
         <InputContainer>
-          <InputLabel text={"성명"} isEssential={true} $customStyles={`width: 30%`} />
+          <InputLabel
+            text={"성명"}
+            isEssential={true}
+            $customStyles={`width: 30%`}
+          />
           <Input
             type={"text"}
             placeholder={"이름을 입력해주세요."}
             $customStyles={`
               width: 100%;
-              border : 1px solid ${isSubmitted && errors.name ? "var(--main-color)" : "#dbdbdb"};
-              box-shadow: ${isSubmitted && errors.name ? "rgba(0, 0, 0, 0.24) 0px 3px 8px" : "none"};
-              ` }
+              border : 1px solid ${
+                isSubmitted && errors.name ? "var(--main-color)" : "#dbdbdb"
+              };
+              box-shadow: ${
+                isSubmitted && errors.name
+                  ? "rgba(0, 0, 0, 0.24) 0px 3px 8px"
+                  : "none"
+              };
+              `}
             {...register("name", {
-              required : "성명 입력은 필수입니다."
+              required: "성명 입력은 필수입니다.",
             })}
           />
         </InputContainer>
 
         {/* 닉네임 */}
         <InputContainer>
-          <InputLabel text={"닉네임"} isEssential={true} customStyles={`width: 30%`}/>
+          <InputLabel
+            text={"닉네임"}
+            isEssential={true}
+            customStyles={`width: 30%`}
+          />
           <NicknameInputContainer>
             <Input
               type={"text"}
               placeholder={"닉네임을 확인해주세요."}
               $customStyles={`
                 width: 80%;
-                border : 1px solid ${isSubmitted && errors.nickname ? "var(--main-color)" : "#dbdbdb"};
-                box-shadow: ${isSubmitted && errors.nickname ? "rgba(0, 0, 0, 0.24) 0px 3px 8px" : "none"};`}
-              {...register("nickname",{
-                required: "닉네임 입력은 필수입니다."
+                border : 1px solid ${
+                  isSubmitted && errors.nickname
+                    ? "var(--main-color)"
+                    : "#dbdbdb"
+                };
+                box-shadow: ${
+                  isSubmitted && errors.nickname
+                    ? "rgba(0, 0, 0, 0.24) 0px 3px 8px"
+                    : "none"
+                };`}
+              {...register("nickname", {
+                required: "닉네임 입력은 필수입니다.",
               })}
             />
-            <Button
-              $customStyles={`width: 15%`}
-            >중복확인</Button>
+            <Button $customStyles={`width: 15%`}>중복확인</Button>
           </NicknameInputContainer>
         </InputContainer>
 
         {/* 폰 번호 */}
         <InputContainer>
-          <InputLabel text={"휴대폰 번호"} isEssential={true} customStyles={`width: 30%`} />
+          <InputLabel
+            text={"휴대폰 번호"}
+            isEssential={true}
+            customStyles={`width: 30%`}
+          />
           <PhoneNumberInputContainer>
             <Input
               type={"number"}
@@ -97,10 +128,18 @@ const InformationForm = ({ setStepNum }) => {
               $customStyles={`
                 width: 120px; 
                 text-align: center;
-                border : 1px solid ${isSubmitted && errors.phoneNumber1 ? "var(--main-color)" : "#dbdbdb"};
-                box-shadow: ${isSubmitted && errors.phoneNumber1 ? "rgba(0, 0, 0, 0.24) 0px 3px 8px" : "none"};`}
-              {...register("phoneNumber1",{
-                required: "필수 입력입니다."
+                border : 1px solid ${
+                  isSubmitted && errors.phoneNumber1
+                    ? "var(--main-color)"
+                    : "#dbdbdb"
+                };
+                box-shadow: ${
+                  isSubmitted && errors.phoneNumber1
+                    ? "rgba(0, 0, 0, 0.24) 0px 3px 8px"
+                    : "none"
+                };`}
+              {...register("phoneNumber1", {
+                required: "필수 입력입니다.",
               })}
             />
             -
@@ -110,10 +149,18 @@ const InformationForm = ({ setStepNum }) => {
               $customStyles={`
                 width: 120px; 
                 text-align: center;
-                border : 1px solid ${isSubmitted && errors.phoneNumber2 ? "var(--main-color)" : "#dbdbdb"};
-                box-shadow: ${isSubmitted && errors.phoneNumber2 ? "rgba(0, 0, 0, 0.24) 0px 3px 8px" : "none"};`}
-              {...register("phoneNumber2",{
-                required: "필수 입력입니다."
+                border : 1px solid ${
+                  isSubmitted && errors.phoneNumber2
+                    ? "var(--main-color)"
+                    : "#dbdbdb"
+                };
+                box-shadow: ${
+                  isSubmitted && errors.phoneNumber2
+                    ? "rgba(0, 0, 0, 0.24) 0px 3px 8px"
+                    : "none"
+                };`}
+              {...register("phoneNumber2", {
+                required: "필수 입력입니다.",
               })}
             />
             -
@@ -123,18 +170,25 @@ const InformationForm = ({ setStepNum }) => {
               $customStyles={`
                 width: 120px; 
                 text-align: center;
-                border : 1px solid ${isSubmitted && errors.phoneNumber3 ? "var(--main-color)" : "#dbdbdb"};
-                box-shadow: ${isSubmitted && errors.phoneNumber3 ? "rgba(0, 0, 0, 0.24) 0px 3px 8px" : "none"};`}
-              {...register("phoneNumber3",{
-                required: "필수 입력입니다."
+                border : 1px solid ${
+                  isSubmitted && errors.phoneNumber3
+                    ? "var(--main-color)"
+                    : "#dbdbdb"
+                };
+                box-shadow: ${
+                  isSubmitted && errors.phoneNumber3
+                    ? "rgba(0, 0, 0, 0.24) 0px 3px 8px"
+                    : "none"
+                };`}
+              {...register("phoneNumber3", {
+                required: "필수 입력입니다.",
               })}
             />
           </PhoneNumberInputContainer>
         </InputContainer>
-        <MailAgreement {...register("emailAgree")}/>
+        <MailAgreement {...register("emailAgree")} />
       </FormContainer>
 
-      
       <Button
         type="submit"
         $customStyles={`
@@ -152,26 +206,25 @@ const InformationForm = ({ setStepNum }) => {
 export default InformationForm;
 
 const Wrapper = styled.form`
-  width : 100%;
-  box-sizing : border-box;
-  padding : 0 10%;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0 10%;
 `;
 
 const FormContainer = styled.div`
-  width : 100%;
+  width: 100%;
   box-sizing: border-box;
-  padding : 50px 5%;
-
+  padding: 50px 5%;
 `;
 
 const InputContainer = styled.div`
   display: flex;
   width: 100%;
-  height : 54px;
+  height: 54px;
   padding-bottom: 24px;
   align-items: center;
   /* gap: 16px; */
-`
+`;
 
 const Mail = styled.div`
   width: 100%;
@@ -189,17 +242,17 @@ const Mail = styled.div`
 `;
 
 const NicknameInputContainer = styled.div`
-  width : 100%;
-  height : 100%;
-  display : flex;
-  align-items : center;
-  justify-content : space-between;
-`
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+`;
 
 const PhoneNumberInputContainer = styled.div`
-  width : 100%;
-  height : 100%;
-  display : flex;
-  align-items : center;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
   gap: 10px;
-`
+`;
