@@ -16,15 +16,15 @@ const loginResponseHandler = async (dispatch, code) => {
         console.log(state);
         return {
             statusCode: response.status,
-            // message
+            message : response.data.message
         }
 
     } catch (error) {
         console.log('error',error);
         return {
-            statusCode: error.response.status
-            // message
-        };
+            statusCode: error.response.status,
+            message : error.response.data.message
+        }
     }
 }
 
