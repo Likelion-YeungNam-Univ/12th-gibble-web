@@ -13,7 +13,7 @@ const PostForm = () => {
     register,
     handleSubmit,
     watch,
-    formState: { isSubmitting, isSubmitted, errors },
+    formState: { errors },
   } = useForm({
     mode: "onSubmit",
   });
@@ -42,7 +42,7 @@ const PostForm = () => {
             placeholder="제목을 입력해 주세요."
             style={errors.title && { border: "1px solid var(--main-color)" }}
             $customStyles={{
-              width: "75%",
+              width: "81%",
               height: "52px",
               padding: "0 24px",
             }}
@@ -99,7 +99,7 @@ const PostForm = () => {
             placeholder="필요한 헌혈증 개수를 입력해주세요."
             style={errors.number && { border: "1px solid var(--main-color)" }}
             $customStyles={{
-              width: "75%",
+              width: "81%",
               height: "52px",
               padding: "0 24px",
               display: "flex",
@@ -127,7 +127,7 @@ const PostForm = () => {
             placeholder="위치를 입력해주세요."
             style={errors.address && { border: "1px solid var(--main-color)" }}
             $customStyles={{
-              width: "75%",
+              width: "81%",
               height: "52px",
               padding: "0 24px",
               display: "flex",
