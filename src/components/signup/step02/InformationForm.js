@@ -5,6 +5,8 @@ import Input from "@/components/common/Input";
 import InputLabel from "../InputLabel";
 import Button from "@/components/common/Button";
 import { useForm } from "react-hook-form";
+import signupHandler from "@/api/signup/signupHandler";
+import { useNavigate } from "react-router-dom";
 
 const InformationForm = ({ setStepNum }) => {
 
@@ -12,16 +14,28 @@ const InformationForm = ({ setStepNum }) => {
       register,
       handleSubmit,
       formState: {errors, isSubmitted, isValid}
-    } = useForm({ mode: "onSubmit"});
+    } = useForm({ mode: "onSubmit"} )
+    ;
+    const navigate = useNavigate();
 
   return (
     <Wrapper 
       noValidate
-      onSubmit={handleSubmit(data => {
-        console.log('data',data)
-        console.log(data.name);
-        console.log(data.nickname);
-        console.log(data.phoneNumber1 + '-' + data.phoneNumber2 + '-' + data.phoneNumber3)
+      onSubmit={handleSubmit(async (data) => {
+        const result = await signupHandler({
+          name : data.name,
+          nickname : data.nickname,
+          email : "test@naver.com",
+          emailAgree : data.emailAgree,
+          phoneNumber : data.phoneNumber1 + '-' + data.phoneNumber2 + '-' + data.phoneNumber3
+        });
+
+        if(result.statusCode === 200){
+          setStepNum(prev => prev+1)
+        }
+        else{
+          navigate('/error')
+        }
       })}
     >
       <FormContainer>
