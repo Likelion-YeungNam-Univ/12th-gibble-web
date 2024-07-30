@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 import MailAgreement from "./MailAgreement";
 import Input from "@/components/common/Input";
@@ -7,6 +7,7 @@ import Button from "@/components/common/Button";
 import { useForm } from "react-hook-form";
 import signupHandler from "@/api/signup/signupHandler";
 import { useNavigate } from "react-router-dom";
+import store from "@/store/store";
 
 const InformationForm = ({ setStepNum }) => {
 
@@ -14,18 +15,21 @@ const InformationForm = ({ setStepNum }) => {
       register,
       handleSubmit,
       formState: {errors, isSubmitted, isValid}
-    } = useForm({ mode: "onSubmit"} )
-    ;
+    } = useForm({ mode: "onSubmit"} );
+
     const navigate = useNavigate();
+    const state = store.getState();
+    console.log('state',state);
 
   return (
     <Wrapper 
       noValidate
       onSubmit={handleSubmit(async (data) => {
+        const email = state.authSlice.email;
         const result = await signupHandler({
           name : data.name,
           nickname : data.nickname,
-          email : "test@naver.com",
+          email,
           emailAgree : data.emailAgree,
           phoneNumber : data.phoneNumber1 + '-' + data.phoneNumber2 + '-' + data.phoneNumber3
         });
@@ -42,7 +46,7 @@ const InformationForm = ({ setStepNum }) => {
         {/* 이메일 */}
         <InputContainer>  
           <InputLabel text={"이메일"} isEssential={true} $customStyles={`width: 30%`} />
-          <Mail value={'test@gmail.com'} disabled={true}/>
+          <Mail value={state.authSlice.email} disabled={true}/>
         </InputContainer>
 
         {/* 성명 */}
