@@ -119,8 +119,8 @@ const InformationForm = ({ setStepNum }) => {
               $customStyles={`
                 width: 120px; 
                 text-align: center;
-                border : 1px solid ${isSubmitted && errors.phoneNumber2 ? "var(--main-color)" : "#dbdbdb"};
-                box-shadow: ${isSubmitted && errors.phoneNumber2 ? "rgba(0, 0, 0, 0.24) 0px 3px 8px" : "none"};`}
+                border : 1px solid ${isSubmitted && errors.phoneNumber3 ? "var(--main-color)" : "#dbdbdb"};
+                box-shadow: ${isSubmitted && errors.phoneNumber3 ? "rgba(0, 0, 0, 0.24) 0px 3px 8px" : "none"};`}
               {...register("phoneNumber3",{
                 required: "필수 입력입니다."
               })}
