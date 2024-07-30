@@ -1,5 +1,5 @@
 import apiClient from "@/api/axios";
-import { setAccessToken } from "@/store/authSlice";
+import { setAccessToken, setEmail } from "@/store/authSlice";
 import store from '@/store/store';
 
 const loginResponseHandler = async (dispatch, code) => {
@@ -21,6 +21,10 @@ const loginResponseHandler = async (dispatch, code) => {
 
     } catch (error) {
         console.log('error',error);
+        if(error.response.status === 510){
+            dispatch(setEmail(error.response.data.email))
+        }
+
         return {
             statusCode: error.response.status,
             message : error.response.data.message
