@@ -1,3 +1,4 @@
+//이벤트 목록 
 import { getAuthAxios } from '../authAxios';
 
 export const getEventList = async (region) => {
