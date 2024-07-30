@@ -1,8 +1,9 @@
-import apiClient from "../axios";
+import { getAuthAxios } from "../authAxios";
 
 const getReceivedDonation = () => {
   try {
-    const response = apiClient.get("/donation/received-donation");
+    const authAxios = getAuthAxios();
+    const response = authAxios.get("/donation/received-donation");
     console.log("response", response);
 
     if (response.status === 200) {

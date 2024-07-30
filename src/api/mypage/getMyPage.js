@@ -1,8 +1,9 @@
-import apiClient from "../axios";
+import { getAuthAxios } from "../authAxios";
 
 const getMyPage = () => {
   try {
-    const response = apiClient.get("/user");
+    const authAxios = getAuthAxios();
+    const response = authAxios.get("/user");
     console.log("response", response);
 
     if (response.status === 200) {
