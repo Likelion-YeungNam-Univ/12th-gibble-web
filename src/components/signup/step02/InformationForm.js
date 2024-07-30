@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import styled from "styled-components";
 import MailAgreement from "./MailAgreement";
 import Input from "@/components/common/Input";
@@ -18,13 +18,13 @@ const InformationForm = ({ setStepNum }) => {
 
   const navigate = useNavigate();
   const state = store.getState();
+  const email = state.authSlice.email;
   console.log("state", state);
 
   return (
     <Wrapper
       noValidate
       onSubmit={handleSubmit(async (data) => {
-        const email = state.authSlice.email;
         const result = await signupHandler({
           name: data.name,
           nickname: data.nickname,
@@ -49,7 +49,7 @@ const InformationForm = ({ setStepNum }) => {
         {/* 이메일 */}
         <InputContainer>
           <InputLabel
-            text={"이메일"}
+            text={email}
             isEssential={true}
             $customStyles={`width: 30%`}
           />
