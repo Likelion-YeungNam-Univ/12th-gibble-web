@@ -8,7 +8,8 @@ import SignUp from "@/pages/signup/SignUp";
 import Error from "@/pages/error/Error";
 import NewPost from "@/pages/post/NewPost";
 import Post from "@/pages/post/Post";
-import Main from "./pages/main/Main";
+import Main from "@/pages/main/Main";
+import Review from "@/pages/review/Review";
 
 
 function App() {
@@ -26,6 +27,9 @@ function App() {
             <Route path="/post">
               <Route path="" element={<Post/>} />
               <Route path="new" element={<NewPost/>} />
+            </Route>
+            <Route path="/review">
+              <Route path="" element={<Review />}></Route>
             </Route>
             <Route path="*" element={<Error />} />
           </Route>

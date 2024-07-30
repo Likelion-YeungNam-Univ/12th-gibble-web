@@ -7,7 +7,7 @@ import Content from '../../components/post/post/Content';
 const Post = () => {
   return (
       <Wrapper>
-          <PageNotice location={{ first: 'Home', second: '커뮤니티', third: '헌혈증 기부' }}></PageNotice>
+          <PageNotice location={['Home','커뮤니티','헌혈증 기부']}></PageNotice>
           <Container>
             <Separator title={'헌혈증 기부'}></Separator>
             <Content/>    
