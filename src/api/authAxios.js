@@ -10,7 +10,7 @@ export const getAuthAxios = () => {
     const authAxios = axios.create({
         baseURL: apiServer,
         headers: {
-            Authorization: accessToken
+            Authorization: `Bearer ${accessToken}`
         }
     }) 
 
@@ -20,14 +20,10 @@ export const getAuthAxios = () => {
             const originalRequest = error.config;
 
             if (error.response.status === 401 && !originalRequest._retry) {
-                originalRequest._retry = true;
-                const state = store.getState();
-                const refreshToken = state.authSlice.refreshToken;
+                originalRequest._retry = true;    
 
                 try {
-                    const response = await axios.post(`${apiServer}/auth/token`, {
-                        refreshToken: refreshToken,
-                    });
+                    const response = await axios.post(`${apiServer}/auth/token`);
 
                     const newAccessToken = response.data.accessToken;
                     store.dispatch(setAccessToken(newAccessToken));
