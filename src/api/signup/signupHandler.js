@@ -4,7 +4,7 @@ const signupHandler = async (data) => {
     console.log('data in singupHandler', data);
     try{
         const response = await apiClient.post('/user/signUp',{
-            data
+            ...data
         })
 
         console.log(response)
