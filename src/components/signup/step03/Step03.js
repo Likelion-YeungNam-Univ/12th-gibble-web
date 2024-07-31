@@ -23,7 +23,7 @@ const Step03 = () => {
         </span>
         에서 가능합니다.
       </Notice>
-      <Button text={"로그인 바로하기"} onClick={() => console.log("clicked")} />
+      <Button onClick={() => console.log("clicked")}>로그인 바로하기</Button>
     </Wrapper>
   );
 };

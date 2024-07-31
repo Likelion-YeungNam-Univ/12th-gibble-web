@@ -19,15 +19,3 @@ const Wrapper = styled.div`
   flex-direction: column;
   align-items: center;
 `;
-
-const buttonStyle = `
-  width : 85%;
-  background: #f4f4f4;
-  color: var(--gray-color);
-  transition: 0.2s;
-
-  &:hover {
-    background: var(--main-color);
-    color: #fff;
-  }
-`;
