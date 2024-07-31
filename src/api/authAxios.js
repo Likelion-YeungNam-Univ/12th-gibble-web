@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { apiServer } from '@config/api'; 
+import { apiServer } from '@/config/api'; 
 import store from '@/store/store'
 import { setAccessToken } from '@/store/authSlice'
 
