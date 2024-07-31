@@ -17,7 +17,7 @@ const HeadComponent = () => {
               <HeadLogo onClick={() => navigate('/')}/>
               <Util>
                 {
-                    state.auth.accessToken ? 
+                    !state.auth.accessToken ? 
                     <Text onClick={() => navigate('/login')}>로그인</Text> : 
                     <Text onClick={() => logoutHandler(dispatch)}>로그아웃</Text>
                 }
