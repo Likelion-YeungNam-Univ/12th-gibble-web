@@ -1,9 +1,11 @@
 import React from "react";
 import Button from "@/components/common/Button";
 import styled from "styled-components";
+import { useNavigate } from "react-router-dom";
 import { ReactComponent as Check } from "@/assets/svg/circle-check-solid.svg";
 
 const Step03 = () => {
+  const navigate = useNavigate();
   return (
     <Wrapper>
       <CheckImg />
@@ -23,7 +25,7 @@ const Step03 = () => {
         </span>
         에서 가능합니다.
       </Notice>
-      <Button onClick={() => console.log("clicked")}>로그인 바로하기</Button>
+      <Button onClick={() => navigate("/login")}>로그인 바로하기</Button>
     </Wrapper>
   );
 };
