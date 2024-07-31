@@ -4,12 +4,14 @@ import SearchBox from './SearchBox';
 import { useNavigate } from 'react-router-dom';
 import store from '@/store/store';
 import logoutHandler from '@/api/login/logoutHandler';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 const HeadComponent = () => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
-    const state = store.getState();
+    const accessToken = useSelector(state => state.auth.accessToken);
+
+    
 
   return (
       <Wrapper>
@@ -17,7 +19,7 @@ const HeadComponent = () => {
               <HeadLogo onClick={() => navigate('/')}/>
               <Util>
                 {
-                    !state.auth.accessToken ? 
+                    !accessToken ? 
                     <Text onClick={() => navigate('/login')}>로그인</Text> : 
                     <Text onClick={() => logoutHandler(dispatch)}>로그아웃</Text>
                 }
