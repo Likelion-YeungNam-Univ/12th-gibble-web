@@ -10,7 +10,7 @@ import NewPost from "@/pages/post/NewPost";
 import Post from "@/pages/post/Post";
 import Main from "@/pages/main/Main";
 import Review from "@/pages/review/Review";
-
+import NewPostComplete from "@/components/post/newPostComplete/NewPostComplete";
 
 function App() {
   return (
@@ -27,6 +27,7 @@ function App() {
             <Route path="/post">
               <Route path="" element={<Post/>} />
               <Route path="new" element={<NewPost/>} />
+              <Route path="newpostcomplete" element={<NewPostComplete/>} />
             </Route>
             <Route path="/review">
               <Route path="" element={<Review />}></Route>
