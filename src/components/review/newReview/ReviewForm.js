@@ -167,12 +167,12 @@ const ReviewForm = () => {
             }}
             $customStyles={{
               width: "15%",
-              background: "#f4f4f4",
-              color: "var(--gray-color)",
+              background: "var(--main-color)",
+              color: "#f4f4f4",
               marginLeft: "8px",
               transition: "0.2s",
               "&:hover": {
-                background: "var(--main-color)",
+                background: "var(--gray-color)",
                 color: "#fff",
               },
             }}
@@ -188,12 +188,12 @@ const ReviewForm = () => {
         type="submit"
         $customStyles={{
           width: "100%",
-          background: "#f4f4f4",
-          color: "var(--gray-color)",
+          background: "var(--main-color)",
+          color: "#f4f4f4",
           marginTop: "108px",
           transition: "0.2s",
           "&:hover": {
-            background: "var(--main-color)",
+            ackground: "var(--gray-color)",
             color: "#fff",
           },
         }}
