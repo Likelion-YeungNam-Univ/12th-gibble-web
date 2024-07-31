@@ -5,7 +5,7 @@ import { setAccessToken } from '@/store/authSlice'
 
 export const getAuthAxios = () => {
     const state = store.getState();
-    const accessToken = state.authSlice.accessToken;
+    const accessToken = state.auth.accessToken;
 
     const authAxios = axios.create({
         baseURL: apiServer,
