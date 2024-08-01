@@ -4,12 +4,6 @@ import PostCard from "./PostCard";
 import showPostList from "@/api/post/showPostList";
 import { useSearchParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-import React from "react";
-import { useEffect, useState } from "react";
-import PostCard from "./PostCard";
-import showPostList from "@/api/post/showPostList";
-import { useSearchParams } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
 
 const PostList = () => {
   const [searchParams] = useSearchParams();
