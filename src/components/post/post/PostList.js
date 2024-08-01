@@ -22,7 +22,7 @@ const PostList = () => {
         setPostList(result.data.content);
       } catch (error) {
         console.log("error", error);
-        navigate("/error/");
+        navigate("/error");
       }
     };
     fetch();

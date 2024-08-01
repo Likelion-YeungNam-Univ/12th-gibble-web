@@ -1,13 +1,24 @@
 import React from "react";
 import styled from "styled-components";
 import DonationBar from "./DonationBar";
+import { useNavigate } from "react-router-dom";
 
 const PostCard = ({ post, index }) => {
   console.log("post", post);
+  const navigate = useNavigate();
+  const clickHandler = () => {
+    navigate(`/post/${post.postId}`);
+  };
+
   return (
     <Wrapper>
       <PostContent width={"5%"}>{index}</PostContent>
-      <PostContent width={"55%"} align={"start"} left={"10px"}>
+      <PostContent
+        width={"55%"}
+        align={"start"}
+        left={"10px"}
+        onClick={clickHandler}
+      >
         {post.title}
       </PostContent>
       <PostContent width={"10%"}>{post.writer}</PostContent>
