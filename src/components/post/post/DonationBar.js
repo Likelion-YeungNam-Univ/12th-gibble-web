@@ -1,41 +1,37 @@
-import React from 'react'
-import styled from 'styled-components'
+import React from "react";
+import styled from "styled-components";
 
-const DonationBar = ({ donation }) => {
-    console.log('donation', donation)
-    console.log(donation.recieved / donation.required * 100)
+const DonationBar = ({ wanted, donated }) => {
   return (
-      <Wrapper>
-          <Red width={`${donation.recieved / donation.required * 100}%`}></Red>
-          <Text>{donation.recieved} / {donation.required}</Text>
+    <Wrapper>
+      <Red width={`${(donated / wanted) * 100}%`}></Red>
+      <Text>{donated / wanted}</Text>
     </Wrapper>
-  )
-}
+  );
+};
 
 const Wrapper = styled.div`
-    display: flex;
-    width : 100%;
-    height : 130%;
-    border-radius : 6px;
-    align-items : center;
-    text-align : end;
-    background-color : #D9D9D9;
-    font-size : 16px;
-    color : #fff;
-    position : relative;
-`
+  display: flex;
+  width: 100%;
+  height: 130%;
+  border-radius: 6px;
+  align-items: center;
+  text-align: end;
+  background-color: #d9d9d9;
+  font-size: 16px;
+  color: #fff;
+  position: relative;
+`;
 const Red = styled.div`
-    width : ${(props) => props.width};
-    height : 100%;
-    background-color : var(--main-color);
-    border-radius : 6px;
-`
+  width: ${(props) => props.width};
+  height: 100%;
+  background-color: var(--main-color);
+  border-radius: 6px;
+`;
 
 const Text = styled.p`
-    position : absolute;
-    right : 5px;
-`
+  position: absolute;
+  right: 5px;
+`;
 
-
-
-export default DonationBar
+export default DonationBar;

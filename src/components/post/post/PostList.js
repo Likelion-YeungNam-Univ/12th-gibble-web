@@ -1,120 +1,40 @@
-import React from 'react'
-import PostCard from './PostCard'
+import React from "react";
+import { useEffect, useState } from "react";
+import PostCard from "./PostCard";
+import showPostList from "@/api/post/showPostList";
+import { useSearchParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const PostList = () => {
+  const [searchParams] = useSearchParams();
+  const navigate = useNavigate();
+  const [postList, setPostList] = useState([]);
 
-    const postList = [
-        {
-            index: '01',
-            title: '제목입니다.',
-            author: '기블러',
-            date: '2024-07-12',
-            donation: {
-                recieved: 100,
-                required: 200
-            }
-        },
-        {
-            index: '02',
-            title: '제목입니다.',
-            author: '기블러',
-            date: '2024-07-12',
-            donation: {
-                recieved: 150,
-                required: 200
-            }
-        },
-        {
-            index: '03',
-            title: '제목입니다.',
-            author: '기블러',
-            date: '2024-07-12',
-            donation: {
-                recieved: 175,
-                required: 200
-            }
-        },
-        {
-            index: '04',
-            title: '제목입니다.',
-            author: '기블러',
-            date: '2024-07-12',
-            donation: {
-                recieved: 10,
-                required: 200
-            }
-        },
-        {
-            index: '05',
-            title: '제목입니다.',
-            author: '기블러',
-            date: '2024-07-12',
-            donation: {
-                recieved: 30,
-                required: 200
-            }
-        },
-        {
-            index: '06',
-            title: '제목입니다.',
-            author: '기블러',
-            date: '2024-07-12',
-            donation: {
-                recieved: 0,
-                required: 200
-            }
-        },
-        {
-            index: '07',
-            title: '제목입니다.',
-            author: '기블러',
-            date: '2024-07-12',
-            donation: {
-                recieved: 60,
-                required: 200
-            }
-        },
-        {
-            index: '08',
-            title: '제목입니다.',
-            author: '기블러',
-            date: '2024-07-12',
-            donation: {
-                recieved: 60,
-                required: 200
-            }
-        },
-        {
-            index: '09',
-            title: '제목입니다.',
-            author: '기블러',
-            date: '2024-07-12',
-            donation: {
-                recieved: 80,
-                required: 200
-            }
-        },
-        {
-            index: '10',
-            title: '제목입니다.',
-            author: '기블러',
-            date: '2024-07-12',
-            donation: {
-                recieved: 100,
-                required: 200
-            }
-        },
-    ]
+  useEffect(() => {
+    const fetch = async () => {
+      const page = searchParams.get("page") || 0;
+      console.log(page);
+      const size = 10;
+      try {
+        const result = await showPostList({ page, size });
+
+        console.log(result.data.content);
+        setPostList(result.data.content);
+      } catch (error) {
+        console.log("error", error);
+        navigate("/error/");
+      }
+    };
+    fetch();
+  }, [navigate, searchParams, setPostList]);
 
   return (
-      <>
-          {
-              postList.map(el => {
-                  return <PostCard post={el}/>
-              })
-        }
-      </>
-  )
-}
+    <>
+      {postList.map((el, index) => {
+        return <PostCard post={el} index={index + 1} />;
+      })}
+    </>
+  );
+};
 
-export default PostList
+export default PostList;

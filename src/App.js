@@ -10,9 +10,11 @@ import NewPost from "@/pages/post/NewPost";
 import Post from "@/pages/post/Post";
 import Main from "@/pages/main/Main";
 import Review from "@/pages/review/Review";
+import NewReview from "@/pages/review/NewReview";
 import NewPostComplete from "@/components/post/newPostComplete/NewPostComplete";
 import NewReview from "./pages/review/NewReview";
 import ReviewPage from "./pages/review/ReviewPage";
+
 
 function App() {
   return (
