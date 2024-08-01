@@ -12,7 +12,7 @@ const MainPic = () => {
 const Wrapper = styled.div`
    padding : 0;
    display: flex;
-    width : 1920px;
+    width : 100%;
     height: 800px;
     background-color: #ffff;
     justify-content: center;
@@ -22,7 +22,9 @@ const Wrapper = styled.div`
 
 const Image = styled.img`
     display: flex;
+    width : 1920px;
     height: 800px;
+
 `;
 
 export default MainPic;
