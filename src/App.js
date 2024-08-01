@@ -11,6 +11,8 @@ import Post from "@/pages/post/Post";
 import Main from "@/pages/main/Main";
 import Review from "@/pages/review/Review";
 import NewPostComplete from "@/components/post/newPostComplete/NewPostComplete";
+import NewReview from "./pages/review/NewReview";
+import ReviewPage from "./pages/review/ReviewPage";
 
 function App() {
   return (
@@ -30,7 +32,9 @@ function App() {
               <Route path="newpostcomplete" element={<NewPostComplete/>} />
             </Route>
             <Route path="/review">
-              <Route path="" element={<Review />}></Route>
+              <Route path="" element={<Review />}/>
+              <Route path=":reviewId" element={<ReviewPage />}/>
+              <Route path="new" element={<NewReview />}/>
             </Route>
             <Route path="*" element={<Error />} />
           </Route>
