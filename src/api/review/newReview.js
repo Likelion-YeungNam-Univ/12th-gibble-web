@@ -1,17 +1,13 @@
 import { getAuthAxios } from "../authAxios"
 
-const newReview = (formData) => {
-    /*
-        해당 함수 호출 컴포넌트에서 new FormData() 후 formdata에 appned해서 파일및 제목, 내용 업로드 필요
-    */
+const newReview = async (formData) => {
+    // useForm 연결 필요
     try{
         const authAxios = getAuthAxios();
-        
-        const response = authAxios.post('/review/upload', formData,{
-            headers : {'Content-type' : 'multipart/form-data', charset : 'utf-8'}
-        })
+        const response = await authAxios.post('/review/upload', formData,)
 
         if(response.status === 200){
+            console.log(response);
             return {
                 statusCode : response.status,
                 data : response.data
