@@ -2,7 +2,6 @@ import React from 'react'
 import styled from 'styled-components'
 import SearchBox from './SearchBox';
 import { useNavigate } from 'react-router-dom';
-import store from '@/store/store';
 import logoutHandler from '@/api/login/logoutHandler';
 import { useDispatch, useSelector } from 'react-redux';
 
