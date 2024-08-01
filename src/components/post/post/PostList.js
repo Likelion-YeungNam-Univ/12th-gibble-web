@@ -36,14 +36,6 @@ const PostList = () => {
     </>
   );
 };
-    <>
-      {postList.map((el, index) => {
-        return <PostCard post={el} index={index + 1} />;
-      })}
-    </>
-  );
-};
 
-export default PostList;
 
 export default PostList;
