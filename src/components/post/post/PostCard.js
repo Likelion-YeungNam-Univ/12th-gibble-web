@@ -29,8 +29,6 @@ const PostCard = ({ post, index }) => {
     </Wrapper>
   );
 };
-  );
-};
 
 const Wrapper = styled.div`
   display: flex;
@@ -47,4 +45,5 @@ const PostContent = styled.div`
   box-sizing: border-box;
   padding-left: ${(props) => props.left};
 `;
+
 export default PostCard;
