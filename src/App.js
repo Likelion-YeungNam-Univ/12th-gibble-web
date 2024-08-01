@@ -12,7 +12,6 @@ import Main from "@/pages/main/Main";
 import Review from "@/pages/review/Review";
 import NewReview from "@/pages/review/NewReview";
 import NewPostComplete from "@/components/post/newPostComplete/NewPostComplete";
-import NewReview from "./pages/review/NewReview";
 import ReviewPage from "./pages/review/ReviewPage";
 
 
