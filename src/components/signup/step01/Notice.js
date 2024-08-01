@@ -106,7 +106,7 @@ const NoticeBox = styled.div`
   box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.08);
   padding: 30px 50px;
   margin: 20px 0;
-  height: 458px;
+  height: 420px;
   overflow-y: scroll;
 `;
 
@@ -127,5 +127,3 @@ const Description = styled.div`
   line-height: var(--20, 28px);
   letter-spacing: -0.5px;
 `;
-
-

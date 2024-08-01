@@ -12,7 +12,7 @@ const SignUp = () => {
 
   return (
     <Wrapper>
-      <Description />
+      <Description stepNum={stepNum} />
       <StepBox number={stepNum} />
       {stepNum === 1 && <Step01 setStepNum={setStepNum} />}
       {stepNum === 2 && <Step02 setStepNum={setStepNum} />}

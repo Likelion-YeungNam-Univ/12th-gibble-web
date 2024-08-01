@@ -18,7 +18,7 @@ const InformationForm = ({ setStepNum }) => {
 
   const navigate = useNavigate();
   const state = store.getState();
-  const email = state.authSlice.email;
+  const email = state.auth.email;
   console.log("state", state);
 
   return (
@@ -49,11 +49,11 @@ const InformationForm = ({ setStepNum }) => {
         {/* 이메일 */}
         <InputContainer>
           <InputLabel
-            text={email}
+            text={"이메일"}
             isEssential={true}
             $customStyles={`width: 30%`}
           />
-          <Mail value={state.authSlice.email} disabled={true} />
+          <Mail disabled={true}>{state.auth.email}</Mail>
         </InputContainer>
 
         {/* 성명 */}
@@ -239,6 +239,7 @@ const Mail = styled.div`
   background: #f4f4f4;
   display: flex;
   align-items: center;
+  padding: 0 20px;
 `;
 
 const NicknameInputContainer = styled.div`

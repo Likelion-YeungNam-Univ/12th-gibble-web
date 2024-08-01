@@ -3,8 +3,8 @@ import apiClient from "../axios"
 const signupHandler = async (data) => {
     console.log('data in singupHandler', data);
     try{
-        const response = await apiClient.post('/user/signup',{
-            data
+        const response = await apiClient.post('/user/signUp',{
+            ...data
         })
 
         console.log(response)

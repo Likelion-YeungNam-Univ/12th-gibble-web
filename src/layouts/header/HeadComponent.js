@@ -2,16 +2,29 @@ import React from 'react'
 import styled from 'styled-components'
 import SearchBox from './SearchBox';
 import { useNavigate } from 'react-router-dom';
+import store from '@/store/store';
+import logoutHandler from '@/api/login/logoutHandler';
+import { useDispatch, useSelector } from 'react-redux';
 
 const HeadComponent = () => {
     const navigate = useNavigate();
+    const dispatch = useDispatch();
+    const accessToken = useSelector(state => state.auth.accessToken);
+
+    
+
   return (
       <Wrapper>
           <Container>
               <HeadLogo onClick={() => navigate('/')}/>
               <Util>
-                  <Text onClick={() => navigate('/login')}>로그인</Text>
-                  <SearchBox></SearchBox>
+                {
+                    !accessToken ? 
+                    <Text onClick={() => navigate('/login')}>로그인</Text> : 
+                    <Text onClick={() => logoutHandler(dispatch)}>로그아웃</Text>
+                }
+                  
+                  <SearchBox/>
               </Util>
           </Container>
     </Wrapper>

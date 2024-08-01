@@ -1,13 +1,13 @@
 import React from "react";
 import styled from "styled-components";
-import bannerImg from "@/assets/svg/review.png";
+import bannerImg from "@/assets/svg/newpostcomplete.png";
 
 const Notice = () => {
   return (
     <Wrapper>
       <BannerImg>
         <NoticeText>
-          Home &gt; 커뮤니티 &gt; 투명 후기 &gt; 게시글 작성
+          Home &gt; 커뮤니티 &gt; 헌혈증 기부 요청 &gt; 게시글 작성
         </NoticeText>
       </BannerImg>
     </Wrapper>

@@ -1,24 +1,26 @@
 import React from "react";
 import styled from "styled-components";
 
-const Description = () => {
+const Description = ({ stepNum }) => {
   return (
     <Wrapper>
       <Title>회원가입</Title>
-      <SubTitle>
-        <SubTitleRed>한 장의 기부가 </SubTitleRed>
-        누군가에겐 
-        <SubTitleRed> 큰 힘</SubTitleRed>
-        이 됩니다.
-      </SubTitle>
-      <Desc>
-        기블 홈페이지 회원이 되신다면 더욱 편리하게 서비스 이용이 가능합니다.
-      </Desc>
+      {stepNum === 3 ? null : (
+        <>
+          <SubTitle>
+            <SubTitleRed>한 장의 기부가 </SubTitleRed>
+            누군가에겐
+            <SubTitleRed> 큰 힘</SubTitleRed>이 됩니다.
+          </SubTitle>
+          <Desc>
+            기블 홈페이지 회원이 되신다면 더욱 편리하게 서비스 이용이
+            가능합니다.
+          </Desc>
+        </>
+      )}
     </Wrapper>
   );
 };
-
-
 
 const Wrapper = styled.div`
   margin-bottom: 50px;
@@ -40,15 +42,15 @@ const SubTitle = styled.span`
 `;
 
 const SubTitleRed = styled(SubTitle)`
-  color : var(--main-color);
-`
+  color: var(--main-color);
+`;
 
 const Desc = styled.div`
   color: #767676;
   font-size: 18px;
   font-weight: 500;
   letter-spacing: -0.45px;
-  margin-top : 10px;
+  margin-top: 10px;
 `;
 
 export default Description;
