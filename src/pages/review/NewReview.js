@@ -1,12 +1,31 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 import PageNotice from "@/components/common/PageNotice";
 import NewReviewSeparator from "@/components/review/newReview/NewReivewSeparator";
 import ReviewForm from "@/components/review/newReview/ReviewForm";
+import newReview from "@/api/review/newReview"
 
 
 const NewReview = () => {
   const location = ["Home", "커뮤니티", "투명 후기", "게시글 작성"];
+  
+    useEffect(()=> {
+    const uploadReview = async () => {
+      try{
+        const result = await newReview({
+          title: "title",
+          content: "string",
+        })
+
+        console.log(result) 
+      } catch(error) {
+        console.error(error)
+      }
+    }
+
+    uploadReview();
+  },[])
+  
   return (
     <Wrapper>
       <PageNotice location={location} />

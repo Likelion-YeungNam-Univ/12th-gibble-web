@@ -1,9 +1,9 @@
 import { getAuthAxios } from "../authAxios";
 
-const getReview = (reviewId) => {
+const getReview = async (reviewId) => {
   try {
     const authAxios = getAuthAxios();
-    const response = authAxios.get(`/${reviewId}`);
+    const response = await authAxios.get(`review/${reviewId}`);
 
     if (response.status === 200) {
       return {
