@@ -6,7 +6,6 @@ const getAllReviewByPageNum = async ({page}) => {
         const response = await authAxios.get('/review',{
             params : {page}
         });
-        console.log('response',response)
 
         if(response.status === 200){
             console.log(response);

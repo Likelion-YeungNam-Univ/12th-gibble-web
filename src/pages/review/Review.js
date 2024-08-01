@@ -16,12 +16,10 @@ const Review = () => {
   useEffect(()=> {
     const fetchReview = async () => {
       const page = searchParams.get('page') || 0;
-      console.log('pageNum',page)
 
       try {
         const result = await getAllReviewByPageNum({page});
 
-        console.log('result',result)
         setReviewList(result.data.content);
       } catch(error) {
         console.log('error',error);
@@ -37,12 +35,13 @@ const Review = () => {
         <Separator title={'투명후기'} />
         <Container>
           {reviewList.map(el => {
-            return <ReviewCard key={el.id} eview={el}></ReviewCard>
+            return <ReviewCard key={el.id} review={el}></ReviewCard>
           })}
         </Container>
         <PageControllerContainer>
           <PageController/>
         </PageControllerContainer>
+
     </Wrapper>
   )
 }

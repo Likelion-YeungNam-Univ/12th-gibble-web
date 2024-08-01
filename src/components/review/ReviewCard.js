@@ -5,11 +5,11 @@ import styled from 'styled-components'
 const ReviewCard = ({review}) => {
     const navigate = useNavigate();
   return (
-    <Wrapper onClick={() => navigate(`/post/${review.id}`)}>
+    <Wrapper onClick={() => navigate(`/review/${review.id}`)}>
         <Image/>
         <Description>
             <Title>{review.title}</Title>
-            <Date>{review.date}</Date>
+            <Date>{review.createAt}</Date>
         </Description>
     </Wrapper>
   )
