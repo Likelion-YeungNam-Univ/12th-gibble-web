@@ -2,12 +2,13 @@ import React from 'react';
 import styled from 'styled-components';
 import Description from './Description';
 import Notice from './Notice';
+import logo from "@/assets/image/main-logo.png"
 
 
 const Footer = () => {
     return (
         <Wrapper>
-            <Logo/>
+            <Logo src={logo}/>
             <DescContainer>
                 <Description/>
                 <Notice />
@@ -28,10 +29,9 @@ const Wrapper = styled.div`
     bottom : 0;
 `
 
-const Logo = styled.div`
-    width : 220px;
-    height : 85px;
-    background-color : #f1f1f1;
+const Logo = styled.img`
+    width : 189px;
+    height : 50px;
 `
 
 const DescContainer = styled.div`
@@ -39,8 +39,5 @@ const DescContainer = styled.div`
     justify-content : space-between;
     width : 100%;
 `
-
-
-
 
 export default Footer;
