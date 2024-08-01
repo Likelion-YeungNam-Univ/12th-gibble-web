@@ -11,7 +11,8 @@ export const getAuthAxios = () => {
         baseURL: apiServer,
         headers: {
             Authorization: `Bearer ${accessToken}`
-        }
+        },
+        withCredentials : true
     }) 
 
     authAxios.interceptors.response.use(
@@ -23,8 +24,7 @@ export const getAuthAxios = () => {
                 originalRequest._retry = true;    
 
                 try {
-                    const response = await axios.post(`${apiServer}/auth/token`);
-
+                    const response = await axios.post(`${apiServer}/auth/token`,null,{withCredentials:true});
                     const newAccessToken = response.data.accessToken;
                     store.dispatch(setAccessToken(newAccessToken));
                     originalRequest.headers.Authorization = `Bearer ${newAccessToken}`;
