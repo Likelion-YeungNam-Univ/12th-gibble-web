@@ -7,6 +7,7 @@ import InputFormFix from "./InputFormFix";
 import { TitleNotice, ContentNotice } from "./FormNotice";
 import Button from "@/components/common/Button";
 import Error from "./Error";
+import uploadPost from "@/api/post/uploadPost";
 
 const PostForm = () => {
   const {
@@ -26,6 +27,7 @@ const PostForm = () => {
       onSubmit={handleSubmit((data) => {
         console.log("data", data);
         alert(JSON.stringify(data));
+        uploadPost(data);
       })}
     >
       <FormWrapper>
@@ -92,7 +94,7 @@ const PostForm = () => {
         <InputFormFix text={"이름"} content={"홍길동"} />
         <InputFormFix text={"전화번호"} content={"010-1234-5678"} />
 
-        <InputWrapper style={{ "margin-top": "32px" }}>
+        <InputWrapper style={{ marginTop: "32px" }}>
           <InputLabel text={"필요 개수"} isEssential={true} />
           <Input
             type="number"
@@ -103,9 +105,9 @@ const PostForm = () => {
               height: "52px",
               padding: "0 24px",
               display: "flex",
-              "flex-shrink": "0",
+              flexShirink: "0",
             }}
-            {...register("number", {
+            {...register("wantedCard", {
               required: "희망 개수를 입력해주세요.",
               minLength: {
                 value: 1,
@@ -118,9 +120,9 @@ const PostForm = () => {
             })}
           />
         </InputWrapper>
-        {errors.number && <Error text={errors.number.message} />}
+        {errors.wantedCard && <Error text={errors.wantedCard.message} />}
 
-        <InputWrapper style={{ "margin-top": "32px" }}>
+        <InputWrapper style={{ marginTop: "32px" }}>
           <InputLabel text={"헌혈증 수령주소"} isEssential={true} />
           <Input
             type="text"
@@ -131,7 +133,7 @@ const PostForm = () => {
               height: "52px",
               padding: "0 24px",
               display: "flex",
-              "flex-shrink": "0",
+              flexShirink: "0",
             }}
             {...register("address", {
               required: "위치를 입력해주세요.",
@@ -154,7 +156,7 @@ const PostForm = () => {
           width: "100%",
           background: "#f4f4f4",
           color: "var(--gray-color)",
-          "margin-top": "108px",
+          marginTop: "108px",
           transition: "0.2s",
           "&:hover": {
             background: "var(--main-color)",

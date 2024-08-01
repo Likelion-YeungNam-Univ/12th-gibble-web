@@ -1,11 +1,12 @@
 import { getAuthAxios } from "../authAxios";
 
-const showPostList = () => {
+const showPostList = async ({ page, size }) => {
   try {
     const authAxios = getAuthAxios();
-    const response = authAxios.get("/post");
+    const response = await authAxios.get("/post", { params: { page, size } });
 
     if (response.status === 200) {
+      console.log("response", response.data);
       return {
         statusCode: response.status,
         data: response.data,
