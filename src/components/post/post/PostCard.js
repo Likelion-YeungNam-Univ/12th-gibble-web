@@ -38,21 +38,8 @@ const Wrapper = styled.div`
   box-sizing: border-box;
   padding: 13px 0;
 `;
-  display: flex;
-  border-bottom: 1px solid #dbdbdb;
-  box-sizing: border-box;
-  padding: 13px 0;
-`;
-const PostContent = styled.div`
-  width: ${(props) => props.width};
-  text-align: ${(props) => (props.align ? props.align : "center")};
-  font-size: 18px;
-  color: var(--gray-color);
-  box-sizing: border-box;
-  padding-left: ${(props) => props.left};
-`;
-export default PostCard;
 
+const PostContent = styled.div`
   width: ${(props) => props.width};
   text-align: ${(props) => (props.align ? props.align : "center")};
   font-size: 18px;
