@@ -10,7 +10,9 @@ import NewPost from "@/pages/post/NewPost";
 import Post from "@/pages/post/Post";
 import Main from "@/pages/main/Main";
 import Review from "@/pages/review/Review";
+import NewReview from "@/pages/review/NewReview";
 import NewPostComplete from "@/components/post/newPostComplete/NewPostComplete";
+
 
 function App() {
   return (
@@ -31,6 +33,7 @@ function App() {
             </Route>
             <Route path="/review">
               <Route path="" element={<Review />}></Route>
+              <Route path="new" element={<NewReview />}></Route>
             </Route>
             <Route path="*" element={<Error />} />
           </Route>
