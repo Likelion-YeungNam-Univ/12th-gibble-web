@@ -1,8 +1,8 @@
-import BloodIntro from '@/components/main/BloodIntro';
+import BlueBloodIntro from '@/components/main/BlueBloodIntro';
+import YellowBloodIntro from '@/components/main/YellowBloodIntro';
 import MainPic from '@/components/main/MainPic';
 import Review from '@/components/main/Review';
 import Nodeal from '@/components/main/Nodeal';
-import Reissue from '@/components/main/Reissue';
 import Donation from '@/components/main/Donation';
 import Community from '@/components/main/Community';
 import React from 'react';
@@ -13,10 +13,10 @@ const Main = () => {
         <Wrapper>
             <Container>
                 <MainPic />
-                <BloodIntro />
+                <BlueBloodIntro />
+                <YellowBloodIntro/>
                 <Review />
                 <Nodeal />
-                <Reissue />
                 <Donation/>
                 <Community/>
             </Container>

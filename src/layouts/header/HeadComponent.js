@@ -3,6 +3,7 @@ import styled from "styled-components";
 import SearchBox from "./SearchBox";
 import { useNavigate } from "react-router-dom";
 import logoutHandler from "@/api/login/logoutHandler";
+import logo from "@/assets/image/main-logo.png"
 import { useDispatch, useSelector } from "react-redux";
 
 const HeadComponent = () => {
@@ -13,7 +14,7 @@ const HeadComponent = () => {
   return (
     <Wrapper>
       <Container>
-        <HeadLogo onClick={() => navigate("/")} />
+        <Logo src={logo} onClick={() => navigate("/")} />
         <Util>
           {!accessToken ? (
             <Text onClick={() => navigate("/login")}>로그인</Text>
@@ -36,13 +37,13 @@ const Wrapper = styled.div`
 const Container = styled.div`
   display: flex;
   justify-content: space-between;
+  align-items : center;
 `;
 
-const HeadLogo = styled.div`
-  background-color: #f1f1f1;
-  width: 188px;
-  height: 36px;
-
+const Logo = styled.img`
+  width : 120px;
+  height : 32px;
+  float : left;
   cursor: pointer;
 `;
 

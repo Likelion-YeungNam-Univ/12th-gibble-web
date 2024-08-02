@@ -4,23 +4,31 @@ import styled from 'styled-components';
 const Donation = () => {
     return (
         <Wrapper>
-            <MainText>
-                <Color>   
-                    <Text1>투명 절차를 실천하는</Text1>
-                    <Text2>기블,</Text2>
-                </Color>
-                <Text3>믿고 기부하세요</Text3>
-            </MainText>
-            <Images>
-                <Image1 src={require('../../assets/main/bloodpaper.png')} alt="Main Banner" />
-                <Image2 src={require('../../assets/main/bloodpaper.png')} alt="Main Banner" />
-                <Image3 src={require('../../assets/main/bloodpaper.png')} alt="Main Banner" />
-            </Images>
+            <Box>
+                <MainText>
+                    <Color>   
+                        <Text1>투명 절차를 실천하는</Text1>
+                        <Text2>기블,</Text2>
+                    </Color>
+                    <Text3>믿고 기부하세요</Text3>
+                </MainText>
+                <Image src={require('../../assets/main/donation.png')} alt="기부" />
+            </Box>
         </Wrapper>
     );
 };
 
 const Wrapper = styled.div`
+    display: flex;
+    width: 100%;
+    height: 1200px;
+    background-color: #ffff;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+`;
+
+const Box = styled.div`
     display: flex;
     flex-direction: column;
     width: 1440px;
@@ -39,8 +47,7 @@ const MainText = styled.div`
     justify-content: center;
     align-items: left;
     flex-direction: column;
-    margin : 30px 0px;
-
+    margin-left : 32px;
 `;
 
 const Color = styled.div`
@@ -78,29 +85,14 @@ const Text3 = styled.div`
 `;
 
 
-const Images = styled.div`
-    margin : 30px 0px;
-    width : 1440px;
-    height : 690px;
-`;
 
-const Image1 = styled.img`
-    width : 480px;
+const Image = styled.img`
+    width : 1416px;
     height : 690px;
+    margin-top: 70px;
 `;
 
 
-const Image2 = styled.img`
-    width : 480px;
-    height : 690px;
-`;
-
-
-const Image3 = styled.img`
-    width : 480px;
-    height : 690px;
-    background-color: #dcdcdc;
-`;
 
 
 export default Donation;
