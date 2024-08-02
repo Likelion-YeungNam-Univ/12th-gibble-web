@@ -14,6 +14,8 @@ import NewReview from "@/pages/review/NewReview";
 import NewPostComplete from "@/components/post/newPostComplete/NewPostComplete";
 import ReviewPage from "./pages/review/ReviewPage";
 import PostPage from "./pages/post/PostPage";
+import Mypage from "./pages/mypage/Mypage";
+
 
 function App() {
   return (
@@ -38,6 +40,7 @@ function App() {
               <Route path=":reviewId" element={<ReviewPage />} />
               <Route path="new" element={<NewReview />} />
             </Route>
+            <Route path="mypage" element={<Mypage/>}/>
             <Route path="*" element={<Error />} />
           </Route>
         </Routes>
