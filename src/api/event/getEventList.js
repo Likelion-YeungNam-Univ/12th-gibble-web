@@ -1,31 +1,24 @@
-//이벤트 목록 
-import { getAuthAxios } from '../authAxios';
+//이벤트 목록
+import { getAuthAxios } from "../authAxios";
 
-export const getEventList = async (region) => {
+export const getEventList = async ({ nowPage, region }) => {
   const authAxios = getAuthAxios();
 
   try {
-    const response = await authAxios.get('/event', {
-      params: { region },
+    const response = await authAxios.get("/event", {
+      params: { page: nowPage, region },
     });
 
     console.log("response", response);
 
     if (response.status === 200) {
-      const eventList = response.data.event_list.map(event => ({
-        eventId: event.eventId,
-        title: event.title,
-        imageUrl: event.imageUrl,
-        region: event.region,
-        period: event.period,
-      }));
-
       return {
         statusCode: response.status,
-        data: eventList,
+        data: response.data,
+        pageNum: response.data.pageable.pageNumber,
+        totalPages: response.data.totalPages,
       };
     }
-    
   } catch (error) {
     return {
       statusCode: error.response.status,
