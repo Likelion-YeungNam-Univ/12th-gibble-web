@@ -5,15 +5,14 @@ const DonationBar = ({ wanted, donated }) => {
   return (
     <Wrapper>
       <Red width={`${(donated / wanted) * 100}%`}></Red>
-      <Text>{`${donated} / ${wanted}`}</Text>
     </Wrapper>
   );
 };
 
 const Wrapper = styled.div`
   display: flex;
-  width: 100%;
-  height: 130%;
+  width: 20%;
+  height: 29px;
   border-radius: 6px;
   align-items: center;
   text-align: end;
@@ -27,11 +26,6 @@ const Red = styled.div`
   height: 100%;
   background-color: var(--main-color);
   border-radius: 6px;
-`;
-
-const Text = styled.p`
-  position: absolute;
-  right: 5px;
 `;
 
 export default DonationBar;

@@ -1,10 +1,10 @@
 import { getAuthAxios } from "../authAxios";
 
-const reportPost = (postId, userId) => {
+const reportPost = async (postId, userId) => {
   try {
     const authAxios = getAuthAxios();
 
-    const response = authAxios.post(`/post/${postId}/${userId}/report`);
+    const response = await authAxios.post(`/post/${postId}/${userId}/report`);
 
     if (response.status === 200) {
       return {

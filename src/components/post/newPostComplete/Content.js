@@ -1,8 +1,10 @@
 import React from "react";
 import styled from "styled-components";
 import { ReactComponent as Check } from "@/assets/svg/circle-check-solid.svg";
+import { useNavigate } from "react-router-dom";
 
 const Content = () => {
+  const navigate = useNavigate();
   return (
     <Wrapper>
       <CheckImg />
@@ -11,7 +13,7 @@ const Content = () => {
         많은 분들의 관심과 도움이 이어지기를 기대합니다.
       </Description>
       <ButtonsWrapper>
-        <CommunityButton onClick={() => console.log("clicked")}>
+        <CommunityButton onClick={() => navigate("/post")}>
           커뮤니티 가기
         </CommunityButton>
         <PostButton onClick={() => console.log("clicked")}>
@@ -77,7 +79,7 @@ const CommunityButton = styled.button`
   letter-spacing: -0.55px;
   padding: 10px 20px;
   cursor: pointer;
-  border-radius: 6px; 
+  border-radius: 6px;
 `;
 
 const PostButton = styled.button`
@@ -92,5 +94,5 @@ const PostButton = styled.button`
   padding: 10px 20px;
   border: none;
   cursor: pointer;
-  border-radius: 6px; 
+  border-radius: 6px;
 `;

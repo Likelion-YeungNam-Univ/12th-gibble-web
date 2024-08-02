@@ -1,15 +1,13 @@
 import { getAuthAxios } from "../authAxios";
 
-const modifyPost = (formData, postId) => {
+const modifyPost = (data, postId) => {
   /*
     해당 함수 호출 컴포넌트에서 new FormData() 후 formdata에 appned해서 파일및 제목, 내용 업로드 필요
   */
   try {
     const authAxios = getAuthAxios();
 
-    const response = authAxios.put(`/post/upload/${postId}`, formData, {
-      headers: { "Content-type": "multipart/form-data", charset: "utf-8" },
-    });
+    const response = authAxios.put(`/post/upload/${postId}`, data);
 
     if (response.status === 200) {
       return {

@@ -1,7 +1,8 @@
 import React from "react";
 import styled from "styled-components";
+import DonationBar from "./DonationBar";
 
-const Title = ({ title, name, phoneNumber, date }) => {
+const Title = ({ title, name, email, date, wantedCard, donatedCard }) => {
   return (
     <Wrapper>
       <PageTitle>헌혈증 기부</PageTitle>
@@ -9,8 +10,13 @@ const Title = ({ title, name, phoneNumber, date }) => {
       <PostInfo>
         <InfoLabel>작성자</InfoLabel>
         <InfoDesc>{name}</InfoDesc>
-        <InfoLabel>전화번호</InfoLabel>
-        <InfoDesc>{phoneNumber}</InfoDesc>
+        <InfoLabel>이메일</InfoLabel>
+        <InfoDesc>{email}</InfoDesc>
+        <InfoLabel>작성일</InfoLabel>
+        <InfoDesc>{date}</InfoDesc>
+        <InfoLabel style={{ marginLeft: "100px" }}>기부 현황</InfoLabel>
+        <InfoDesc>{`${wantedCard} / ${donatedCard}`}</InfoDesc>
+        <DonationBar wanted={wantedCard} donated={donatedCard} />
       </PostInfo>
     </Wrapper>
   );

@@ -6,6 +6,8 @@ import Loading from "@/layouts/Loading";
 import styled from "styled-components";
 import Notice from "@/components/post/postPage/Notice";
 import Title from "@/components/post/postPage/Title";
+import Content from "@/components/post/postPage/Content";
+import ButtonBox from "@/components/post/postPage/ButtonBox";
 
 const PostPage = () => {
   const { postId } = useParams();
@@ -41,10 +43,17 @@ const PostPage = () => {
         <Title
           title={post.title}
           name={post.name}
-          phoneNumber={post.phoneNumber}
+          email={post.email}
+          date={post.createdAt.slice(0, 10)}
+          wantedCard={post.wantedCard}
+          donatedCard={post.donatedCard}
         />
-        <div>{post.content}</div>
-        <div>{post.address}</div>
+        <Content
+          content={post.content}
+          wanted={post.wantedCard}
+          address={post.address}
+        />
+        <ButtonBox postId={post.postId} />
       </Container>
     </Wrapper>
   );
@@ -54,6 +63,7 @@ export default PostPage;
 
 const Wrapper = styled.div`
   width: 100%;
+  margin-bottom: 150px;
 `;
 
 const Container = styled.div`
