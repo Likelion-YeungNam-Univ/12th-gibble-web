@@ -4,7 +4,6 @@ import DonationBar from "./DonationBar";
 import { useNavigate } from "react-router-dom";
 
 const PostCard = ({ post, index }) => {
-  console.log("post", post);
   const navigate = useNavigate();
   const clickHandler = () => {
     navigate(`/post/${post.postId}`);

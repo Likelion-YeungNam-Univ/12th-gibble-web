@@ -2,19 +2,33 @@ import React from 'react'
 import { ReactComponent as Left } from '@/assets/svg/left-move.svg'
 import { ReactComponent as Right } from '@/assets/svg/right-move.svg'
 import styled from 'styled-components'
+import { useNavigate } from 'react-router-dom'
 
-const PageController = () => {
+const PageController = ({nowPage, setNowPage, totalPages}) => {
+    const navigate = useNavigate();
+
+    const handleLeftClick = () => {
+        if (nowPage > 0) {
+            setNowPage(prev => prev-1)
+            navigate(`/post?page=${nowPage-1}`);
+        }
+      };
+    
+      const handleRightClick = () => {
+        if( nowPage < totalPages-1 ){
+            setNowPage(prev => prev+1);
+            navigate(`/post?page=${nowPage+1}`);
+        }
+            
+      };
+
   return (
       <Wrapper>
-          <LeftBtn/>
+          <LeftBtn onClick={() => handleLeftClick()}/>
           <PageNumList>
-              <PageNum>1</PageNum>
-              <PageNum>2</PageNum>
-              <PageNum>3</PageNum>
-              <PageNum>4</PageNum>
-              <PageNum>5</PageNum>
+              <PageNum>{nowPage+1}</PageNum>
             </PageNumList>
-          <RightBtn/>
+          <RightBtn onClick={() => handleRightClick()}/>
     </Wrapper>
   )
 }
