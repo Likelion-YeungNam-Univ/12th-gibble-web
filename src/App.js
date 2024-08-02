@@ -13,6 +13,7 @@ import Review from "@/pages/review/Review";
 import NewReview from "@/pages/review/NewReview";
 import NewPostComplete from "@/components/post/newPostComplete/NewPostComplete";
 import ReviewPage from "./pages/review/ReviewPage";
+import PostPage from "./pages/post/PostPage";
 
 function App() {
   return (
