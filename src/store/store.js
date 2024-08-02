@@ -16,7 +16,16 @@ import persistReducer from 'redux-persist/es/persistReducer';
  const persistedReducer = persistReducer(persistConfig, reducers);
 
 const store = configureStore({
-    reducer: persistedReducer
+    reducer: persistedReducer,
+    middleware: (getDefaultMiddleware) =>
+      getDefaultMiddleware({
+        serializableCheck: {
+          // 특정 경로에 대한 직렬화 검사를 무시합니다.
+          ignoredActions: ['persist/PERSIST'],
+          ignoredActionPaths: ['meta.arg', 'payload.timestamp'],
+          ignoredPaths: ['register', 'rehydrate'],
+        },
+      }),
 });
 
 export default store;
