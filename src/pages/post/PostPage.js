@@ -38,7 +38,11 @@ const PostPage = () => {
     <Wrapper>
       <Notice />
       <Container>
-        <Title title={post.title} />
+        <Title
+          title={post.title}
+          name={post.name}
+          phoneNumber={post.phoneNumber}
+        />
         <div>{post.content}</div>
         <div>{post.address}</div>
       </Container>
