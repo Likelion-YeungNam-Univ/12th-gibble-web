@@ -11,6 +11,7 @@ import uploadPost from "@/api/post/uploadPost";
 import { useEffect, useState } from "react";
 import getUesrInfo from "@/api/post/getUesrInfo";
 import { useNavigate } from "react-router-dom";
+import Title from "../newPostComplete/Title";
 
 const PostForm = () => {
   const {
@@ -78,11 +79,11 @@ const PostForm = () => {
               },
               maxLength: {
                 value: 30,
-                message: "최대 30자 이하",
               },
             })}
           />
         </InputWrapper>
+        {title.length > 30 ? <Error text={"30자 이하로 작성해주세요"} /> : null}
         {errors.title && <Error text={errors.title.message} />}
         <TitleNotice />
 
@@ -105,11 +106,13 @@ const PostForm = () => {
               },
               maxLength: {
                 value: 500,
-                message: "최대 500자 이하",
               },
             })}
           />
         </InputWrapper>
+        {content.length > 500 ? (
+          <Error text={"500자 이하로 작성해주세요"} />
+        ) : null}
         {errors.content && <Error text={errors.content.message} />}
         <ContentNotice />
 
@@ -121,7 +124,9 @@ const PostForm = () => {
           <Input
             type="number"
             placeholder="필요한 헌혈증 개수를 입력해주세요."
-            style={errors.number && { border: "1px solid var(--main-color)" }}
+            style={
+              errors.wantedCard && { border: "1px solid var(--main-color)" }
+            }
             $customStyles={{
               width: "81%",
               height: "52px",

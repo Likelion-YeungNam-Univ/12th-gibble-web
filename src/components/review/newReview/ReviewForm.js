@@ -33,7 +33,6 @@ const ReviewForm = () => {
     document.getElementById("fileInput").click();
   };
 
-
   return (
     <Wrapper
       onSubmit={handleSubmit((data) => {
@@ -42,14 +41,14 @@ const ReviewForm = () => {
         formData.append("content", data.content);
         formData.append("link", data.link);
         if (data.image && data.image[0]) {
-      formData.append("image", data.image[0]);
-      console.log("Selected image:", data.image[0]);
-    } else {
-      console.log("No image selected");
-    }
-    for (let [key, value] of formData.entries()) {
-      console.log(key, value);
-   }
+          formData.append("image", data.image[0]);
+          console.log("Selected image:", data.image[0]);
+        } else {
+          console.log("No image selected");
+        }
+        for (let [key, value] of formData.entries()) {
+          console.log(key, value);
+        }
         console.log("data", data);
         alert(JSON.stringify(data));
       })}
@@ -57,7 +56,11 @@ const ReviewForm = () => {
       <FormWrapper>
         <TextCount>{title.length}/30</TextCount>
         <InputWrapper>
-          <InputLabel text={"제목"} isEssential={true} condition={"(30자 이하)"} />
+          <InputLabel
+            text={"제목"}
+            isEssential={true}
+            condition={"(30자 이하)"}
+          />
 
           <Input
             type="text"
@@ -76,17 +79,21 @@ const ReviewForm = () => {
               },
               maxLength: {
                 value: 30,
-                message: "최대 30자 이하",
               },
             })}
           />
         </InputWrapper>
+        {title.length > 30 ? <Error text={"30자 이하로 작성해주세요"} /> : null}
         {errors.title && <Error text={errors.title.message} />}
         <TitleNotice />
 
         <TextCount>{content.length}/500</TextCount>
         <InputWrapper>
-          <InputLabel text={"내용"} isEssential={true} condition={"(500자 이하)"} />
+          <InputLabel
+            text={"내용"}
+            isEssential={true}
+            condition={"(500자 이하)"}
+          />
           <TextArea
             placeholder="어떠한 좋은 기적이 일어났는지 적어주세요"
             style={errors.content && { border: "1px solid var(--main-color)" }}
@@ -103,6 +110,9 @@ const ReviewForm = () => {
             })}
           />
         </InputWrapper>
+        {content.length > 500 ? (
+          <Error text={"500자 이하로 작성해주세요"} />
+        ) : null}
         {errors.content && <Error text={errors.content.message} />}
         <ContentNotice />
 
@@ -181,8 +191,7 @@ const ReviewForm = () => {
           </Button>
         </InputWrapper>
         {errors.image && <Error text={errors.image.message} />}
-        <ImageNotice/>
-
+        <ImageNotice />
       </FormWrapper>
       <Button
         type="submit"
@@ -200,7 +209,6 @@ const ReviewForm = () => {
       >
         작성하기
       </Button>
-
     </Wrapper>
   );
 };
