@@ -25,6 +25,50 @@ const NewReview = () => {
 
     uploadReview();
   },[])
+
+  /*
+    import { storage } from '@/firebase/firebaseConfig';
+import { getDownloadURL, ref, uploadBytes } from 'firebase/storage';
+import { v4 as uuid } from 'uuid';
+import React, { useState } from 'react'
+
+const TestReviewUpload = () => {
+
+    const [file, setFile] = useState(null);
+    const [imageUrl, setImageUrl] = useState(null);
+
+    const handleFileChange = (e) => {
+        setFile(e.target.files[0]);
+    }   
+
+    const handleUpload = async () => {
+        if(!file) return;  // 파일 선택되지 않았으면 업로드 불가. 실제로는 아예 제출 버튼이 비활성화?
+
+        const imageId = uuid();
+        const storageRef = ref(storage, `review/${imageId}/${imageId}.png`)
+        
+        try {
+            const snapshot = await uploadBytes(storageRef, file);
+            const downloadUrl = await getDownloadURL(snapshot.ref);
+            console.log('downloadUrl',downloadUrl)
+            setImageUrl(downloadUrl);
+        } catch(error) {
+            console.error('file upload to firebase failed',error);
+        }
+    }
+
+  return (
+    <div>
+
+        <input type="file" onChange={handleFileChange} />
+        <button onClick={handleUpload}>업로드 버튼</button>
+        { imageUrl && <img src={imageUrl} alt='uploaded' /> }
+    </div>
+  )
+}
+
+export default TestReviewUpload
+  */
   
   return (
     <Wrapper>

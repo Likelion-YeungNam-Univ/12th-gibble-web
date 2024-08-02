@@ -5,8 +5,9 @@ import { useNavigate, useParams } from 'react-router-dom'
 
 const ReviewPage = () => {
     const { reviewId } = useParams();
+    console.log('reviewId',reviewId)
     const [ review, setReview] = useState();
-    const [ isLoading, setIsLoading] = useState(false);
+    const [ isLoading, setIsLoading] = useState(true);
     const navigate = useNavigate();
 
     useEffect(()=> {
@@ -27,11 +28,11 @@ const ReviewPage = () => {
     }
 }, [reviewId, navigate]);
     
-    if(isLoading || !review)
-      return <Loading/>
+    if(isLoading)
+          return <Loading/>
 
   return (
-    <div>{review.title}</div>
+    <div>123</div>
   )
 }
 
