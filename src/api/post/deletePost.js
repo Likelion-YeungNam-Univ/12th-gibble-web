@@ -1,9 +1,9 @@
 import { getAuthAxios } from "../authAxios";
 
-const deletePost = (postId) => {
+const deletePost = async (postId) => {
   try {
     const authAxios = getAuthAxios();
-    const response = authAxios.delete(`/post/${postId}`);
+    const response = await authAxios.delete(`/post/${postId}`);
 
     if (response.status === 200) {
       return {

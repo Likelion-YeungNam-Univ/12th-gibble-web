@@ -8,6 +8,9 @@ import { TitleNotice, ContentNotice } from "./FormNotice";
 import Button from "@/components/common/Button";
 import Error from "./Error";
 import uploadPost from "@/api/post/uploadPost";
+import { useEffect, useState } from "react";
+import getUesrInfo from "@/api/post/getUesrInfo";
+import { useNavigate } from "react-router-dom";
 
 const PostForm = () => {
   const {
@@ -22,12 +25,31 @@ const PostForm = () => {
   const title = watch("title", "");
   const content = watch("content", "");
 
+  const [userInfo, setUserInfo] = useState([]);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const fetch = async () => {
+      try {
+        const result = await getUesrInfo();
+        console.log(result.data);
+        setUserInfo(result.data);
+      } catch (error) {
+        console.log("error", error);
+
+        navigate("/error");
+      }
+    };
+    fetch();
+  }, [navigate]);
+
   return (
     <Wrapper
       onSubmit={handleSubmit((data) => {
         console.log("data", data);
         alert(JSON.stringify(data));
         uploadPost(data);
+        navigate("/post/newpostcomplete");
       })}
     >
       <FormWrapper>
@@ -91,8 +113,8 @@ const PostForm = () => {
         {errors.content && <Error text={errors.content.message} />}
         <ContentNotice />
 
-        <InputFormFix text={"이름"} content={"홍길동"} />
-        <InputFormFix text={"전화번호"} content={"010-1234-5678"} />
+        <InputFormFix text={"이름"} content={userInfo.name} />
+        <InputFormFix text={"전화번호"} content={userInfo.phoneNumber} />
 
         <InputWrapper style={{ marginTop: "32px" }}>
           <InputLabel text={"필요 개수"} isEssential={true} />
