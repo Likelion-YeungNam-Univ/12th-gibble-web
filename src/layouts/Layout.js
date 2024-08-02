@@ -19,6 +19,7 @@ const Layout = () => {
 const PageContainer = styled.div`
   display: flex;
   flex-direction: column;
+  width : 1920px;
   min-height : 100vh;
 `;
 
