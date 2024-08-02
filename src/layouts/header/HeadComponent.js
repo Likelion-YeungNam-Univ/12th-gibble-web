@@ -17,9 +17,16 @@ const HeadComponent = () => {
         <Logo src={logo} onClick={() => navigate("/")} />
         <Util>
           {!accessToken ? (
-            <Text onClick={() => navigate("/login")}>로그인</Text>
+            <Utils>
+              <Text onClick={() => navigate("/login")}>로그인</Text>
+            </Utils>
+            
           ) : (
-            <Text onClick={() => logoutHandler(dispatch)}>로그아웃</Text>
+            <Utils>
+              <Text onClick={() => logoutHandler(dispatch)}>로그아웃</Text> | 
+              <Text onClick={() => navigate("/mypage")}>마이페이지</Text>
+            </Utils>
+            
           )}
 
           <SearchBox />
@@ -31,8 +38,13 @@ const HeadComponent = () => {
 
 const Wrapper = styled.div`
   box-sizing: border-box;
-  padding: 20px 250px;
+  padding: 28px 252px;
 `;
+
+const Utils = styled.div`
+  display : flex;
+  gap : 5px;
+`
 
 const Container = styled.div`
   display: flex;
