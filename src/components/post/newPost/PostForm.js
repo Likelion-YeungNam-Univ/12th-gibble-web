@@ -11,7 +11,6 @@ import uploadPost from "@/api/post/uploadPost";
 import { useEffect, useState } from "react";
 import getUesrInfo from "@/api/post/getUesrInfo";
 import { useNavigate } from "react-router-dom";
-import Title from "../newPostComplete/Title";
 
 const PostForm = () => {
   const {

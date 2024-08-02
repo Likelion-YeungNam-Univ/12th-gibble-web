@@ -15,7 +15,7 @@ const Title = ({ title, name, email, date, wantedCard, donatedCard }) => {
         <InfoLabel>작성일</InfoLabel>
         <InfoDesc>{date}</InfoDesc>
         <InfoLabel style={{ marginLeft: "100px" }}>기부 현황</InfoLabel>
-        <InfoDesc>{`${wantedCard} / ${donatedCard}`}</InfoDesc>
+        <InfoDesc>{`${donatedCard} / ${wantedCard}`}</InfoDesc>
         <DonationBar wanted={wantedCard} donated={donatedCard} />
       </PostInfo>
     </Wrapper>
