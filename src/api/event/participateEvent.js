@@ -14,6 +14,7 @@ export const participateEvent = async (eventId) => {
         message: response.data.message,
       };
     }
+    
   } catch (error) {
     return {
       statusCode: error.response.status,

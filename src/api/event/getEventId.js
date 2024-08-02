@@ -22,6 +22,7 @@ export const getEventId = async (eventId) => {
         },
       };
     }
+    
   } catch (error) {
     return {
       statusCode: error.response.status,

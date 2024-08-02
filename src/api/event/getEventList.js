@@ -25,6 +25,7 @@ export const getEventList = async (region) => {
         data: eventList,
       };
     }
+    
   } catch (error) {
     return {
       statusCode: error.response.status,
