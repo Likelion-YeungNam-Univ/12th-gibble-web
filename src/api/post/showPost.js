@@ -1,9 +1,11 @@
 import { getAuthAxios } from "../authAxios";
 
-const showPost = (postId) => {
+const showPost = async (postId) => {
   try {
     const authAxios = getAuthAxios();
-    const response = authAxios.get(`/post/${postId}`);
+    const response = await authAxios.get(`/post/${postId}`);
+
+    console.log("response", response);
 
     if (response.status === 200) {
       return {

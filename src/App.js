@@ -14,7 +14,6 @@ import NewReview from "@/pages/review/NewReview";
 import NewPostComplete from "@/components/post/newPostComplete/NewPostComplete";
 import ReviewPage from "./pages/review/ReviewPage";
 
-
 function App() {
   return (
     <>
@@ -27,15 +26,16 @@ function App() {
             <Route path="kakaologin" element={<Redirection />} />
             <Route path="event" element={<EventList />} />
             <Route path="signup" element={<SignUp />} />
-            <Route path="/post">
-              <Route path="" element={<Post/>} />
-              <Route path="new" element={<NewPost/>} />
-              <Route path="newpostcomplete" element={<NewPostComplete/>} />
+            <Route path="post">
+              <Route path="" element={<Post />} />
+              <Route path="new" element={<NewPost />} />
+              <Route path="newpostcomplete" element={<NewPostComplete />} />
+              <Route path=":postId" element={<PostPage />} />
             </Route>
             <Route path="/review">
-              <Route path="" element={<Review />}/>
-              <Route path=":reviewId" element={<ReviewPage />}/>
-              <Route path="new" element={<NewReview />}/>
+              <Route path="" element={<Review />} />
+              <Route path=":reviewId" element={<ReviewPage />} />
+              <Route path="new" element={<NewReview />} />
             </Route>
             <Route path="*" element={<Error />} />
           </Route>
