@@ -29,7 +29,8 @@ const PageTitle = styled.div`
 `;
 
 const Image = styled.div`
-  height: 600px;
+  max-width: 80%;
+  max-height: 100%;
   margin: 60px;
   background-color: #dbdbdb;
 `;
