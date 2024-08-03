@@ -30,8 +30,8 @@ function App() {
             <Route path="login" element={<Login />} />
             <Route path="kakaologin" element={<Redirection />} />
             <Route path="event">
-              <Route path="" element={<EventList />} />
-              <Route path=":eventId" element={<EventPage />} />
+              <Route path="" element={<ProtectedRoute><EventList /></ProtectedRoute>} />
+              <Route path=":eventId" element={<ProtectedRoute><EventPage /></ProtectedRoute>} />
             </Route>
 
             <Route path="signup" element={<SignUp />} />
