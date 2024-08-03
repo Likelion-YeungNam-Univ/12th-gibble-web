@@ -7,6 +7,11 @@ import Button from "@/components/common/Button";
 import InputFormFix from "./InputFormFix";
 import { TitleNotice, ContentNotice, ImageNotice } from "./FormNotice";
 import Error from "./Error";
+import { storage } from "@/firebase/firebaseConfig";
+import { v4 as uuid } from "uuid";
+import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
+import newReview from "@/api/review/newReview";
+import { useNavigate } from "react-router-dom";
 
 const ReviewForm = () => {
   const {
@@ -19,38 +24,45 @@ const ReviewForm = () => {
   });
 
   const fileInputRef = useRef(null);
-  const [selectedFileName, setSelectedFileName] = useState("");
+  const [img, setImg] = useState(null);
 
   const title = watch("title", "");
   const content = watch("content", "");
-
-  useEffect(() => {
-    console.log("fileInputRef:", fileInputRef.current);
-  }, []);
+  const navigate = useNavigate();
 
   const onClick = () => {
-    console.log("사진찾기 버튼 클릭됨");
     document.getElementById("fileInput").click();
   };
 
   return (
     <Wrapper
-      onSubmit={handleSubmit((data) => {
-        const formData = new FormData();
-        formData.append("title", data.title);
-        formData.append("content", data.content);
-        formData.append("link", data.link);
-        if (data.image && data.image[0]) {
-          formData.append("image", data.image[0]);
-          console.log("Selected image:", data.image[0]);
-        } else {
-          console.log("No image selected");
+      onSubmit={handleSubmit(async (data) => {
+        // 게시글 링크 필요
+        if(!img)
+          return;
+
+        const imageId = uuid();
+        const storageRef = ref(storage, `review/${imageId}/${imageId}.png`);
+
+        try {
+          const snapshot = await uploadBytes(storageRef, img);
+          const downloadUrl = await getDownloadURL(snapshot.ref);
+
+          console.log({...data, imageUrl : downloadUrl});
+
+          const result = await newReview({
+            title : data.title,
+            content : data.content,
+            imageUrl : downloadUrl,
+            imageId,
+            postId : 'ae4eae75-22ec-4b82-b163-a9312a785d59' // 수정 필요
+          })
+
+          navigate('/review/new/uploaded');
+        } catch (error) {
+          console.error('file upload to firebase error', error);
         }
-        for (let [key, value] of formData.entries()) {
-          console.log(key, value);
-        }
-        console.log("data", data);
-        alert(JSON.stringify(data));
+        
       })}
     >
       <FormWrapper>
@@ -118,55 +130,69 @@ const ReviewForm = () => {
 
         <InputFormFix text={"이름"} content={"홍길동"} />
 
+        {/* 게시글 링크 필요 !! */}
         <InputWrapper style={{ marginTop: "32px" }}>
-          <InputLabel text={"게시글링크"} isEssential={true} />
-          <Input
-            type="text"
-            placeholder="어떤 게시글의 후기글인지 링크를 업로드해주세요"
-            style={errors.link && { border: "1px solid var(--main-color)" }}
-            $customStyles={{
-              width: "81%",
-              height: "52px",
-              padding: "0 24px",
-              display: "flex",
-              flexShrink: "0",
-            }}
-            {...register("link", {
-              required: "링크를 입력해주세요.",
-            })}
-          />
+            
+            <InputLabel text={"게시글링크"} isEssential={true} />
+            <TmpContainer>
+              <Input
+              type="text"
+              placeholder="어떤 게시글의 후기글인지 링크를 업로드해주세요"
+              style={errors.link && { border: "1px solid var(--main-color)" }}
+              $customStyles={{
+                width: "400px",
+                height: "52px",
+                padding: "0 24px",
+                display: "flex",
+                flexShrink: "0",
+              }}
+            />
+            <Button
+              type="button"
+              onClick={(e) => {
+                console.log('clicked')
+              }}
+              $customStyles={{
+                width: "150px",
+                background: "var(--main-color)",
+                color: "#f4f4f4",
+                marginLeft: "8px",
+                transition: "0.2s",
+                "&:hover": {
+                  background: "var(--gray-color)",
+                  color: "#fff",
+                },
+              }}
+            >게시글 찾기</Button>
+          </TmpContainer>
+          
         </InputWrapper>
-        {errors.link && <Error text={errors.link.message} />}
 
-        <InputWrapper style={{ marginTop: "32px", alignItems: "center" }}>
-          <InputLabel text={"인증사진 첨부"} isEssential={true} />
+        <InputWrapper style={{ marginTop: "32px" }}>
+          <InputLabel 
+            text={"인증사진 첨부"} 
+            isEssential={true} 
+          />
+          <TmpContainer>
           <input
             id="fileInput"
             type="file"
             ref={fileInputRef}
             style={{ display: "none" }}
             accept="image/*"
-            {...register("image", {
-              required: "이미지를 첨부해주세요.",
-              onChange: (e) => {
-                if (e.target.files[0]) {
-                  setSelectedFileName(e.target.files[0].name);
-                }
-              },
-            })}
-          />
+            onChange={(e) => setImg(e.target.files[0])}
+            />
           <Input
             type="text"
             placeholder="이미지를 첨부해 주세요."
             style={errors.image && { border: "1px solid var(--main-color)" }}
             $customStyles={{
-              width: "58%",
+              width: "400px",
               height: "52px",
               padding: "0 24px",
               display: "flex",
-              flexShrink: "0",
             }}
-            value={selectedFileName}
+            value={img && img.name }
             readOnly
           />
           <Button
@@ -176,10 +202,9 @@ const ReviewForm = () => {
               onClick();
             }}
             $customStyles={{
-              width: "15%",
+              width: "150px;",
               background: "var(--main-color)",
               color: "#f4f4f4",
-              marginLeft: "8px",
               transition: "0.2s",
               "&:hover": {
                 background: "var(--gray-color)",
@@ -189,6 +214,7 @@ const ReviewForm = () => {
           >
             사진찾기
           </Button>
+          </TmpContainer>
         </InputWrapper>
         {errors.image && <Error text={errors.image.message} />}
         <ImageNotice />
@@ -202,7 +228,7 @@ const ReviewForm = () => {
           marginTop: "108px",
           transition: "0.2s",
           "&:hover": {
-            ackground: "var(--gray-color)",
+            background: "var(--gray-color)",
             color: "#fff",
           },
         }}
@@ -251,5 +277,11 @@ const TextArea = styled.textarea`
     color: #dbdbdb;
   }
 `;
+
+const TmpContainer = styled.div`
+  display : flex;
+  justify-content : space-between;
+  width : 81%;
+`
 
 export default ReviewForm;

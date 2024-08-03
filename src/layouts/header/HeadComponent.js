@@ -10,7 +10,6 @@ const HeadComponent = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const accessToken = useSelector((state) => state.auth.accessToken);
-
   return (
     <Wrapper>
       <Container>

@@ -2,8 +2,11 @@ import React from "react";
 import Button from "@/components/common/Button";
 import styled from "styled-components";
 import { ReactComponent as Check } from "@/assets/svg/circle-check-solid.svg";
+import { useNavigate } from "react-router-dom";
 
 const Content = () => {
+
+  const navigate = useNavigate();
   return (
     <Wrapper>
       <CheckImg />
@@ -18,15 +21,14 @@ const Content = () => {
       </Notice>
       <ButtonsWrapper>
         <Button
-          text={"커뮤니티 가기"}
-          onClick={() => console.log("clicked")}
+          onClick={() => navigate('/review')}
           customStyles={ComunityBtnStyle}
-        />
+        >커뮤니티 가기</Button>
         <Button
-          text={"작성글 보러가기"}
-          onClick={() => console.log("clicked")}
+          onClick={() => navigate('/review')}
           customStyles={PostBtnStyle}
-        />
+        > 
+        작성글 보러가기</Button>
       </ButtonsWrapper>
     </Wrapper>
   );
