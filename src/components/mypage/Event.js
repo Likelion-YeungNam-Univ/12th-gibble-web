@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import profileImage from '../../assets/svg/profile.png'; // 이미지 파일을 불러옴
+import profileImage from '../../assets/image/profile.png'; // 이미지 파일을 불러옴
 
 const events = [
     {

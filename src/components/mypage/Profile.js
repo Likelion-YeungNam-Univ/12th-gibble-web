@@ -5,7 +5,7 @@ const Profile = () => {
         <Wrapper>
             <Box>
                 <Content>
-                    <Image src={require('../../assets/svg/profile.png')} alt="프로필 사진" />
+                    <Image src={require('../../assets/image/profile.png')} alt="프로필 사진" />
                     <Nickname>
                         <span style={{ fontWeight: "600", color: "#111" }}>Hong123</span>님
                     </Nickname>
@@ -15,7 +15,7 @@ const Profile = () => {
                 </Content>
                 <LoginBox>
                     <Kakao>
-                        <KakaoImg src={require('../../assets/svg/kakaologo.png')} alt="프로필 사진" />
+                        <KakaoImg src={require('../../assets/image/kakaologo.png')} alt="프로필 사진" />
                         <Kakaologin>카카오톡 로그인중</Kakaologin>
                     </Kakao>
                     <Button>로그아웃</Button>

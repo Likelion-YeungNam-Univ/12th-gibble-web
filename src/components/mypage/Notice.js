@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import bannerImg from "@/assets/svg/mypagebanner.png";
+import bannerImg from "@/assets/image/mypagebanner.png";
 
 const Notice = () => {
   return (
