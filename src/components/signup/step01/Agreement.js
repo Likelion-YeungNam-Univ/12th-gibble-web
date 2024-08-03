@@ -23,12 +23,17 @@ const Wrapper = styled.div`
   display: flex;
   justify-content: start;
   align-items: center;
+  margin-bottom: 15px;
 `;
 
 const Description = styled.label`
   color: #111;
   font-weight: 400;
   font-size: 22px;
+  display: flex;
+  gap: 5px;
+  align-items: center;
+  justify-content: center;
 `;
 
 export default Agreement;
