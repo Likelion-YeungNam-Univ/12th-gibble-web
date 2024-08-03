@@ -101,9 +101,8 @@ const Button = styled.button`
     cursor: pointer;
 
     &:hover {
-        background: var(--main-color, #F42E3D);
-        color : white
-
+        color : #F42E3D;
+        border-color: #F42E3D;
     }
 `;
 
