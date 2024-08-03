@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import profileImage from '../../assets/image/profile.png'; // 이미지 파일을 불러옴
+import profileImage from '../../assets/image/eventpost.png'; // 이미지 파일을 불러옴
 
 const events = [
     {
@@ -102,7 +102,6 @@ const List = styled.div`
   font-weight: 700;
   line-height: 30px; /* 115.385% */
   letter-spacing: -0.65px;
-  margin-bottom: 20px;
 `;
 const Slider = styled.div`
   display: flex;
@@ -110,7 +109,8 @@ const Slider = styled.div`
   justify-content: center;
   position: relative;
   width: 845px;
-  height: 250px;
+  height: 300px;
+  margin-top: 15px;
 `;
 
 const Arrow = styled.div`
@@ -139,6 +139,7 @@ const EventImage = styled.img`
 `;
 
 const Eventtitle = styled.p`
+    height: 55px;
     color: #767676;
     text-align: center;
     font-size: 18px;
