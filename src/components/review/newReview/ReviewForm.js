@@ -12,6 +12,9 @@ import { v4 as uuid } from "uuid";
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 import newReview from "@/api/review/newReview";
 import { useNavigate } from "react-router-dom";
+import store from "@/store/store";
+import decodeToken from "@/utils/decodeToken";
+import getUesrInfo from "@/api/post/getUesrInfo";
 
 const ReviewForm = () => {
   const {
@@ -22,6 +25,26 @@ const ReviewForm = () => {
   } = useForm({
     mode: "onSubmit",
   });
+
+  // const state = store.getState();
+  // console.log(state.auth.accessToken);
+  // const jwtInfo = decodeToken(state.auth.accessToken);
+  // console.log(jwtInfo);
+
+  const [ info, setInfo ] = useState(null);
+
+  useEffect(()=>{
+    const fetchInfo = async () => {
+      try{
+        const result = await getUesrInfo();
+        setInfo(result.data.name);
+      } catch (error) {
+        console.error(error);
+        navigate('/error');
+      }
+    }
+    fetchInfo();
+  },[setInfo])
 
   const fileInputRef = useRef(null);
   const [img, setImg] = useState(null);
@@ -128,7 +151,7 @@ const ReviewForm = () => {
         {errors.content && <Error text={errors.content.message} />}
         <ContentNotice />
 
-        <InputFormFix text={"이름"} content={"홍길동"} />
+        <InputFormFix text={"이름"} content={info} />
 
         {/* 게시글 링크 필요 !! */}
         <InputWrapper style={{ marginTop: "32px" }}>

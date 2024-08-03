@@ -13,22 +13,25 @@ const Review = () => {
   const [reviewList, setReviewList] = useState([]);
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
-
+  const [nowPage, setNowPage] = useState(0);
+  const [totalPages, setTotalPages] = useState(0);
+  
   useEffect(()=> {
     const fetchReview = async () => {
-      const page = searchParams.get('page') || 0;
+      setNowPage(parseInt(searchParams.get('page')) || 0);
 
       try {
-        const result = await getAllReviewByPageNum({page});
+        const result = await getAllReviewByPageNum({nowPage});
         console.log('result',result)
         setReviewList(result.data.content);
+        setTotalPages(result.data.totalPages);
       } catch(error) {
         console.log('error',error);
         navigate('/error');
       }
     }
     fetchReview();
-  }, [navigate, searchParams])
+  }, [nowPage, setNowPage])
 
   return (
     <Wrapper>
@@ -40,7 +43,7 @@ const Review = () => {
           })}
         </Container>
         <PageControllerContainer>
-          <PageController/>
+          <PageController nowPage={nowPage} setNowPage={setNowPage} totalPages={totalPages}/>
         </PageControllerContainer>
         <WriteButtonContainer>
           <WriteBtn onClick={() => navigate("/review/new")} />

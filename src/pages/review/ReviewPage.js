@@ -58,7 +58,6 @@ const ReviewPage = () => {
 
   return (
       <Wrapper>
-            testtest
           <PageTitle>투명 후기</PageTitle>
           <Title>{review.title}</Title>
           <ReviewInfo info={{
@@ -69,16 +68,12 @@ const ReviewPage = () => {
 
               <Image src={review.imageUrl}></Image>
 
-              <DeleteContainer onClick={deleteHandler}> 
+              {review.isPermitted && <DeleteContainer onClick={deleteHandler}> 
                 <DeleteText>글 삭제</DeleteText>
                 <DeleteIcon/>
-              </DeleteContainer>
+              </DeleteContainer>}
           </Description>
           {/* 이미지가 null이 아니면 이미지 보여주기 */}
-
-          <ButtonContainer>
-            <Button $customStyles={buttonSytle} onClick={() => navigate('/review')}>뒤로가기</Button>
-          </ButtonContainer>
     </Wrapper>
   )
 }
@@ -109,22 +104,6 @@ const DeleteText = styled.div`
     letter-spacing: -0.45px;
 `
 
-
-
-const buttonSytle = `
-    background: none;
-    border :  1px solid var(--gray-color);
-    color : var(--gray-color);
-`
-
-const ButtonContainer = styled.div`
-    display : flex;
-    justify-content : space-between;
-    align-items : center;
-    box-sizing : border-box;
-    padding : 5px;
-`
-
 const Wrapper = styled.div`
     width : 100%;
     box-sizing : border-box;
@@ -147,6 +126,7 @@ const Title = styled.div`
 
 const Description = styled.div`
     color: #111;
+    min-height : 600px;
     font-family: Pretendard;
     font-size: 22px;
     font-style: normal;
