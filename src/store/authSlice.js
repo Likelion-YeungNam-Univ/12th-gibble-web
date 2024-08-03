@@ -1,8 +1,13 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+const persistRoot = localStorage.getItem('persist:root');
+const parsedPersistRoot = JSON.parse(persistRoot);
+const auth = JSON.parse(parsedPersistRoot.auth);    // json 파싱
+const accessTokenInLocalStorage = auth.accessToken;
+
 const authSlice = createSlice({
   name: "auth",
-  initialState: { accessToken: null, email: null },
+  initialState: { accessToken: accessTokenInLocalStorage, email: null },
   reducers: {
     setAccessToken: (state, action) => {
       state.accessToken = action.payload;
