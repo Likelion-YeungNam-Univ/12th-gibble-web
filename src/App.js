@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import GlobalStyle from "./GloablStyle";
+import GlobalStyle from "./GlobalStyle";
 import Layout from "@/layouts/Layout";
 import Login from "@/pages/login/Login";
 import Redirection from "@/components/login/Redirection";
@@ -17,6 +17,7 @@ import PostPage from "./pages/post/PostPage";
 import Mypage from "./pages/mypage/Mypage";
 import CompleteReview from "./pages/review/CompleteReview";
 import EventPage from "./pages/event/EventPage";
+import ProtectedRoute from "./ProtectedRoute";
 
 function App() {
   return (
@@ -24,7 +25,7 @@ function App() {
       <GlobalStyle />
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Layout />}>
+          <Route element={<Layout />}>
             <Route path="" element={<Main />} />
             <Route path="login" element={<Login />} />
             <Route path="kakaologin" element={<Redirection />} />
@@ -35,18 +36,18 @@ function App() {
 
             <Route path="signup" element={<SignUp />} />
             <Route path="post">
-              <Route path="" element={<Post />} />
-              <Route path="new" element={<NewPost />} />
-              <Route path="newpostcomplete" element={<NewPostComplete />} />
-              <Route path=":postId" element={<PostPage />} />
+              <Route path="" element={<ProtectedRoute><Post /></ProtectedRoute>} />
+              <Route path="new" element={<ProtectedRoute><NewPost /></ProtectedRoute>} />
+              <Route path="newpostcomplete" element={<ProtectedRoute><NewPostComplete /></ProtectedRoute>} />
+              <Route path=":postId" element={<ProtectedRoute><PostPage /></ProtectedRoute>} />
             </Route>
-            <Route path="/review">
-              <Route path="" element={<Review />} />
-              <Route path=":reviewId" element={<ReviewPage />} />
-              <Route path="new" element={<NewReview />} />
-              <Route path="new/uploaded" element={<CompleteReview />} />
+            <Route path="review">
+              <Route path="" element={<ProtectedRoute><Review /></ProtectedRoute>} />
+              <Route path=":reviewId" element={<ProtectedRoute><ReviewPage /></ProtectedRoute>} />
+              <Route path="new" element={<ProtectedRoute><NewReview /></ProtectedRoute>} />
+              <Route path="new/uploaded" element={<ProtectedRoute><CompleteReview /></ProtectedRoute>}/>
             </Route>
-            <Route path="mypage" element={<Mypage/>}/>
+            <Route path="mypage" element={<ProtectedRoute><Mypage /></ProtectedRoute>}/>
             <Route path="*" element={<Error />} />
           </Route>
         </Routes>
