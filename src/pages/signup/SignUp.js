@@ -14,11 +14,13 @@ const SignUp = () => {
   return (
     <Wrapper>
       <BannerImg />
-      <Description stepNum={stepNum} />
-      <StepBox number={stepNum} />
-      {stepNum === 1 && <Step01 setStepNum={setStepNum} />}
-      {stepNum === 2 && <Step02 setStepNum={setStepNum} />}
-      {stepNum === 3 && <Step03 />}
+      <Container>
+        <Description stepNum={stepNum} />
+        <StepBox number={stepNum} />
+        {stepNum === 1 && <Step01 setStepNum={setStepNum} />}
+        {stepNum === 2 && <Step02 setStepNum={setStepNum} />}
+        {stepNum === 3 && <Step03 />}
+      </Container>
     </Wrapper>
   );
 };
@@ -28,7 +30,6 @@ const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
-  padding: 156px 17%;
 `;
 
 const BannerImg = styled.div`
@@ -41,4 +42,7 @@ const BannerImg = styled.div`
   align-items: last baseline;
 `;
 
+const Container = styled.div`
+  padding: 72px 17% 156px 17%;
+`;
 export default SignUp;

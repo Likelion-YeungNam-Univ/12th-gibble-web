@@ -26,11 +26,12 @@ const Actibity = () => {
 
 const Wrapper = styled.div`
   width: 1000px;
-  height: 300px;
+  height: 270px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   margin-left: 60px;
+  margin-top: 25px;
 `;
 
 const List = styled.div`

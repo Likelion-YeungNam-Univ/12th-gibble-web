@@ -40,7 +40,11 @@ const PostList = () => {
         return <PostCard post={el} index={10 * nowPage + index + 1} />;
       })}
       <ButtonContainer>
-        <PageController nowPage={nowPage} setNowPage={setNowPage} totalPages={totalPages}/>
+        <PageController
+          nowPage={nowPage}
+          setNowPage={setNowPage}
+          totalPages={totalPages}
+        />
         <WriteButtonContainer>
           <WriteBtn onClick={() => navigate("/post/new")} />
         </WriteButtonContainer>
@@ -64,8 +68,9 @@ const WriteBtn = styled(WriteButton)`
 `;
 
 const WriteButtonContainer = styled.div`
-  position: absolute;
-  right: 10px;
+  position: fixed;
+  top: 600px;
+  left: 1600px;
   align-self: flex-end;
   display: flex;
   justify-content: center;

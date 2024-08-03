@@ -38,7 +38,7 @@ const Box = styled.div`
     justify-content: space-between;
     align-items: center;
     width: 312px;
-    height: 1400px;
+    height: 1360px;
     border-radius: 0px 0px 12px 12px;
     background: #FEF3F4;
 `;
@@ -108,8 +108,7 @@ const LoginBox = styled.div`
     align-items: center;
     justify-content: center;
     width: 285px;
-    height: 160px;
-    margin-bottom: 25px;
+    height: 150px;
 
     border-top: solid 2px #CACACA;
 
@@ -122,6 +121,7 @@ const Kakao = styled.div`
     justify-content: center;
     width: 285px;
     height: 30px;
+    margin-bottom: 5px;
 `;
 
 const KakaoImg = styled.img`
@@ -153,9 +153,15 @@ const Button = styled.button`
     letter-spacing: -0.55px;
     padding: 14px 24px;
     border-radius: 6px;
-    border: 1px solid #666;
+    border: 1px solid #CACACA;  
     width: 183px;
-    margin-top: 20px;
+    margin-top: 15px;
+    height: 46.155px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+
+
     
     cursor: pointer;
 

@@ -67,16 +67,10 @@ const InformationForm = ({ setStepNum }) => {
             type={"text"}
             placeholder={"이름을 입력해주세요."}
             $customStyles={`
-              width: 100%;
+              width: 420px;
               border : 1px solid ${
                 isSubmitted && errors.name ? "var(--main-color)" : "#dbdbdb"
-              };
-              box-shadow: ${
-                isSubmitted && errors.name
-                  ? "rgba(0, 0, 0, 0.24) 0px 3px 8px"
-                  : "none"
-              };
-              `}
+              }`}
             {...register("name", {
               required: "성명 입력은 필수입니다.",
             })}
@@ -85,32 +79,25 @@ const InformationForm = ({ setStepNum }) => {
 
         {/* 닉네임 */}
         <InputContainer>
-          <InputLabel
-            text={"닉네임"}
-            isEssential={true}
-            customStyles={`width: 30%`}
-          />
+          <InputLabel text={"닉네임"} isEssential={true} />
           <NicknameInputContainer>
             <Input
               type={"text"}
-              placeholder={"닉네임을 확인해주세요."}
+              placeholder={"닉네임을 입력해주세요."}
               $customStyles={`
-                width: 80%;
+                width: 420px;
                 border : 1px solid ${
                   isSubmitted && errors.nickname
                     ? "var(--main-color)"
                     : "#dbdbdb"
-                };
-                box-shadow: ${
-                  isSubmitted && errors.nickname
-                    ? "rgba(0, 0, 0, 0.24) 0px 3px 8px"
-                    : "none"
-                };`}
+                }`}
               {...register("nickname", {
                 required: "닉네임 입력은 필수입니다.",
               })}
             />
-            <Button $customStyles={`width: 15%`}>중복확인</Button>
+            <Button $customStyles={{ width: "15%", marginLeft: "16px;" }}>
+              중복확인
+            </Button>
           </NicknameInputContainer>
         </InputContainer>
 
@@ -132,12 +119,7 @@ const InformationForm = ({ setStepNum }) => {
                   isSubmitted && errors.phoneNumber1
                     ? "var(--main-color)"
                     : "#dbdbdb"
-                };
-                box-shadow: ${
-                  isSubmitted && errors.phoneNumber1
-                    ? "rgba(0, 0, 0, 0.24) 0px 3px 8px"
-                    : "none"
-                };`}
+                }`}
               {...register("phoneNumber1", {
                 required: "필수 입력입니다.",
               })}
@@ -153,12 +135,7 @@ const InformationForm = ({ setStepNum }) => {
                   isSubmitted && errors.phoneNumber2
                     ? "var(--main-color)"
                     : "#dbdbdb"
-                };
-                box-shadow: ${
-                  isSubmitted && errors.phoneNumber2
-                    ? "rgba(0, 0, 0, 0.24) 0px 3px 8px"
-                    : "none"
-                };`}
+                }`}
               {...register("phoneNumber2", {
                 required: "필수 입력입니다.",
               })}
@@ -174,11 +151,6 @@ const InformationForm = ({ setStepNum }) => {
                   isSubmitted && errors.phoneNumber3
                     ? "var(--main-color)"
                     : "#dbdbdb"
-                };
-                box-shadow: ${
-                  isSubmitted && errors.phoneNumber3
-                    ? "rgba(0, 0, 0, 0.24) 0px 3px 8px"
-                    : "none"
                 };`}
               {...register("phoneNumber3", {
                 required: "필수 입력입니다.",
@@ -206,13 +178,17 @@ const InformationForm = ({ setStepNum }) => {
 export default InformationForm;
 
 const Wrapper = styled.form`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   width: 100%;
   box-sizing: border-box;
   padding: 0 10%;
 `;
 
 const FormContainer = styled.div`
-  width: 100%;
+  width: 80%;
   box-sizing: border-box;
   padding: 50px 5%;
 `;
@@ -221,13 +197,13 @@ const InputContainer = styled.div`
   display: flex;
   width: 100%;
   height: 54px;
-  padding-bottom: 24px;
+  padding-bottom: 32px;
   align-items: center;
   /* gap: 16px; */
 `;
 
 const Mail = styled.div`
-  width: 100%;
+  width: 380px;
   height: 100%;
   border-radius: 6px;
   border: 1px solid #dbdbdb;
@@ -243,7 +219,6 @@ const Mail = styled.div`
 `;
 
 const NicknameInputContainer = styled.div`
-  width: 100%;
   height: 100%;
   display: flex;
   align-items: center;
@@ -251,7 +226,6 @@ const NicknameInputContainer = styled.div`
 `;
 
 const PhoneNumberInputContainer = styled.div`
-  width: 100%;
   height: 100%;
   display: flex;
   align-items: center;
