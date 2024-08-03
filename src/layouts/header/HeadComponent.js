@@ -10,6 +10,11 @@ const HeadComponent = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const accessToken = useSelector((state) => state.auth.accessToken);
+  const logoutResponseHandler = async () => {
+    const result = await logoutHandler(dispatch)
+    if(result.statusCode === 200 )
+      navigate('/')
+  }
   return (
     <Wrapper>
       <Container>
@@ -22,7 +27,7 @@ const HeadComponent = () => {
             
           ) : (
             <Utils>
-              <Text onClick={() => logoutHandler(dispatch)}>로그아웃</Text> | 
+              <Text onClick={logoutResponseHandler}>로그아웃</Text> | 
               <Text onClick={() => navigate("/mypage")}>마이페이지</Text>
             </Utils>
             
