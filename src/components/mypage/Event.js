@@ -4,49 +4,49 @@ import profileImage from '../../assets/image/profile.png'; // 이미지 파일�
 
 const events = [
     {
-      date: "2024.02.12",
+      title: "라식글자수가많아지면밑으로내려갑니다이벤트",
       image: profileImage, 
-      alt: "프로필 사진 1",
+      alt: "라식 이벤트",
       link: "https://www.youtube.com/" // 이벤트 링크
     },
     {
-      date: "2024.02.13",
+      title: "영화이벤트",
       image: profileImage,
-      alt: "프로필 사진 2",
+      alt: "영화이벤트",
       link: "https://example.com/2"
     },
     {
-      date: "2023.02.14",
+      title: "무슨이벤트",
       image: profileImage,
-      alt: "프로필 사진 3",
+      alt: "무슨이벤트",
       link: "https://example.com/3"
     },
     {
-      date: "2024.02.15",
+      title: "과자이벤트",
       image: profileImage,
-      alt: "프로필 사진 4",
+      alt: "과자이벤트",
       link: "https://example.com/4"
     },
     {
-      date: "2024.02.16",
+      title: "이월드이벤트",
       image: profileImage,
-      alt: "프로필 사진 5",
+      alt: "이월드이벤트",
       link: "https://example.com/5"
     },
     {
-      date: "2024.02.17",
+      title: "asdf",
       image: profileImage,
       alt: "프로필 사진 6",
       link: "https://example.com/6"
     },
     {
-      date: "2023.02.12",
+      title: "asdf",
       image: profileImage,
       alt: "프로필 사진 7",
       link: "https://example.com/7"
     },
     {
-      date: "2024.02.12",
+      title: "asdf",
       image: profileImage,
       alt: "프로필 사진 8",
       link: "https://example.com/8"
@@ -74,7 +74,7 @@ const EventViewer = () => {
             <Event key={index}>
               <EventLink href={event.link} target="_blank" rel="noopener noreferrer">
                 <EventImage src={event.image} alt={event.alt} />
-                <EventDate>{event.date}</EventDate>
+                <Eventtitle>{event.title}</Eventtitle>
               </EventLink>
             </Event>
           ))}
@@ -138,7 +138,7 @@ const EventImage = styled.img`
     height: 230px;
 `;
 
-const EventDate = styled.p`
+const Eventtitle = styled.p`
     color: #767676;
     text-align: center;
     font-size: 18px;
