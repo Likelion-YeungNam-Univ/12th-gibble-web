@@ -127,6 +127,8 @@ const Kakao = styled.div`
 const KakaoImg = styled.img`
     width: 24px;
     height: 24px;
+    margin : 5px;
+
 `;
 
 const Kakaologin = styled.div`

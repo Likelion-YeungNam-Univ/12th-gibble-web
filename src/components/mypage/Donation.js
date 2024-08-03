@@ -2,9 +2,9 @@ import React from "react";
 import styled from "styled-components";
 
 const donations = [
-  { title: "이러한 상황입니다. 따뜻한 기부 부탁드립니다.", donor: "김명국", count: 25 },
-  { title: "이러한 상황입니다. 따뜻한 기부 부탁드립니다.", donor: "김명철", count: 25 },
-  { title: "이러한 상황입니다. 따뜻한 기부 부탁드립니다.", donor: "김명철", count: 25 },
+  { title: "이러한 상황입니다. 따뜻한 기부 부탁드립니다.", donor: "박수민", count: 24 },
+  { title: "이러한 상황입니다. 따뜻한 기부 부탁드립니다.", donor: "성민상", count: 26    },
+  { title: "이러한 상황입니다. 따뜻한 기부 부탁드립니다.", donor: "박영남", count: 25 },
   { title: "이러한 상황입니다. 따뜻한 기부 부탁드립니다.", donor: "김명구", count: 25 },
   { title: "이러한 상황입니다. 따뜻한 기부 부탁드립니다.", donor: "김명국", count: 25 },
   { title: "이러한 상황입니다. 따뜻한 기부 부탁드립니다.", donor: "김명철", count: 25 },

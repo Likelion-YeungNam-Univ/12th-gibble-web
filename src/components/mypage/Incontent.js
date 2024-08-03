@@ -31,9 +31,3 @@ const Wrapper = styled.div`
 
 const Box = styled.div`
 `;
-
-            // /* <Box>
-            //   <Actibity/>
-            //   <Donation/>
-            //   <Delivery/>
-            // </Box> */
