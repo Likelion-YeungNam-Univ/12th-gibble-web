@@ -19,6 +19,8 @@ const EventList = () => {
   useEffect(() => {
     const fetch = async () => {
       setNowPage(parseInt(searchParams.get("page")) || 0);
+      setRegion(searchParams.get("region") || "");
+      console.log(eventList);
 
       try {
         const result = await getEventList({ nowPage, region });
@@ -32,16 +34,21 @@ const EventList = () => {
       }
     };
     fetch();
-  }, [navigate, nowPage, region, searchParams]);
+  }, [nowPage, region, navigate, searchParams]);
 
   return (
     <Wrapper>
       <Notice />
       <Container>
         <Separator />
-        <EventNavbar />
+        <EventNavbar region={region} setRegion={setRegion} />
         <Content />
-        <PageController />
+        <PageController
+          nowPage={nowPage}
+          setNowPage={setNowPage}
+          totalPages={totalPages}
+          region={region}
+        />
       </Container>
     </Wrapper>
   );
