@@ -17,11 +17,26 @@ const PostCard = ({ post, index }) => {
         align={"start"}
         left={"10px"}
         onClick={clickHandler}
-        style={{cursor:"pointer"}}
+        style={{ cursor: "pointer" }}
         $customStyles={`&:hover{text-decoration : underline;}`}
       >
         {post.title}
+        {post.isNew && (
+          <span
+            style={{
+              color: "var(--main-color)",
+              fontSize: "16px",
+              fontStyle: "normal",
+              fontWeight: "500",
+              letterSpacing: "-0.4px",
+              marginLeft: "10px",
+            }}
+          >
+            New
+          </span>
+        )}
       </PostContent>
+
       <PostContent width={"10%"}>{post.writer}</PostContent>
       <PostContent width={"15%"}>{post.createdAt.slice(0, 10)}</PostContent>
       <PostContent width={"15%"}>
@@ -45,9 +60,11 @@ const PostContent = styled.div`
   color: var(--gray-color);
   box-sizing: border-box;
   padding-left: ${(props) => props.left};
-  ${props => props.$customStyles && css`
+  ${(props) =>
+    props.$customStyles &&
+    css`
       ${props.$customStyles}
-  `}
+    `}
 `;
 
 export default PostCard;
