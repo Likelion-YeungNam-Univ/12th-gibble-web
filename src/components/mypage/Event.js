@@ -109,6 +109,7 @@ const Arrow = styled.div`
   cursor: pointer;
   padding: 10px;
   user-select: none;
+  color: #767676;
 `;
 
 const EventContainer = styled.div`
