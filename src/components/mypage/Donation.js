@@ -47,7 +47,7 @@ const Donation = () => {
 
 const Wrapper = styled.div`
   width: 1000px;
-  height: 400px;
+  height: 350px;
   display: flex;
   flex-direction: column;
   justify-content: center;

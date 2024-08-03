@@ -51,11 +51,12 @@ const Delivery = () => {
 
 const Wrapper = styled.div`
   width: 1000px;
-  height: 400px;
+  height: 350px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   margin-left: 60px;
+  margin-top: 5px;
 `;
 
 const List = styled.div`

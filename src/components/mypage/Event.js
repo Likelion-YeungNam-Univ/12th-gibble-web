@@ -1,52 +1,44 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import profileImage from '../../assets/image/profile.png'; // 이미지 파일을 불러옴
+import profileImage from '../../assets/image/eventpost.png'; // 이미지 파일을 불러옴
 
 const events = [
     {
-      title: "라식글자수가많아지면밑으로내려갑니다이벤트",
       image: profileImage, 
       alt: "라식 이벤트",
       link: "https://www.youtube.com/" // 이벤트 링크
     },
     {
-      title: "영화이벤트",
       image: profileImage,
       alt: "영화이벤트",
       link: "https://example.com/2"
     },
     {
-      title: "무슨이벤트",
       image: profileImage,
       alt: "무슨이벤트",
       link: "https://example.com/3"
     },
     {
-      title: "과자이벤트",
       image: profileImage,
       alt: "과자이벤트",
       link: "https://example.com/4"
     },
     {
-      title: "이월드이벤트",
       image: profileImage,
       alt: "이월드이벤트",
       link: "https://example.com/5"
     },
     {
-      title: "asdf",
       image: profileImage,
       alt: "프로필 사진 6",
       link: "https://example.com/6"
     },
     {
-      title: "asdf",
       image: profileImage,
       alt: "프로필 사진 7",
       link: "https://example.com/7"
     },
     {
-      title: "asdf",
       image: profileImage,
       alt: "프로필 사진 8",
       link: "https://example.com/8"
@@ -74,7 +66,6 @@ const EventViewer = () => {
             <Event key={index}>
               <EventLink href={event.link} target="_blank" rel="noopener noreferrer">
                 <EventImage src={event.image} alt={event.alt} />
-                <Eventtitle>{event.title}</Eventtitle>
               </EventLink>
             </Event>
           ))}
@@ -102,7 +93,6 @@ const List = styled.div`
   font-weight: 700;
   line-height: 30px; /* 115.385% */
   letter-spacing: -0.65px;
-  margin-bottom: 20px;
 `;
 const Slider = styled.div`
   display: flex;
@@ -110,7 +100,8 @@ const Slider = styled.div`
   justify-content: center;
   position: relative;
   width: 845px;
-  height: 250px;
+  height: 300px;
+  margin-top: 15px;
 `;
 
 const Arrow = styled.div`
@@ -118,6 +109,7 @@ const Arrow = styled.div`
   cursor: pointer;
   padding: 10px;
   user-select: none;
+  color: #767676;
 `;
 
 const EventContainer = styled.div`
@@ -138,15 +130,7 @@ const EventImage = styled.img`
     height: 230px;
 `;
 
-const Eventtitle = styled.p`
-    color: #767676;
-    text-align: center;
-    font-size: 18px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: 26px; /* 144.444% */
-    letter-spacing: -0.45px;
-`;
+
 
 const EventLink = styled.a`
   text-decoration: none;
