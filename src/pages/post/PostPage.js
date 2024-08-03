@@ -42,17 +42,13 @@ const PostPage = () => {
       <Container>
         <Title
           title={post.title}
-          name={post.name}
+          writer={post.writer}
           email={post.email}
           date={post.createdAt.slice(0, 10)}
           wantedCard={post.wantedCard}
           donatedCard={post.donatedCard}
         />
-        <Content
-          content={post.content}
-          wanted={post.wantedCard}
-          address={post.address}
-        />
+        <Content post={post} />
         <ButtonBox postId={post.postId} />
       </Container>
     </Wrapper>

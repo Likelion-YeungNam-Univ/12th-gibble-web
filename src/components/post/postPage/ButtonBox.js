@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import donatePost from "@/api/post/donatePost";
 
-const ButtonBox = ({postId}) => {
+const ButtonBox = ({ postId }) => {
   const {
     register,
     handleSubmit,
@@ -16,7 +16,7 @@ const ButtonBox = ({postId}) => {
   });
 
   const fetch = async (postId, data) => {
-    const result = await donatePost({postId, data});
+    const result = await donatePost({ postId, data });
     alert(result.data.response);
     if (result.statusCode === 200) navigate("/post");
   };
@@ -24,7 +24,6 @@ const ButtonBox = ({postId}) => {
   const navigate = useNavigate();
   return (
     <Wrapper>
-      <Button onClick={() => navigate("/post")}>목록으로 돌아가기</Button>
       <DonateForm
         onSubmit={handleSubmit((data) => {
           console.log(data);

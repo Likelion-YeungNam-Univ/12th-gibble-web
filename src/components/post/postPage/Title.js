@@ -2,21 +2,25 @@ import React from "react";
 import styled from "styled-components";
 import DonationBar from "./DonationBar";
 
-const Title = ({ title, name, email, date, wantedCard, donatedCard }) => {
+const Title = ({ title, writer, email, date, wantedCard, donatedCard }) => {
   return (
     <Wrapper>
       <PageTitle>헌혈증 기부</PageTitle>
       <PostTitle>{title}</PostTitle>
       <PostInfo>
-        <InfoLabel>작성자</InfoLabel>
-        <InfoDesc>{name}</InfoDesc>
-        <InfoLabel>이메일</InfoLabel>
-        <InfoDesc>{email}</InfoDesc>
-        <InfoLabel>작성일</InfoLabel>
-        <InfoDesc>{date}</InfoDesc>
-        <InfoLabel style={{ marginLeft: "100px" }}>기부 현황</InfoLabel>
-        <InfoDesc>{`${donatedCard} / ${wantedCard}`}</InfoDesc>
-        <DonationBar wanted={wantedCard} donated={donatedCard} />
+        <InfoConatiner>
+          <InfoLabel>작성자</InfoLabel>
+          <InfoDesc>{writer}</InfoDesc>
+          <InfoLabel>이메일</InfoLabel>
+          <InfoDesc>{email}</InfoDesc>
+          <InfoLabel>작성일</InfoLabel>
+          <InfoDesc>{date}</InfoDesc>
+        </InfoConatiner>
+        <Donation>
+          <InfoLabel>기부 현황</InfoLabel>
+          <InfoDesc>{`${donatedCard} / ${wantedCard}`}</InfoDesc>
+          <DonationBar wanted={wantedCard} donated={donatedCard} />
+        </Donation>
       </PostInfo>
     </Wrapper>
   );
@@ -55,6 +59,11 @@ const PostInfo = styled.div`
   border-top: 2px solid #dbdbdb;
   border-bottom: 2px solid #dbdbdb;
   display: flex;
+  justify-content: space-between;
+`;
+
+const InfoConatiner = styled.div`
+  display: flex;
 `;
 
 const InfoLabel = styled.div`
@@ -74,4 +83,8 @@ const InfoDesc = styled.div`
   line-height: var(--18, 26px); /* 144.444% */
   letter-spacing: -0.45px;
   margin-right: 32px;
+`;
+
+const Donation = styled.div`
+  display: flex;
 `;
