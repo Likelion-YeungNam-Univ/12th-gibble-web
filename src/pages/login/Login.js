@@ -34,7 +34,6 @@ const Container = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 20px;
   box-sizing: border-box;
   width: 45%;
 `;
@@ -45,19 +44,25 @@ const Logo = styled.img`
 `;
 
 const Title = styled.div`
+  text-align: center;
   font-size: 40px;
-  font-weight: normal;
+  font-style: normal;
+  font-weight: 500;
+  line-height: var(--40, 50px); /* 125% */
+  letter-spacing: -1px;
+  margin-top: 20px;
 `;
 
 const Description = styled.div`
   color: #767676;
-  margin-bottom: 30px;
+  margin-bottom: 50px;
   text-align: center;
   font-size: 18px;
   font-style: normal;
   font-weight: 400;
   line-height: var(--18, 26px); /* 144.444% */
   letter-spacing: -0.45px;
+  margin-top: 10px;
 `;
 
 export default Login;

@@ -80,6 +80,7 @@ const AgreeContainer = styled.div`
   display: flex;
   justify-content: end;
   align-items: center;
+  margin-bottom: 24px;
 `;
 
 const BtnContainer = styled.div`
