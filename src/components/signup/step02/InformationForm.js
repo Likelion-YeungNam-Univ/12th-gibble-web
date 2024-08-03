@@ -93,7 +93,7 @@ const InformationForm = ({ setStepNum }) => {
           <NicknameInputContainer>
             <Input
               type={"text"}
-              placeholder={"닉네임을 확인해주세요."}
+              placeholder={"닉네임을 입력해주세요."}
               $customStyles={`
                 width: 80%;
                 border : 1px solid ${
@@ -191,10 +191,10 @@ const InformationForm = ({ setStepNum }) => {
 
       <Button
         type="submit"
-        $customStyles={`
-          width: 100%;
-          transition:0.2s;
-          `}
+        $customStyles={{
+          width: "100%",
+          transition: "0.2s",
+        }}
         disabled={!isValid}
       >
         회원가입
@@ -206,7 +206,7 @@ const InformationForm = ({ setStepNum }) => {
 export default InformationForm;
 
 const Wrapper = styled.form`
-  width: 100%;
+  width: 85%;
   box-sizing: border-box;
   padding: 0 10%;
 `;
@@ -221,7 +221,7 @@ const InputContainer = styled.div`
   display: flex;
   width: 100%;
   height: 54px;
-  padding-bottom: 24px;
+  padding-bottom: 32px;
   align-items: center;
   /* gap: 16px; */
 `;
