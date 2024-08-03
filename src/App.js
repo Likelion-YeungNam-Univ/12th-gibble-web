@@ -14,6 +14,7 @@ import NewReview from "@/pages/review/NewReview";
 import NewPostComplete from "@/components/post/newPostComplete/NewPostComplete";
 import ReviewPage from "./pages/review/ReviewPage";
 import PostPage from "./pages/post/PostPage";
+import EventPage from "./pages/event/EventPage";
 
 function App() {
   return (
@@ -25,7 +26,11 @@ function App() {
             <Route path="" element={<Main />} />
             <Route path="login" element={<Login />} />
             <Route path="kakaologin" element={<Redirection />} />
-            <Route path="event" element={<EventList />} />
+            <Route path="event">
+              <Route path="" element={<EventList />} />
+              <Route path="detail" element={<EventPage />} />
+            </Route>
+
             <Route path="signup" element={<SignUp />} />
             <Route path="post">
               <Route path="" element={<Post />} />
