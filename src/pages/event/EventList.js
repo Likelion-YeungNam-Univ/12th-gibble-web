@@ -1,5 +1,5 @@
 import getEventList from "@/api/event/getEventList";
-import Content from "@/components/event/Content";
+import EventCard from "@/components/event/EventCard";
 import EventNavbar from "@/components/event/EventNavbar";
 import Notice from "@/components/event/Notice";
 import PageController from "@/components/event/PageController";
@@ -20,14 +20,13 @@ const EventList = () => {
     const fetch = async () => {
       setNowPage(parseInt(searchParams.get("page")) || 0);
       setRegion(searchParams.get("region") || "");
-      console.log(eventList);
-
       try {
         const result = await getEventList({ nowPage, region });
+        console.log("result", result.data.content);
 
-        console.log(result);
         setEventList(result.data.content);
         setTotalPages(result.totalPages);
+        console.log(eventList);
       } catch (error) {
         console.log("error", error);
         navigate("/error");
@@ -42,7 +41,11 @@ const EventList = () => {
       <Container>
         <Separator />
         <EventNavbar region={region} setRegion={setRegion} />
-        <Content />
+        <Content>
+          {eventList.map((el) => {
+            return <EventCard event={el} />;
+          })}
+        </Content>
         <PageController
           nowPage={nowPage}
           setNowPage={setNowPage}
@@ -64,7 +67,18 @@ const Wrapper = styled.div`
 
 const Container = styled.div`
   box-sizing: border-box;
-  padding: 20px 30px;
+  margin: 20px 70px 20px 60px;
+`;
+
+const Content = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: start;
+  gap: 20px;
+  flex-wrap: wrap;
+  box-sizing: border-box;
+  padding: auto;
+  padding-bottom: 80px;
 `;
 
 export default EventList;

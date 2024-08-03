@@ -29,7 +29,7 @@ function App() {
             <Route path="kakaologin" element={<Redirection />} />
             <Route path="event">
               <Route path="" element={<EventList />} />
-              <Route path="detail" element={<EventPage />} />
+              <Route path=":eventId" element={<EventPage />} />
             </Route>
 
             <Route path="signup" element={<SignUp />} />

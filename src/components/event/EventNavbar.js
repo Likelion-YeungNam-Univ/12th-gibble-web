@@ -2,11 +2,11 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
-const EventNavbar = (region, setRegion) => {
+const EventNavbar = ({ region, setRegion }) => {
   const navigate = useNavigate();
   const clickHandler = (loc) => {
     setRegion(loc.region);
-    navigate(`/event?page=0&region=${region}`);
+    navigate(`/event?page=0&region=${loc.region}`);
   };
 
   const location = [
@@ -28,7 +28,12 @@ const EventNavbar = (region, setRegion) => {
   return (
     <Wrapper>
       {location.map((loc) => (
-        <Category onClick={clickHandler}>{loc.name}</Category>
+        <Category
+          style={loc.region === region ? { color: "red" } : null}
+          onClick={() => clickHandler(loc)}
+        >
+          {loc.name}
+        </Category>
       ))}
     </Wrapper>
   );
@@ -38,18 +43,23 @@ const Wrapper = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin: 0px 10px;
   margin-bottom: 30px;
 `;
 
 const Category = styled.div`
-  font-size: 20px;
-  color: #767676;
-  transition: 0.3s;
   cursor: pointer;
+  font-size: 22px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 30px; /* 136.364% */
+  letter-spacing: -0.55px;
 
   &:hover {
+    font-size: 22px;
     color: var(--main-color);
     font-weight: bold;
+    border-bottom: 2px solid var(--main-color);
   }
 `;
 

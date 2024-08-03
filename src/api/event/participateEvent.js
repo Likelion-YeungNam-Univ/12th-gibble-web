@@ -1,5 +1,5 @@
 // 이벤트 참여
-import { getAuthAxios } from '../authAxios';
+import { getAuthAxios } from "../authAxios";
 export const participateEvent = async (eventId) => {
   const authAxios = getAuthAxios();
 
@@ -11,14 +11,12 @@ export const participateEvent = async (eventId) => {
     if (response.status === 200) {
       return {
         statusCode: response.status,
-        message: response.data.message,
+        data: response.data,
       };
     }
-    
   } catch (error) {
     return {
       statusCode: error.response.status,
-      message: error.response.data.message,
     };
   }
 };
