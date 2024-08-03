@@ -105,7 +105,7 @@ const NoticeBox = styled.div`
   background: #fff;
   box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.08);
   padding: 30px 50px;
-  margin: 20px 0;
+  margin: 10px 0px 20px 0px;
   height: 420px;
   overflow-y: scroll;
 `;

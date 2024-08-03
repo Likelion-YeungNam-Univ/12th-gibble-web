@@ -1,65 +1,128 @@
+import deleteReview from '@/api/review/deleteReview';
 import getReview from '@/api/review/getReview';
 import Button from '@/components/common/Button';
 import ReviewInfo from '@/components/review/reviewPage/ReviewInfo';
 import Loading from '@/layouts/Loading';
 import React, { useEffect, useState } from 'react'
-import { Navigate, useNavigate, useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import styled from 'styled-components';
+import { ReactComponent as DeleteIcon } from '@/assets/svg/delete.svg'
 
 const ReviewPage = () => {
-//     const { reviewId } = useParams();
-//     console.log('reviewId',reviewId)
-//     const [ review, setReview] = useState();
-//     const [ isLoading, setIsLoading] = useState(true);
-//     const navigate = useNavigate();
 
-//     useEffect(()=> {
-//       const fetchReview = async () => {
-//         try {
-//             const result = await getReview(reviewId);
-//             setReview(result.data);
-//         } catch (error) {
-//             console.error(error);
-//             navigate('/error');
-//         } finally {
-//             setIsLoading(false);
-//         }
-//     };
 
-//     if (reviewId) {
-//         fetchReview();
-//     }
-// }, [reviewId, navigate]);
-    
-//     if(isLoading)
-    //           return <Loading/>
-    
-
+    const { reviewId } = useParams();
+    const [ review, setReview ] = useState();
+    const [ isLoading, setIsLoading] = useState(true);
     const navigate = useNavigate();
+
+    useEffect(()=> {
+      const fetchReview = async () => {
+        try {
+            const result = await getReview(reviewId);
+            console.log(result);
+            setReview(result.data);
+        } catch (error) {
+            console.error(error);
+            navigate('/error');
+        } finally {
+            setIsLoading(false);
+        }
+    };
+
+    if (reviewId) {
+        fetchReview();
+    }
+    }, [reviewId, navigate]);
+    
+    
+    const deleteHandler = async () => {
+        try {
+            const result = await deleteReview(reviewId);
+
+            if(result.statusCode === 200){
+                navigate('/review');
+            }
+
+            else {
+                navigate('/error');
+            }
+        } catch (error) {
+            navigate('/error');
+        }
+    }
+
+    if(isLoading)
+        return <Loading/>
 
 
   return (
       <Wrapper>
+            testtest
           <PageTitle>투명 후기</PageTitle>
-          <Title>감사합니다</Title>
+          <Title>{review.title}</Title>
           <ReviewInfo info={{
-              writer: '홍길' + '*', email: 'test@naver.com', createdAt: '2024-07-31'
+              writer: review.nickname, email: review.email, createdAt: review.createAt
           }} />
           <Description>
-              안녕하세요 너무 감사합니다..<br />35세 남성입니다.<br /><br /> 덕분에 살았습니다.
-              <TmpImage/>
+              {review.content}
+
+              <Image src={review.imageUrl}></Image>
+
+              <DeleteContainer onClick={deleteHandler}> 
+                <DeleteText>글 삭제</DeleteText>
+                <DeleteIcon/>
+              </DeleteContainer>
           </Description>
           {/* 이미지가 null이 아니면 이미지 보여주기 */}
-          <Button $customStyles={buttonSytle} onClick={() => navigate('/review')}>뒤로가기</Button>
 
+          <ButtonContainer>
+            <Button $customStyles={buttonSytle} onClick={() => navigate('/review')}>뒤로가기</Button>
+          </ButtonContainer>
     </Wrapper>
   )
 }
+
+const DeleteContainer = styled.div`
+    width : 110px;
+    align-self : flex-end;
+    box-sizing : border-box;
+    color: #767676;
+    font-family: Pretendard;
+    font-size: 18px;
+    box-sizing : border-box;
+    padding : 5px 10px;
+    border-radius : 6px;
+    display : flex;
+    justify-content : center;
+    gap: 6px;
+    cursor: pointer;
+`
+const DeleteText = styled.div`
+    color: #767676;
+    text-align: right;
+    font-family: Pretendard;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: var(--18, 26px); /* 144.444% */
+    letter-spacing: -0.45px;
+`
+
+
 
 const buttonSytle = `
     background: none;
     border :  1px solid var(--gray-color);
     color : var(--gray-color);
+`
+
+const ButtonContainer = styled.div`
+    display : flex;
+    justify-content : space-between;
+    align-items : center;
+    box-sizing : border-box;
+    padding : 5px;
 `
 
 const Wrapper = styled.div`
@@ -93,14 +156,15 @@ const Description = styled.div`
     box-sizing : border-box;
     padding : 46px;
     border-bottom : 1px solid var(--gray-color);
-    margin-bottom : 24px;
+    margin-bottom : 50px;
+    display : flex;
+    flex-direction : column;
 `
 
-const TmpImage = styled.div`
-    height : 600px;
-    background-color : #111;
+const Image = styled.img`
     margin-top : 30px;
-`;
-
+    scale : 0.8;
+    margin-bottom : 110px;
+`
 
 export default ReviewPage
