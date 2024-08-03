@@ -19,7 +19,7 @@ const Content = ({ content, wanted, address }) => {
             fontWeight: "500",
             lineHeight: "26px" /* 144.444% */,
             letterSpacing: "0.45px",
-            marginRight: "17px",
+            cursor: "default"
           }}
         >
           필요 헌혈증 개수 : {wanted}
@@ -37,6 +37,7 @@ const Content = ({ content, wanted, address }) => {
             lineHeight: "26px" /* 144.444% */,
             letterSpacing: "0.45px",
             marginRight: "17px",
+            cursor: "default"
           }}
         >
           수령 주소 : {address}
