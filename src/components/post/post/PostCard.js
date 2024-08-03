@@ -1,5 +1,5 @@
 import React from "react";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import DonationBar from "./DonationBar";
 import { useNavigate } from "react-router-dom";
 
@@ -17,6 +17,8 @@ const PostCard = ({ post, index }) => {
         align={"start"}
         left={"10px"}
         onClick={clickHandler}
+        style={{cursor:"pointer"}}
+        $customStyles={`&:hover{text-decoration : underline;}`}
       >
         {post.title}
       </PostContent>
@@ -43,6 +45,9 @@ const PostContent = styled.div`
   color: var(--gray-color);
   box-sizing: border-box;
   padding-left: ${(props) => props.left};
+  ${props => props.$customStyles && css`
+      ${props.$customStyles}
+  `}
 `;
 
 export default PostCard;

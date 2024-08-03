@@ -1,8 +1,8 @@
 import React from "react";
 import styled from "styled-components";
-import Notice from "./Notice";
-import Title from "./Title";
-import Content from "./Content";
+import Notice from "@/components/review/Notice";
+import Title from "@/components/review/Title";
+import Content from "@/components/review/Content";
 
 const CompleteReview = () => {
   return (

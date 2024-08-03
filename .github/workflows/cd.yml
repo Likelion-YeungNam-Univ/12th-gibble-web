@@ -24,7 +24,4 @@ jobs:
           username: ${{ secrets.SERVER_USERNAME }}
           key: ${{ secrets.SERVER_KEY }}
           script: |
-            cd /home/ubuntu/12th-gibble-web/
-            git pull origin develop
-            npm install
-            nohup npm start &
+            ./deploy.sh

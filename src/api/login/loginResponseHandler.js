@@ -1,6 +1,8 @@
 import apiClient from "@/api/axios";
 import { setAccessToken, setEmail } from "@/store/authSlice";
 import store from '@/store/store';
+import axios from "axios";
+
 
 const loginResponseHandler = async (dispatch, code) => {
     
@@ -11,6 +13,7 @@ const loginResponseHandler = async (dispatch, code) => {
         console.log('response', response);
         console.log('responseStatus',response.status);
 
+        axios.defaults.headers.common['Authorization'] = `Bearer ${response.data.accessToken}`
         dispatch(setAccessToken(response.data.accessToken));
         const state = store.getState();
         console.log(state);

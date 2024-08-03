@@ -18,13 +18,6 @@ const Step03 = () => {
         <br />
         로그인 후 저희 서비스를 편하게 이용해 주세요.
       </Description>
-      <Notice>
-        * 회원가입 내역 확인 및 수정은&nbsp;
-        <span style={{ color: "var(--main-color)" }}>
-          마이페이지 &gt; 회원정보수정
-        </span>
-        에서 가능합니다.
-      </Notice>
       <Button onClick={() => navigate("/login")}>로그인 바로하기</Button>
     </Wrapper>
   );
@@ -61,25 +54,8 @@ const Description = styled.div`
   font-weight: 500;
   line-height: 29px; /* 131.818% */
   letter-spacing: -0.55px;
-  margin: 50px 0;
-`;
-
-const Notice = styled.div`
-  box-sizing: border-box;
-  padding: 10px 24px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: #767676;
-  border-radius: 6px;
-  border: 1px solid #dbdbdb;
-  background: #f4f4f4;
-  font-size: 18px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: var(--18, 26px); /* 144.444% */
-  letter-spacing: -0.45px;
-  margin-bottom: 48px;
+  margin-top: 14px;
+  margin-bottom: 58px;
 `;
 
 export default Step03;

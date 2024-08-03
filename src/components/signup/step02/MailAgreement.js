@@ -2,7 +2,7 @@ import CheckBox from "@/components/common/CheckBox";
 import React from "react";
 import styled from "styled-components";
 
-const MailAgreement = React.forwardRef(({...rest},ref) => {
+const MailAgreement = React.forwardRef(({ ...rest }, ref) => {
   return (
     <Wrapper>
       <Title>
@@ -11,7 +11,7 @@ const MailAgreement = React.forwardRef(({...rest},ref) => {
       </Title>
       <SubTitle>메일 수신 동의 시 게시글 업로드 알림을 제공합니다.</SubTitle>
       <Description>
-        <CheckBox {...rest} ref={ref}/>
+        <CheckBox {...rest} ref={ref} />
         <CheckBoxText>E-Mail 수신 동의</CheckBoxText>
       </Description>
     </Wrapper>
@@ -24,8 +24,8 @@ const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   gap: 10px;
-  margin-bottom: 100px;
-  border-top : 1px solid var(--gray-color);
+  margin-bottom: 50px;
+  border-top: 1px solid var(--gray-color);
 `;
 
 const Title = styled.div`
@@ -34,7 +34,7 @@ const Title = styled.div`
   font-weight: 500;
   line-height: var(--18, 26px); /* 144.444% */
   letter-spacing: -0.45px;
-  margin-top: 20px;
+  margin-top: 32px;
 `;
 
 const SubTitle = styled.div`

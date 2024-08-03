@@ -6,6 +6,7 @@ import styled from 'styled-components'
 import PageController from '../../components/review/PageController';
 import { useNavigate, useSearchParams } from 'react-router-dom'
 import getAllReviewByPageNum from '@/api/review/getAllReviewByPageNum'
+import { ReactComponent as WriteButton } from "@/assets/svg/post-write-button.svg";
 
 const Review = () => {
   
@@ -19,7 +20,7 @@ const Review = () => {
 
       try {
         const result = await getAllReviewByPageNum({page});
-
+        console.log('result',result)
         setReviewList(result.data.content);
       } catch(error) {
         console.log('error',error);
@@ -41,16 +42,35 @@ const Review = () => {
         <PageControllerContainer>
           <PageController/>
         </PageControllerContainer>
-
+        <WriteButtonContainer>
+          <WriteBtn onClick={() => navigate("/review/new")} />
+        </WriteButtonContainer>
     </Wrapper>
   )
 }
 
+const WriteBtn = styled(WriteButton)`
+  cursor: pointer;
+`;
+
+const WriteButtonContainer = styled.div`
+  position: absolute;
+  right: 10px;
+  align-self: flex-end;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position : absolute;
+  right : 216px;
+  bottom : 200px;
+`;
+
 const Wrapper = styled.div`
     box-sizing : border-box;
     padding : 0 10%;
-
     width : 100%;
+    min-height : 1200px;
+    position : relative;
 `
 
 const Container = styled.div`
