@@ -97,7 +97,9 @@ const Notice = () => {
 
 export default Notice;
 
-const Wrraper = styled.div``;
+const Wrraper = styled.div`
+  margin-top: 22px;
+`;
 
 const NoticeBox = styled.div`
   border-radius: 6px;

@@ -13,11 +13,34 @@ import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 import newReview from "@/api/review/newReview";
 import { useNavigate } from "react-router-dom";
 import Modal from "./Modal";
+import store from "@/store/store";
+import decodeToken from "@/utils/decodeToken";
+import getUesrInfo from "@/api/post/getUesrInfo";
 
 const ReviewForm = () => {
   const { register, handleSubmit, watch, formState: { errors } } = useForm({
     mode: "onSubmit",
   });
+
+  // const state = store.getState();
+  // console.log(state.auth.accessToken);
+  // const jwtInfo = decodeToken(state.auth.accessToken);
+  // console.log(jwtInfo);
+
+  const [info, setInfo] = useState(null);
+
+  useEffect(() => {
+    const fetchInfo = async () => {
+      try {
+        const result = await getUesrInfo();
+        setInfo(result.data.name);
+      } catch (error) {
+        console.error(error);
+        navigate("/error");
+      }
+    };
+    fetchInfo();
+  }, [setInfo]);
 
   const fileInputRef = useRef(null);
   const [img, setImg] = useState(null);
@@ -44,6 +67,7 @@ const ReviewForm = () => {
   return (
     <Wrapper
       onSubmit={handleSubmit(async (data) => {
+
         if (!img) return;
 
         const imageId = uuid();
@@ -106,24 +130,24 @@ const ReviewForm = () => {
         {errors.content && <Error text={errors.content.message} />}
         <ContentNotice />
 
-        <InputFormFix text={"이름"} content={"홍길동"} />
+        <InputFormFix text={"이름"} content={info} />
 
         <InputWrapper style={{ marginTop: "32px" }}>
-          <InputLabel text={"게시글링크"} isEssential={true} />
+          <InputLabel text={"게시글택선택"} isEssential={true} />
           <TmpContainer>
             <Input
               type="text"
               placeholder="어떤 게시글의 후기글인지 게시글을 선택해 주세요"
               style={errors.link && { border: "1px solid var(--main-color)" }}
-              {...register("link", {
-                required: "게시글을 선택해 주세요.",
-              })}
               $customStyles={{ width: "400px", height: "52px", padding: "0 24px", display: "flex", flexShrink: "0" }}
               value={selectedPostTitle}
             />
             <Button
               type="button"
               onClick={openModal}
+              onClick={(e) => {
+                console.log("clicked");
+              }}
               $customStyles={{
                 width: "150px",
                 background: "var(--main-color)",
@@ -144,7 +168,7 @@ const ReviewForm = () => {
 
 
         <InputWrapper style={{ marginTop: "32px" }}>
-          <InputLabel text={"인증사진 첨부"} isEssential={true} />
+          <InputLabel text={"인증사진 첨부"} />
           <TmpContainer>
             <input
               id="fileInput"
@@ -158,12 +182,15 @@ const ReviewForm = () => {
               type="text"
               placeholder="이미지를 첨부해 주세요."
               style={errors.image && { border: "1px solid var(--main-color)" }}
-              {...register("img", {
-                required: "이미지를 첨부해 주세요",
-              })}
-              $customStyles={{ width: "400px", height: "52px", padding: "0 24px", display: "flex" }}
+
+              $customStyles={{
+                width: "400px",
+                height: "52px",
+                padding: "0 24px",
+                display: "flex",
+              }}
               value={img && img.name}
-              
+              readOnly
             />
             <Button
               type="button"
@@ -192,12 +219,12 @@ const ReviewForm = () => {
         type="submit"
         $customStyles={{
           width: "100%",
-          background: "var(--main-color)",
-          color: "#f4f4f4",
+          background: "#F4F4F4;",
+          color: "#767676",
           marginTop: "108px",
           transition: "0.2s",
           "&:hover": {
-            background: "var(--gray-color)",
+            background: "var(--main-color)",
             color: "#fff",
           },
         }}

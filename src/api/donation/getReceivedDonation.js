@@ -1,9 +1,9 @@
 import { getAuthAxios } from "../authAxios";
 
-const getReceivedDonation = () => {
+const getReceivedDonation = async () => {
   try {
     const authAxios = getAuthAxios();
-    const response = authAxios.get("/donation/received-donation");
+    const response = await authAxios.get("/donation/received-donation");
     console.log("response", response);
 
     if (response.status === 200) {

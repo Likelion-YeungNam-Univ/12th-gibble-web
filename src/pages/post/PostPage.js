@@ -7,7 +7,7 @@ import styled from "styled-components";
 import Notice from "@/components/post/postPage/Notice";
 import Title from "@/components/post/postPage/Title";
 import Content from "@/components/post/postPage/Content";
-import ButtonBox from "@/components/post/postPage/ButtonBox";
+import DonorBox from "@/components/post/postPage/DonorBox";
 
 const PostPage = () => {
   const { postId } = useParams();
@@ -19,6 +19,7 @@ const PostPage = () => {
     const fetch = async () => {
       try {
         const result = await showPost(postId);
+
         console.log(postId);
         console.log(result.data);
         setPost(result.data);
@@ -40,20 +41,9 @@ const PostPage = () => {
     <Wrapper>
       <Notice />
       <Container>
-        <Title
-          title={post.title}
-          name={post.name}
-          email={post.email}
-          date={post.createdAt.slice(0, 10)}
-          wantedCard={post.wantedCard}
-          donatedCard={post.donatedCard}
-        />
-        <Content
-          content={post.content}
-          wanted={post.wantedCard}
-          address={post.address}
-        />
-        <ButtonBox postId={post.postId} />
+        <Title post={post} />
+        <Content post={post} />
+        <DonorBox post={post} />
       </Container>
     </Wrapper>
   );

@@ -1,20 +1,17 @@
-import React, { useEffect } from "react";
+import React from "react";
 import styled from "styled-components";
 import PageNotice from "@/components/common/PageNotice";
-import NewReviewSeparator from "@/components/review/newReview/NewReivewSeparator";
-import ReviewForm from "@/components/review/newReview/ReviewForm";
+import PostForm from "@/components/post/modifyPost/PostForm";
+import NewPostSeparator from "../../components/post/newPost/NewPostSeparator";
 
-
-const NewReview = () => {
-  const location = ["Home", "커뮤니티", "투명 후기", "게시글 작성"];
-  
-
+const ModifyPost = () => {
+  const location = ["Home", "커뮤니티", "헌혈증 기부", "게시글 작성"];
   return (
     <Wrapper>
       <PageNotice location={location} />
-      <NewReviewSeparator title={"후원 감사 글 작성하기 "} />
+      <NewPostSeparator title={"헌혈증 기부 요청 글 작성하기"} />
       <Form>
-        <ReviewForm />
+        <PostForm />
       </Form>
     </Wrapper>
   );
@@ -34,4 +31,4 @@ const Form = styled.div`
   padding: 0 86px;
 `;
 
-export default NewReview;
+export default ModifyPost;

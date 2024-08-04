@@ -14,6 +14,10 @@ const Separator = () => {
             background: "#f6f6f6",
             height: "54px",
             marginRight: "8px",
+            border: "none",
+            "&::placeholder": {
+              color: "#767676",
+            },
           }}
         />
 

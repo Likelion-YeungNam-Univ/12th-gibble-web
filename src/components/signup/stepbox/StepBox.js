@@ -31,8 +31,9 @@ const Wrapper = styled.div`
   justify-content: space-between;
   align-items: center;
   box-sizing: border-box;
-  padding: 25px 10%;
-  margin-bottom: 30px;
+  padding: 45px 10%;
+  margin-bottom: 58px;
+  margin-top: 58px;
 `;
 
 const Chevron = styled(chevron)`

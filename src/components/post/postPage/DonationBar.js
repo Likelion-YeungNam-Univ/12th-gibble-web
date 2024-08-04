@@ -11,7 +11,7 @@ const DonationBar = ({ wanted, donated }) => {
 
 const Wrapper = styled.div`
   display: flex;
-  width: 20%;
+  width: 154px;
   height: 29px;
   border-radius: 6px;
   align-items: center;

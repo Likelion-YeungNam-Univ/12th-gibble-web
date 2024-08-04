@@ -1,15 +1,16 @@
 import { getAuthAxios } from "../authAxios";
 
-const getMyPage = async () => {
+const setFinish = async (postId, isPermitted) => {
   try {
     const authAxios = getAuthAxios();
-    const response = await authAxios.get("/user");
-    console.log("response", response);
+    console.log("postId", postId, "isPermitted", isPermitted);
+    const response = await authAxios.put(`/post/${postId}/donation-permitted`, {
+      params: { permitted: isPermitted },
+    });
 
     if (response.status === 200) {
       return {
         statusCode: response.status,
-        data: response.data,
       };
     }
   } catch (error) {
@@ -19,4 +20,4 @@ const getMyPage = async () => {
   }
 };
 
-export default getMyPage;
+export default setFinish;

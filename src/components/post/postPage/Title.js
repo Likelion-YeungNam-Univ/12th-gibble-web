@@ -1,22 +1,58 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import DonationBar from "./DonationBar";
+import Button from "@/components/common/Button";
+import setFinish from "@/api/post/setFinish";
 
-const Title = ({ title, name, email, date, wantedCard, donatedCard }) => {
+const Title = ({ post }) => {
+  const [donate, setDonate] = useState();
+  const finishHandler = async () => {
+    console.log("postId", post.postId, "donate", donate);
+    setDonate(post.isDonationPermitted);
+    const result = await setFinish(post.postId, !donate);
+
+    console.log(result);
+  };
   return (
     <Wrapper>
       <PageTitle>헌혈증 기부</PageTitle>
-      <PostTitle>{title}</PostTitle>
+      <PostTitle>{post.title}</PostTitle>
       <PostInfo>
-        <InfoLabel>작성자</InfoLabel>
-        <InfoDesc>{name}</InfoDesc>
-        <InfoLabel>이메일</InfoLabel>
-        <InfoDesc>{email}</InfoDesc>
-        <InfoLabel>작성일</InfoLabel>
-        <InfoDesc>{date}</InfoDesc>
-        <InfoLabel style={{ marginLeft: "100px" }}>기부 현황</InfoLabel>
-        <InfoDesc>{`${donatedCard} / ${wantedCard}`}</InfoDesc>
-        <DonationBar wanted={wantedCard} donated={donatedCard} />
+        <InfoConatiner>
+          <InfoLabel>작성자</InfoLabel>
+          <InfoDesc>{post.writer}</InfoDesc>
+          {post.email && (
+            <>
+              <InfoLabel>이메일</InfoLabel>
+              <InfoDesc>{post.email}</InfoDesc>
+            </>
+          )}
+          <InfoLabel>작성일</InfoLabel>
+          <InfoDesc>{post.createdAt.slice(0, 10)}</InfoDesc>
+        </InfoConatiner>
+        {post.donatedCard !== undefined && post.wantedCard !== undefined && (
+          <>
+            <Donation>
+              <InfoLabel>기부 현황</InfoLabel>
+              <InfoDesc>{`${post.donatedCard} / ${post.wantedCard}`}</InfoDesc>
+              <DonationBar
+                wanted={post.wantedCard}
+                donated={post.donatedCard}
+              />
+              <Button
+                onClick={finishHandler}
+                $customStyles={{
+                  padding: "8px 24px",
+                  height: "30px",
+                  minWidth: "10px",
+                  marginLeft: "8px",
+                }}
+              >
+                종료
+              </Button>
+            </Donation>
+          </>
+        )}
       </PostInfo>
     </Wrapper>
   );
@@ -55,6 +91,12 @@ const PostInfo = styled.div`
   border-top: 2px solid #dbdbdb;
   border-bottom: 2px solid #dbdbdb;
   display: flex;
+  justify-content: space-between;
+  align-items: center;
+`;
+
+const InfoConatiner = styled.div`
+  display: flex;
 `;
 
 const InfoLabel = styled.div`
@@ -74,4 +116,9 @@ const InfoDesc = styled.div`
   line-height: var(--18, 26px); /* 144.444% */
   letter-spacing: -0.45px;
   margin-right: 32px;
+`;
+
+const Donation = styled.div`
+  display: flex;
+  align-items: center;
 `;

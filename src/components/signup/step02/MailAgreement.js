@@ -25,7 +25,7 @@ const Wrapper = styled.div`
   flex-direction: column;
   gap: 10px;
   margin-bottom: 50px;
-  border-top: 1px solid var(--gray-color);
+  border-top: 1px solid #dbdbdb;
 `;
 
 const Title = styled.div`

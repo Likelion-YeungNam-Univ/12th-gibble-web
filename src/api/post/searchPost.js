@@ -1,20 +1,22 @@
 import { getAuthAxios } from "../authAxios";
 
-const deletePost = async (postId) => {
+const searchPost = async (search) => {
   try {
     const authAxios = getAuthAxios();
-    const response = await authAxios.delete(`/post/${postId}`);
-    console.log("response", response);
+    const response = await authAxios.get("/post", {
+      params: { search },
+    });
 
+    console.log("response", response);
     return {
       statusCode: response.status,
+      data: response.data,
     };
   } catch (error) {
-    console.error(error);
     return {
       statusCode: error.response.status,
     };
   }
 };
 
-export default deletePost;
+export default searchPost;
