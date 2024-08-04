@@ -93,6 +93,7 @@ const DonorBox = ({ post }) => {
                     alert(result.message);
                   }
                 };
+                donate();
               })}
             >
               <Input

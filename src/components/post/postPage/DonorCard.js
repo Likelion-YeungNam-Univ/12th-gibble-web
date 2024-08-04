@@ -7,7 +7,7 @@ const DonorCard = ({ donor, isPermitted }) => {
     <Wrapper>
       <Heart />
       <DonorInfo>
-        <Donor>{isPermitted ? donor.name : donor.nickname}</Donor>
+        <Donor>{donor.name}</Donor>
         <DonatedCount>{donor.donateCount}개 기부 완료</DonatedCount>
         {isPermitted && (
           <Report
