@@ -21,8 +21,8 @@ const Content = ({ post }) => {
             fontWeight: "500",
             lineHeight: "26px" /* 144.444% */,
             letterSpacing: "0.45px",
-            marginRight: "16px",
             cursor: "default",
+            marginRight: "16px",
           }}
         >
           필요 헌혈증 개수 : {post.wantedCard}
@@ -61,6 +61,7 @@ export default Content;
 
 const Wrapper = styled.div`
   border-bottom: 2px solid #dbdbdb;
+  margin-bottom: 68px;
 `;
 
 const Container = styled.div`
