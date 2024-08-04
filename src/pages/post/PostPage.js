@@ -43,7 +43,7 @@ const PostPage = () => {
       <Container>
         <Title post={post} />
         <Content post={post} />
-        <DonorBox />
+        <DonorBox post={post} />
       </Container>
     </Wrapper>
   );

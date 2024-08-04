@@ -4,13 +4,23 @@ import Button from "@/components/common/Button";
 import { ReactComponent as Trash } from "@/assets/svg/trash.svg";
 import { ReactComponent as Pen } from "@/assets/svg/pen.svg";
 import deletePost from "@/api/post/deletePost";
+import { useNavigate, useParams } from "react-router-dom";
 
 const Content = ({ post }) => {
-  const deleteHandler = async () => {
-    console.log(post.postId);
-    const result = await deletePost(post.postId);
+  const navigate = useNavigate();
+  const { postId } = useParams();
 
-    console.log("삭제 결과", result);
+  const deleteHandler = async () => {
+    try {
+      const result = await deletePost(postId);
+
+      if (result.statusCode === 2000) {
+        navigate("/post/");
+        alert("정상적으로 삭제되었습니다.");
+      }
+    } catch (error) {
+      navigate("/error");
+    }
   };
 
   const modifyHandler = async () => {};

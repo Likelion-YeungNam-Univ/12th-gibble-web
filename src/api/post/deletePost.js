@@ -6,13 +6,11 @@ const deletePost = async (postId) => {
     const response = await authAxios.delete(`/post/${postId}`);
     console.log("response", response);
 
-    if (response.status === 200) {
-      return {
-        statusCode: response.status,
-        data: response.data,
-      };
-    }
+    return {
+      statusCode: response.status,
+    };
   } catch (error) {
+    console.error(error);
     return {
       statusCode: error.response.status,
     };

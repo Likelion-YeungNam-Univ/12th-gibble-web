@@ -10,7 +10,7 @@ import Loading from "@/layouts/Loading";
 import { useForm } from "react-hook-form";
 import donatePost from "@/api/post/donatePost";
 
-const DonorBox = () => {
+const DonorBox = ({ post }) => {
   const { postId } = useParams();
   const [donorList, setDonorList] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -47,10 +47,12 @@ const DonorBox = () => {
       <Separator>
         <TitleContainer>
           <Title>기부자들의 따뜻한 손길 감사합니다.</Title>
-          <Report>
-            신고하기
-            <Notice />
-          </Report>
+          {post.isPermitted && (
+            <Report>
+              신고하기
+              <Notice />
+            </Report>
+          )}
         </TitleContainer>
         <WriteReviewButton>후기 작성하기</WriteReviewButton>
       </Separator>
