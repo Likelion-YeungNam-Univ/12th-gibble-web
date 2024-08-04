@@ -3,8 +3,18 @@ import styled from "styled-components";
 import Button from "@/components/common/Button";
 import { ReactComponent as Trash } from "@/assets/svg/trash.svg";
 import { ReactComponent as Pen } from "@/assets/svg/pen.svg";
+import deletePost from "@/api/post/deletePost";
 
 const Content = ({ post }) => {
+  const deleteHandler = async () => {
+    console.log(post.postId);
+    const result = await deletePost(post.postId);
+
+    console.log("삭제 결과", result);
+  };
+
+  const modifyHandler = async () => {};
+
   return (
     <Wrapper>
       <Container>
@@ -47,8 +57,14 @@ const Content = ({ post }) => {
         </Button>
         {post.isPermitted && (
           <PostBtnContainer>
-            <PostBtn>글 삭제</PostBtn>
-            <TrashIcon />ㅣ<PostBtn>글 수정</PostBtn>
+            <DeleteBtn onClick={deleteHandler}>
+              <PostBtn>글 삭제</PostBtn>
+              <TrashIcon />
+            </DeleteBtn>
+            ㅣ
+            <ModifyBtn>
+              <PostBtn>글 수정</PostBtn>
+            </ModifyBtn>
             <PenIcon />
           </PostBtnContainer>
         )}
@@ -96,6 +112,18 @@ const PostBtnContainer = styled.div`
 `;
 
 const PostBtn = styled.div``;
+
+const DeleteBtn = styled.div`
+  cursor: pointer;
+  display: flex;
+  gap: 5px;
+`;
+
+const ModifyBtn = styled.div`
+  cursor: pointer;
+  display: flex;
+  gap: 5px;
+`;
 
 const PenIcon = styled(Pen)`
   width: 24px;
