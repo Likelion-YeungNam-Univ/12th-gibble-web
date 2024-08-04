@@ -98,6 +98,7 @@ const DonorBox = ({ post }) => {
             >
               <Input
                 $customStyles={InputCustomStyle}
+                type="number"
                 {...register("donateCount", {
                   required: "기부할 개수를 입력해주세요",
                 })}

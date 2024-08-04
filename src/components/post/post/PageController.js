@@ -21,56 +21,57 @@ const PageController = ({ nowPage, setNowPage, totalPages }) => {
     }
   };
 
+  const getPageNumbers = () => {
+    const pageNumbers = [];
+
+    if (totalPages <= 5) {
+      for (let i = 0; i < totalPages; i++) {
+        pageNumbers.push(i);
+      }
+    } else {
+      const startPage = Math.max(0, nowPage - 2);
+      const endPage = Math.min(totalPages - 1, startPage + 4);
+
+      for (let i = startPage; i <= endPage; i++) {
+        pageNumbers.push(i);
+      }
+
+      while (pageNumbers.length < 5) {
+        if (pageNumbers[0] > 0) {
+          pageNumbers.unshift(pageNumbers[0] - 1);
+        } else {
+          pageNumbers.push(pageNumbers[pageNumbers.length - 1] + 1);
+        }
+      }
+    }
+
+    return pageNumbers;
+  };
+
+  const pageNumbers = getPageNumbers();
+
   return (
     <Wrapper>
-      <LeftBtn onClick={() => handleLeftClick()} />
+      <LeftBtn onClick={handleLeftClick} />
       <PageNumList>
-        {nowPage > 1 && (
+        {pageNumbers.map((pageNum) => (
           <PageNum
+            key={pageNum}
             onClick={() => {
-              setNowPage((prev) => prev - 2);
-              navigate(`/post?page=${nowPage - 2}`);
+              setNowPage(pageNum);
+              navigate(`/post?page=${pageNum}`);
             }}
+            style={
+              pageNum === nowPage
+                ? { color: "red", borderBottom: "1px solid red" }
+                : {}
+            }
           >
-            {nowPage - 1}
+            {pageNum + 1} {/* 페이지 번호는 1부터 시작하므로 +1 */}
           </PageNum>
-        )}
-        {nowPage > 0 && (
-          <PageNum
-            onClick={() => {
-              setNowPage((prev) => prev - 1);
-              navigate(`/post?page=${nowPage - 1}`);
-            }}
-          >
-            {nowPage}
-          </PageNum>
-        )}
-        <PageNum style={{ color: "red", borderBottom: "1px solid red" }}>
-          {nowPage + 1}
-        </PageNum>
-        {totalPages > nowPage + 1 && (
-          <PageNum
-            onClick={() => {
-              setNowPage((prev) => prev + 1);
-              console.log(nowPage);
-              navigate(`/post?page=${nowPage + 1}`);
-            }}
-          >
-            {nowPage + 2}
-          </PageNum>
-        )}
-        {totalPages > nowPage + 2 && (
-          <PageNum
-            onClick={() => {
-              setNowPage((prev) => prev + 2);
-              navigate(`/post?page=${nowPage + 2}`);
-            }}
-          >
-            {nowPage + 3}
-          </PageNum>
-        )}
+        ))}
       </PageNumList>
-      <RightBtn onClick={() => handleRightClick()} />
+      <RightBtn onClick={handleRightClick} />
     </Wrapper>
   );
 };
