@@ -16,6 +16,7 @@ const donatePost = async ({ postId, donateCount }) => {
   } catch (error) {
     return {
       statusCode: error.response.status,
+      message: error.response.data.message
     };
   }
 };

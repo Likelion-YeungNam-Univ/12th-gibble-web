@@ -85,8 +85,12 @@ const DonorBox = () => {
                     onSubmit={handleSubmit(data => {
                           const donate = async () => {
                             const result = await donatePost({postId, donateCount : parseInt(data.donateCount)});
-                            if(result.statusCode === 200)
-                                navigate('/post');
+                            if(result.statusCode === 200){
+                                window.location.reload();
+                            }
+                            if(result.statusCode === 400){
+                                alert(result.message);
+                            }
                           }
                           donate();
                     })}
