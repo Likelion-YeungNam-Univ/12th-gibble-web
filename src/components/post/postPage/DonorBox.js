@@ -54,7 +54,9 @@ const DonorBox = ({ post }) => {
             </Report>
           )}
         </TitleContainer>
-        <WriteReviewButton>후기 작성하기</WriteReviewButton>
+        {post.isPermitted && (
+          <WriteReviewButton>후기 작성하기</WriteReviewButton>
+        )}
       </Separator>
 
       <DonorWrapper>
@@ -66,7 +68,11 @@ const DonorBox = ({ post }) => {
           {donorList.map((donor, idx) => {
             return (
               <>
-                <DonorCard key={idx} donor={donor}></DonorCard>
+                <DonorCard
+                  key={idx}
+                  donor={donor}
+                  isPermitted={post.isPermitted}
+                ></DonorCard>
                 {(idx + 1) % 6 !== 0 ? <DonateSep /> : null}
               </>
             );

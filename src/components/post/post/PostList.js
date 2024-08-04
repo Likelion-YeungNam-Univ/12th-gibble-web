@@ -35,7 +35,7 @@ const PostList = () => {
       }
     };
     fetch();
-  }, [nowPage, setNowPage]);
+  }, [nowPage, setNowPage, navigate, searchParams]);
 
   return (
     <>

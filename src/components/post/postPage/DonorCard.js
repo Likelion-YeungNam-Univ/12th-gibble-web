@@ -2,14 +2,14 @@ import React from "react";
 import styled from "styled-components";
 import { ReactComponent as Heart } from "@/assets/svg/heart.svg";
 
-const DonorCard = ({ donor }) => {
+const DonorCard = ({ donor, isPermitted }) => {
   return (
     <Wrapper>
       <Heart />
       <DonorInfo>
         <Donor>{donor.nickname}</Donor>
         <DonatedCount>{donor.donateCount}개 기부 완료</DonatedCount>
-        <Report>신고하기</Report>
+        {isPermitted && <Report>신고하기</Report>}
       </DonorInfo>
     </Wrapper>
   );
