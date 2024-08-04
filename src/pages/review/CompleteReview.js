@@ -1,16 +1,22 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 import Notice from "@/components/review/Notice";
 import Title from "@/components/review/Title";
 import Content from "@/components/review/Content";
+import { useSearchParams } from "react-router-dom";
 
 const CompleteReview = () => {
+  const [searchParams] = useSearchParams();
+  const reviewId = searchParams.get('review')
+
+
+
   return (
     <Wrapper>
       <Notice />
       <Container>
         <Title />
-        <Content />
+        <Content review={reviewId} />
       </Container>
     </Wrapper>
   );

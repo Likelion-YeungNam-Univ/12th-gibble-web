@@ -91,7 +91,7 @@ const ReviewForm = () => {
             postId // 수정 필요
           });
 
-          navigate("/review/new/uploaded");
+        navigate(`/review/new/uploaded?review=${result.reviewId}`);
         } catch (error) {
           console.error("file upload to firebase error", error);
         }
