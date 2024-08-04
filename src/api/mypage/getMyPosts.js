@@ -1,9 +1,9 @@
 import { getAuthAxios } from "../authAxios";
 
-const getMyPosts = () => {
+const getMyPosts = async () => {
   try {
     const authAxios = getAuthAxios();
-    const response = authAxios.get("/user/posts");
+    const response = await authAxios.get("/user/posts");
     console.log("response", response);
 
     if (response.status === 200) {
