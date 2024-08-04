@@ -15,6 +15,7 @@ const PostList = () => {
   const [postList, setPostList] = useState([]);
   const [nowPage, setNowPage] = useState(0);
   const [totalPages, setTotalPages] = useState(0);
+  const [totalElements, setTotalElements] = useState(0);
 
   useEffect(() => {
     const fetch = async () => {
@@ -27,6 +28,7 @@ const PostList = () => {
         console.log(result);
         setPostList(result.data.content);
         setTotalPages(result.totalPages);
+        setTotalElements(result.totalElements);
       } catch (error) {
         console.log("error", error);
         navigate("/error");
@@ -39,7 +41,9 @@ const PostList = () => {
     <>
       <NoticeCard />
       {postList.map((el, index) => {
-        return <PostCard post={el} index={10 * nowPage + index + 1} />;
+        return (
+          <PostCard post={el} index={totalElements - 10 * nowPage - index} />
+        );
       })}
       <ButtonContainer>
         <PageController
@@ -61,7 +65,7 @@ const ButtonContainer = styled.div`
   justify-content: center;
   align-items: center;
   box-sizing: border-box;
-  padding: 20px 0;
+  padding: 10px 0;
   position: relative;
 `;
 

@@ -10,7 +10,7 @@ const NoticeCard = () => {
 
   return (
     <Wrapper>
-      <PostContent width={"5%"}>0</PostContent>
+      <PostContent width={"5%"}>-</PostContent>
       <PostContent
         width={"55%"}
         align={"start"}
