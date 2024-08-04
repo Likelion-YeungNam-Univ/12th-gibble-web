@@ -241,12 +241,12 @@ const ReviewForm = () => {
         type="submit"
         $customStyles={{
           width: "100%",
-          background: "var(--main-color)",
-          color: "#f4f4f4",
+          background: "#F4F4F4;",
+          color: "#767676",
           marginTop: "108px",
           transition: "0.2s",
           "&:hover": {
-            background: "var(--gray-color)",
+            background: "var(--main-color)",
             color: "#fff",
           },
         }}
