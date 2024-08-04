@@ -14,7 +14,7 @@ const Content = ({ post }) => {
     try {
       const result = await deletePost(postId);
 
-      if (result.statusCode === 2000) {
+      if (result.statusCode === 200) {
         navigate("/post/");
         alert("정상적으로 삭제되었습니다.");
       }
