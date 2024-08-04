@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import PageController from "./PageController";
 import { ReactComponent as WriteButton } from "@/assets/svg/post-write-button.svg";
+import NoticeCard from "./NoticeCard";
 
 const PostList = () => {
   const [searchParams] = useSearchParams();
@@ -36,6 +37,7 @@ const PostList = () => {
 
   return (
     <>
+      <NoticeCard />
       {postList.map((el, index) => {
         return <PostCard post={el} index={10 * nowPage + index + 1} />;
       })}

@@ -18,6 +18,7 @@ import Mypage from "./pages/mypage/Mypage";
 import CompleteReview from "./pages/review/CompleteReview";
 import EventPage from "./pages/event/EventPage";
 import ProtectedRoute from "./ProtectedRoute";
+import NoticePage from "./pages/post/NoticePage";
 
 function App() {
   return (
@@ -30,24 +31,102 @@ function App() {
             <Route path="login" element={<Login />} />
             <Route path="kakaologin" element={<Redirection />} />
             <Route path="event">
-              <Route path="" element={<ProtectedRoute><EventList /></ProtectedRoute>} />
-              <Route path=":eventId" element={<ProtectedRoute><EventPage /></ProtectedRoute>} />
+              <Route
+                path=""
+                element={
+                  <ProtectedRoute>
+                    <EventList />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path=":eventId"
+                element={
+                  <ProtectedRoute>
+                    <EventPage />
+                  </ProtectedRoute>
+                }
+              />
             </Route>
 
             <Route path="signup" element={<SignUp />} />
             <Route path="post">
-              <Route path="" element={<ProtectedRoute><Post /></ProtectedRoute>} />
-              <Route path="new" element={<ProtectedRoute><NewPost /></ProtectedRoute>} />
-              <Route path="newpostcomplete" element={<ProtectedRoute><NewPostComplete /></ProtectedRoute>} />
-              <Route path=":postId" element={<ProtectedRoute><PostPage /></ProtectedRoute>} />
+              <Route
+                path=""
+                element={
+                  <ProtectedRoute>
+                    <Post />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="new"
+                element={
+                  <ProtectedRoute>
+                    <NewPost />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="newpostcomplete"
+                element={
+                  <ProtectedRoute>
+                    <NewPostComplete />
+                  </ProtectedRoute>
+                }
+              />
+              <Route path="notice" element={<NoticePage />} />
+              <Route
+                path=":postId"
+                element={
+                  <ProtectedRoute>
+                    <PostPage />
+                  </ProtectedRoute>
+                }
+              />
             </Route>
             <Route path="review">
-              <Route path="" element={<ProtectedRoute><Review /></ProtectedRoute>} />
-              <Route path=":reviewId" element={<ProtectedRoute><ReviewPage /></ProtectedRoute>} />
-              <Route path="new" element={<ProtectedRoute><NewReview /></ProtectedRoute>} />
-              <Route path="new/uploaded" element={<ProtectedRoute><CompleteReview /></ProtectedRoute>}/>
+              <Route
+                path=""
+                element={
+                  <ProtectedRoute>
+                    <Review />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path=":reviewId"
+                element={
+                  <ProtectedRoute>
+                    <ReviewPage />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="new"
+                element={
+                  <ProtectedRoute>
+                    <NewReview />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="new/uploaded"
+                element={
+                  <ProtectedRoute>
+                    <CompleteReview />
+                  </ProtectedRoute>
+                }
+              />
             </Route>
-            <Route path="mypage" element={<ProtectedRoute><Mypage /></ProtectedRoute>}/>
+            <Route
+              path="mypage"
+              element={
+                <ProtectedRoute>
+                  <Mypage />
+                </ProtectedRoute>
+              }
+            />
             <Route path="*" element={<Error />} />
           </Route>
         </Routes>
