@@ -7,9 +7,17 @@ const DonorCard = ({ donor, isPermitted }) => {
     <Wrapper>
       <Heart />
       <DonorInfo>
-        <Donor>{donor.nickname}</Donor>
+        <Donor>{isPermitted ? donor.name : donor.nickname}</Donor>
         <DonatedCount>{donor.donateCount}개 기부 완료</DonatedCount>
-        {isPermitted && <Report>신고하기</Report>}
+        {isPermitted && (
+          <Report
+            onClick={() => {
+              alert("신고가 완료되었습니다.");
+            }}
+          >
+            신고하기
+          </Report>
+        )}
       </DonorInfo>
     </Wrapper>
   );
@@ -55,6 +63,7 @@ const Report = styled.div`
   line-height: 24px; /* 171.429% */
   letter-spacing: -0.35px;
   text-decoration-line: underline;
+  cursor: pointer;
 `;
 
 export default DonorCard;

@@ -1,14 +1,15 @@
 import { getAuthAxios } from "../authAxios";
 
-const setFinish = async (postId, isPermitted) => {
+const setFinish = async (postId, isDonationPermitted) => {
   try {
+    console.log("postId", postId, "isDonationPermitted", isDonationPermitted);
     const authAxios = getAuthAxios();
 
     const response = await authAxios.put(
       `/post/${postId}/donation-permitted`,
       null,
       {
-        params: { permitted: isPermitted },
+        params: { permitted: isDonationPermitted },
       }
     );
 

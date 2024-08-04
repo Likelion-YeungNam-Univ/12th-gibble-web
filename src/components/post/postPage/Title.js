@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import DonationBar from "./DonationBar";
 import Button from "@/components/common/Button";
@@ -6,11 +6,24 @@ import setFinish from "@/api/post/setFinish";
 
 const Title = ({ post }) => {
   const [donate, setDonate] = useState();
+
+  useEffect(() => {
+    setDonate(post.isDonationPermitted);
+  }, []);
+
   const finishHandler = async () => {
     console.log("postId", post.postId, "donate", donate);
-    setDonate(post.isDonationPermitted);
-    const result = await setFinish(post.postId, !donate);
+    console.log("!!!!!!", !post.isDonationPermitted);
 
+    const result = await setFinish(post.postId, !post.isDonationPermitted);
+    if (donate) {
+      alert("기부가 다시 시작되었습니다!");
+    } else {
+      alert("기부가 종료되었습니다.");
+    }
+
+    setDonate(!post.isDonationPermitted);
+    window.location.reload();
     console.log(result);
   };
   return (
@@ -39,17 +52,24 @@ const Title = ({ post }) => {
                 wanted={post.wantedCard}
                 donated={post.donatedCard}
               />
-              <Button
-                onClick={finishHandler}
-                $customStyles={{
-                  padding: "8px 24px",
-                  height: "30px",
-                  minWidth: "10px",
-                  marginLeft: "8px",
-                }}
-              >
-                종료
-              </Button>
+              {post.isPermitted && (
+                <Button
+                  onClick={finishHandler}
+                  $customStyles={{
+                    padding: "8px 24px",
+                    height: "30px",
+                    minWidth: "10px",
+                    marginLeft: "8px",
+                  }}
+                  style={{
+                    background: post.isDonationPermitted
+                      ? "#767676"
+                      : undefined,
+                  }}
+                >
+                  종료
+                </Button>
+              )}
             </Donation>
           </>
         )}

@@ -12,7 +12,7 @@ import donatePost from "@/api/post/donatePost";
 
 const DonorBox = ({ post }) => {
   const { postId } = useParams();
-  const [donorList, setDonorList] = useState([]);
+
   const [isLoading, setIsLoading] = useState(true);
   const navigate = useNavigate();
 
@@ -30,7 +30,6 @@ const DonorBox = ({ post }) => {
       try {
         const result = await getDonators(postId);
         console.log("after getDonators", result.data);
-        setDonorList(result.data);
         setIsLoading(false);
       } catch (error) {
         navigate("/error");
@@ -38,7 +37,7 @@ const DonorBox = ({ post }) => {
     };
 
     fetchDonor();
-  }, [setDonorList, navigate, postId]);
+  }, [navigate, postId]);
 
   if (isLoading) return <Loading />;
 
@@ -65,7 +64,7 @@ const DonorBox = ({ post }) => {
                     일떄만 카드 옆에 구분선 표시되도록 하면 됩니다~
                 */}
 
-          {donorList.map((donor, idx) => {
+          {post.donationInfo.map((donor, idx) => {
             return (
               <>
                 <DonorCard
@@ -78,36 +77,39 @@ const DonorBox = ({ post }) => {
             );
           })}
         </DonorContainer>
-        <InputWrapper>
-          <InputContainer
-            onSubmit={handleSubmit((data) => {
-              const donate = async () => {
-                const result = await donatePost({
-                  postId,
-                  donateCount: parseInt(data.donateCount),
-                });
-                if (result.statusCode === 200) {
-                  window.location.reload();
-                }
-                if (result.statusCode === 400) {
-                  alert(result.message);
-                }
-              };
-              donate();
-            })}
-          >
-            <Input
-              $customStyles={InputCustomStyle}
-              {...register("donateCount", {
-                required: "기부할 개수를 입력해주세요",
+        {!post.isDonationPermitted && (
+          <InputWrapper>
+            <InputContainer
+              onSubmit={handleSubmit((data) => {
+                const donate = async () => {
+                  const result = await donatePost({
+                    postId,
+                    donateCount: parseInt(data.donateCount),
+                  });
+                  if (result.statusCode === 200) {
+                    window.location.reload();
+                  }
+                  if (result.statusCode === 400) {
+                    alert(result.message);
+                  }
+                };
               })}
-              style={
-                errors.donateCount && { border: "1px solid var(--main-color)" }
-              }
-            />
-            <Button $customStyles={ButtonCustomStyles}>등록하기</Button>
-          </InputContainer>
-        </InputWrapper>
+            >
+              <Input
+                $customStyles={InputCustomStyle}
+                {...register("donateCount", {
+                  required: "기부할 개수를 입력해주세요",
+                })}
+                style={
+                  errors.donateCount && {
+                    border: "1px solid var(--main-color)",
+                  }
+                }
+              />
+              <Button $customStyles={ButtonCustomStyles}>등록하기</Button>
+            </InputContainer>
+          </InputWrapper>
+        )}
       </DonorWrapper>
     </Wrapper>
   );
