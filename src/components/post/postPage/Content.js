@@ -19,7 +19,8 @@ const Content = ({ content, wanted, address }) => {
             fontWeight: "500",
             lineHeight: "26px" /* 144.444% */,
             letterSpacing: "0.45px",
-            cursor: "default"
+            cursor: "default",
+            marginRight : "16px"
           }}
         >
           필요 헌혈증 개수 : {wanted}
@@ -51,6 +52,7 @@ export default Content;
 
 const Wrapper = styled.div`
   border-bottom: 2px solid #dbdbdb;
+  margin-bottom : 68px;
 `;
 
 const Container = styled.div`
