@@ -48,8 +48,12 @@ const PostForm = () => {
       onSubmit={handleSubmit((data) => {
         console.log("data", data);
         alert(JSON.stringify(data));
-        uploadPost(data);
-        navigate("/post/newpostcomplete");
+        const fetch = async () => {
+          const result = await uploadPost(data);
+          console.log("업로드 결과", result.data.postId);
+          navigate(`/post/newpostcomplete?postId=${result.data.postId}`);
+        };
+        fetch();
       })}
     >
       <FormWrapper>

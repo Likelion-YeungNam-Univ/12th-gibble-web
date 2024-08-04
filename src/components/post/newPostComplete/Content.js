@@ -1,9 +1,10 @@
 import React from "react";
 import styled from "styled-components";
 import { ReactComponent as Check } from "@/assets/svg/circle-check-solid.svg";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 
 const Content = () => {
+  const [searchParams] = useSearchParams();
   const navigate = useNavigate();
   return (
     <Wrapper>
@@ -16,7 +17,9 @@ const Content = () => {
         <CommunityButton onClick={() => navigate("/post")}>
           커뮤니티 가기
         </CommunityButton>
-        <PostButton onClick={() => console.log("clicked")}>
+        <PostButton
+          onClick={() => navigate(`/post/${searchParams.get("postId")}`)}
+        >
           작성글 보러가기
         </PostButton>
       </ButtonsWrapper>
