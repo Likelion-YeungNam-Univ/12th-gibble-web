@@ -41,6 +41,7 @@ const EventList = () => {
       <Container>
         <Separator />
         <EventNavbar region={region} setRegion={setRegion} />
+        {totalPages === 0 && <Error>진행 중인 이벤트가 없습니다.</Error>}
         <Content>
           {eventList.map((el) => {
             return <EventCard event={el} />;
@@ -79,6 +80,17 @@ const Content = styled.div`
   box-sizing: border-box;
   padding: auto;
   padding-bottom: 80px;
+`;
+
+const Error = styled.div`
+  width: 100%;
+  text-align: center;
+  font-size: 26px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: var(--24, 34px); /* 130.769% */
+  letter-spacing: -0.65px;
+  margin-top: 100px;
 `;
 
 export default EventList;
