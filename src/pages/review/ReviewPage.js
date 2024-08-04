@@ -1,12 +1,12 @@
 import deleteReview from "@/api/review/deleteReview";
 import getReview from "@/api/review/getReview";
-import Button from "@/components/common/Button";
 import ReviewInfo from "@/components/review/reviewPage/ReviewInfo";
 import Loading from "@/layouts/Loading";
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import styled from "styled-components";
 import { ReactComponent as DeleteIcon } from "@/assets/svg/delete.svg";
+import GoToMyPost from "@/components/review/reviewPage/GoToMyPost";
 
 const ReviewPage = () => {
   const { reviewId } = useParams();
@@ -61,6 +61,9 @@ const ReviewPage = () => {
         }}
       />
       <Description>
+        <GoToMyPostContainer>
+          <GoToMyPost name={review.nickname} post={review.postId} title={review.title}/>
+        </GoToMyPostContainer>
         {review.content}
 
         <Image src={review.imageUrl}></Image>
@@ -145,5 +148,10 @@ const Image = styled.img`
   scale: 0.8;
   margin-bottom: 110px;
 `;
+
+const GoToMyPostContainer = styled.div`
+  display : flex;
+  justify-content : end;
+`
 
 export default ReviewPage;

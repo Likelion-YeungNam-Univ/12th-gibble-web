@@ -6,13 +6,11 @@ const newReview = async (formData) => {
         const authAxios = getAuthAxios();
         const response = await authAxios.post('/review/upload', formData,)
 
-        if(response.status === 200){
-            console.log(response);
+        
             return {
                 statusCode : response.status,
-                data : response.data
+                reviewId : response.data.reviewId
             }
-        }
 
     } catch(error) {
         return {

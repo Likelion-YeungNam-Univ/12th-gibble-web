@@ -4,7 +4,7 @@ import styled from "styled-components";
 import { ReactComponent as Check } from "@/assets/svg/circle-check-solid.svg";
 import { useNavigate } from "react-router-dom";
 
-const Content = () => {
+const Content = ({review}) => {
 
   const navigate = useNavigate();
   return (
@@ -23,9 +23,9 @@ const Content = () => {
         <Button
           onClick={() => navigate('/review')}
           customStyles={ComunityBtnStyle}
-        >커뮤니티 가기</Button>
+        >투명후기 가기</Button>
         <Button
-          onClick={() => navigate('/review')}
+          onClick={() => navigate(`/review/${review}`)}
           customStyles={PostBtnStyle}
         > 
         작성글 보러가기</Button>
