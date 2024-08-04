@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 import { useForm } from "react-hook-form";
 import InputLabel from "@/components/common/InputLabel";
@@ -18,7 +18,12 @@ import decodeToken from "@/utils/decodeToken";
 import getUesrInfo from "@/api/post/getUesrInfo";
 
 const ReviewForm = () => {
-  const { register, handleSubmit, watch, formState: { errors } } = useForm({
+  const {
+    register,
+    handleSubmit,
+    watch,
+    formState: { errors },
+  } = useForm({
     mode: "onSubmit",
   });
 
@@ -63,11 +68,9 @@ const ReviewForm = () => {
     setSelectedPostTitle(title);
   };
 
-
   return (
     <Wrapper
       onSubmit={handleSubmit(async (data) => {
-
         if (!img) return;
 
         const imageId = uuid();
@@ -96,7 +99,11 @@ const ReviewForm = () => {
       <FormWrapper>
         <TextCount>{title.length}/30</TextCount>
         <InputWrapper>
-          <InputLabel text={"제목"} isEssential={true} condition={"(30자 이하)"} />
+          <InputLabel
+            text={"제목"}
+            isEssential={true}
+            condition={"(30자 이하)"}
+          />
           <Input
             type="text"
             placeholder="제목을 입력해 주세요."
@@ -115,7 +122,11 @@ const ReviewForm = () => {
 
         <TextCount>{content.length}/500</TextCount>
         <InputWrapper>
-          <InputLabel text={"내용"} isEssential={true} condition={"(500자 이하)"} />
+          <InputLabel
+            text={"내용"}
+            isEssential={true}
+            condition={"(500자 이하)"}
+          />
           <TextArea
             placeholder="어떠한 좋은 기적이 일어났는지 적어주세요"
             style={errors.content && { border: "1px solid var(--main-color)" }}
@@ -126,7 +137,9 @@ const ReviewForm = () => {
             })}
           />
         </InputWrapper>
-        {content.length > 500 ? <Error text={"500자 이하로 작성해주세요"} /> : null}
+        {content.length > 500 ? (
+          <Error text={"500자 이하로 작성해주세요"} />
+        ) : null}
         {errors.content && <Error text={errors.content.message} />}
         <ContentNotice />
 
@@ -139,15 +152,18 @@ const ReviewForm = () => {
               type="text"
               placeholder="어떤 게시글의 후기글인지 게시글을 선택해 주세요"
               style={errors.link && { border: "1px solid var(--main-color)" }}
-              $customStyles={{ width: "400px", height: "52px", padding: "0 24px", display: "flex", flexShrink: "0" }}
+              $customStyles={{
+                width: "400px",
+                height: "52px",
+                padding: "0 24px",
+                display: "flex",
+                flexShrink: "0",
+              }}
               value={selectedPostTitle}
             />
             <Button
               type="button"
               onClick={openModal}
-              onClick={(e) => {
-                console.log("clicked");
-              }}
               $customStyles={{
                 width: "150px",
                 background: "var(--main-color)",
@@ -164,8 +180,6 @@ const ReviewForm = () => {
             </Button>
           </TmpContainer>
         </InputWrapper>
-        
-
 
         <InputWrapper style={{ marginTop: "32px" }}>
           <InputLabel text={"인증사진 첨부"} />
@@ -182,7 +196,6 @@ const ReviewForm = () => {
               type="text"
               placeholder="이미지를 첨부해 주세요."
               style={errors.image && { border: "1px solid var(--main-color)" }}
-
               $customStyles={{
                 width: "400px",
                 height: "52px",
@@ -232,9 +245,13 @@ const ReviewForm = () => {
         작성하기
       </Button>
 
-      <Modal isOpen={isModalOpen} onClose={closeModal} onPostSelect={handlePostSelect}>
+      <Modal
+        isOpen={isModalOpen}
+        onClose={closeModal}
+        onPostSelect={handlePostSelect}
+      >
         <Button onClick={closeModal}>확인</Button>
-      </Modal>   
+      </Modal>
     </Wrapper>
   );
 };
