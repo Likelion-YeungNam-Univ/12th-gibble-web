@@ -20,7 +20,7 @@ const Title = ({ post }) => {
           <InfoLabel>작성일</InfoLabel>
           <InfoDesc>{post.createdAt.slice(0, 10)}</InfoDesc>
         </InfoConatiner>
-        {post.donatedCard && post.wantedCard && (
+        {post.donatedCard !== undefined && post.wantedCard !== undefined && (
           <>
             <Donation>
               <InfoLabel>기부 현황</InfoLabel>

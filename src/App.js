@@ -19,6 +19,7 @@ import CompleteReview from "./pages/review/CompleteReview";
 import EventPage from "./pages/event/EventPage";
 import ProtectedRoute from "./ProtectedRoute";
 import NoticePage from "./pages/post/NoticePage";
+import ModifyPost from "./pages/post/ModifyPost";
 
 function App() {
   return (
@@ -84,6 +85,9 @@ function App() {
                   </ProtectedRoute>
                 }
               />
+              <Route path="modify">
+                <Route path=":postId" element={<ModifyPost />} />
+              </Route>
             </Route>
             <Route path="review">
               <Route

@@ -23,13 +23,15 @@ const Content = ({ post }) => {
     }
   };
 
-  const modifyHandler = async () => {};
+  const modifyHandler = () => {
+    navigate(`/post/modify/${postId}`);
+  };
 
   return (
     <Wrapper>
       <Container>
         <Description>{post.content}</Description>
-        {post.wantedCard && post.donatedCard && (
+        {post.wantedCard !== undefined && post.donatedCard !== undefined && (
           <>
             <Button
               $customStyles={{
@@ -76,10 +78,10 @@ const Content = ({ post }) => {
               <TrashIcon />
             </DeleteBtn>
             ㅣ
-            <ModifyBtn>
+            <ModifyBtn onClick={modifyHandler}>
               <PostBtn>글 수정</PostBtn>
+              <PenIcon />
             </ModifyBtn>
-            <PenIcon />
           </PostBtnContainer>
         )}
       </Container>
