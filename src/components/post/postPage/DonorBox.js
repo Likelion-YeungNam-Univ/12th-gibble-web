@@ -65,7 +65,7 @@ const DonorBox = () => {
             return (
               <>
                 <DonorCard key={idx} donor={donor}></DonorCard>
-                {(idx + 1) % 7 !== 0 ? <DonateSep /> : null}
+                {(idx + 1) % 6 !== 0 ? <DonateSep /> : null}
               </>
             );
           })}
@@ -169,6 +169,7 @@ const DonorContainer = styled.div`
   margin-bottom: 40px;
   display: flex;
   gap: 24px;
+  flex-wrap: wrap;
 `;
 
 const InputWrapper = styled.div`

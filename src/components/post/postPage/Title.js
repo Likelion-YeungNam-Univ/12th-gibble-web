@@ -11,16 +11,27 @@ const Title = ({ post }) => {
         <InfoConatiner>
           <InfoLabel>작성자</InfoLabel>
           <InfoDesc>{post.writer}</InfoDesc>
-          <InfoLabel>이메일</InfoLabel>
-          <InfoDesc>{post.email}</InfoDesc>
+          {post.email && (
+            <>
+              <InfoLabel>이메일</InfoLabel>
+              <InfoDesc>{post.email}</InfoDesc>
+            </>
+          )}
           <InfoLabel>작성일</InfoLabel>
           <InfoDesc>{post.createdAt.slice(0, 10)}</InfoDesc>
         </InfoConatiner>
-        <Donation>
-          <InfoLabel>기부 현황</InfoLabel>
-          <InfoDesc>{`${post.donatedCard} / ${post.wantedCard}`}</InfoDesc>
-          <DonationBar wanted={post.wantedCard} donated={post.donatedCard} />
-        </Donation>
+        {post.donatedCard && post.wantedCard && (
+          <>
+            <Donation>
+              <InfoLabel>기부 현황</InfoLabel>
+              <InfoDesc>{`${post.donatedCard} / ${post.wantedCard}`}</InfoDesc>
+              <DonationBar
+                wanted={post.wantedCard}
+                donated={post.donatedCard}
+              />
+            </Donation>
+          </>
+        )}
       </PostInfo>
     </Wrapper>
   );

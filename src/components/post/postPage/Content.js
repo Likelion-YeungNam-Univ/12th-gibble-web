@@ -19,42 +19,46 @@ const Content = ({ post }) => {
     <Wrapper>
       <Container>
         <Description>{post.content}</Description>
-        <Button
-          $customStyles={{
-            padding: "14px 24px",
-            borderRadius: "6px;",
-            border: "1px solid var(--main-color)",
-            background: "white",
-            color: "var(--main-color)",
-            fontSize: "18px",
-            fontStyle: "normal",
-            fontWeight: "500",
-            lineHeight: "26px" /* 144.444% */,
-            letterSpacing: "0.45px",
-            cursor: "default",
-            marginRight: "16px",
-          }}
-        >
-          필요 헌혈증 개수 : {post.wantedCard}
-        </Button>
-        <Button
-          $customStyles={{
-            padding: "14px 24px",
-            borderRadius: "6px;",
-            border: "1px solid var(--main-color)",
-            background: "white",
-            color: "var(--main-color)",
-            fontSize: "18px",
-            fontStyle: "normal",
-            fontWeight: "500",
-            lineHeight: "26px" /* 144.444% */,
-            letterSpacing: "0.45px",
-            marginRight: "17px",
-            cursor: "default",
-          }}
-        >
-          수령 주소 : {post.address}
-        </Button>
+        {post.wantedCard && post.donatedCard && (
+          <>
+            <Button
+              $customStyles={{
+                padding: "14px 24px",
+                borderRadius: "6px;",
+                border: "1px solid var(--main-color)",
+                background: "white",
+                color: "var(--main-color)",
+                fontSize: "18px",
+                fontStyle: "normal",
+                fontWeight: "500",
+                lineHeight: "26px" /* 144.444% */,
+                letterSpacing: "0.45px",
+                cursor: "default",
+                marginRight: "16px",
+              }}
+            >
+              필요 헌혈증 개수 : {post.wantedCard}
+            </Button>
+            <Button
+              $customStyles={{
+                padding: "14px 24px",
+                borderRadius: "6px;",
+                border: "1px solid var(--main-color)",
+                background: "white",
+                color: "var(--main-color)",
+                fontSize: "18px",
+                fontStyle: "normal",
+                fontWeight: "500",
+                lineHeight: "26px" /* 144.444% */,
+                letterSpacing: "0.45px",
+                marginRight: "17px",
+                cursor: "default",
+              }}
+            >
+              수령 주소 : {post.address}
+            </Button>
+          </>
+        )}
         {post.isPermitted && (
           <PostBtnContainer>
             <DeleteBtn onClick={deleteHandler}>
