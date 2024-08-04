@@ -1,8 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import DonationBar from "./DonationBar";
+import Button from "@/components/common/Button";
+import setFinish from "@/api/post/setFinish";
 
 const Title = ({ post }) => {
+  const [donate, setDonate] = useState();
+  const finishHandler = async () => {
+    console.log("postId", post.postId, "donate", donate);
+    setDonate(post.isDonationPermitted);
+    const result = await setFinish(post.postId, !donate);
+
+    console.log(result);
+  };
   return (
     <Wrapper>
       <PageTitle>헌혈증 기부</PageTitle>
@@ -29,6 +39,17 @@ const Title = ({ post }) => {
                 wanted={post.wantedCard}
                 donated={post.donatedCard}
               />
+              <Button
+                onClick={finishHandler}
+                $customStyles={{
+                  padding: "8px 24px",
+                  height: "30px",
+                  minWidth: "10px",
+                  marginLeft: "8px",
+                }}
+              >
+                종료
+              </Button>
             </Donation>
           </>
         )}
@@ -71,6 +92,7 @@ const PostInfo = styled.div`
   border-bottom: 2px solid #dbdbdb;
   display: flex;
   justify-content: space-between;
+  align-items: center;
 `;
 
 const InfoConatiner = styled.div`
@@ -98,4 +120,5 @@ const InfoDesc = styled.div`
 
 const Donation = styled.div`
   display: flex;
+  align-items: center;
 `;
