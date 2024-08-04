@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom'
 const GoToMyPost = ({name, post, title}) => {
     const navigate = useNavigate();
   return (
-    <Wrapper onClick={() => navigate(`post/${post}`)}>
+    <Wrapper onClick={() => navigate(`/post/${post}`)}>
         <Left>
             <Text style={{color:"#111"}}>{name}님 게시글 보러가기</Text>
             <Text>{title}</Text>
@@ -26,6 +26,7 @@ const Wrapper = styled.div`
     align-items : center;
     cursor: pointer;
     transition : 0.3s;
+    border-radius : 6px;
 
     &:hover{
         box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
