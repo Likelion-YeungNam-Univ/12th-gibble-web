@@ -20,9 +20,10 @@ const Separator = ({ title, setSearchPost }) => {
         onSubmit={handleSubmit((data) => {
           const search = async () => {
             const result = await searchPost(data.key);
+            console.log("result", result);
             if (result.statusCode === 200) {
-              console.log("검색 실행", result.dtaa.content);
-              setSearchPost(result.dtaa.content);
+              console.log("검색 실행", result.data.content);
+              setSearchPost(result.data.content);
             } else {
               alert(result.message);
             }

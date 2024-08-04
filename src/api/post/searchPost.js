@@ -10,7 +10,7 @@ const searchPost = async (search) => {
     console.log("response", response);
     return {
       statusCode: response.status,
-      dtaa: response.data,
+      data: response.data,
     };
   } catch (error) {
     return {
