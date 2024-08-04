@@ -23,7 +23,6 @@ const PostPage = () => {
         console.log(postId);
         console.log(result.data);
         setPost(result.data);
-
       } catch (error) {
         console.log("error", error);
         navigate("/error");
@@ -42,20 +41,9 @@ const PostPage = () => {
     <Wrapper>
       <Notice />
       <Container>
-        <Title
-          title={post.title}
-          name={post.name}
-          email={post.email}
-          date={post.createdAt.slice(0, 10)}
-          wantedCard={post.wantedCard}
-          donatedCard={post.donatedCard}
-        />
-        <Content
-          content={post.content}
-          wanted={post.wantedCard}
-          address={post.address}
-        />
-        <DonorBox/>
+        <Title post={post} />
+        <Content post={post} />
+        <DonorBox />
       </Container>
     </Wrapper>
   );
