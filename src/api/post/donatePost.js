@@ -1,17 +1,11 @@
 import { getAuthAxios } from "../authAxios";
 
-const donatePost = async ({ postId, data }) => {
+const donatePost = async ({ postId, donateCount }) => {
   try {
     const authAxios = getAuthAxios();
-    console.log('postId',postId);
-    console.log('data',parseInt(data));
-    const count = parseInt(data);
-    console.log(count);
     const response = await authAxios.post(`post/${postId}/donate`, {
-      donateCount : count
+      donateCount
     });
-
-    console.log("response", response);
 
     if (response.status === 200) {
       return {
