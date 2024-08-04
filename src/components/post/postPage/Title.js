@@ -2,24 +2,24 @@ import React from "react";
 import styled from "styled-components";
 import DonationBar from "./DonationBar";
 
-const Title = ({ title, writer, email, date, wantedCard, donatedCard }) => {
+const Title = ({ post }) => {
   return (
     <Wrapper>
       <PageTitle>헌혈증 기부</PageTitle>
-      <PostTitle>{title}</PostTitle>
+      <PostTitle>{post.title}</PostTitle>
       <PostInfo>
         <InfoConatiner>
           <InfoLabel>작성자</InfoLabel>
-          <InfoDesc>{writer}</InfoDesc>
+          <InfoDesc>{post.writer}</InfoDesc>
           <InfoLabel>이메일</InfoLabel>
-          <InfoDesc>{email}</InfoDesc>
+          <InfoDesc>{post.email}</InfoDesc>
           <InfoLabel>작성일</InfoLabel>
-          <InfoDesc>{date}</InfoDesc>
+          <InfoDesc>{post.createdAt.slice(0, 10)}</InfoDesc>
         </InfoConatiner>
         <Donation>
           <InfoLabel>기부 현황</InfoLabel>
-          <InfoDesc>{`${donatedCard} / ${wantedCard}`}</InfoDesc>
-          <DonationBar wanted={wantedCard} donated={donatedCard} />
+          <InfoDesc>{`${post.donatedCard} / ${post.wantedCard}`}</InfoDesc>
+          <DonationBar wanted={post.wantedCard} donated={post.donatedCard} />
         </Donation>
       </PostInfo>
     </Wrapper>

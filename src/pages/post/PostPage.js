@@ -41,14 +41,7 @@ const PostPage = () => {
     <Wrapper>
       <Notice />
       <Container>
-        <Title
-          title={post.title}
-          writer={post.writer}
-          email={post.email}
-          date={post.createdAt.slice(0, 10)}
-          wantedCard={post.wantedCard}
-          donatedCard={post.donatedCard}
-        />
+        <Title post={post} />
         <Content post={post} />
         <DonorBox />
       </Container>
