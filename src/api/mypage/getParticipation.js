@@ -1,9 +1,9 @@
 import { getAuthAxios } from "../authAxios";
 
-const getParticipation = () => {
+const getParticipation = async () => {
   try {
     const authAxios = getAuthAxios();
-    const response = authAxios.get("/user/participation-event");
+    const response = await authAxios.get("/user/participation-event");
     console.log("response", response);
 
     if (response.status === 200) {
