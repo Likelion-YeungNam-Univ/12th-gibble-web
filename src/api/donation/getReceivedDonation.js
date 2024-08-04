@@ -4,12 +4,12 @@ const getReceivedDonation = async () => {
   try {
     const authAxios = getAuthAxios();
     const response = await authAxios.get("/donation/received-donation");
-    console.log("response", response);
+    console.log("기부자 명단 response", response);
 
     if (response.status === 200) {
       return {
         statusCode: response.status,
-        cata: response.data,
+        data: response.data,
       };
     }
   } catch (error) {

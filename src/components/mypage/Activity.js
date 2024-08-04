@@ -1,23 +1,30 @@
 import React from "react";
 import styled from "styled-components";
 
-
-const Actibity = () => {
+const Actibity = ({ myDonation, myPost }) => {
+  let count = 0;
+  myDonation.map((el) => (count += el.donateCount));
   return (
     <Wrapper>
       <List>활동 내역</List>
       <Boxs>
         <Box>
           <Text>기부횟수</Text>
-          <Number><span style={{ fontSize: "32px"}}>5</span>번</Number>
+          <Number>
+            <span style={{ fontSize: "32px" }}>{myDonation.length}</span>번
+          </Number>
         </Box>
         <Box>
           <Text>기부 헌혈증 개수</Text>
-          <Number><span style={{  fontSize:"32px" }}>75</span>번</Number>
+          <Number>
+            <span style={{ fontSize: "32px" }}>{count}</span>개
+          </Number>
         </Box>
         <Box>
           <Text>작성글 개수</Text>
-          <Number><span style={{  fontSize: "32px" }}>2</span>번</Number>
+          <Number>
+            <span style={{ fontSize: "32px" }}>{myPost.length}</span>개
+          </Number>
         </Box>
       </Boxs>
     </Wrapper>
@@ -49,18 +56,16 @@ const Boxs = styled.div`
   width: 845px;
   height: 135px;
   border-radius: 12px;
-  border: 2px #DBDBDB;
-  background: #FEF3F4;
+  border: 2px #dbdbdb;
+  background: #fef3f4;
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
-
-
 `;
 
 const Box = styled.div`
-  width :150px;
+  width: 150px;
   height: 100px;
   display: flex;
   flex-direction: column;
@@ -81,7 +86,7 @@ const Text = styled.div`
   letter-spacing: -0.55px;
 `;
 const Number = styled.div`
-  color: var(--main-color, #F42E3D);
+  color: var(--main-color, #f42e3d);
   font-family: Pretendard;
   font-size: 22px;
   font-style: normal;
@@ -90,6 +95,5 @@ const Number = styled.div`
   letter-spacing: -0.55px;
   margin-top: 5px;
 `;
-
 
 export default Actibity;

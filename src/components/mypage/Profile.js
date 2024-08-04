@@ -15,9 +15,9 @@ const Profile = ({ user }) => {
             </span>
             님
           </Nickname>
-          <Name>홍길동</Name>
+          <Name>{user.name}</Name>
           <Mail>{user.email}</Mail>
-          <Number>010-0000-0000</Number>
+          <Number>{user.phoneNumber}</Number>
         </Content>
         <LoginBox>
           <Kakao>

@@ -9,7 +9,7 @@ const ReviewCard = ({ review }) => {
       <ThumbNail src={review.imageUrl} />
       <Description>
         <Title>{review.title}</Title>
-        <Date>{review.createdAt}</Date>
+        <Date>{review.createdAt.slice(0, 10)}</Date>
       </Description>
     </Wrapper>
   );

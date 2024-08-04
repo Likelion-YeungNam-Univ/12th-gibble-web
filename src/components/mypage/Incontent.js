@@ -6,28 +6,25 @@ import Donation from "./Donation";
 import Delivery from "./Delivery";
 import Event from "./Event";
 
-const Incontent = () => {
+const Incontent = ({ events, myDonation, myPost, donators }) => {
   return (
     <Wrapper>
-        <Box>
-            <Actibity/>
-            <Donation/>
-            <Delivery/>
-            <Event/>
-        </Box>    
+      <Box>
+        <Actibity myDonation={myDonation} myPost={myPost} />
+        <Donation donators={donators} />
+        <Delivery myDonation={myDonation} />
+        <Event events={events} />
+      </Box>
     </Wrapper>
   );
 };
 
 export default Incontent;
 
-
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-
 `;
 
-const Box = styled.div`
-`;
+const Box = styled.div``;
