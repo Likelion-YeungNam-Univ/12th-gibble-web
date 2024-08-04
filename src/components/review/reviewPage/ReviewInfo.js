@@ -1,4 +1,3 @@
-import InformationForm from "@/components/signup/step02/InformationForm";
 import React from "react";
 import styled from "styled-components";
 

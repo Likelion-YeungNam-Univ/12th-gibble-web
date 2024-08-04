@@ -1,15 +1,37 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import Button from "@/components/common/Button";
+import getMyPosts from '@/api/mypage/getMyPosts';
+import { useNavigate } from 'react-router-dom';
 
-const Modal = ({ isOpen, onClose, onPostSelect, }) => {
+const Modal = ({ isOpen, onClose, onPostSelect, setPostId, setSelectedPostTitle }) => {
   const [selectedPost, setSelectedPost] = useState(null);
+  const [myPostList, setMyPostList] = useState([]);
+  const navigate = useNavigate();
+  
 
-  if (!isOpen) return null;
-
-  const handlePostClick = (postId) => {
-    setSelectedPost(prevSelected => prevSelected === postId ? null : postId);
+  const handlePostClick = (event) => {
+    console.log('event.postid',event.postId);
+    setPostId(event.postId);
+    setSelectedPostTitle(event.title);
+    setSelectedPost(event.postId);
   };
+
+  useEffect(() => {
+    const fetchPost = async () => {
+      try {
+        const result = await getMyPosts();
+        setMyPostList(result.data);
+        console.log('typeof', typeof(result.data[0].createdAt));
+
+      } catch(error){
+        navigate('/error');
+      }
+    }
+    fetchPost();
+  },[])
+
+  if (!isOpen) return null; // 에러 유의
 
   const handleConfirm = () => {
     if (selectedPost) {
@@ -24,15 +46,15 @@ const Modal = ({ isOpen, onClose, onPostSelect, }) => {
         <Title>내가 작성한 게시글</Title>
         <CloseButton onClick={onClose}>×</CloseButton>
         <PostList>
-          {posts.map((post) => (
+          {myPostList.map((post) => (
             <Post
               key={post.id}
               onClick={() => handlePostClick(post)}
-              isSelected={selectedPost && selectedPost.id === post.id}
+              isSelected={selectedPost === post.postId}
             >
               <PostTitle>{post.title}</PostTitle>
-              <PostContent>{post.content.substring(0, 100)}...</PostContent>
-              <PostDate>{post.date}</PostDate>
+              <PostContent>{post.content}</PostContent>  {/* 체크 */}
+              <PostDate>{post.createdAt.substring(0,10)}</PostDate>
             </Post>
           ))}
         </PostList>
@@ -79,7 +101,6 @@ const Title = styled.div`
   font-weight: 700;
   line-height: 30px;
   letter-spacing: -0.65px;
-
   margin-left: 40px;
 `;
 
@@ -139,50 +160,15 @@ const PostContent = styled.p`
   font-size: 14px;
   color: #666;
   margin-bottom: 10px;
+  overflow : hidden;
+  display : blox;
+  white-space : nowrap;
+  text-overflow : ellipsis;
 `;
 
 const PostDate = styled.span`
   font-size: 12px;
   color: #999;
 `;
-
-const posts = [
-  { 
-    id: 1, 
-    title: "희귀병 환자 김민수에게 헌혈증이 필요합니다. ", 
-    content:"안녕하세요. 저는 홍민수(35세, 남)의 가족입니다. 민수씨는 급성 림프구성 백혈병으로 현재 서울대학교병원에 입원 중입니다. 지속적인 수혈이 필요한 상황이지만, 헌혈증이 부족하여 치료에 어려움을 겪고 있습니다.  현재 민수씨는 항암치료 중이며, 치료에 헌혈증이 절실히 필요합니다. 헌혈증을 기부하시려면, 상단의 메일로 연락 주시고 서울대학교병원 헌혈증 기부 센터로 보내주시면 감사하겠습니다. 여러분의 작은 나눔이 민수씨에게 큰 희망이 됩니다. 진심으로 감사드립니다.  " ,
-    date: "2024-07-21"
-  },
-  { 
-    id: 2, 
-    title: "안 ", 
-    content:"안녕하세요. 저는 홍민수(35세, 남)의 가족입니다. 민수씨는 급성 림프구성 백혈병으로 현재 서울대학교병원에 입원 중입니다. 지속적인 수혈이 필요한 상황이지만, 헌혈증이 부족하여 치료에 어려움을 겪고 있습니다.  현재 민수씨는 항암치료 중이며, 치료에 헌혈증이 절실히 필요합니다. 헌혈증을 기부하시려면, 상단의 메일로 연락 주시고 서울대학교병원 헌혈증 기부 센터로 보내주시면 감사하겠습니다. 여러분의 작은 나눔이 민수씨에게 큰 희망이 됩니다. 진심으로 감사드립니다.  " ,
-    date: "2024-07-21"
-  },  
-  { 
-    id: 3, 
-    title: "ㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇ ", 
-    content:"안녕하세요. 저는 홍민수(35세, 남)의 가족입니다. 민수씨는 급성 림프구성 백혈병으로 현재 서울대학교병원에 입원 중입니다. 지속적인 수혈이 필요한 상황이지만, 헌혈증이 부족하여 치료에 어려움을 겪고 있습니다.  현재 민수씨는 항암치료 중이며, 치료에 헌혈증이 절실히 필요합니다. 헌혈증을 기부하시려면, 상단의 메일로 연락 주시고 서울대학교병원 헌혈증 기부 센터로 보내주시면 감사하겠습니다. 여러분의 작은 나눔이 민수씨에게 큰 희망이 됩니다. 진심으로 감사드립니다.  " ,
-    date: "2024-07-21"
-  }, 
-  { 
-    id: 4, 
-    title: "하세요 ", 
-    content:"안녕하세요. 저는 홍민수(35세, 남)의 가족입니다. 민수씨는 급성 림프구성 백혈병으로 현재 서울대학교병원에 입원 중입니다. 지속적인 수혈이 필요한 상황이지만, 헌혈증이 부족하여 치료에 어려움을 겪고 있습니다.  현재 민수씨는 항암치료 중이며, 치료에 헌혈증이 절실히 필요합니다. 헌혈증을 기부하시려면, 상단의 메일로 연락 주시고 서울대학교병원 헌혈증 기부 센터로 보내주시면 감사하겠습니다. 여러분의 작은 나눔이 민수씨에게 큰 희망이 됩니다. 진심으로 감사드립니다.  " ,
-    date: "2024-07-21"
-  },
-  { 
-    id: 5, 
-    title: "희귀병 환자3 김민수에게 헌혈증이 필요합니다. ", 
-    content:"안녕하세요. 저는 홍민수(35세, 남)의 가족입니다. 민수씨는 급성 림프구성 백혈병으로 현재 서울대학교병원에 입원 중입니다. 지속적인 수혈이 필요한 상황이지만, 헌혈증이 부족하여 치료에 어려움을 겪고 있습니다.  현재 민수씨는 항암치료 중이며, 치료에 헌혈증이 절실히 필요합니다. 헌혈증을 기부하시려면, 상단의 메일로 연락 주시고 서울대학교병원 헌혈증 기부 센터로 보내주시면 감사하겠습니다. 여러분의 작은 나눔이 민수씨에게 큰 희망이 됩니다. 진심으로 감사드립니다.  " ,
-    date: "2024-07-21"
-  },  
-  { 
-    id: 6, 
-    title: "희귀병 환자 김민수에게 헌혈증이 필요합니다. ", 
-    content:"안녕하세요. 저는 홍민수(35세, 남)의 가족입니다. 민수씨는 급성 림프구성 백혈병으로 현재 서울대학교병원에 입원 중입니다. 지속적인 수혈이 필요한 상황이지만, 헌혈증이 부족하여 치료에 어려움을 겪고 있습니다.  현재 민수씨는 항암치료 중이며, 치료에 헌혈증이 절실히 필요합니다. 헌혈증을 기부하시려면, 상단의 메일로 연락 주시고 서울대학교병원 헌혈증 기부 센터로 보내주시면 감사하겠습니다. 여러분의 작은 나눔이 민수씨에게 큰 희망이 됩니다. 진심으로 감사드립니다.  " ,
-    date: "2024-07-21"
-  }, 
-];
 
 export default Modal;

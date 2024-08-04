@@ -50,6 +50,9 @@ const ReviewForm = () => {
   const fileInputRef = useRef(null);
   const [img, setImg] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [postId, setPostId] = useState(null);
+  const [selectedPostTitle, setSelectedPostTitle] = useState("");
+
 
   const title = watch("title", "");
   const content = watch("content", "");
@@ -58,8 +61,6 @@ const ReviewForm = () => {
   const onClick = () => {
     document.getElementById("fileInput").click();
   };
-
-  const [selectedPostTitle, setSelectedPostTitle] = useState("");
 
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
@@ -87,10 +88,10 @@ const ReviewForm = () => {
             content: data.content,
             imageUrl: downloadUrl,
             imageId,
-            postId: "ae4eae75-22ec-4b82-b163-a9312a785d59", // 수정 필요
+            postId // 수정 필요
           });
 
-          navigate("/review/new/uploaded");
+        navigate(`/review/new/uploaded?review=${result.reviewId}`);
         } catch (error) {
           console.error("file upload to firebase error", error);
         }
@@ -146,7 +147,7 @@ const ReviewForm = () => {
         <InputFormFix text={"이름"} content={info} />
 
         <InputWrapper style={{ marginTop: "32px" }}>
-          <InputLabel text={"게시글택선택"} isEssential={true} />
+          <InputLabel text={"게시글 선택"} isEssential={true} />
           <TmpContainer>
             <Input
               type="text"
@@ -158,7 +159,7 @@ const ReviewForm = () => {
                 padding: "0 24px",
                 display: "flex",
                 flexShrink: "0",
-              }}
+              }}x
               value={selectedPostTitle}
             />
             <Button
@@ -249,6 +250,8 @@ const ReviewForm = () => {
         isOpen={isModalOpen}
         onClose={closeModal}
         onPostSelect={handlePostSelect}
+        setPostId={setPostId}
+        setSelectedPostTitle={setSelectedPostTitle}
       >
         <Button onClick={closeModal}>확인</Button>
       </Modal>
