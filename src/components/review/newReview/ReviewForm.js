@@ -31,20 +31,20 @@ const ReviewForm = () => {
   // const jwtInfo = decodeToken(state.auth.accessToken);
   // console.log(jwtInfo);
 
-  const [ info, setInfo ] = useState(null);
+  const [info, setInfo] = useState(null);
 
-  useEffect(()=>{
+  useEffect(() => {
     const fetchInfo = async () => {
-      try{
+      try {
         const result = await getUesrInfo();
         setInfo(result.data.name);
       } catch (error) {
         console.error(error);
-        navigate('/error');
+        navigate("/error");
       }
-    }
+    };
     fetchInfo();
-  },[setInfo])
+  }, [setInfo]);
 
   const fileInputRef = useRef(null);
   const [img, setImg] = useState(null);
@@ -61,8 +61,7 @@ const ReviewForm = () => {
     <Wrapper
       onSubmit={handleSubmit(async (data) => {
         // 게시글 링크 필요
-        if(!img)
-          return;
+        if (!img) return;
 
         const imageId = uuid();
         const storageRef = ref(storage, `review/${imageId}/${imageId}.png`);
@@ -71,21 +70,20 @@ const ReviewForm = () => {
           const snapshot = await uploadBytes(storageRef, img);
           const downloadUrl = await getDownloadURL(snapshot.ref);
 
-          console.log({...data, imageUrl : downloadUrl});
+          console.log({ ...data, imageUrl: downloadUrl });
 
           const result = await newReview({
-            title : data.title,
-            content : data.content,
-            imageUrl : downloadUrl,
+            title: data.title,
+            content: data.content,
+            imageUrl: downloadUrl,
             imageId,
-            postId : 'ae4eae75-22ec-4b82-b163-a9312a785d59' // 수정 필요
-          })
+            postId: "ae4eae75-22ec-4b82-b163-a9312a785d59", // 수정 필요
+          });
 
-          navigate('/review/new/uploaded');
+          navigate("/review/new/uploaded");
         } catch (error) {
-          console.error('file upload to firebase error', error);
+          console.error("file upload to firebase error", error);
         }
-        
       })}
     >
       <FormWrapper>
@@ -155,10 +153,9 @@ const ReviewForm = () => {
 
         {/* 게시글 링크 필요 !! */}
         <InputWrapper style={{ marginTop: "32px" }}>
-            
-            <InputLabel text={"게시글링크"} isEssential={true} />
-            <TmpContainer>
-              <Input
+          <InputLabel text={"게시글링크"} isEssential={true} />
+          <TmpContainer>
+            <Input
               type="text"
               placeholder="어떤 게시글의 후기글인지 링크를 업로드해주세요"
               style={errors.link && { border: "1px solid var(--main-color)" }}
@@ -173,7 +170,7 @@ const ReviewForm = () => {
             <Button
               type="button"
               onClick={(e) => {
-                console.log('clicked')
+                console.log("clicked");
               }}
               $customStyles={{
                 width: "150px",
@@ -186,57 +183,55 @@ const ReviewForm = () => {
                   color: "#fff",
                 },
               }}
-            >게시글 찾기</Button>
+            >
+              게시글 찾기
+            </Button>
           </TmpContainer>
-          
         </InputWrapper>
 
         <InputWrapper style={{ marginTop: "32px" }}>
-          <InputLabel 
-            text={"인증사진 첨부"} 
-            isEssential={true} 
-          />
+          <InputLabel text={"인증사진 첨부"} />
           <TmpContainer>
-          <input
-            id="fileInput"
-            type="file"
-            ref={fileInputRef}
-            style={{ display: "none" }}
-            accept="image/*"
-            onChange={(e) => setImg(e.target.files[0])}
+            <input
+              id="fileInput"
+              type="file"
+              ref={fileInputRef}
+              style={{ display: "none" }}
+              accept="image/*"
+              onChange={(e) => setImg(e.target.files[0])}
             />
-          <Input
-            type="text"
-            placeholder="이미지를 첨부해 주세요."
-            style={errors.image && { border: "1px solid var(--main-color)" }}
-            $customStyles={{
-              width: "400px",
-              height: "52px",
-              padding: "0 24px",
-              display: "flex",
-            }}
-            value={img && img.name }
-            readOnly
-          />
-          <Button
-            type="button"
-            onClick={(e) => {
-              e.preventDefault();
-              onClick();
-            }}
-            $customStyles={{
-              width: "150px;",
-              background: "var(--main-color)",
-              color: "#f4f4f4",
-              transition: "0.2s",
-              "&:hover": {
-                background: "var(--gray-color)",
-                color: "#fff",
-              },
-            }}
-          >
-            사진찾기
-          </Button>
+            <Input
+              type="text"
+              placeholder="이미지를 첨부해 주세요."
+              style={errors.image && { border: "1px solid var(--main-color)" }}
+              $customStyles={{
+                width: "400px",
+                height: "52px",
+                padding: "0 24px",
+                display: "flex",
+              }}
+              value={img && img.name}
+              readOnly
+            />
+            <Button
+              type="button"
+              onClick={(e) => {
+                e.preventDefault();
+                onClick();
+              }}
+              $customStyles={{
+                width: "150px;",
+                background: "var(--main-color)",
+                color: "#f4f4f4",
+                transition: "0.2s",
+                "&:hover": {
+                  background: "var(--gray-color)",
+                  color: "#fff",
+                },
+              }}
+            >
+              사진찾기
+            </Button>
           </TmpContainer>
         </InputWrapper>
         {errors.image && <Error text={errors.image.message} />}
@@ -302,9 +297,9 @@ const TextArea = styled.textarea`
 `;
 
 const TmpContainer = styled.div`
-  display : flex;
-  justify-content : space-between;
-  width : 81%;
-`
+  display: flex;
+  justify-content: space-between;
+  width: 81%;
+`;
 
 export default ReviewForm;
