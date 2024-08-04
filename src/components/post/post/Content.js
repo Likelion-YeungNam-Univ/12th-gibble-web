@@ -6,7 +6,6 @@ import styled from "styled-components";
 const Content = () => {
   return (
     <Wrapper>
-      <PostCategory />
       <PostList />
     </Wrapper>
   );
@@ -15,6 +14,5 @@ const Content = () => {
 const Wrapper = styled.div`
   margin-bottom: 100px;
 `;
-
 
 export default Content;

@@ -1,5 +1,4 @@
 import PageNotice from "@/components/common/PageNotice";
-import Separator from "@/components/common/Separator";
 import React from "react";
 import styled from "styled-components";
 import Content from "../../components/post/post/Content";
@@ -9,7 +8,6 @@ const Post = () => {
     <Wrapper>
       <PageNotice location={["Home", "커뮤니티", "헌혈증 기부"]}></PageNotice>
       <Container>
-        <Separator title={"헌혈증 기부"}></Separator>
         <Content />
       </Container>
     </Wrapper>
