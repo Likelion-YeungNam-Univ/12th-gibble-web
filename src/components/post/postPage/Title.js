@@ -52,7 +52,7 @@ const Title = ({ post }) => {
                 wanted={post.wantedCard}
                 donated={post.donatedCard}
               />
-              {post.isPermitted && (
+              {post.isPermitted && !(post.wantedCard === post.donatedCard)&& (
                 <Button
                   onClick={finishHandler}
                   $customStyles={{
@@ -67,7 +67,7 @@ const Title = ({ post }) => {
                       : undefined,
                   }}
                 >
-                  종료
+                  {post.isDonationPermitted ? '시작' : '종료'}
                 </Button>
               )}
             </Donation>
