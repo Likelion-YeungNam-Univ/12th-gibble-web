@@ -142,11 +142,7 @@ const PostForm = () => {
               min: {
                 value: post.donatedCard,
                 message: `최소 ${post.donatedCard} 이상의 숫자를 입력해주세요.`,
-              },
-              max: {
-                value: 99,
-                message: "99 이하의 숫자",
-              },
+              }
             })}
           />
         </InputWrapper>

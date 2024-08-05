@@ -129,14 +129,10 @@ const PostForm = () => {
             $customStyles={CustomInputStyle}
             {...register("wantedCard", {
               required: "희망 개수를 입력해주세요.",
-              minLength: {
+              min: {
                 value: 1,
                 message: "최소 0 이상의 숫자",
-              },
-              maxLength: {
-                value: 2,
-                message: "99 이하의 숫자",
-              },
+              }
             })}
           />
         </InputWrapper>
