@@ -17,7 +17,9 @@ const PostCard = ({ post, index }) => {
         align={"start"}
         left={"10px"}
         onClick={clickHandler}
-        style={{ cursor: "pointer" }}
+        style={{ cursor: "pointer",
+          color: "black",
+         }}
         $customStyles={`&:hover{text-decoration : underline;}`}
       >
         {post.title}
@@ -51,10 +53,15 @@ const Wrapper = styled.div`
   border-bottom: 1px solid #dbdbdb;
   box-sizing: border-box;
   padding: 13px 0;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+
 `;
 
 const PostContent = styled.div`
   width: ${(props) => props.width};
+  text-align: center;
   text-align: ${(props) => (props.align ? props.align : "center")};
   font-size: 18px;
   color: var(--gray-color);
@@ -65,6 +72,7 @@ const PostContent = styled.div`
     css`
       ${props.$customStyles}
     `}
+    margin : 2.7px 0px ;
 `;
 
 export default PostCard;

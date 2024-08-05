@@ -20,6 +20,7 @@ const Wrapper = styled.div`
 
 const Content = styled.div`
   width: 75%;
+  height: 30px;
   padding: 12px 24px;
   color: #111;
   font-size: 18px;

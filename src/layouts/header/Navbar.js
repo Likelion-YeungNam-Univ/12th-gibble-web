@@ -12,7 +12,7 @@ const Navbar = () => {
           window.location.reload();
         }}
       >
-        커뮤니티
+        헌혈증 기부
       </Category>
       <Category onClick={() => navigate("/review")}>투명 후기</Category>
       <Category onClick={() => navigate("/event")}>이벤트</Category>
@@ -36,6 +36,11 @@ const Category = styled.div`
   color: #111;
   font-weight: bold;
   cursor: pointer;
+
+  &:hover {
+    color: #f42e3d;
+  }
 `;
+
 
 export default Navbar;

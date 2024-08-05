@@ -41,7 +41,7 @@ const Wrapper = styled.div`
   border-bottom: 3px solid var(--main-color);
   display: flex;
   justify-content: space-between;
-  align-items: end;
+  align-items: center;
   box-sizing: border-box;
   padding: 32px 10px;
   margin-bottom: 100px;
@@ -50,11 +50,12 @@ const Wrapper = styled.div`
 const Title = styled.h2`
   font-size: 26px;
   font-weight: 700;
+
 `;
 
 const SearchContainer = styled.form`
   display: flex;
-  gap: 30px;
+  gap: 10px;
 `;
 
 const SearchBar = styled.div`
@@ -65,6 +66,7 @@ const SearchBar = styled.div`
   width: 320px;
   display: flex;
   align-items: center;
+  justify-content: center;
 `;
 const Input = styled.input`
   background: none;

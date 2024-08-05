@@ -13,7 +13,7 @@ const DonationBar = ({ wanted, donated }) => {
 const Wrapper = styled.div`
   display: flex;
   width: 100%;
-  height: 130%;
+  height: 100%;
   border-radius: 6px;
   align-items: center;
   text-align: end;
@@ -24,14 +24,15 @@ const Wrapper = styled.div`
 `;
 const Red = styled.div`
   width: ${(props) => props.width};
-  height: 100%;
+  height: 29px;
   background-color: var(--main-color);
   border-radius: 6px;
 `;
 
 const Text = styled.p`
   position: absolute;
-  right: 5px;
+  right: 8px;
+  font-size: 16px;
 `;
 
 export default DonationBar;
