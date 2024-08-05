@@ -2,8 +2,10 @@ import React from "react";
 import { styled } from "styled-components";
 import Button from "./Button";
 import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
 
 const Separator = ({ title, setKey }) => {
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
@@ -18,6 +20,7 @@ const Separator = ({ title, setKey }) => {
       <SearchContainer
         onSubmit={handleSubmit((data) => {
           setKey(data.key);
+          navigate(`/post?page=0&search=${data.key}`);
         })}
       >
         <SearchBar
@@ -49,7 +52,6 @@ const Wrapper = styled.div`
 const Title = styled.h2`
   font-size: 26px;
   font-weight: 700;
-
 `;
 
 const SearchContainer = styled.form`

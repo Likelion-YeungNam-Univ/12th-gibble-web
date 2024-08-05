@@ -22,29 +22,31 @@ const PostList = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [totalElements, setTotalElements] = useState(0);
   const [key, setKey] = useState();
-  const [isSearched, setIsSearched] = useState(false);
+  const [isSearched, setIsSearched] = useState();
+
   const keyword = searchParams.get("search");
 
   useEffect(() => {
     const fetch = async () => {
       setNowPage(parseInt(searchParams.get("page")) || 0);
+      console.log("keyword", keyword, !keyword);
 
-      try {
-        const result = await showPostList({ nowPage });
+      if (!keyword) {
+        try {
+          const result = await showPostList({ nowPage });
 
-        console.log(result);
-        setPostList(result.data.content);
-        setTotalPages(result.totalPages);
-        setTotalElements(result.totalElements);
-        setIsLoading(false);
-      } catch (error) {
-        console.log("error", error);
-        navigate("/error");
+          console.log(result);
+          setPostList(result.data.content);
+          setTotalPages(result.totalPages);
+          setTotalElements(result.totalElements);
+          setIsLoading(false);
+        } catch (error) {
+          console.log("error", error);
+          navigate("/error");
+        }
       }
     };
-    if (!isSearched) {
-      fetch();
-    }
+    fetch();
   }, [nowPage, setNowPage, navigate, searchParams]);
 
   useEffect(() => {
@@ -61,6 +63,7 @@ const PostList = () => {
       setTotalElements(result.data.totalElements);
       setTotalPages(result.data.totalPages);
       navigate(`/post?page=${nowPage}&search=${keyword}`);
+      setIsLoading(false);
     };
     const fetch = async () => {
       setIsSearched(true);
@@ -76,6 +79,7 @@ const PostList = () => {
         setTotalElements(result.data.totalElements);
         setTotalPages(result.data.totalPages);
         navigate(`/post?page=${nowPage}&search=${key}`);
+        setIsLoading(false);
       }
     };
     fetch();

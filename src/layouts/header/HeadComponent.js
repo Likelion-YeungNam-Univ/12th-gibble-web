@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import SearchBox from "./SearchBox";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import logoutHandler from "@/api/login/logoutHandler";
 import logo from "@/assets/image/main-logo.png";
 import { useDispatch, useSelector } from "react-redux";
@@ -10,6 +10,10 @@ const HeadComponent = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const accessToken = useSelector((state) => state.auth.accessToken);
+
+  const location = useLocation();
+  console.log(location.pathname);
+
   const logoutResponseHandler = async () => {
     const result = await logoutHandler(dispatch);
     if (result.statusCode === 200) navigate("/");
@@ -35,8 +39,7 @@ const HeadComponent = () => {
               <Text onClick={() => navigate("/mypage")}>마이페이지</Text>
             </Utils>
           )}
-
-          <SearchBox />
+          {location.pathname !== "/post" ? <SearchBox /> : <Margin />}
         </Util>
       </Container>
     </Wrapper>
@@ -52,6 +55,7 @@ const Utils = styled.div`
   display: flex;
   gap: 5px;
   color: #dbdbdb;
+  margin-right: 30px;
 `;
 
 const Container = styled.div`
@@ -71,7 +75,6 @@ const Util = styled.div`
   box-sizing: border-box;
   padding: 0 10px;
   display: flex;
-  gap: 30px;
   align-items: center;
 `;
 
@@ -86,4 +89,7 @@ const Text = styled.div`
   }
 `;
 
+const Margin = styled.div`
+  width: 282px;
+`;
 export default HeadComponent;
