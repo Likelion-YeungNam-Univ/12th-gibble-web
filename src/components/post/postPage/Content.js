@@ -9,6 +9,14 @@ import DonorBox from "./DonorBox";
 
 const Content = ({ post }) => {
   const navigate = useNavigate();
+  const formatText = (text) => {
+    return text.split("\n").map((line, index) => (
+      <span key={index}>
+        {line}
+        <br />
+      </span>
+    ));
+  };
   const { postId } = useParams();
 
   const deleteHandler = async () => {
@@ -31,7 +39,7 @@ const Content = ({ post }) => {
   return (
     <Wrapper>
       <Container>
-        <Description>{post.content}</Description>
+        <Description>{formatText(post.content)}</Description>
         {post.wantedCard !== undefined && post.donatedCard !== undefined && (
           <>
             <Button
@@ -99,10 +107,10 @@ const Wrapper = styled.div`
 
 const Container = styled.div`
   margin-top: 110px;
-  padding-bottom : 70px;
+  padding-bottom: 70px;
   margin-bottom: 80px;
   padding-left: 50px;
-  border-bottom : 2px solid #dbdbdb;
+  border-bottom: 2px solid #dbdbdb;
 `;
 
 const Description = styled.div`
