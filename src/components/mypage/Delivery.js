@@ -96,7 +96,7 @@ const Tr = styled.tr`
   line-height: 45px; /* 166.667% */
   letter-spacing: -0.45px;
 
-  grid-template-columns: 48.5% 20% 20% 10%;
+  grid-template-columns: 48.0% 20% 20% 10%;
   &:nth-child(even) {
     background-color: #f9f9f9;
   }

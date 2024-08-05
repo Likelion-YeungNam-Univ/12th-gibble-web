@@ -72,7 +72,7 @@ const Box = styled.div`
   align-items: center;
   text-align: center;
   justify-content: center;
-  margin: 0px 40px;
+  margin: 0px 50px;
 `;
 
 const Text = styled.div`
