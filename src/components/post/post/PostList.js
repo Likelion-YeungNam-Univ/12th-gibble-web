@@ -11,6 +11,7 @@ import NoticeCard from "./NoticeCard";
 import Separator from "@/components/common/Separator";
 import PostCategory from "./PostCategory";
 import searchPost from "@/api/post/searchPost";
+import Loading from "@/layouts/Loading";
 
 const PostList = () => {
   const [searchParams] = useSearchParams();
@@ -18,6 +19,7 @@ const PostList = () => {
   const [postList, setPostList] = useState([]);
   const [nowPage, setNowPage] = useState(0);
   const [totalPages, setTotalPages] = useState(0);
+  const [isLoading, setIsLoading] = useState(true);
   const [totalElements, setTotalElements] = useState(0);
   const [key, setKey] = useState();
   const [isSearched, setIsSearched] = useState(false);
@@ -27,14 +29,14 @@ const PostList = () => {
       console.log("원래 useEffect", isSearched);
       setNowPage(parseInt(searchParams.get("page")) || 0);
 
-      const size = 10;
       try {
-        const result = await showPostList({ nowPage, size });
+        const result = await showPostList({ nowPage });
 
         console.log(result);
         setPostList(result.data.content);
         setTotalPages(result.totalPages);
         setTotalElements(result.totalElements);
+        setIsLoading(false);
       } catch (error) {
         console.log("error", error);
         navigate("/error");
@@ -47,14 +49,14 @@ const PostList = () => {
 
   useEffect(() => {
     const fetch = async () => {
-      if (searchPost) {
+      setIsSearched(true);
+      if (isSearched) {
         const result = await searchPost(
           parseInt(searchParams.get("page")),
           "",
           key
         );
         setNowPage(parseInt(searchParams.get("page")) || 0);
-        setIsSearched(true);
         setPostList(result.data.content);
         setTotalElements(result.data.totalElements);
         setTotalPages(result.data.totalPages);
@@ -63,6 +65,8 @@ const PostList = () => {
     };
     fetch();
   }, [key, nowPage, navigate]);
+
+  if (isLoading) return <Loading />;
 
   return (
     <>

@@ -2,10 +2,12 @@ import React from "react";
 import styled from "styled-components";
 import { ReactComponent as Left } from "@/assets/svg/left-move.svg";
 import { ReactComponent as Right } from "@/assets/svg/right-move.svg";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 
 const PageController = ({ nowPage, setNowPage, totalPages, region }) => {
   const navigate = useNavigate();
+
+  const [searchParams] = useSearchParams();
 
   const handleLeftClick = () => {
     if (nowPage > 0) {
@@ -59,7 +61,11 @@ const PageController = ({ nowPage, setNowPage, totalPages, region }) => {
             key={pageNum}
             onClick={() => {
               setNowPage(pageNum);
-              navigate(`/event?page=${pageNum}&region=${region}`);
+              navigate(
+                `/event?page=${pageNum}&region=${region}&&search=${searchParams.get(
+                  "search"
+                )}`
+              );
             }}
             style={
               pageNum === nowPage

@@ -2,9 +2,8 @@ import React from "react";
 import { styled } from "styled-components";
 import Button from "@/components/common/Button";
 import { useForm } from "react-hook-form";
-import searchEvent from "@/api/event/searchEvent";
 
-const Separator = ({ title, setSearchEvent }) => {
+const Separator = ({ title, setKey }) => {
   const {
     register,
     handleSubmit,
@@ -18,17 +17,7 @@ const Separator = ({ title, setSearchEvent }) => {
       <Title>{title}</Title>
       <SearchContainer
         onSubmit={handleSubmit((data) => {
-          const search = async () => {
-            const result = await searchEvent(data.key);
-            console.log("result", result);
-            if (result.statusCode === 200) {
-              console.log("검색 실행", result.data.content);
-              setSearchEvent(result.data.content);
-            } else {
-              alert(result.message);
-            }
-          };
-          search();
+          setKey(data.key);
         })}
       >
         <SearchBar

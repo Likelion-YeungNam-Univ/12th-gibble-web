@@ -1,10 +1,10 @@
 import { getAuthAxios } from "../authAxios";
 
-const searchEvent = async (search) => {
+const searchEvent = async (nowPage, region, search) => {
   try {
     const authAxios = getAuthAxios();
     const response = await authAxios.get("/event", {
-      params: { search },
+      params: { page: nowPage, region, search },
     });
     console.log("이벤트API", response);
 

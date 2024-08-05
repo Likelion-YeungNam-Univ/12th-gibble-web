@@ -7,6 +7,7 @@ const EventNavbar = ({ region, setRegion }) => {
   const clickHandler = (loc) => {
     setRegion(loc.region);
     navigate(`/event?page=0&region=${loc.region}`);
+    window.location.reload();
   };
 
   const location = [
@@ -27,8 +28,9 @@ const EventNavbar = ({ region, setRegion }) => {
   ];
   return (
     <Wrapper>
-      {location.map((loc) => (
+      {location.map((loc, index) => (
         <Category
+          key={index}
           style={loc.region === region ? { color: "red" } : null}
           onClick={() => clickHandler(loc)}
         >
