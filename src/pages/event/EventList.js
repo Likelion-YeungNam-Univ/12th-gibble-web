@@ -27,7 +27,7 @@ const EventList = () => {
       setRegion(searchParams.get("region"));
       try {
         console.log("바뀐 지역", region);
-        const result = await getEventList( nowPage, searchParams.get("region"));
+        const result = await getEventList(nowPage, searchParams.get("region"));
         console.log("result", result.data.content);
 
         setEventList(result.data.content);
@@ -68,22 +68,24 @@ const EventList = () => {
   return (
     <Wrapper>
       <PageNotice location={["Home", "이벤트"]} />
-      <Container>
-        <Separator title={"이벤트"} setKey={setKey} />
-        <EventNavbar region={region} setRegion={setRegion} />
-        {totalPages === 0 && <Error>진행 중인 이벤트가 없습니다.</Error>}
-        <Content>
-          {eventList.map((el, index) => {
-            return <EventCard event={el} key={index} />;
-          })}
-        </Content>
-        <PageController
-          nowPage={nowPage}
-          setNowPage={setNowPage}
-          totalPages={totalPages}
-          region={region}
-        />
-      </Container>
+      <ContentContainer>
+        <Container>
+          <Separator title={"이벤트"} setKey={setKey} />
+          <EventNavbar region={region} setRegion={setRegion} />
+          {totalPages === 0 && <Error>진행 중인 이벤트가 없습니다.</Error>}
+          <Content>
+            {eventList.map((el, index) => {
+              return <EventCard event={el} key={index} />;
+            })}
+          </Content>
+          <PageController
+            nowPage={nowPage}
+            setNowPage={setNowPage}
+            totalPages={totalPages}
+            region={region}
+          />
+        </Container>
+      </ContentContainer>
     </Wrapper>
   );
 };
@@ -92,20 +94,23 @@ const Wrapper = styled.div`
   width: 100%;
   min-height: 100%;
   box-sizing: border-box;
-  padding: 30px 200px;
+  padding: 30px 270px;
   padding-top: 0px;
   margin-bottom: 50px;
+`;
 
+const ContentContainer = styled.div`
+  width: 1238px;
+  margin: 0 auto;
 `;
 
 const Container = styled.div`
   box-sizing: border-box;
-  margin: 20px 70px 20px 60px;
+  margin: 20px 0px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-
 `;
 
 const Content = styled.div`
@@ -117,7 +122,6 @@ const Content = styled.div`
   box-sizing: border-box;
   padding: auto;
   padding-bottom: 80px;
-  margin-left: 140px
 `;
 
 const Error = styled.div`

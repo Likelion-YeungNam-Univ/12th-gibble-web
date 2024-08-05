@@ -19,7 +19,7 @@ const EventCard = ({ event }) => {
 };
 
 const Wrapper = styled.div`
-  width: 28.9%;
+  width: 32%;
   height: 279px;
   border-radius: 10px;
   margin-bottom: 5px;

@@ -44,7 +44,7 @@ const Wrapper = styled.div`
   box-sizing: border-box;
   padding: 32px 10px;
   margin-bottom: 100px;
-  width: 90%;
+  width: 100%;
 `;
 
 const Title = styled.h2`
