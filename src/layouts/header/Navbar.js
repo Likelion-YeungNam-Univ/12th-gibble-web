@@ -6,7 +6,14 @@ const Navbar = () => {
   const navigate = useNavigate();
   return (
     <Wrapper>
-      <Category onClick={() => navigate("/post")}>커뮤니티</Category>
+      <Category
+        onClick={() => {
+          navigate(`/post`);
+          window.location.reload();
+        }}
+      >
+        커뮤니티
+      </Category>
       <Category onClick={() => navigate("/review")}>투명 후기</Category>
       <Category onClick={() => navigate("/event")}>이벤트</Category>
     </Wrapper>
