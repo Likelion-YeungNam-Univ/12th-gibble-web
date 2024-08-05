@@ -8,6 +8,7 @@ import { useNavigate, useSearchParams } from "react-router-dom";
 import getAllReviewByPageNum from "@/api/review/getAllReviewByPageNum";
 import { ReactComponent as WriteButton } from "@/assets/svg/post-write-button.svg";
 import Loading from "@/layouts/Loading";
+import searchReview from "@/api/review/searchReview";
 
 const Review = () => {
   const [reviewList, setReviewList] = useState([]);
@@ -16,7 +17,8 @@ const Review = () => {
   const [nowPage, setNowPage] = useState(0);
   const [totalPages, setTotalPages] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
-  const [searchReview, setSearchReview] = useState([]);
+  const [key, setKey] = useState();
+  const [isSearched, setIsSearched] = useState(false);
 
   useEffect(() => {
     const fetchReview = async () => {
@@ -33,19 +35,35 @@ const Review = () => {
         navigate("/error");
       }
     };
-    fetchReview();
+    if (!isSearched) {
+      fetchReview();
+    }
   }, [nowPage, setNowPage]);
 
   useEffect(() => {
-    setReviewList(searchReview);
-  }, [searchReview]);
+    const fetch = async () => {
+      setIsSearched(true);
+      if (isSearched) {
+        const result = await searchReview(
+          parseInt(searchParams.get("page")),
+          12,
+          key
+        );
+        setNowPage(parseInt(searchParams.get("page")) || 0);
+        setReviewList(result.data.content);
+        setTotalPages(result.data.totalPages);
+        navigate(`/review?page=${nowPage}&search=${key}`);
+      }
+    };
+    fetch();
+  }, [key, nowPage, navigate]);
 
   if (isLoading) return <Loading />;
 
   return (
     <Wrapper>
       <PageNotice location={["Home", "커뮤니티", "투명 후기"]} />
-      <Separator title={"투명후기"} setSearchReview={setSearchReview} />
+      <Separator title={"투명후기"} setKey={setKey} />
       <Container>
         {reviewList.map((el) => {
           return <ReviewCard key={el.id} review={el}></ReviewCard>;

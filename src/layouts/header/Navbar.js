@@ -14,8 +14,22 @@ const Navbar = () => {
       >
         커뮤니티
       </Category>
-      <Category onClick={() => navigate("/review")}>투명 후기</Category>
-      <Category onClick={() => navigate("/event")}>이벤트</Category>
+      <Category
+        onClick={() => {
+          navigate("/review");
+          window.location.reload();
+        }}
+      >
+        투명 후기
+      </Category>
+      <Category
+        onClick={() => {
+          navigate("/event");
+          window.location.reload();
+        }}
+      >
+        이벤트
+      </Category>
     </Wrapper>
   );
 };

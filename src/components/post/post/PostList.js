@@ -26,7 +26,6 @@ const PostList = () => {
 
   useEffect(() => {
     const fetch = async () => {
-      console.log("원래 useEffect", isSearched);
       setNowPage(parseInt(searchParams.get("page")) || 0);
 
       try {

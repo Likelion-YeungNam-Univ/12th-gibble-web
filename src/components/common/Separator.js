@@ -16,7 +16,6 @@ const Separator = ({ title, setKey }) => {
     <Wrapper>
       <Title>{title}</Title>
       <SearchContainer
-        const
         onSubmit={handleSubmit((data) => {
           setKey(data.key);
         })}
