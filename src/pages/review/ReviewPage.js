@@ -7,6 +7,8 @@ import { useNavigate, useParams } from "react-router-dom";
 import styled from "styled-components";
 import { ReactComponent as DeleteIcon } from "@/assets/svg/delete.svg";
 import GoToMyPost from "@/components/review/reviewPage/GoToMyPost";
+import PageNoticeWithBanner from "@/components/common/PageNoticeWithBanner";
+import reviewBanner from "@/assets/image/review-banner.png"
 
 const ReviewPage = () => {
   const { reviewId } = useParams();
@@ -50,6 +52,9 @@ const ReviewPage = () => {
   if (isLoading) return <Loading />;
 
   return (
+    <div>
+      <PageNoticeWithBanner location={['Home','투명후기','상세 페이지']} banner={reviewBanner}/>
+    
     <Wrapper>
       <PageTitle>투명 후기</PageTitle>
       <Title>{review.title}</Title>
@@ -77,6 +82,7 @@ const ReviewPage = () => {
       </Description>
       {/* 이미지가 null이 아니면 이미지 보여주기 */}
     </Wrapper>
+    </div>
   );
 };
 
@@ -147,6 +153,7 @@ const Image = styled.img`
   margin-top: 30px;
   scale: 0.8;
   margin-bottom: 110px;
+  width : 100%;
 `;
 
 const GoToMyPostContainer = styled.div`

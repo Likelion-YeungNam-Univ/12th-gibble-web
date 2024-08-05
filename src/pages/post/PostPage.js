@@ -7,6 +7,9 @@ import styled from "styled-components";
 import Notice from "@/components/post/postPage/Notice";
 import Title from "@/components/post/postPage/Title";
 import Content from "@/components/post/postPage/Content";
+import PageNotice from "@/components/common/PageNotice";
+import PageNoticeWithBanner from "@/components/common/PageNoticeWithBanner";
+import postBanner from "@/assets/image/postBanner.png"
 
 const PostPage = () => {
   const { postId } = useParams();
@@ -38,7 +41,7 @@ const PostPage = () => {
 
   return (
     <Wrapper>
-      <Notice />
+      <PageNoticeWithBanner location={['Home','헌혈증 기부','게시글','상세보기']} banner={postBanner}/>
       <Container>
         <Title post={post} />
         <Content post={post} />

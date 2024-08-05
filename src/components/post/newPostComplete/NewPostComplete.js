@@ -1,13 +1,14 @@
 import React from "react";
 import styled from "styled-components";
-import Notice from "./Notice";
 import Title from "./Title";
 import Content from "./Content";
+import PageNoticeWithBanner from "@/components/common/PageNoticeWithBanner";
+import postBanner from "@/assets/image/postBanner.png"
 
 const NewPostComplete = () => {
   return (
     <Wrapper>
-      <Notice />
+      <PageNoticeWithBanner location={['Home','헌혈증 기부','게시글 작성']} banner={postBanner}/>
       <Container>
         <Title />
         <Content />

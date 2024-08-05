@@ -1,24 +1,28 @@
-import React, { useEffect } from "react";
+import React from "react";
 import styled from "styled-components";
-import PageNotice from "@/components/common/PageNotice";
 import NewReviewSeparator from "@/components/review/newReview/NewReivewSeparator";
 import ReviewForm from "@/components/review/newReview/ReviewForm";
+import PageNoticeWithBanner from "@/components/common/PageNoticeWithBanner";
+import reviewBanner from "src/assets/image/review-banner.png"
 
 
 const NewReview = () => {
-  const location = ["Home", "커뮤니티", "투명 후기", "게시글 작성"];
   
-
   return (
-    <Wrapper>
-      <PageNotice location={location} />
-      <NewReviewSeparator title={"후원 감사 글 작성하기 "} />
-      <Form>
-        <ReviewForm />
-      </Form>
-    </Wrapper>
+    <PageWrapper>
+      <PageNoticeWithBanner location={["Home", "투명 후기", "게시글 작성"]} banner={reviewBanner} />
+      <Wrapper>
+        <NewReviewSeparator title={"후원 감사 글 작성하기 "} />
+        <Form>
+          <ReviewForm />
+        </Form>
+      </Wrapper>
+    </PageWrapper>
   );
 };
+
+const PageWrapper = styled.div`
+`
 
 const Wrapper = styled.div`
   width: 100%;
