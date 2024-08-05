@@ -1,7 +1,7 @@
 import React from "react";
 import { styled } from "styled-components";
-import Button from "../common/Button";
-import Input from "../common/Input";
+import Button from "../../common/Button";
+import Input from "../../common/Input";
 
 const Separator = () => {
   return (

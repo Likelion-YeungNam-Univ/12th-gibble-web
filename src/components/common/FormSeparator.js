@@ -1,7 +1,7 @@
 import React from "react";
 import { styled } from "styled-components";
 
-const NewPostSeparator = ({ title }) => {
+const FormSeparator = ({ title }) => {
   return (
     <Wrapper>
       <Title>{title}</Title>
@@ -32,4 +32,4 @@ const Notice = styled.div`
   text-align: right;
 `;
 
-export default NewPostSeparator;
+export default FormSeparator;

@@ -1,7 +1,7 @@
 // 이벤트 조회
 import { getAuthAxios } from "../authAxios";
 
-const getEventId = async (eventId) => {
+const getEvent = async (eventId) => {
   try {
     const authAxios = getAuthAxios();
     const response = await authAxios.get(`/event/${eventId}`);
@@ -19,4 +19,4 @@ const getEventId = async (eventId) => {
   }
 };
 
-export default getEventId;
+export default getEvent;

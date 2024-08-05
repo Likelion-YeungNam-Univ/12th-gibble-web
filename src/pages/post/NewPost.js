@@ -2,14 +2,14 @@ import React from "react";
 import styled from "styled-components";
 import PageNotice from "@/components/common/PageNotice";
 import PostForm from "@/components/post/newPost/PostForm";
-import NewPostSeparator from "../../components/post/newPost/NewPostSeparator";
+import FormSeparator from "@/components/common/FormSeparator";
 
 const NewPost = () => {
   const location = ["Home", "커뮤니티", "헌혈증 기부", "게시글 작성"];
   return (
     <Wrapper>
       <PageNotice location={location} />
-      <NewPostSeparator title={"헌혈증 기부 요청 글 작성하기"} />
+      <FormSeparator title={"헌혈증 기부 요청 글 작성하기"}/>
       <Form>
         <PostForm />
       </Form>

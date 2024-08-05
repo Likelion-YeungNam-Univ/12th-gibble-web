@@ -2,12 +2,14 @@ import participateEvent from "@/api/event/participateEvent";
 import Button from "@/components/common/Button";
 import React from "react";
 import styled from "styled-components";
+
 const Content = ({ event }) => {
-  console.log("세부페이지 result", event);
-  const ClickHandler = async () => {
+
+  const clickHandler = async () => {
     const result = await participateEvent(event.eventId);
     alert(result.data.response);
   };
+
   return (
     <Wrapper>
       <PageTitle>이벤트 페이지 상세 보기</PageTitle>
@@ -15,23 +17,16 @@ const Content = ({ event }) => {
       <EventInfo>
         <InfoLabel>작성자</InfoLabel>
         <InfoDesc>관리자</InfoDesc>
+
         <InfoLabel>작성일</InfoLabel>
         <InfoDesc>{event.createdAt.slice(0, 10)}</InfoDesc>
       </EventInfo>
+
       <Container>
         <Image src={event.imageUrl} />
         <Button
-          $customStyles={{
-            width: "100%",
-            background: "#f4f4f4",
-            color: "#767676",
-            transition: "0.2s",
-            "&:hover": {
-              background: "var(--main-color)",
-              color: "white",
-            },
-          }}
-          onClick={ClickHandler}
+          $customStyles={ButtonCustomStyle}
+          onClick={clickHandler}
         >
           참여하기
         </Button>
@@ -108,3 +103,14 @@ const Image = styled.img`
   border-bottom: 2px solid #dbdbdb;
   padding: 0 10% 80px 10%;
 `;
+
+const ButtonCustomStyle=`
+  width : 100%;
+  background-color : #f4f4f4;
+  color : var(--gray-clor);
+  transition : 0.2s;
+  &:hover {
+    background : var(--main-color);
+    color : #fff;
+  }
+`

@@ -1,9 +1,9 @@
 import React from "react";
 import styled from "styled-components";
-import NewReviewSeparator from "@/components/review/newReview/NewReivewSeparator";
 import ReviewForm from "@/components/review/newReview/ReviewForm";
 import PageNoticeWithBanner from "@/components/common/PageNoticeWithBanner";
 import reviewBanner from "src/assets/image/review-banner.png"
+import FormSeparator from "@/components/common/FormSeparator";
 
 
 const NewReview = () => {
@@ -12,7 +12,7 @@ const NewReview = () => {
     <PageWrapper>
       <PageNoticeWithBanner location={["Home", "투명 후기", "게시글 작성"]} banner={reviewBanner} />
       <Wrapper>
-        <NewReviewSeparator title={"후원 감사 글 작성하기 "} />
+        <FormSeparator title={"후원 감사 글 작성하기"}/>
         <Form>
           <ReviewForm />
         </Form>

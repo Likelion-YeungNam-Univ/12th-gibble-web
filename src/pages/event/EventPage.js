@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import Content from "@/components/event/eventPage/Content";
 import { useNavigate, useParams } from "react-router-dom";
-import getEventId from "@/api/event/getEventId";
+import getEvent from "@/api/event/getEvent";
 import Loading from "@/layouts/Loading";
 import PageNoticeWithBanner from "@/components/common/PageNoticeWithBanner";
 import eventBanner from "@/assets/image/event-banner.png"
@@ -17,7 +17,7 @@ const EventPage = () => {
   useEffect(() => {
     const fetch = async () => {
       try {
-        const result = await getEventId(eventId);
+        const result = await getEvent(eventId);
         setEvent(result.data);
       } catch (error) {
         navigate("/error");

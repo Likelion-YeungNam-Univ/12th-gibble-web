@@ -13,7 +13,7 @@ import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 import newReview from "@/api/review/newReview";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import Modal from "./Modal";
-import getUesrInfo from "@/api/post/getUesrInfo";
+import getUserInfo from "@/api/post/getUserInfo";
 
 const ReviewForm = () => {
   const {
@@ -38,7 +38,7 @@ const ReviewForm = () => {
   useEffect(() => {
     const fetchInfo = async () => {
       try {
-        const result = await getUesrInfo();
+        const result = await getUserInfo();
         setInfo(result.data.name);
       } catch (error) {
         console.error(error);

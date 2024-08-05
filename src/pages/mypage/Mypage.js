@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-import Notice from "@/components/mypage/Notice";
 import Title from "@/components/mypage/Tilte";
 import Profile from "@/components/mypage/Profile";
 import Incontent from "@/components/mypage/Incontent";
@@ -10,6 +9,8 @@ import getParticipation from "@/api/mypage/getParticipation";
 import getReceivedDonation from "@/api/donation/getReceivedDonation";
 import getMyDonation from "@/api/donation/getMyDonation";
 import getMyPosts from "@/api/mypage/getMyPosts";
+import PageNoticeWithBanner from "@/components/common/PageNoticeWithBanner";
+import myPageBanner from "@/assets/image/mypagebanner.png"
 
 const Mypage = () => {
   const [userInfo, setUserInfo] = useState([]);
@@ -79,7 +80,7 @@ const Mypage = () => {
 
   return (
     <Wrapper>
-      <Notice />
+      <PageNoticeWithBanner location={['Home','마이페이지']} banner={myPageBanner}/>
       <Container>
         <Title />
         <Box>

@@ -18,7 +18,6 @@ const Wrapper = styled.div`
     letter-spacing: -0.65px;
     display: flex;
     justify-content: left;
-    //border-style, border-width, border-color
     border-bottom-style: solid;
     border-width: 2px;
     border-color: #F42E3D;

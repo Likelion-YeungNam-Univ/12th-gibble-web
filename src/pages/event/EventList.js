@@ -1,9 +1,9 @@
 import getEventList from "@/api/event/getEventList";
 import PageNotice from "@/components/common/PageNotice";
-import EventCard from "@/components/event/EventCard";
-import EventNavbar from "@/components/event/EventNavbar";
-import PageController from "@/components/event/PageController";
-import Separator from "@/components/event/Separator";
+import EventCard from "@/components/event/eventList/EventCard";
+import EventNavbar from "@/components/event/eventList/EventNavbar";
+import PageController from "@/components/event/eventList/PageController";
+import Separator from "@/components/event/eventList/Separator";
 import Loading from "@/layouts/Loading";
 import React, { useEffect, useState } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";

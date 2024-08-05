@@ -9,7 +9,7 @@ import Button from "@/components/common/Button";
 import Error from "./Error";
 import uploadPost from "@/api/post/uploadPost";
 import { useEffect, useState } from "react";
-import getUesrInfo from "@/api/post/getUesrInfo";
+import getUserInfo from "@/api/post/getUserInfo";
 import { useNavigate } from "react-router-dom";
 
 const PostForm = () => {
@@ -17,6 +17,7 @@ const PostForm = () => {
     register,
     handleSubmit,
     watch,
+    setValue,
     formState: { errors },
   } = useForm({
     mode: "onSubmit",
@@ -31,7 +32,7 @@ const PostForm = () => {
   useEffect(() => {
     const fetch = async () => {
       try {
-        const result = await getUesrInfo();
+        const result = await getUserInfo();
         console.log(result.data);
         setUserInfo(result.data);
       } catch (error) {
@@ -46,11 +47,8 @@ const PostForm = () => {
   return (
     <Wrapper
       onSubmit={handleSubmit((data) => {
-        console.log("data", data);
-        alert(JSON.stringify(data));
         const fetch = async () => {
           const result = await uploadPost(data);
-          console.log("업로드 결과", result.data.postId);
           navigate(`/post/newpostcomplete?postId=${result.data.postId}`);
         };
         fetch();
@@ -69,11 +67,7 @@ const PostForm = () => {
             type="text"
             placeholder="제목을 입력해 주세요."
             style={errors.title && { border: "1px solid var(--main-color)" }}
-            $customStyles={{
-              width: "81%",
-              height: "52px",
-              padding: "0 24px",
-            }}
+            $customStyles={CustomInputStyle}
             {...register("title", {
               required: "제목을 입력해주세요.",
               minLength: {
@@ -82,8 +76,10 @@ const PostForm = () => {
               },
               maxLength: {
                 value: 30,
+                message : "최대 30자 이하"
               },
             })}
+
           />
         </InputWrapper>
         {title.length > 30 ? <Error text={"30자 이하로 작성해주세요"} /> : null}
@@ -130,13 +126,7 @@ const PostForm = () => {
             style={
               errors.wantedCard && { border: "1px solid var(--main-color)" }
             }
-            $customStyles={{
-              width: "81%",
-              height: "52px",
-              padding: "0 24px",
-              display: "flex",
-              flexShirink: "0",
-            }}
+            $customStyles={CustomInputStyle}
             {...register("wantedCard", {
               required: "희망 개수를 입력해주세요.",
               minLength: {
@@ -158,13 +148,7 @@ const PostForm = () => {
             type="text"
             placeholder="위치를 입력해주세요."
             style={errors.address && { border: "1px solid var(--main-color)" }}
-            $customStyles={{
-              width: "81%",
-              height: "52px",
-              padding: "0 24px",
-              display: "flex",
-              flexShirink: "0",
-            }}
+            $customStyles={CustomInputStyle}
             {...register("address", {
               required: "위치를 입력해주세요.",
               minLength: {
@@ -182,17 +166,7 @@ const PostForm = () => {
       </FormWrapper>
       <Button
         type="submit"
-        $customStyles={{
-          width: "100%",
-          background: "#f4f4f4",
-          color: "var(--gray-color)",
-          marginTop: "108px",
-          transition: "0.2s",
-          "&:hover": {
-            background: "var(--main-color)",
-            color: "#fff",
-          },
-        }}
+        $customStyles={CustomButtonStyle}
       >
         작성하기
       </Button>
@@ -237,5 +211,23 @@ const TextArea = styled.textarea`
     color: #dbdbdb;
   }
 `;
+
+const CustomInputStyle = `
+  width : 81%;
+  height : 52px;
+  padding : 0 24px;
+`
+
+const CustomButtonStyle = `
+  width : 100%;
+  background : #f4f4f4;
+  color : var(--gray-color);
+  margin-top : 108px;
+  transition : 0.2s;
+  &:hover {
+    background : var(--main-color);
+    color :  #fff;
+  }
+`
 
 export default PostForm;

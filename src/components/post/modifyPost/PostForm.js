@@ -8,7 +8,7 @@ import { TitleNotice, ContentNotice } from "../newPost/FormNotice";
 import Button from "@/components/common/Button";
 import Error from "../newPost/Error";
 import { useEffect, useState } from "react";
-import getUesrInfo from "@/api/post/getUesrInfo";
+import getUserInfo from "@/api/post/getUserInfo";
 import showPost from "@/api/post/showPost";
 import { useNavigate, useParams } from "react-router-dom";
 import modifyPost from "@/api/post/modifyPost";
@@ -34,12 +34,10 @@ const PostForm = () => {
   useEffect(() => {
     const fetchUserInfo = async () => {
       try {
-        const result = await getUesrInfo();
-        console.log(result.data);
+        const result = await getUserInfo();
         setUserInfo(result.data);
       } catch (error) {
         console.log("error", error);
-
         navigate("/error");
       }
     };
@@ -60,7 +58,6 @@ const PostForm = () => {
   return (
     <Wrapper
       onSubmit={handleSubmit((data) => {
-        console.log("data", data);
         modifyPost(data, postId);
         navigate("/post/newpostcomplete");
       })}
@@ -138,16 +135,8 @@ const PostForm = () => {
             type="number"
             placeholder="필요한 헌혈증 개수를 입력해주세요."
             defaultValue={post.wantedCard}
-            style={
-              errors.wantedCard && { border: "1px solid var(--main-color)" }
-            }
-            $customStyles={{
-              width: "81%",
-              height: "52px",
-              padding: "0 24px",
-              display: "flex",
-              flexShirink: "0",
-            }}
+            style={errors.wantedCard && { border: "1px solid var(--main-color)" }}
+            $customStyles={CustomInputStyle}
             {...register("wantedCard", {
               required: "희망 개수를 입력해주세요.",
               min: {
@@ -169,13 +158,7 @@ const PostForm = () => {
             placeholder="위치를 입력해주세요."
             defaultValue={post.address}
             style={errors.address && { border: "1px solid var(--main-color)" }}
-            $customStyles={{
-              width: "81%",
-              height: "52px",
-              padding: "0 24px",
-              display: "flex",
-              flexShirink: "0",
-            }}
+            $customStyles={CustomInputStyle}
             {...register("address", {
               required: "위치를 입력해주세요.",
               minLength: {
@@ -191,19 +174,11 @@ const PostForm = () => {
         </InputWrapper>
         {errors.address && <Error text={errors.address.message} />}
       </FormWrapper>
+
+      
       <Button
         type="submit"
-        $customStyles={{
-          width: "100%",
-          background: "#f4f4f4",
-          color: "var(--gray-color)",
-          marginTop: "108px",
-          transition: "0.2s",
-          "&:hover": {
-            background: "var(--main-color)",
-            color: "#fff",
-          },
-        }}
+        $customStyles={CustomButtonStyle}
       >
         수정하기
       </Button>
@@ -248,5 +223,23 @@ const TextArea = styled.textarea`
     color: #dbdbdb;
   }
 `;
+
+const CustomInputStyle = `
+  width : 81%;
+  height : 52px;
+  padding : 0 24px;
+`
+
+const CustomButtonStyle = styled.div`
+  width : 100%;
+  background : #f4f4f4;
+  color : var(--gray-color);
+  margin-top : 108px;
+  transition : 0.2s;
+  &:hover{
+    background : var(--main-color);
+    color : #fff;
+  }
+`
 
 export default PostForm;
