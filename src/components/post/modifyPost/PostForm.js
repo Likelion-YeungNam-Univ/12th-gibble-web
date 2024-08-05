@@ -57,9 +57,9 @@ const PostForm = () => {
 
   return (
     <Wrapper
-      onSubmit={handleSubmit((data) => {
-        modifyPost(data, postId);
-        navigate("/post/newpostcomplete");
+      onSubmit={handleSubmit(async (data) => {
+        const result = await modifyPost(data, postId);
+        navigate(`/post/newpostcomplete?postId=${result.postId}`);
       })}
     >
       <FormWrapper>
