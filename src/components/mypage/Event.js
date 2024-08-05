@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
+import { ReactComponent as Left } from "@/assets/svg/mypageleft.svg";
+import { ReactComponent as Right } from "@/assets/svg/mypageright.svg";
 
 const EventViewer = ({ events }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -20,7 +22,7 @@ const EventViewer = ({ events }) => {
     <Wrapper>
       <List>참여 이벤트 조회</List>
       <Slider>
-        <Arrow onClick={handlePrevClick}>&lt;</Arrow>
+        <LeftBtn onClick={handlePrevClick}>&lt;</LeftBtn>
 
         <EventContainer>
           {events.slice(currentIndex, currentIndex + 4).map((event, index) => (
@@ -35,7 +37,7 @@ const EventViewer = ({ events }) => {
             </Event>
           ))}
         </EventContainer>
-        <Arrow onClick={handleNextClick}>&gt;</Arrow>
+        <RightBtn onClick={handleNextClick}>&gt;</RightBtn>
       </Slider>
     </Wrapper>
   );
@@ -69,12 +71,24 @@ const Slider = styled.div`
   margin-top: 15px;
 `;
 
-const Arrow = styled.div`
-  font-size: 24px;
+const LeftBtn = styled(Left)`
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 5px;
   cursor: pointer;
-  padding: 10px;
-  user-select: none;
-  color: #767676;
+
+`;
+
+const RightBtn = styled(Right)`
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 5px;
+  cursor: pointer;
+
 `;
 
 const EventContainer = styled.div`
