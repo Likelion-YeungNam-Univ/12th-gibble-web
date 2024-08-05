@@ -7,6 +7,7 @@ import PageController from "../../components/review/PageController";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import getAllReviewByPageNum from "@/api/review/getAllReviewByPageNum";
 import { ReactComponent as WriteButton } from "@/assets/svg/post-write-button.svg";
+import Loading from "@/layouts/Loading";
 
 const Review = () => {
   const [reviewList, setReviewList] = useState([]);
@@ -14,6 +15,7 @@ const Review = () => {
   const [searchParams] = useSearchParams();
   const [nowPage, setNowPage] = useState(0);
   const [totalPages, setTotalPages] = useState(0);
+  const [isLoading, setIsLoading] = useState(true);
   
   useEffect(()=> {
     const fetchReview = async () => {
@@ -24,6 +26,7 @@ const Review = () => {
         console.log('result',result)
         setReviewList(result.data.content);
         setTotalPages(result.data.totalPages);
+        setIsLoading(false)
       } catch(error) {
         console.log('error',error);
         navigate('/error');
@@ -31,6 +34,9 @@ const Review = () => {
     };
     fetchReview();
   }, [nowPage, setNowPage])
+
+  if(isLoading)
+    return <Loading/>
 
   return (
     <Wrapper>

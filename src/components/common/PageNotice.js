@@ -18,7 +18,7 @@ const Wrapper = styled.div`
   width: 100%;
   color: var(--gray-color);
   font-size: 18px;
-  margin-top: 38px;
+  margin-top: 70px;
   margin-bottom: 92px;
   letter-spacing: -0.02em;
   line-height: 26px;

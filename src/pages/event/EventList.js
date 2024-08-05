@@ -1,9 +1,11 @@
 import getEventList from "@/api/event/getEventList";
+import PageNotice from "@/components/common/PageNotice";
 import EventCard from "@/components/event/EventCard";
 import EventNavbar from "@/components/event/EventNavbar";
 import Notice from "@/components/event/Notice";
 import PageController from "@/components/event/PageController";
 import Separator from "@/components/event/Separator";
+import Loading from "@/layouts/Loading";
 import React, { useEffect, useState } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import styled from "styled-components";
@@ -14,6 +16,7 @@ const EventList = () => {
   const [eventList, setEventList] = useState([]);
   const [nowPage, setNowPage] = useState(0);
   const [totalPages, setTotalPages] = useState(0);
+  const [isLoading, setIsLoading] = useState(true);
   const [region, setRegion] = useState("");
 
   useEffect(() => {
@@ -27,6 +30,7 @@ const EventList = () => {
         setEventList(result.data.content);
         setTotalPages(result.totalPages);
         console.log(eventList);
+        setIsLoading(false);
       } catch (error) {
         console.log("error", error);
         navigate("/error");
@@ -35,9 +39,12 @@ const EventList = () => {
     fetch();
   }, [nowPage, region, navigate, searchParams]);
 
+  if(isLoading)
+    return <Loading/>
+
   return (
     <Wrapper>
-      <Notice />
+      <PageNotice location={['Home','이벤트','진행 중 이벤트']} />
       <Container>
         <Separator />
         <EventNavbar region={region} setRegion={setRegion} />
@@ -63,6 +70,7 @@ const Wrapper = styled.div`
   min-height: 100%;
   box-sizing: border-box;
   padding: 30px 200px;
+  padding-top : 0px;
   margin-bottom: 50px;
 `;
 

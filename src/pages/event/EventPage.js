@@ -5,6 +5,8 @@ import Content from "@/components/event/eventPage/Content";
 import { useNavigate, useParams } from "react-router-dom";
 import getEventId from "@/api/event/getEventId";
 import Loading from "@/layouts/Loading";
+import PageNoticeWithBanner from "@/components/common/PageNoticeWithBanner";
+import eventBanner from "@/assets/image/eventBanner.png"
 
 const EventPage = () => {
   const { eventId } = useParams();
@@ -31,12 +33,14 @@ const EventPage = () => {
   if (isLoading) return <Loading />;
 
   return (
-    <Wrapper>
-      <Notice />
-      <Container>
-        <Content event={event} />
-      </Container>
-    </Wrapper>
+    <div>
+      <PageNoticeWithBanner location={['Home','이벤트','진행 중 이벤트','상세 페이지']} banner={eventBanner}/>
+      <Wrapper>
+        <Container>
+          <Content event={event} />
+        </Container>
+      </Wrapper>
+    </div>
   );
 };
 
