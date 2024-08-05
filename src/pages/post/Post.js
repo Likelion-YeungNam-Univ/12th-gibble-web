@@ -7,23 +7,26 @@ const Post = () => {
   return (
     <Wrapper>
       <PageNotice location={["Home", "헌혈증 기부"]}></PageNotice>
-      <Container>
-        <Content />
-      </Container>
+      <ContentContainer>
+        <Container>
+          <Content />
+        </Container>
+      </ContentContainer>
     </Wrapper>
   );
 };
 
 const Wrapper = styled.div`
   box-sizing: border-box;
-  padding: 0 10%;
+  padding: 0 270px;
   width: 100%;
-  
 `;
 
-const Container = styled.div`
-  box-sizing: border-box;
-  padding: 0 10%;
+const ContentContainer = styled.div`
+  width: 1238px;
+  margin: 0px auto;
 `;
+
+const Container = styled.div``;
 
 export default Post;
