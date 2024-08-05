@@ -1,5 +1,21 @@
 import styled, { keyframes } from 'styled-components';
 
+const Loading = () => {
+  return (
+    <Wrapper>
+      <LoadingComponent/>
+    </Wrapper>
+  )
+}
+
+const Wrapper = styled.div`
+  width  : 100%;
+  height : 60vh;
+  display : flex;
+  justify-content : center;
+  align-items : center;
+`
+
 const moving = keyframes`
   50% {
     width: 100%;
@@ -12,7 +28,7 @@ const moving = keyframes`
   }
 `;
 
-const Loading = styled.div`
+const LoadingComponent = styled.div`
   display: block;
   --height-of-loader: 4px;
   --loader-color: #ff0000;
