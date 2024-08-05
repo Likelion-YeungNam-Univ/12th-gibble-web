@@ -17,7 +17,13 @@ const HeadComponent = () => {
   return (
     <Wrapper>
       <Container>
-        <Logo src={logo} onClick={() => navigate("/")} />
+        <Logo
+          src={logo}
+          onClick={() => {
+            navigate("/");
+            window.location.reload();
+          }}
+        />
         <Util>
           {!accessToken ? (
             <Utils>

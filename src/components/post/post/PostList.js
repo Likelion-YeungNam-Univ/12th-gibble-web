@@ -23,6 +23,7 @@ const PostList = () => {
   const [totalElements, setTotalElements] = useState(0);
   const [key, setKey] = useState();
   const [isSearched, setIsSearched] = useState(false);
+  const keyword = searchParams.get("search");
 
   useEffect(() => {
     const fetch = async () => {
@@ -47,8 +48,23 @@ const PostList = () => {
   }, [nowPage, setNowPage, navigate, searchParams]);
 
   useEffect(() => {
+    const mainFetch = async () => {
+      setIsSearched(true);
+
+      const result = await searchPost(
+        parseInt(searchParams.get("page")),
+        "",
+        keyword
+      );
+      setNowPage(parseInt(searchParams.get("page")) || 0);
+      setPostList(result.data.content);
+      setTotalElements(result.data.totalElements);
+      setTotalPages(result.data.totalPages);
+      navigate(`/post?page=${nowPage}&search=${keyword}`);
+    };
     const fetch = async () => {
       setIsSearched(true);
+
       if (isSearched) {
         const result = await searchPost(
           parseInt(searchParams.get("page")),
@@ -63,6 +79,9 @@ const PostList = () => {
       }
     };
     fetch();
+    if (keyword) {
+      mainFetch();
+    }
   }, [key, nowPage, navigate]);
 
   if (isLoading) return <Loading />;
