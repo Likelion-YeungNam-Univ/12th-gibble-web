@@ -65,20 +65,20 @@ const PostList = () => {
     const fetch = async () => {
       setIsSearched(true);
 
-      const result = await searchPost(
-        parseInt(searchParams.get("page")),
-        "",
-        key
-      );
-      setNowPage(parseInt(searchParams.get("page")) || 0);
-      setPostList(result.data.content);
-      setTotalElements(result.data.totalElements);
-      setTotalPages(result.data.totalPages);
-      navigate(`/post?page=${nowPage}&search=${key}`);
+      if (isSearched) {
+        const result = await searchPost(
+          parseInt(searchParams.get("page")),
+          "",
+          key
+        );
+        setNowPage(parseInt(searchParams.get("page")) || 0);
+        setPostList(result.data.content);
+        setTotalElements(result.data.totalElements);
+        setTotalPages(result.data.totalPages);
+        navigate(`/post?page=${nowPage}&search=${key}`);
+      }
     };
-    if (isSearched) {
-      fetch();
-    }
+    fetch();
     if (keyword) {
       mainFetch();
     }
