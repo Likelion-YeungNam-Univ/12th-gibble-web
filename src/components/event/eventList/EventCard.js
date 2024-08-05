@@ -37,6 +37,7 @@ const ThumbNail = styled.img`
 
 const Description = styled.div`
   padding: 9px 15px;
+  margin:2px
 `;
 
 const Title = styled.div`
