@@ -112,7 +112,7 @@ const DonorBox = ({ post }) => {
                   }
                 }
               />
-              <Button $customStyles={ButtonCustomStyles}>등록하기</Button>
+              <Button $customStyles={ButtonCustomStyles}>기부하기</Button>
             </InputContainer>
           </InputWrapper>
         )}
