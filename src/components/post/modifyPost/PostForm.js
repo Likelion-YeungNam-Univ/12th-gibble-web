@@ -230,7 +230,7 @@ const CustomInputStyle = `
   padding : 0 24px;
 `
 
-const CustomButtonStyle = styled.div`
+const CustomButtonStyle = `
   width : 100%;
   background : #f4f4f4;
   color : var(--gray-color);
