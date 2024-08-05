@@ -4,7 +4,6 @@ const getParticipation = async () => {
   try {
     const authAxios = getAuthAxios();
     const response = await authAxios.get("/user/participation-event");
-    console.log("response", response);
 
     if (response.status === 200) {
       return {

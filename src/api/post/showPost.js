@@ -5,8 +5,6 @@ const showPost = async (postId) => {
     const authAxios = getAuthAxios();
     const response = await authAxios.get(`/post/${postId}`);
 
-    console.log("response", response);
-
     if (response.status === 200) {
       return {
         statusCode: response.status,

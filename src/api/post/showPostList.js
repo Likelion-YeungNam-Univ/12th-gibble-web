@@ -7,7 +7,6 @@ const showPostList = async ({ nowPage, size }) => {
       params: { page: nowPage, size },
     });
 
-    console.log("response", response);
     return {
       statusCode: response.status,
       data: response.data,

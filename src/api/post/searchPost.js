@@ -7,7 +7,6 @@ const searchPost = async (search) => {
       params: { search },
     });
 
-    console.log("response", response);
     return {
       statusCode: response.status,
       data: response.data,

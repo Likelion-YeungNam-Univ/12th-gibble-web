@@ -9,8 +9,6 @@ export const getEventList = async ({ nowPage, region }) => {
       params: { page: nowPage, region },
     });
 
-    console.log("response", response);
-
     if (response.status === 200) {
       return {
         statusCode: response.status,

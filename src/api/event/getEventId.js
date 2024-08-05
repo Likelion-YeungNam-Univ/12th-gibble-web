@@ -6,8 +6,6 @@ const getEventId = async (eventId) => {
     const authAxios = getAuthAxios();
     const response = await authAxios.get(`/event/${eventId}`);
 
-    console.log("response", response);
-
     if (response.status === 200) {
       return {
         statusCode: response.status,

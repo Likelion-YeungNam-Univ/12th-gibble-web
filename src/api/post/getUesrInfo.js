@@ -4,7 +4,6 @@ const getUesrInfo = async () => {
   try {
     const authAxios = getAuthAxios();
     const response = await authAxios.get("/post/user-info");
-    console.log("response", response);
 
     if (response.status === 200) {
       return {

@@ -4,7 +4,6 @@ const getMyPage = async () => {
   try {
     const authAxios = getAuthAxios();
     const response = await authAxios.get("/user");
-    console.log("response", response);
 
     if (response.status === 200) {
       return {

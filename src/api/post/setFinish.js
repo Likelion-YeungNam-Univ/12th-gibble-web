@@ -2,7 +2,6 @@ import { getAuthAxios } from "../authAxios";
 
 const setFinish = async (postId, isDonationPermitted) => {
   try {
-    console.log("postId", postId, "isDonationPermitted", isDonationPermitted);
     const authAxios = getAuthAxios();
 
     const response = await authAxios.put(

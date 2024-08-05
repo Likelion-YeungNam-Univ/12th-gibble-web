@@ -4,7 +4,6 @@ const getDelivery = () => {
   try {
     const authAxios = getAuthAxios();
     const response = authAxios.get("/user/delivery");
-    console.log("response", response);
 
     if (response.status === 200) {
       return {

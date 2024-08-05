@@ -4,7 +4,6 @@ const getMyDonation = async () => {
   try {
     const authAxios = getAuthAxios();
     const response = await authAxios.get("/donation/my-donation");
-    console.log("response", response);
 
     if (response.status === 200) {
       return {

@@ -6,8 +6,6 @@ export const participateEvent = async (eventId) => {
   try {
     const response = await authAxios.post(`/event/${eventId}/participation`);
 
-    console.log("response", response);
-
     if (response.status === 200) {
       return {
         statusCode: response.status,
