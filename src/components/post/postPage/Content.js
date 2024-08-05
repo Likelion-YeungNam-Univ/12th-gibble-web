@@ -5,6 +5,7 @@ import { ReactComponent as Trash } from "@/assets/svg/trash.svg";
 import { ReactComponent as Pen } from "@/assets/svg/pen.svg";
 import deletePost from "@/api/post/deletePost";
 import { useNavigate, useParams } from "react-router-dom";
+import DonorBox from "./DonorBox";
 
 const Content = ({ post }) => {
   const navigate = useNavigate();
@@ -85,6 +86,7 @@ const Content = ({ post }) => {
           </PostBtnContainer>
         )}
       </Container>
+      <DonorBox post={post} />
     </Wrapper>
   );
 };
@@ -92,14 +94,15 @@ const Content = ({ post }) => {
 export default Content;
 
 const Wrapper = styled.div`
-  border-bottom: 2px solid #dbdbdb;
   margin-bottom: 68px;
 `;
 
 const Container = styled.div`
   margin-top: 110px;
+  padding-bottom : 70px;
   margin-bottom: 80px;
   padding-left: 50px;
+  border-bottom : 2px solid #dbdbdb;
 `;
 
 const Description = styled.div`

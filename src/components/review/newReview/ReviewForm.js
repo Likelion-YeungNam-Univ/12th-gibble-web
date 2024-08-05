@@ -11,10 +11,8 @@ import { storage } from "@/firebase/firebaseConfig";
 import { v4 as uuid } from "uuid";
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 import newReview from "@/api/review/newReview";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import Modal from "./Modal";
-import store from "@/store/store";
-import decodeToken from "@/utils/decodeToken";
 import getUesrInfo from "@/api/post/getUesrInfo";
 
 const ReviewForm = () => {
@@ -27,12 +25,15 @@ const ReviewForm = () => {
     mode: "onSubmit",
   });
 
-  // const state = store.getState();
-  // console.log(state.auth.accessToken);
-  // const jwtInfo = decodeToken(state.auth.accessToken);
-  // console.log(jwtInfo);
-
   const [info, setInfo] = useState(null);
+  const fileInputRef = useRef(null);
+  const [img, setImg] = useState(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [searchParams] = useSearchParams();
+  const [postId, setPostId] = useState(searchParams.get('post') || null);
+  const [selectedPostTitle, setSelectedPostTitle] = useState(searchParams.get('title') || null);
+
+
 
   useEffect(() => {
     const fetchInfo = async () => {
@@ -46,13 +47,6 @@ const ReviewForm = () => {
     };
     fetchInfo();
   }, [setInfo]);
-
-  const fileInputRef = useRef(null);
-  const [img, setImg] = useState(null);
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [postId, setPostId] = useState(null);
-  const [selectedPostTitle, setSelectedPostTitle] = useState("");
-
 
   const title = watch("title", "");
   const content = watch("content", "");
@@ -68,6 +62,11 @@ const ReviewForm = () => {
   const handlePostSelect = (title) => {
     setSelectedPostTitle(title);
   };
+
+  const customInputStyle = {
+    ...(errors.link && { border : "1px solid var(--main-color"}),
+    ...(searchParams.get('title') && { backgroundColor : "#f1f1f1", cursor : "default"})
+  }
 
   return (
     <Wrapper
@@ -152,17 +151,20 @@ const ReviewForm = () => {
             <Input
               type="text"
               placeholder="어떤 게시글의 후기글인지 게시글을 선택해 주세요"
-              style={errors.link && { border: "1px solid var(--main-color)" }}
+              style={ customInputStyle }
               $customStyles={{
                 width: "400px",
                 height: "52px",
                 padding: "0 24px",
                 display: "flex",
                 flexShrink: "0",
-              }}x
+              }}
               value={selectedPostTitle}
+              readOnly={searchParams.get('title')}
             />
-            <Button
+            {
+              !searchParams.get('title') && 
+              <Button
               type="button"
               onClick={openModal}
               $customStyles={{
@@ -174,11 +176,13 @@ const ReviewForm = () => {
                 "&:hover": {
                   background: "var(--gray-color)",
                   color: "#fff",
-                },
+                }
               }}
-            >
+              disabled={searchParams.get('title')}
+              >
               게시글 찾기
             </Button>
+            }
           </TmpContainer>
         </InputWrapper>
 
@@ -303,5 +307,7 @@ const TmpContainer = styled.div`
   justify-content: space-between;
   width: 81%;
 `;
+
+
 
 export default ReviewForm;

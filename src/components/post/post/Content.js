@@ -1,5 +1,4 @@
 import React from "react";
-import PostCategory from "./PostCategory";
 import PostList from "./PostList";
 import styled from "styled-components";
 

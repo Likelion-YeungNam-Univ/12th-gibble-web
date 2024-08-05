@@ -7,7 +7,6 @@ import styled from "styled-components";
 import Notice from "@/components/post/postPage/Notice";
 import Title from "@/components/post/postPage/Title";
 import Content from "@/components/post/postPage/Content";
-import DonorBox from "@/components/post/postPage/DonorBox";
 
 const PostPage = () => {
   const { postId } = useParams();
@@ -43,7 +42,6 @@ const PostPage = () => {
       <Container>
         <Title post={post} />
         <Content post={post} />
-        <DonorBox post={post} />
       </Container>
     </Wrapper>
   );

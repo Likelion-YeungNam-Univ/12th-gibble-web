@@ -54,15 +54,12 @@ const DonorBox = ({ post }) => {
           )}
         </TitleContainer>
         {post.isPermitted && (
-          <WriteReviewButton>후기 작성하기</WriteReviewButton>
+          <WriteReviewButton onClick={() => navigate(`/review/new?post=${postId}&title=${post.title}&from=true`)}>후기 작성하기</WriteReviewButton>
         )}
       </Separator>
 
       <DonorWrapper>
         <DonorContainer>
-          {/* 도너 리스트 받아와서 map할 때 2번쨰 인자 인덱스로 donorList.length-1 !=== index
-                    일떄만 카드 옆에 구분선 표시되도록 하면 됩니다~
-                */}
 
           {post.donationInfo.map((donor, idx) => {
             return (
@@ -165,6 +162,7 @@ const WriteReviewButton = styled.div`
   font-weight: 600;
   line-height: 26px; /* 144.444% */
   letter-spacing: -0.45px;
+  cursor: pointer;
 `;
 
 const DonorWrapper = styled.div`
