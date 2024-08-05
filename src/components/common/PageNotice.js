@@ -23,6 +23,7 @@ const Wrapper = styled.div`
   letter-spacing: -0.02em;
   line-height: 26px;
   display: inline-block;
+  
 `;
 
 export default PageNotice;

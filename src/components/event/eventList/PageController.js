@@ -86,7 +86,7 @@ const Wrapper = styled.div`
   width: 100%;
   display: flex;
   justify-content: center;
-  gap: 5px;
+  gap: 20px;
 `;
 
 const LeftBtn = styled(Left)`
@@ -95,6 +95,7 @@ const LeftBtn = styled(Left)`
   justify-content: center;
   align-items: center;
   margin: 5px;
+  fill: #767676;
   cursor: pointer;
   &:hover {
     background-color: #f1f1f1;
@@ -107,6 +108,7 @@ const RightBtn = styled(Right)`
   justify-content: center;
   align-items: center;
   margin: 5px;
+  fill: #767676;
   cursor: pointer;
   &:hover {
     background-color: #f1f1f1;

@@ -34,7 +34,7 @@ const EventPage = () => {
 
   return (
     <div>
-      <PageNoticeWithBanner location={['Home','이벤트','진행 중 이벤트','상세 페이지']} banner={eventBanner}/>
+      <PageNoticeWithBanner location={['Home','이벤트','상세 페이지']} banner={eventBanner}/>
       <Wrapper>
         <Container>
           <Content event={event} />

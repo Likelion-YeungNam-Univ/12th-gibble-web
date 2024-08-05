@@ -19,16 +19,17 @@ const EventCard = ({ event }) => {
 };
 
 const Wrapper = styled.div`
-  width: 32%;
-  height: 280px;
+  width: 28.9%;
+  height: 279px;
   border-radius: 10px;
   margin-bottom: 5px;
   border-radius: 6px;
   border: 1px solid #dbdbdb;
   cursor: pointer;
+  overflow: hidden;
 `;
 const ThumbNail = styled.img`
-  width: 100%;
+  width: 402px;
   height: 209px;
   object-fit: cover;
   object-position: top;

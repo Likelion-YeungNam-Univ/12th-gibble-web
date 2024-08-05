@@ -52,7 +52,7 @@ const List = styled.div`
 const TableHeader = styled.div`
   width: 845px;
   display: grid;
-  grid-template-columns: 60% 20% 20%;
+  grid-template-columns: 60% 25% 20%;
   border-bottom: 2px solid #ddd;
 `;
 
@@ -99,7 +99,7 @@ const Tr = styled.tr`
   font-weight: 500;
   line-height: 30px; /* 166.667% */
   letter-spacing: -0.45px;
-  grid-template-columns: 62.5% 22.5% 15%;
+  grid-template-columns: 62.5% 26.5% 10%;
   &:nth-child(even) {
     background-color: #f9f9f9;
   }

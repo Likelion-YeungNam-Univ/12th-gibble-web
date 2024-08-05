@@ -67,9 +67,9 @@ const EventList = () => {
 
   return (
     <Wrapper>
-      <PageNotice location={["Home", "이벤트", "진행 중 이벤트"]} />
+      <PageNotice location={["Home", "이벤트"]} />
       <Container>
-        <Separator title={"진행 중인 이벤트"} setKey={setKey} />
+        <Separator title={"이벤트"} setKey={setKey} />
         <EventNavbar region={region} setRegion={setRegion} />
         {totalPages === 0 && <Error>진행 중인 이벤트가 없습니다.</Error>}
         <Content>
@@ -95,11 +95,17 @@ const Wrapper = styled.div`
   padding: 30px 200px;
   padding-top: 0px;
   margin-bottom: 50px;
+
 `;
 
 const Container = styled.div`
   box-sizing: border-box;
   margin: 20px 70px 20px 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
 `;
 
 const Content = styled.div`
@@ -111,6 +117,7 @@ const Content = styled.div`
   box-sizing: border-box;
   padding: auto;
   padding-bottom: 80px;
+  margin-left: 140px
 `;
 
 const Error = styled.div`

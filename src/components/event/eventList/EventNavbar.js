@@ -31,7 +31,7 @@ const EventNavbar = ({ region, setRegion }) => {
       {location.map((loc, index) => (
         <Category
           key={index}
-          style={loc.region === region ? { color: "red" } : null}
+          style={loc.region === region ? { color: "red", borderBottom:"2px solid"} : null}
           onClick={() => clickHandler(loc)}
         >
           {loc.name}
@@ -47,6 +47,7 @@ const Wrapper = styled.div`
   align-items: center;
   margin: 0px 10px;
   margin-bottom: 30px;
+  width: 89%;
 `;
 
 const Category = styled.div`
@@ -61,7 +62,6 @@ const Category = styled.div`
     font-size: 22px;
     color: var(--main-color);
     font-weight: bold;
-    border-bottom: 2px solid var(--main-color);
   }
 `;
 
