@@ -99,7 +99,7 @@ const Tr = styled.tr`
   font-weight: 500;
   line-height: 45px; /* 166.667% */
   letter-spacing: -0.45px;
-  grid-template-columns: 65.5% 26.5% 10%;
+  grid-template-columns: 64.5% 24% 5%;
   &:nth-child(even) {
     background-color: #f9f9f9;
   }
