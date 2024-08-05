@@ -17,6 +17,7 @@ const Wrapper = styled.div`
   display: flex;
   font-size: 22px;
   font-weight: normal;
+  font-weight: 500;
   margin-bottom: 15px;
 `;
 
