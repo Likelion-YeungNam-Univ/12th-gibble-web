@@ -6,8 +6,17 @@ import styled from "styled-components";
 const Content = ({ event }) => {
 
   const clickHandler = async () => {
-    const result = await participateEvent(event.eventId);
-    alert(result.data.response);
+    try {
+      const result = await participateEvent(event.eventId);
+      if(result.statusCode === 200){
+        alert('이벤트 참여 성공!');
+      }
+      else if(result.statusCode === 409){
+        alert(result.message);
+      }
+    } catch (error){
+      console.error(error);
+    }
   };
 
   return (

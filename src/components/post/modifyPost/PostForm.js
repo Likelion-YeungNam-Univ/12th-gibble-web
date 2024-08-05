@@ -57,9 +57,9 @@ const PostForm = () => {
 
   return (
     <Wrapper
-      onSubmit={handleSubmit((data) => {
-        modifyPost(data, postId);
-        navigate("/post/newpostcomplete");
+      onSubmit={handleSubmit(async (data) => {
+        const result = await modifyPost(data, postId);
+        navigate(`/post/newpostcomplete?postId=${result.postId}`);
       })}
     >
       <FormWrapper>
@@ -230,7 +230,7 @@ const CustomInputStyle = `
   padding : 0 24px;
 `
 
-const CustomButtonStyle = styled.div`
+const CustomButtonStyle = `
   width : 100%;
   background : #f4f4f4;
   color : var(--gray-color);

@@ -13,8 +13,11 @@ export const participateEvent = async (eventId) => {
       };
     }
   } catch (error) {
+    console.log('error in participateEvent',error);
+    if(error.response.status === 409)
     return {
       statusCode: error.response.status,
+      message : error.response.data.message
     };
   }
 };

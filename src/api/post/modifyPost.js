@@ -1,15 +1,14 @@
 import { getAuthAxios } from "../authAxios";
 
-const modifyPost = (data, postId) => {
+const modifyPost = async (data, postId) => {
   try {
     const authAxios = getAuthAxios();
 
-    const response = authAxios.put(`/post/upload/${postId}`, data);
-
+    const response = await authAxios.put(`/post/upload/${postId}`, data);
+    console.log('response in mdify', response);
     if (response.status === 200) {
       return {
-        statusCode: response.status,
-        data: response.data,
+        postId: response.data.postId,
       };
     }
   } catch (error) {
