@@ -110,9 +110,6 @@ const Td = styled.td`
   &.count {
     color: #f42e3d;
   }
-  &.title {
-    color: #000;
-  }
 `;
 
 export default Donation;
