@@ -2,9 +2,8 @@ import React from "react";
 import { styled } from "styled-components";
 import Button from "./Button";
 import { useForm } from "react-hook-form";
-import searchPost from "@/api/post/searchPost";
 
-const Separator = ({ title, setSearchPost }) => {
+const Separator = ({ title, setKey }) => {
   const {
     register,
     handleSubmit,
@@ -17,18 +16,9 @@ const Separator = ({ title, setSearchPost }) => {
     <Wrapper>
       <Title>{title}</Title>
       <SearchContainer
+        const
         onSubmit={handleSubmit((data) => {
-          const search = async () => {
-            const result = await searchPost(data.key);
-            console.log("result", result);
-            if (result.statusCode === 200) {
-              console.log("검색 실행", result.data.content);
-              setSearchPost(result.data.content);
-            } else {
-              alert(result.message);
-            }
-          };
-          search();
+          setKey(data.key);
         })}
       >
         <SearchBar

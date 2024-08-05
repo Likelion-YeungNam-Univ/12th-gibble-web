@@ -2,11 +2,12 @@ import React from "react";
 import { ReactComponent as Left } from "@/assets/svg/left-move.svg";
 import { ReactComponent as Right } from "@/assets/svg/right-move.svg";
 import styled from "styled-components";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 
 const PageController = ({ nowPage, setNowPage, totalPages }) => {
   const navigate = useNavigate();
 
+  const [searchParams] = useSearchParams();
   const handleLeftClick = () => {
     if (nowPage > 0) {
       setNowPage((prev) => prev - 1);
@@ -39,13 +40,15 @@ const PageController = ({ nowPage, setNowPage, totalPages }) => {
       while (pageNumbers.length < 5) {
         if (pageNumbers[0] > 0) {
           pageNumbers.unshift(pageNumbers[0] - 1);
-        } else {
+        } else if (pageNumbers[pageNumbers.length - 1] < totalPages - 1) {
           pageNumbers.push(pageNumbers[pageNumbers.length - 1] + 1);
+        } else {
+          break; // 더 이상 추가할 수 없으면 종료
         }
       }
     }
 
-    return pageNumbers;
+    return pageNumbers.filter((num) => !isNaN(num)); // NaN 필터링
   };
 
   const pageNumbers = getPageNumbers();
@@ -59,7 +62,9 @@ const PageController = ({ nowPage, setNowPage, totalPages }) => {
             key={pageNum}
             onClick={() => {
               setNowPage(pageNum);
-              navigate(`/post?page=${pageNum}`);
+              navigate(
+                `/post?page=${pageNum}&search=${searchParams.get("search")}`
+              );
             }}
             style={
               pageNum === nowPage
@@ -67,7 +72,7 @@ const PageController = ({ nowPage, setNowPage, totalPages }) => {
                 : {}
             }
           >
-            {pageNum + 1} {/* 페이지 번호는 1부터 시작하므로 +1 */}
+            {pageNum + 1}
           </PageNum>
         ))}
       </PageNumList>
