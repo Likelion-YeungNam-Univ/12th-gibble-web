@@ -92,7 +92,7 @@ const LeftBtn = styled(Left)`
   display: flex;
   justify-content: center;
   align-items: center;
-  color : #767676 !important;   
+  fill: #767676;  
   margin: 5px;
   cursor: pointer;
   &:hover {
@@ -105,8 +105,8 @@ const RightBtn = styled(Right)`
   display: flex;
   justify-content: center;
   align-items: center;
-  color : #767676 !important;   
-  margin: 5px;
+  fill: #767676;
+    margin: 5px;
   cursor: pointer;
   &:hover {
     background-color: #f1f1f1;

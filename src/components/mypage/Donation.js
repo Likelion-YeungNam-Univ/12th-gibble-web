@@ -52,7 +52,7 @@ const List = styled.div`
 const TableHeader = styled.div`
   width: 845px;
   display: grid;
-  grid-template-columns: 60% 20% 20%;
+  grid-template-columns: 65% 19.8% 20%;
   border-bottom: 2px solid #ddd;
 `;
 
@@ -75,7 +75,7 @@ const Th = styled.div`
   font-size: 18px;
   font-style: normal;
   font-weight: 500;
-  line-height: 30px; /* 166.667% */
+  line-height: 40px; /* 166.667% */
   letter-spacing: -0.45px;
   text-align: left;
 `;
@@ -97,9 +97,9 @@ const Tr = styled.tr`
   font-size: 18px;
   font-style: normal;
   font-weight: 500;
-  line-height: 30px; /* 166.667% */
+  line-height: 45px; /* 166.667% */
   letter-spacing: -0.45px;
-  grid-template-columns: 62.5% 22.5% 15%;
+  grid-template-columns: 66.5% 21.5% 5%;
   &:nth-child(even) {
     background-color: #f9f9f9;
   }

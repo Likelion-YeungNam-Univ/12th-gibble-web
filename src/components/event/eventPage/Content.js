@@ -21,11 +21,14 @@ const Content = ({ event }) => {
 
   return (
     <Wrapper>
-      <PageTitle>이벤트 페이지 상세 보기</PageTitle>
+      <PageTitle>이벤트 상세 보기</PageTitle>
       <Title>{event.content}</Title>
       <EventInfo>
         <InfoLabel>작성자</InfoLabel>
         <InfoDesc>관리자</InfoDesc>
+
+        <InfoLabel>이메일</InfoLabel>
+        <InfoDesc>gibble@gmail.com</InfoDesc>
 
         <InfoLabel>작성일</InfoLabel>
         <InfoDesc>{event.createdAt.slice(0, 10)}</InfoDesc>

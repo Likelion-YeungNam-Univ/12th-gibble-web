@@ -5,7 +5,7 @@ import PostForm from "@/components/post/modifyPost/PostForm";
 import FormSeparator from "@/components/common/FormSeparator";
 
 const ModifyPost = () => {
-  const location = ["Home", "커뮤니티", "헌혈증 기부", "게시글 작성"];
+  const location = ["Home","헌혈증 기부", "게시글 작성"];
   return (
     <Wrapper>
       <PageNotice location={location} />

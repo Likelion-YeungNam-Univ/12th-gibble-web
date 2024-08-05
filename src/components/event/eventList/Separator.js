@@ -44,6 +44,7 @@ const Wrapper = styled.div`
   box-sizing: border-box;
   padding: 32px 10px;
   margin-bottom: 100px;
+  width: 90%;
 `;
 
 const Title = styled.h2`
@@ -53,7 +54,7 @@ const Title = styled.h2`
 
 const SearchContainer = styled.form`
   display: flex;
-  gap: 30px;
+  gap: 10px;
 `;
 
 const SearchBar = styled.div`

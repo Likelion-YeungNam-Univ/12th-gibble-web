@@ -5,10 +5,12 @@ import PostForm from "@/components/post/newPost/PostForm";
 import FormSeparator from "@/components/common/FormSeparator";
 
 const NewPost = () => {
-  const location = ["Home", "커뮤니티", "헌혈증 기부", "게시글 작성"];
+  const location = ["Home", "헌혈증 기부", "게시글 작성"];
   return (
     <Wrapper>
-      <PageNotice location={location} />
+      <Box>
+        <PageNotice location={location} />
+      </Box>
       <FormSeparator title={"헌혈증 기부 요청 글 작성하기"}/>
       <Form>
         <PostForm />
@@ -23,6 +25,12 @@ const Wrapper = styled.div`
   box-sizing: border-box;
   padding: 0 14%;
 `;
+
+const Box = styled.div`
+  width: 1450px
+
+`;
+
 
 const Form = styled.div`
   box-sizing: border-box;
