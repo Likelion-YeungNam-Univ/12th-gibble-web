@@ -10,6 +10,7 @@ import { ReactComponent as WriteButton } from "@/assets/svg/post-write-button.sv
 import NoticeCard from "./NoticeCard";
 import Separator from "@/components/common/Separator";
 import PostCategory from "./PostCategory";
+import searchPost from "@/api/post/searchPost";
 
 const PostList = () => {
   const [searchParams] = useSearchParams();
@@ -18,10 +19,12 @@ const PostList = () => {
   const [nowPage, setNowPage] = useState(0);
   const [totalPages, setTotalPages] = useState(0);
   const [totalElements, setTotalElements] = useState(0);
-  const [searchPost, setSearchPost] = useState([]);
+  const [key, setKey] = useState();
+  const [isSearched, setIsSearched] = useState(false);
 
   useEffect(() => {
     const fetch = async () => {
+      console.log("원래 useEffect", isSearched);
       setNowPage(parseInt(searchParams.get("page")) || 0);
 
       const size = 10;
@@ -37,19 +40,33 @@ const PostList = () => {
         navigate("/error");
       }
     };
-    fetch();
+    if (!isSearched) {
+      fetch();
+    }
   }, [nowPage, setNowPage, navigate, searchParams]);
 
   useEffect(() => {
-    setPostList(searchPost);
-  }, [searchPost]);
+    const fetch = async () => {
+      if (searchPost) {
+        const result = await searchPost(
+          parseInt(searchParams.get("page")),
+          "",
+          key
+        );
+        setNowPage(parseInt(searchParams.get("page")) || 0);
+        setIsSearched(true);
+        setPostList(result.data.content);
+        setTotalElements(result.data.totalElements);
+        setTotalPages(result.data.totalPages);
+        navigate(`/post?page=${nowPage}&search=${key}`);
+      }
+    };
+    fetch();
+  }, [key, nowPage, navigate]);
 
   return (
     <>
-      <Separator
-        title={"헌혈증 기부"}
-        setSearchPost={setSearchPost}
-      ></Separator>
+      <Separator title={"헌혈증 기부"} setKey={setKey}></Separator>
       <PostCategory />
       <NoticeCard />
       {postList.map((el, index) => {
