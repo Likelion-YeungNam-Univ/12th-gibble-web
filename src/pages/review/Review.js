@@ -63,28 +63,35 @@ const Review = () => {
   return (
     <Wrapper>
       <PageNotice location={["Home", "커뮤니티", "투명 후기"]} />
-      <Separator title={"투명후기"} setKey={setKey} />
-      <Container>
-        {reviewList.map((el) => {
-          return <ReviewCard key={el.id} review={el}></ReviewCard>;
-        })}
-      </Container>
-      <PageControllerContainer>
-        <PageController
-          nowPage={nowPage}
-          setNowPage={setNowPage}
-          totalPages={totalPages}
-        />
-      </PageControllerContainer>
-      <WriteButtonContainer>
-        <WriteBtn onClick={() => navigate("/review/new")} />
-      </WriteButtonContainer>
+      <ContentWrapper>
+        <Separator title={"투명후기"} setKey={setKey} />
+        <Container>
+          {reviewList.map((el) => {
+            return <ReviewCard key={el.id} review={el}></ReviewCard>;
+          })}
+        </Container>
+        <PageControllerContainer>
+          <PageController
+            nowPage={nowPage}
+            setNowPage={setNowPage}
+            totalPages={totalPages}
+          />
+        </PageControllerContainer>
+        <WriteButtonContainer>
+          <WriteBtn onClick={() => navigate("/review/new")} />
+        </WriteButtonContainer>
+      </ContentWrapper>
     </Wrapper>
   );
 };
 
 const WriteBtn = styled(WriteButton)`
   cursor: pointer;
+`;
+
+const ContentWrapper = styled.div`
+  width: 1238px;
+  margin: 0px auto;
 `;
 
 const WriteButtonContainer = styled.div`
@@ -99,10 +106,10 @@ const WriteButtonContainer = styled.div`
 
 const Wrapper = styled.div`
   box-sizing: border-box;
-  padding: 0 10%;
   width: 100%;
   min-height: 1200px;
   position: relative;
+  padding: 0px 270px;
 `;
 
 const Container = styled.div`

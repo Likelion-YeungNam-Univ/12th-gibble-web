@@ -43,7 +43,7 @@ const Wrapper = styled.div`
   align-items: end;
   box-sizing: border-box;
   padding: 32px 10px;
-  margin-bottom: 100px;
+  margin-bottom: 32px;
 `;
 
 const Title = styled.h2`
@@ -53,7 +53,7 @@ const Title = styled.h2`
 
 const SearchContainer = styled.form`
   display: flex;
-  gap: 30px;
+  gap: 8px;
 `;
 
 const SearchBar = styled.div`
@@ -61,7 +61,6 @@ const SearchBar = styled.div`
   border-radius: 5px;
   box-sizing: border-box;
   padding: 10px;
-  width: 320px;
   display: flex;
   align-items: center;
 `;

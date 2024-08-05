@@ -15,7 +15,7 @@ const Wrapper = styled.div`
   display: flex;
   justify-content: end;
   text-align: end;
-  width: 94.8%;
+  width: 100%;
   color: var(--gray-color);
   font-size: 18px;
   margin-top: 70px;
@@ -23,7 +23,6 @@ const Wrapper = styled.div`
   letter-spacing: -0.02em;
   line-height: 26px;
   display: inline-block;
-  
 `;
 
 export default PageNotice;

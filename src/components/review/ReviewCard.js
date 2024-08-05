@@ -29,7 +29,7 @@ const Wrapper = styled.div`
 
 const ThumbNail = styled.img`
   width: 100%;
-  height: 200px;
+  height: 280px;
   object-fit: cover;
   object-position: top;
 `;
