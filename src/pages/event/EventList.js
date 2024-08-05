@@ -17,6 +17,7 @@ const EventList = () => {
   const [totalPages, setTotalPages] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
   const [region, setRegion] = useState("");
+  const [searchEvent, setSearchEvent] = useState([]);
 
   useEffect(() => {
     const fetch = async () => {
@@ -38,14 +39,17 @@ const EventList = () => {
     fetch();
   }, [nowPage, region, navigate, searchParams]);
 
-  if(isLoading)
-    return <Loading/>
+  useEffect(() => {
+    setEventList(searchEvent);
+  }, [searchEvent]);
+
+  if (isLoading) return <Loading />;
 
   return (
     <Wrapper>
-      <PageNotice location={['Home','이벤트','진행 중 이벤트']} />
+      <PageNotice location={["Home", "이벤트", "진행 중 이벤트"]} />
       <Container>
-        <Separator />
+        <Separator title={"진행 중인 이벤트"} setSearchEvent={setSearchEvent} />
         <EventNavbar region={region} setRegion={setRegion} />
         {totalPages === 0 && <Error>진행 중인 이벤트가 없습니다.</Error>}
         <Content>
@@ -69,7 +73,7 @@ const Wrapper = styled.div`
   min-height: 100%;
   box-sizing: border-box;
   padding: 30px 200px;
-  padding-top : 0px;
+  padding-top: 0px;
   margin-bottom: 50px;
 `;
 

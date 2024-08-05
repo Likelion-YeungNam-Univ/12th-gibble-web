@@ -1,5 +1,5 @@
 import PageNotice from "@/components/common/PageNotice";
-import Separator from "@/components/common/Separator";
+import Separator from "@/components/review/Seperator";
 import ReviewCard from "@/components/review/ReviewCard";
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
@@ -16,43 +16,51 @@ const Review = () => {
   const [nowPage, setNowPage] = useState(0);
   const [totalPages, setTotalPages] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
-  
-  useEffect(()=> {
+  const [searchReview, setSearchReview] = useState([]);
+
+  useEffect(() => {
     const fetchReview = async () => {
-      setNowPage(parseInt(searchParams.get('page')) || 0);
+      setNowPage(parseInt(searchParams.get("page")) || 0);
 
       try {
-        const result = await getAllReviewByPageNum({nowPage});
-        console.log('result',result)
+        const result = await getAllReviewByPageNum({ nowPage });
+        console.log("result", result);
         setReviewList(result.data.content);
         setTotalPages(result.data.totalPages);
-        setIsLoading(false)
-      } catch(error) {
-        console.log('error',error);
-        navigate('/error');
+        setIsLoading(false);
+      } catch (error) {
+        console.log("error", error);
+        navigate("/error");
       }
     };
     fetchReview();
-  }, [nowPage, setNowPage])
+  }, [nowPage, setNowPage]);
 
-  if(isLoading)
-    return <Loading/>
+  useEffect(() => {
+    setReviewList(searchReview);
+  }, [searchReview]);
+
+  if (isLoading) return <Loading />;
 
   return (
     <Wrapper>
-        <PageNotice location={['Home','커뮤니티','투명 후기']} />
-        <Separator title={'투명후기'} />
-        <Container>
-          {reviewList.map(el => {
-            return <ReviewCard key={el.id} review={el}></ReviewCard>
-          })}
-        </Container>
-        <PageControllerContainer>
-          <PageController nowPage={nowPage} setNowPage={setNowPage} totalPages={totalPages}/>
-        </PageControllerContainer>
-        <WriteButtonContainer>
-          <WriteBtn onClick={() => navigate("/review/new")} />
-        </WriteButtonContainer>
+      <PageNotice location={["Home", "커뮤니티", "투명 후기"]} />
+      <Separator title={"투명후기"} setSearchReview={setSearchReview} />
+      <Container>
+        {reviewList.map((el) => {
+          return <ReviewCard key={el.id} review={el}></ReviewCard>;
+        })}
+      </Container>
+      <PageControllerContainer>
+        <PageController
+          nowPage={nowPage}
+          setNowPage={setNowPage}
+          totalPages={totalPages}
+        />
+      </PageControllerContainer>
+      <WriteButtonContainer>
+        <WriteBtn onClick={() => navigate("/review/new")} />
+      </WriteButtonContainer>
     </Wrapper>
   );
 };
