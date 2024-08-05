@@ -1,13 +1,12 @@
 import { getAuthAxios } from "../authAxios";
 
-const searchPost = async (search) => {
+const searchReview = async (search) => {
   try {
     const authAxios = getAuthAxios();
-    const response = await authAxios.get("/post", {
+    const response = await authAxios.get("/review", {
       params: { search },
     });
-    console.log("게시글 API", response);
-
+    console.log("리뷰 API", response);
     return {
       statusCode: response.status,
       data: response.data,
@@ -19,4 +18,4 @@ const searchPost = async (search) => {
   }
 };
 
-export default searchPost;
+export default searchReview;
