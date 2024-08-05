@@ -15,7 +15,7 @@ const Wrapper = styled.div`
   display: flex;
   justify-content: end;
   text-align: end;
-  width: 100%;
+  width: 94.8%;
   color: var(--gray-color);
   font-size: 18px;
   margin-top: 70px;

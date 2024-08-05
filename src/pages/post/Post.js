@@ -6,7 +6,7 @@ import Content from "../../components/post/post/Content";
 const Post = () => {
   return (
     <Wrapper>
-      <PageNotice location={["Home", "커뮤니티", "헌혈증 기부"]}></PageNotice>
+      <PageNotice location={["Home", "헌혈증 기부"]}></PageNotice>
       <Container>
         <Content />
       </Container>
@@ -18,6 +18,7 @@ const Wrapper = styled.div`
   box-sizing: border-box;
   padding: 0 10%;
   width: 100%;
+  
 `;
 
 const Container = styled.div`

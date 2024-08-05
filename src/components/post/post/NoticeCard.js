@@ -39,7 +39,7 @@ const Wrapper = styled.div`
   display: flex;
   border-bottom: 1px solid #dbdbdb;
   box-sizing: border-box;
-  padding: 13px 0;
+  padding: 16px 0;
   background: #fef3f4;
 `;
 
