@@ -20,7 +20,7 @@ const EventCard = ({ event }) => {
 
 const Wrapper = styled.div`
   width: 28.9%;
-  height: 279px;
+  height: 290px;
   border-radius: 10px;
   margin-bottom: 5px;
   border-radius: 6px;
@@ -37,6 +37,7 @@ const ThumbNail = styled.img`
 
 const Description = styled.div`
   padding: 9px 15px;
+  margin:2px
 `;
 
 const Title = styled.div`
