@@ -1,9 +1,10 @@
-import React, { useEffect } from "react";
+import React from "react";
 import styled from "styled-components";
-import Notice from "@/components/review/Notice";
 import Title from "@/components/review/Title";
 import Content from "@/components/review/Content";
 import { useSearchParams } from "react-router-dom";
+import PageNoticeWithBanner from '@/components/common/PageNoticeWithBanner';
+import reviewBanner from "@/assets/image/review-banner.png"
 
 const CompleteReview = () => {
   const [searchParams] = useSearchParams();
@@ -13,7 +14,7 @@ const CompleteReview = () => {
 
   return (
     <Wrapper>
-      <Notice />
+      <PageNoticeWithBanner location={['Home','투명 후기', '게시글 작성']} banner={reviewBanner}/>
       <Container>
         <Title />
         <Content review={reviewId} />

@@ -4,10 +4,8 @@ import { useEffect, useState } from "react";
 import showPost from "@/api/post/showPost";
 import Loading from "@/layouts/Loading";
 import styled from "styled-components";
-import Notice from "@/components/post/postPage/Notice";
 import Title from "@/components/post/postPage/Title";
 import Content from "@/components/post/postPage/Content";
-import PageNotice from "@/components/common/PageNotice";
 import PageNoticeWithBanner from "@/components/common/PageNoticeWithBanner";
 import postBanner from "@/assets/image/postBanner.png"
 
