@@ -9,7 +9,7 @@ const InputLabel = ({ text, customStyles, isEssential, condition }) => {
         <span style={{ color: "var(--main-color)" }}> * </span>
       ) : null}
       {condition ? (
-        <span style={{ color: "var(--gray-color)" }}>&nbsp;(30자 이하)</span>
+        <span style={{ color: "var(--gray-color)" }}>&nbsp;{condition}</span>
       ) : null}
     </Wrapper>
   );
