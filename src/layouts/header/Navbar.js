@@ -12,7 +12,7 @@ const Navbar = () => {
           window.location.reload();
         }}
       >
-        커뮤니티
+        헌혈증 기부
       </Category>
       <Category
         onClick={() => {
@@ -50,6 +50,11 @@ const Category = styled.div`
   color: #111;
   font-weight: bold;
   cursor: pointer;
+
+  &:hover {
+    color: #f42e3d;
+  }
 `;
+
 
 export default Navbar;

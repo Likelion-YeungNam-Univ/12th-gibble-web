@@ -84,7 +84,7 @@ const PageController = ({ nowPage, setNowPage, totalPages }) => {
 const Wrapper = styled.div`
   display: flex;
   align-items: center;
-  gap: 5px;
+  gap: 20px;
 `;
 
 const LeftBtn = styled(Left)`
@@ -92,6 +92,7 @@ const LeftBtn = styled(Left)`
   display: flex;
   justify-content: center;
   align-items: center;
+  color : #767676 !important;   
   margin: 5px;
   cursor: pointer;
   &:hover {
@@ -104,6 +105,7 @@ const RightBtn = styled(Right)`
   display: flex;
   justify-content: center;
   align-items: center;
+  color : #767676 !important;   
   margin: 5px;
   cursor: pointer;
   &:hover {

@@ -83,7 +83,6 @@ const Text = styled.div`
 
   &:hover {
     color: #111;
-    font-weight: bold;
   }
 `;
 

@@ -13,6 +13,13 @@ const Content = () => {
       <Description>
         많은 분들의 관심과 도움이 이어지기를 기대합니다.
       </Description>
+
+      <Notice>
+        사용 후 후기 글을 꼭 작성 해주세요.
+        <br/>
+        미작성 시, 앞으로의 서비스 이용에 불이익이 생길 수 있습니다.        
+      </Notice>
+
       <ButtonsWrapper>
         <CommunityButton onClick={() => navigate("/post")}>
           커뮤니티 가기
@@ -99,3 +106,23 @@ const PostButton = styled.button`
   cursor: pointer;
   border-radius: 6px;
 `;
+
+const Notice = styled.div`
+  display: flex;
+  width: 564px;
+  padding: 10px 24px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border-radius: 6px;
+  background: #FEF3F4;
+  color: var(--main-color, #F42E3D);
+  text-align: center;
+  font-family: Pretendard;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: var(--18, 26px); /* 144.444% */
+  letter-spacing: -0.45px;
+  margin-top : 54px;
+`

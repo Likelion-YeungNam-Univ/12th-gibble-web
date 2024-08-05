@@ -20,7 +20,7 @@ export const TitleNotice = () => {
     <Wrapper>
       <FormNotice>
         <span style={{ fontWeight: "600" }}>간결하고 명확하게&nbsp;</span> 글의
-        핵심 내용을 담는 게 좋습니다.
+        핵심 내용을 담는 게 좋아요.
       </FormNotice>
     </Wrapper>
   );
@@ -45,4 +45,5 @@ const FormNotice = styled.div`
   font-weight: 400;
   line-height: 28px; /* 155.556% */
   letter-spacing: -0.45px;
+  margin-bottom: 10px;
 `;
