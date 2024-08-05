@@ -54,13 +54,20 @@ const DonorBox = ({ post }) => {
           )}
         </TitleContainer>
         {post.isPermitted && (
-          <WriteReviewButton onClick={() => navigate(`/review/new?post=${postId}&title=${post.title}&from=true`)}>후기 작성하기</WriteReviewButton>
+          <WriteReviewButton
+            onClick={() =>
+              navigate(
+                `/review/new?post=${postId}&title=${post.title}&from=true`
+              )
+            }
+          >
+            후기 작성하기
+          </WriteReviewButton>
         )}
       </Separator>
 
       <DonorWrapper>
         <DonorContainer>
-
           {post.donationInfo.map((donor, idx) => {
             return (
               <>
@@ -74,7 +81,7 @@ const DonorBox = ({ post }) => {
             );
           })}
         </DonorContainer>
-        {!post.isDonationPermitted && (
+        {!post.isDonationPermitted && !post.isPermitted && (
           <InputWrapper>
             <InputContainer
               onSubmit={handleSubmit((data) => {
