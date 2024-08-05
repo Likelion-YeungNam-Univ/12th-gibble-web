@@ -1,4 +1,4 @@
-import Notice from "@/components/event/eventPage/Notice";
+
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import Content from "@/components/event/eventPage/Content";
@@ -6,7 +6,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import getEventId from "@/api/event/getEventId";
 import Loading from "@/layouts/Loading";
 import PageNoticeWithBanner from "@/components/common/PageNoticeWithBanner";
-import eventBanner from "@/assets/image/eventBanner.png"
+import eventBanner from "@/assets/image/event-banner.png"
 
 const EventPage = () => {
   const { eventId } = useParams();

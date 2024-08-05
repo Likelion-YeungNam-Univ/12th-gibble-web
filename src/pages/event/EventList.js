@@ -2,7 +2,6 @@ import getEventList from "@/api/event/getEventList";
 import PageNotice from "@/components/common/PageNotice";
 import EventCard from "@/components/event/EventCard";
 import EventNavbar from "@/components/event/EventNavbar";
-import Notice from "@/components/event/Notice";
 import PageController from "@/components/event/PageController";
 import Separator from "@/components/event/Separator";
 import Loading from "@/layouts/Loading";
