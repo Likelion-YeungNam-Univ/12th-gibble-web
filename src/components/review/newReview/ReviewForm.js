@@ -30,10 +30,10 @@ const ReviewForm = () => {
   const [img, setImg] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [searchParams] = useSearchParams();
-  const [postId, setPostId] = useState(searchParams.get('post') || null);
-  const [selectedPostTitle, setSelectedPostTitle] = useState(searchParams.get('title') || null);
-
-
+  const [postId, setPostId] = useState(searchParams.get("post") || null);
+  const [selectedPostTitle, setSelectedPostTitle] = useState(
+    searchParams.get("title") || null
+  );
 
   useEffect(() => {
     const fetchInfo = async () => {
@@ -64,9 +64,12 @@ const ReviewForm = () => {
   };
 
   const customInputStyle = {
-    ...(errors.link && { border : "1px solid var(--main-color"}),
-    ...(searchParams.get('title') && { backgroundColor : "#f1f1f1", cursor : "default"})
-  }
+    ...(errors.link && { border: "1px solid var(--main-color" }),
+    ...(searchParams.get("title") && {
+      backgroundColor: "#f1f1f1",
+      cursor: "default",
+    }),
+  };
 
   return (
     <Wrapper
@@ -87,10 +90,10 @@ const ReviewForm = () => {
             content: data.content,
             imageUrl: downloadUrl,
             imageId,
-            postId // 수정 필요
+            postId, // 수정 필요
           });
 
-        navigate(`/review/new/uploaded?review=${result.reviewId}`);
+          navigate(`/review/new/uploaded?review=${result.reviewId}`);
         } catch (error) {
           console.error("file upload to firebase error", error);
         }
@@ -151,38 +154,37 @@ const ReviewForm = () => {
             <Input
               type="text"
               placeholder="어떤 게시글의 후기글인지 게시글을 선택해 주세요"
-              style={ customInputStyle }
+              style={customInputStyle}
               $customStyles={{
-                width: "400px",
                 height: "52px",
                 padding: "0 24px",
                 display: "flex",
                 flexShrink: "0",
+                width: "580px",
               }}
               value={selectedPostTitle}
-              readOnly={searchParams.get('title')}
+              readOnly={searchParams.get("title")}
             />
-            {
-              !searchParams.get('title') && 
+            {!searchParams.get("title") && (
               <Button
-              type="button"
-              onClick={openModal}
-              $customStyles={{
-                width: "150px",
-                background: "var(--main-color)",
-                color: "#f4f4f4",
-                marginLeft: "8px",
-                transition: "0.2s",
-                "&:hover": {
-                  background: "var(--gray-color)",
-                  color: "#fff",
-                }
-              }}
-              disabled={searchParams.get('title')}
+                type="button"
+                onClick={openModal}
+                $customStyles={{
+                  background: "var(--main-color)",
+                  color: "#f4f4f4",
+                  marginLeft: "8px",
+                  transition: "0.2s",
+                  padding: "12px 24px",
+                  "&:hover": {
+                    background: "var(--gray-color)",
+                    color: "#fff",
+                  },
+                }}
+                disabled={searchParams.get("title")}
               >
-              게시글 찾기
-            </Button>
-            }
+                찾아보기
+              </Button>
+            )}
           </TmpContainer>
         </InputWrapper>
 
@@ -202,10 +204,11 @@ const ReviewForm = () => {
               placeholder="이미지를 첨부해 주세요."
               style={errors.image && { border: "1px solid var(--main-color)" }}
               $customStyles={{
-                width: "400px",
+                width: "708px",
                 height: "52px",
                 padding: "0 24px",
                 display: "flex",
+                flexShirnk: "0",
               }}
               value={img && img.name}
               readOnly
@@ -217,10 +220,11 @@ const ReviewForm = () => {
                 onClick();
               }}
               $customStyles={{
-                width: "150px;",
                 background: "var(--main-color)",
                 color: "#f4f4f4",
+                marginLeft: "8px",
                 transition: "0.2s",
+                padding: "12px 24px",
                 "&:hover": {
                   background: "var(--gray-color)",
                   color: "#fff",
@@ -307,7 +311,5 @@ const TmpContainer = styled.div`
   justify-content: space-between;
   width: 81%;
 `;
-
-
 
 export default ReviewForm;
