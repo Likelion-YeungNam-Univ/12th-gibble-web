@@ -182,7 +182,6 @@ const DonorWrapper = styled.div`
 
 const DonorContainer = styled.div`
   width: 100%;
-  height: 200px;
   margin-bottom: 40px;
   display: flex;
   gap: 24px;

@@ -106,7 +106,7 @@ const Wrapper = styled.div`
 `;
 
 const Container = styled.div`
-  margin-top: 110px;
+  margin-top: 66px;
   padding-bottom: 70px;
   margin-bottom: 80px;
   padding-left: 50px;
@@ -114,12 +114,14 @@ const Container = styled.div`
 `;
 
 const Description = styled.div`
+  color: #111;
+  font-family: Pretendard;
   font-size: 22px;
   font-style: normal;
-  font-weight: 500;
+  font-weight: 400;
   line-height: 32px; /* 145.455% */
   letter-spacing: -0.55px;
-  margin-bottom: 25px;
+  margin-bottom: 70px;
   padding-right: 100px;
 `;
 
@@ -134,7 +136,7 @@ const PostBtnContainer = styled.div`
   font-size: 18px;
   font-style: normal;
   font-weight: 400;
-  line-height: var(--18, 26px); /* 144.444% */
+  line-height: var(—18, 26px); /* 144.444% */
   letter-spacing: -0.45px;
 `;
 
