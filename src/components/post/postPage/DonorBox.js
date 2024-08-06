@@ -113,6 +113,18 @@ const DonorBox = ({ post }) => {
                 type="number"
                 {...register("donateCount", {
                   required: "기부할 개수를 입력해주세요",
+                  validate: value => {
+                    if (value.trim() === '') {
+                      return '공백은 허용되지 않습니다.';
+                    }
+                    if (isNaN(value)) {
+                      return '반드시 숫자여야 합니다.1';
+                    }
+                    if (Number(value) < 0) {
+                      return '마이너스 값은 허용되지 않습니다.';
+                    }
+                    return true;
+                  }
                 })}
                 style={
                   errors.donateCount && {
