@@ -97,7 +97,11 @@ const PostList = () => {
       <NoticeCard />
       {postList.map((el, index) => {
         return (
-          <PostCard post={el} index={totalElements - 10 * nowPage - index} />
+          <PostCard
+            key={index}
+            post={el}
+            index={totalElements - 10 * nowPage - index}
+          />
         );
       })}
       <ButtonContainer>

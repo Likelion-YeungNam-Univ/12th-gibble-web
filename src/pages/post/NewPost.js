@@ -8,13 +8,13 @@ const NewPost = () => {
   const location = ["Home", "헌혈증 기부", "게시글 작성"];
   return (
     <Wrapper>
-      <Box>
-        <PageNotice location={location} />
-      </Box>
-      <FormSeparator title={"헌혈증 기부 요청 글 작성하기"}/>
-      <Form>
-        <PostForm />
-      </Form>
+      <PageNotice location={location} />
+      <Container>
+        <FormSeparator title={"헌혈증 기부 요청 글 작성하기"} />
+        <Form>
+          <PostForm />
+        </Form>
+      </Container>
     </Wrapper>
   );
 };
@@ -26,17 +26,15 @@ const Wrapper = styled.div`
   padding: 0 14%;
 `;
 
-const Box = styled.div`
-  width: 1450px
-
+const Container = styled.div`
+  width: 1238px;
+  margin: 0 auto;
 `;
-
 
 const Form = styled.div`
   box-sizing: border-box;
   margin-top: 38px;
   margin-bottom: 150px;
-  padding: 0 86px;
 `;
 
 export default NewPost;
