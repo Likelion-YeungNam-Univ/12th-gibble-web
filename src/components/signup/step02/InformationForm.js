@@ -19,8 +19,7 @@ const InformationForm = ({ setStepNum }) => {
     setFirstCheck(true);
     const result = await dupCheck(nickname);
 
-
-    if(result.statusCode === '555'){
+    if (result.statusCode === "555") {
       alert(result.message);
       return;
     }
@@ -127,7 +126,7 @@ const InformationForm = ({ setStepNum }) => {
                 {...register("nickname", {
                   required: "닉네임 입력은 필수입니다.",
 
-                  pattern : '^[ㄱ-ㅎ가-힣a-zA-Z0-9-_]{2,10}$',
+                  pattern: "^[ㄱ-ㅎ가-힣a-zA-Z0-9-_]{2,10}$",
 
                   onChange: (e) => {
                     setNickname(e.target.value);
@@ -204,7 +203,7 @@ const InformationForm = ({ setStepNum }) => {
                 border : 1px solid ${
                   isSubmitted &&
                   (errors.phoneNumber3 ||
-                    (phoneNumber2.length !== 4 && phoneNumber2.length > 0))
+                    (phoneNumber3.length !== 4 && phoneNumber3.length > 0))
                     ? "var(--main-color)"
                     : "#dbdbdb"
                 };`}
