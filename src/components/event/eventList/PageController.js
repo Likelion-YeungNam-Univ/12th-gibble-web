@@ -54,7 +54,7 @@ const PageController = ({ nowPage, setNowPage, totalPages, region }) => {
 
   return (
     <Wrapper>
-      <LeftBtn onClick={handleLeftClick} />
+      <MoveButton onClick={handleLeftClick} >&lt;</MoveButton>
       <PageNumList>
         {pageNumbers.map((pageNum) => (
           <PageNum
@@ -77,7 +77,7 @@ const PageController = ({ nowPage, setNowPage, totalPages, region }) => {
           </PageNum>
         ))}
       </PageNumList>
-      <RightBtn onClick={handleRightClick} />
+      <MoveButton onClick={handleRightClick} > &gt;</MoveButton>
     </Wrapper>
   );
 };
@@ -89,27 +89,25 @@ const Wrapper = styled.div`
   gap: 20px;
 `;
 
-const LeftBtn = styled(Left)`
+const MoveButton = styled.div`
+  color: #767676;
+  width : 30px;
+  height : 30px;
+  text-align: center;
+  font-family: Pretendard;
+  font-size: 26px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: var(--24, 34px); /* 130.769% */
+  letter-spacing: -0.65px;
   border-radius: 50%;
+  padding : 5px;
   display: flex;
   justify-content: center;
   align-items: center;
   margin: 5px;
-  fill: #767676;
   cursor: pointer;
-  &:hover {
-    background-color: #f1f1f1;
-  }
-`;
-
-const RightBtn = styled(Right)`
-  border-radius: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 5px;
-  fill: #767676;
-  cursor: pointer;
+  transition : 0.3s;
   &:hover {
     background-color: #f1f1f1;
   }
@@ -119,6 +117,7 @@ const PageNumList = styled.div`
   gap: 20px;
   display: flex;
   justify-content: space-around;
+  align-items : center;
 `;
 
 const PageNum = styled.div`
