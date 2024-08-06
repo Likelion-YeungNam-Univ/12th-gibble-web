@@ -132,6 +132,7 @@ const ReviewForm = () => {
                 required: "제목을 입력해주세요.",
                 minLength: { value: 1, message: "최소 1자 이상 입력해야 합니다." },
                 maxLength: { value: 30, message: "최대 30자까지 입력 가능합니다." },
+                validate: value => value.trim() !== '' || '공백은 입력 불가입니다.'
               })}
             />
             
@@ -182,6 +183,7 @@ const ReviewForm = () => {
                 required: "내용을 입력해주세요.",
                 minLength: { value: 1, message: "최소 1자 이상" },
                 maxLength: { value: 500, message: "최대 500자 이하" },
+                validate: value => value.trim() !== '' || '공백은 입력 불가입니다.'
               })}
             />
           </Middle>
