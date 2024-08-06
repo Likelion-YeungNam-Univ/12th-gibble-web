@@ -197,6 +197,7 @@ const Description = styled.div`
   border-bottom: 1px solid var(--gray-color);
   display: flex;
   flex-direction: column;
+  word-break : break-all;
 `;
 
 const Image = styled.img`
