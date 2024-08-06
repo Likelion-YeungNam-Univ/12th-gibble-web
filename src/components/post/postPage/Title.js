@@ -67,7 +67,7 @@ const Title = ({ post }) => {
                       : undefined,
                   }}
                 >
-                  {post.isDonationPermitted ? '시작' : '종료'}
+                  {post.isDonationPermitted ? '재개' : '종료'}
                 </Button>
               )}
             </Donation>
