@@ -1,4 +1,19 @@
 # GIBLE - FE
+## 역할
+- P&D : 박경민
+- Backend : 이태훈, 박대영
+- Frontend : 권예원, 구준혁, 허기영
+
+## 기능
+### 기부내역 공개
+![image](https://github.com/user-attachments/assets/ab0f5a10-cb3a-4844-9e9f-aed8a56e80b9)
+### 사용처 및 후기 공개
+![image](https://github.com/user-attachments/assets/93488253-c23a-405b-91c5-daebaa40d3bb)
+### 다양한 이벤트 참여 가능
+![image](https://github.com/user-attachments/assets/35876c64-ff15-438f-b0c7-ed10f79c1b36)
+## 시스템 아키텍쳐
+![image](https://github.com/user-attachments/assets/0b18c9da-0f49-4652-bd2b-7d6202f428dc)
+
 
 ## 📌 디렉토리 구조
 ```
@@ -14,8 +29,7 @@
 ├── firebase
 ├── layouts
 ├── pages
-├── store
-└── utils
+└── store
 ```
 
 ## 📌 컨벤션 
