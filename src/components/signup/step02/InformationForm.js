@@ -97,7 +97,14 @@ const InformationForm = ({ setStepNum }) => {
                 isSubmitted && errors.name ? "var(--main-color)" : "#dbdbdb"
               }`}
             {...register("name", {
-              required: "성명 입력은 필수입니다.",
+              required: "이름 입력은 필수입니다.",
+              validate: {
+                validPattern: (value) =>
+                  /^(?=.$)[ㄱ-ㅎ가-힣a-zA-Z0-9-_]*$/.test(value) ||
+                  "이름은 2자리 이상 10자리 이하의 한글, 영문, 숫자 및 -_만 사용할 수 있습니다.",
+                noSpace: (value) =>
+                  !value.includes(" ") || "이름에 공백이 포함될 수 없습니다.",
+              },
             })}
           />
         </InputContainer>
@@ -116,18 +123,21 @@ const InformationForm = ({ setStepNum }) => {
                     : "1px solid #dbdbdb",
                 }}
                 $customStyles={`
-                width: 420px;
-                height: 54px;
-                border : 1px solid ${
-                  isSubmitted && errors.nickname
-                    ? "var(--main-color)"
-                    : "#dbdbdb"
-                }`}
+    width: 420px;
+    height: 54px;
+    border : 1px solid ${
+      isSubmitted && errors.nickname ? "var(--main-color)" : "#dbdbdb"
+    }`}
                 {...register("nickname", {
                   required: "닉네임 입력은 필수입니다.",
-
-                  pattern: "^[ㄱ-ㅎ가-힣a-zA-Z0-9-_]{2,10}$",
-
+                  validate: {
+                    validPattern: (value) =>
+                      /^(?=.$)[ㄱ-ㅎ가-힣a-zA-Z0-9-_]*$/.test(value) ||
+                      "닉네임은 2자리 이상 10자리 이하의 한글, 영문, 숫자 및 -_만 사용할 수 있습니다.",
+                    noSpace: (value) =>
+                      !value.includes(" ") ||
+                      "닉네임에 공백이 포함될 수 없습니다.",
+                  },
                   onChange: (e) => {
                     setNickname(e.target.value);
                     console.log("입력값 변경:", e.target.value);
