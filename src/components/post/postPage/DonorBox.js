@@ -111,6 +111,7 @@ const DonorBox = ({ post }) => {
                     border: "1px solid var(--main-color)",
                   }
                 }
+                placeholder="기부한 개수를 입력해주세요."
               />
               <Button $customStyles={ButtonCustomStyles}>기부하기</Button>
             </InputContainer>
@@ -203,6 +204,8 @@ const InputCustomStyle = `
     display: flex;
     width: 235px;
     height : 58px;
+    border : 1px solid #dbdbdb;
+    background-color : #f6f6f6;
 
     align-items: center;
     gap: 10px;
@@ -214,6 +217,10 @@ const InputCustomStyle = `
     font-weight: 400;
     line-height: var(--18, 26px); /* 144.444% */
     letter-spacing: -0.45px;
+
+    &::placeholder {
+      color : var(--gray-color);
+    }
 `;
 
 const ButtonCustomStyles = `
@@ -223,8 +230,15 @@ const ButtonCustomStyles = `
     align-items: center;
     border-radius: 6px;
     border: 1px solid #111;
-    background : none;
+    background : #F6F6F6;;
     color : #111;
+    text-align: center;
+    font-family: Pretendard;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 26px; /* 144.444% */
+    letter-spacing: -0.45px;
 `;
 
 const DonateSep = styled.div`
