@@ -19,6 +19,7 @@ const InformationForm = ({ setStepNum }) => {
     setFirstCheck(true);
     const result = await dupCheck(nickname);
 
+
     if(result.statusCode === '555'){
       alert(result.message);
       return;
@@ -35,6 +36,7 @@ const InformationForm = ({ setStepNum }) => {
   const {
     register,
     handleSubmit,
+    watch,
     formState: { errors, isSubmitted, isValid },
   } = useForm({ mode: "onSubmit" });
 
@@ -42,6 +44,8 @@ const InformationForm = ({ setStepNum }) => {
   const state = store.getState();
   const email = state.auth.email;
   console.log("state", state);
+  const phoneNumber2 = watch("phoneNumber2");
+  const phoneNumber3 = watch("phoneNumber3");
 
   return (
     <Wrapper
@@ -122,7 +126,9 @@ const InformationForm = ({ setStepNum }) => {
                 }`}
                 {...register("nickname", {
                   required: "닉네임 입력은 필수입니다.",
+
                   pattern : '^[ㄱ-ㅎ가-힣a-zA-Z0-9-_]{2,10}$',
+
                   onChange: (e) => {
                     setNickname(e.target.value);
                     console.log("입력값 변경:", e.target.value);
@@ -169,16 +175,23 @@ const InformationForm = ({ setStepNum }) => {
             <Input
               type={"number"}
               placeholder={"0000"}
+              value={phoneNumber2}
               $customStyles={`
                 width: 120px; 
                 text-align: center;
                 border : 1px solid ${
-                  isSubmitted && errors.phoneNumber2
+                  isSubmitted &&
+                  (errors.phoneNumber2 ||
+                    (phoneNumber2.length !== 4 && phoneNumber2.length > 0))
                     ? "var(--main-color)"
                     : "#dbdbdb"
                 }`}
               {...register("phoneNumber2", {
                 required: "필수 입력입니다.",
+                validate: {
+                  length: (value) =>
+                    value.length === 4 || "전화번호는 4자리여야 합니다.",
+                },
               })}
             />
             -
@@ -189,12 +202,18 @@ const InformationForm = ({ setStepNum }) => {
                 width: 120px; 
                 text-align: center;
                 border : 1px solid ${
-                  isSubmitted && errors.phoneNumber3
+                  isSubmitted &&
+                  (errors.phoneNumber3 ||
+                    (phoneNumber2.length !== 4 && phoneNumber2.length > 0))
                     ? "var(--main-color)"
                     : "#dbdbdb"
                 };`}
               {...register("phoneNumber3", {
                 required: "필수 입력입니다.",
+                validate: {
+                  length: (value) =>
+                    value.length === 4 || "전화번호는 4자리여야 합니다.",
+                },
               })}
             />
           </PhoneNumberInputContainer>
