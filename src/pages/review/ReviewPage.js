@@ -132,7 +132,6 @@ const ReviewPage = () => {
 };
 
 const DeleteContainer = styled.div`
-  width: 110px;
   align-self: flex-end;
   box-sizing: border-box;
   color: #767676;
@@ -162,12 +161,14 @@ const DeleteText = styled.div`
   font-weight: 400;
   line-height: var(--18, 26px); /* 144.444% */
   letter-spacing: -0.45px;
+  padding-bottom: 58px;
 `;
 
 const Wrapper = styled.div`
-  width: 100%;
+  width: 1238px;
   box-sizing: border-box;
-  padding: 80px 10%;
+  padding: 80px 0;
+  margin: 0 auto;
 `;
 
 const PageTitle = styled.div`
@@ -193,7 +194,7 @@ const Description = styled.div`
   line-height: 32px; /* 145.455% */
   letter-spacing: -0.55px;
   box-sizing: border-box;
-  padding: 46px 46px 0px 46px;
+  padding: 46px 0px 0px 46px;
   border-bottom: 1px solid var(--gray-color);
   display: flex;
   flex-direction: column;
