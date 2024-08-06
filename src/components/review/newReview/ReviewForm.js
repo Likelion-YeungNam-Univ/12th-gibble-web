@@ -69,7 +69,10 @@ const ReviewForm = () => {
       backgroundColor: "#f1f1f1",
       cursor: "default",
     }),
+    width : "100%",
   };
+
+
 
   return (
     <Wrapper
@@ -100,58 +103,127 @@ const ReviewForm = () => {
       })}
     >
       <FormWrapper>
-        <TextCount>{title.length}/30</TextCount>
+
         <InputWrapper>
-          <InputLabel
-            text={"제목"}
-            isEssential={true}
-            condition={"(30자 이하)"}
-          />
-          <Input
-            type="text"
-            placeholder="제목을 입력해 주세요."
-            style={errors.title && { border: "1px solid var(--main-color)" }}
-            $customStyles={{ width: "81%", height: "52px", padding: "0 24px" }}
-            {...register("title", {
-              required: "제목을 입력해주세요.",
-              minLength: { value: 1, message: "최소 1자 이상" },
-              maxLength: { value: 30 },
-            })}
-          />
+          <Left/>
+          <Middle>
+            <TextCount>
+            {title.length}/30
+            </TextCount>
+          </Middle>
+          <Right/>
         </InputWrapper>
-        {title.length > 30 ? <Error text={"30자 이하로 작성해주세요"} /> : null}
-        {errors.title && <Error text={errors.title.message} />}
-        <TitleNotice />
 
-        <TextCount>{content.length}/500</TextCount>
-        <InputWrapper style={{ display: "flex", alignItems: "start" }}>
-          <InputLabel
-            text={"내용"}
-            isEssential={true}
-            condition={"(500자 이하)"}
-          />
-          <TextArea
-            placeholder="어떠한 좋은 기적이 일어났는지 적어주세요"
-            style={errors.content && { border: "1px solid var(--main-color)" }}
-            {...register("content", {
-              required: "내용을 입력해주세요.",
-              minLength: { value: 1, message: "최소 1자 이상" },
-              maxLength: { value: 500, message: "최대 500자 이하" },
-            })}
-          />
-        </InputWrapper>
-        {content.length > 500 ? (
-          <Error text={"500자 이하로 작성해주세요"} />
-        ) : null}
-        {errors.content && <Error text={errors.content.message} />}
-        <ContentNotice />
-
-        <InputFormFix text={"이름"} content={info} />
-
-        <InputWrapper style={{ marginTop: "32px" }}>
-          <InputLabel text={"게시글 선택"} isEssential={true} />
-          <TmpContainer>
+        <InputWrapper>
+          <Left>
+            <InputLabel
+              text={"제목"}
+              isEssential={true}
+              condition={"(30자 이하)"}
+            />
+          </Left>
+          <Middle>
             <Input
+              type="text"
+              placeholder="제목을 입력해 주세요."
+              style={errors.title && { border: "1px solid var(--main-color)" }}
+              $customStyles={cstInputStyle}
+              {...register("title", {
+                required: "제목을 입력해주세요.",
+                minLength: { value: 1, message: "최소 1자 이상 입력해야 합니다." },
+                maxLength: { value: 30, message: "최대 30자까지 입력 가능합니다." },
+              })}
+            />
+            
+          </Middle>
+          <Right/>
+        </InputWrapper>
+
+        <InputWrapper>
+            <Left/>
+            <Middle>
+            {title.length > 30 ? <Error text={"30자 이하로 작성해주세요"} /> : null}
+            {errors.title && <Error text={errors.title.message} />}
+            </Middle>
+            <Right/>
+        </InputWrapper>
+        
+        <InputWrapper>
+          <Left/>
+          <Middle>
+            <TitleNotice />
+          </Middle>
+          <Right/>
+        </InputWrapper>
+
+        <InputWrapper>
+          <Left/>
+          <Middle>
+            <TextCount>
+            {content.length}/500
+            </TextCount>
+          </Middle>
+          <Right/>
+        </InputWrapper>
+
+        <InputWrapper style={{alignItems: "start"}}>
+          <Left>
+            <InputLabel
+              text={"내용"}
+              isEssential={true}
+              condition={"(500자 이하)"}
+            />
+          </Left>
+          <Middle>
+            <TextArea
+              placeholder="어떠한 좋은 기적이 일어났는지 적어주세요"
+              style={errors.content && { border: "1px solid var(--main-color)" }}
+              {...register("content", {
+                required: "내용을 입력해주세요.",
+                minLength: { value: 1, message: "최소 1자 이상" },
+                maxLength: { value: 500, message: "최대 500자 이하" },
+              })}
+            />
+          </Middle>
+          <Right></Right>
+        </InputWrapper>
+
+        <InputWrapper>
+            <Left/>
+            <Middle>
+              {content.length > 500 ? <Error text={"500자 이하로 작성해주세요"} /> : null}
+              {errors.content && <Error text={errors.content.message} />}
+            </Middle>
+            <Right/>
+        </InputWrapper>
+        
+        <InputWrapper style={{marginTop : "14px"}}>
+          <Left />
+          <Middle>
+            <ContentNotice /> 
+          </Middle>
+          <Right/>
+        </InputWrapper>
+
+        <InputWrapper style={{marginTop : "32px", marginBottom : "22px"}}>
+          <Left>
+            <InputLabel 
+              text={"이름"}
+            />
+          </Left>
+          <Middle>
+            <InputFormFix content={info} />
+          </Middle>
+          <Right></Right>
+        </InputWrapper>
+
+
+        <InputWrapper>
+          <Left>
+            <InputLabel text={"게시글 선택"} isEssential={true} />
+          </Left>
+          <Middle>
+          <Input
               type="text"
               placeholder="어떤 게시글의 후기글인지 게시글을 선택해 주세요"
               style={customInputStyle}
@@ -165,32 +237,27 @@ const ReviewForm = () => {
               value={selectedPostTitle}
               readOnly={searchParams.get("title")}
             />
-            {!searchParams.get("title") && (
-              <Button
+          </Middle>
+          <Right>
+            <Button
                 type="button"
                 onClick={openModal}
                 $customStyles={{
                   background: "var(--main-color)",
                   color: "#f4f4f4",
-                  marginLeft: "8px",
                   transition: "0.2s",
                   padding: "12px 24px",
-                  "&:hover": {
-                    background: "var(--gray-color)",
-                    color: "#fff",
-                  },
                 }}
                 disabled={searchParams.get("title")}
-              >
-                찾아보기
-              </Button>
-            )}
-          </TmpContainer>
+              >찾아보기</Button>
+          </Right>
         </InputWrapper>
 
-        <InputWrapper style={{ marginTop: "32px" }}>
-          <InputLabel text={"인증사진 첨부"} />
-          <TmpContainer>
+        <InputWrapper>
+          <Left>
+            <InputLabel text={"인증사진 첨부"} />
+          </Left>
+          <Middle>
             <input
               id="fileInput"
               type="file"
@@ -204,38 +271,43 @@ const ReviewForm = () => {
               placeholder="이미지를 첨부해 주세요."
               style={errors.image && { border: "1px solid var(--main-color)" }}
               $customStyles={{
-                width: "708px",
                 height: "52px",
-                padding: "0 24px",
                 display: "flex",
                 flexShirnk: "0",
               }}
               value={img && img.name}
               readOnly
             />
+          </Middle>
+          <Right>
             <Button
-              type="button"
-              onClick={(e) => {
-                e.preventDefault();
-                onClick();
-              }}
-              $customStyles={{
-                background: "var(--main-color)",
-                color: "#f4f4f4",
-                marginLeft: "8px",
-                transition: "0.2s",
-                padding: "12px 24px",
-                "&:hover": {
-                  background: "var(--gray-color)",
-                  color: "#fff",
-                },
-              }}
-            >
-              사진찾기
-            </Button>
-          </TmpContainer>
+                type="button"
+                onClick={(e) => {
+                  e.preventDefault();
+                  onClick();
+                }}
+                $customStyles={{
+                  background: "var(--main-color)",
+                  color: "#f4f4f4",
+                  transition: "0.2s",
+                  padding: "12px 24px",
+                  "&:hover": {
+                    background: "var(--gray-color)",
+                    color: "#fff",
+                  },
+                }}
+              >사진찾기</Button>
+          </Right>
         </InputWrapper>
-        <ImageNotice />
+
+        <InputWrapper>
+          <Left></Left>
+          <Middle>
+          <ImageNotice />
+          </Middle>
+          <Right></Right>
+        </InputWrapper>
+
       </FormWrapper>
       <Button
         type="submit"
@@ -244,6 +316,7 @@ const ReviewForm = () => {
           background: "#F4F4F4;",
           color: "#767676",
           marginTop: "108px",
+          marginLeft: "16px",
           transition: "0.2s",
           "&:hover": {
             background: "var(--main-color)",
@@ -267,10 +340,16 @@ const ReviewForm = () => {
   );
 };
 
-const Wrapper = styled.form``;
+const Wrapper = styled.form`
+  display : flex;
+  flex-direction : column;
+  align-items : center;
+`;
 
 const FormWrapper = styled.div`
-  margin: 0 168px;
+  display : flex;
+  flex-direction : column;
+  gap : 10px;
 `;
 
 const TextCount = styled.div`
@@ -283,14 +362,31 @@ const TextCount = styled.div`
 
 const InputWrapper = styled.div`
   display: flex;
-  justify-content: space-between;
   width: 100%;
-  align-items: center;
-`;
+  align-items : center; 
+  
+ `;
+
+const Left = styled.div`
+  width : 168px;
+  
+`
+
+const Middle = styled.div`
+  width: 600px;
+`
+
+const Right = styled.div`
+  width : 168px;
+  box-sizing: border-box;
+  padding : 0 16px;
+
+`
 
 const TextArea = styled.textarea`
-  width: 75%;
+  width: 100%;
   height: 561px;
+  box-sizing : border-box;
   padding: 24px;
   border-radius: 6px;
   border: 1px solid #dbdbdb;
@@ -311,5 +407,11 @@ const TmpContainer = styled.div`
   justify-content: space-between;
   width: 81%;
 `;
+
+const cstInputStyle = `
+  width : 100%;
+  height : 54px;
+  padding: 12px 24px;
+`
 
 export default ReviewForm;

@@ -5,7 +5,6 @@ import styled from "styled-components";
 const InputFormFix = ({ text, content }) => {
   return (
     <Wrapper>
-      <InputLabel text={text} />
       <Content>{content}</Content>
     </Wrapper>
   );
@@ -15,11 +14,10 @@ const Wrapper = styled.div`
   display: flex;
   justify-content: space-between;
   width: 100%;
-  margin-top: 32px;
 `;
 
 const Content = styled.div`
-  width: 75%;
+  width: 100%;
   padding: 12px 24px;
   color: #111;
   font-size: 18px;
@@ -30,5 +28,11 @@ const Content = styled.div`
   background-color: #f4f4f4;
   color: black;
 `;
+
+const customButtonStyle = styled.div`
+  background-color : var(--main-color);
+  color : #fff;
+
+`
 
 export default InputFormFix;

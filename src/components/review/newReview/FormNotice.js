@@ -37,14 +37,14 @@ export const ImageNotice = () => {
 }
 
 const Wrapper = styled.div`
-  width: 100%;
   display: flex;
-  justify-content: end;
-  margin-top: 10px;
+  width: 100%;
+  height: 54px;
+  align-items: center;
 `;
 
 const FormNotice = styled.div`
-  width: 75%;
+  width: 100%;
   padding: 12px 24px;
   border-radius: 6px;
   border: 1px solid #fef3f4;
