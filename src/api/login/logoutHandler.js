@@ -5,7 +5,7 @@ const logoutHandler = async (dispatch) => {
   const authAxios = getAuthAxios();
   try {
     const response = await authAxios.post("/auth/logout");
-
+    console.log(response);
     dispatch(setEmail(null));
     dispatch(setAccessToken(null));
 

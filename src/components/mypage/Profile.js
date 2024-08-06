@@ -1,6 +1,25 @@
+import logoutHandler from "@/api/login/logoutHandler";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
 const Profile = ({ user }) => {
+
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const clickHandler = async () => {
+    try {
+      const result = await logoutHandler(dispatch);
+      console.log(result);
+      navigate('/');
+    }
+    catch (error) {
+      console.error(error);
+      navigate('/error')
+    }
+
+
+  }
   return (
     <Wrapper>
       <Box>
@@ -27,7 +46,7 @@ const Profile = ({ user }) => {
             />
             <Kakaologin>카카오톡 로그인중</Kakaologin>
           </Kakao>
-          <Button>로그아웃</Button>
+          <Button onClick={clickHandler}>로그아웃</Button>
         </LoginBox>
       </Box>
     </Wrapper>
