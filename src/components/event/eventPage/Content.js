@@ -4,17 +4,15 @@ import React from "react";
 import styled from "styled-components";
 
 const Content = ({ event }) => {
-
   const clickHandler = async () => {
     try {
       const result = await participateEvent(event.eventId);
-      if(result.statusCode === 200){
-        alert('이벤트 참여 성공!');
-      }
-      else if(result.statusCode === 409){
+      if (result.statusCode === 200) {
+        alert("이벤트 참여 성공!");
+      } else if (result.statusCode === 409) {
         alert(result.message);
       }
-    } catch (error){
+    } catch (error) {
       console.error(error);
     }
   };
@@ -36,10 +34,7 @@ const Content = ({ event }) => {
 
       <Container>
         <Image src={event.imageUrl} />
-        <Button
-          $customStyles={ButtonCustomStyle}
-          onClick={clickHandler}
-        >
+        <Button $customStyles={ButtonCustomStyle} onClick={clickHandler}>
           참여하기
         </Button>
       </Container>
@@ -50,7 +45,8 @@ const Content = ({ event }) => {
 export default Content;
 
 const Wrapper = styled.div`
-  width: 1100px;
+  width: 100%;
+  margin-bottom: 150px;
 `;
 
 const PageTitle = styled.div`
@@ -116,8 +112,8 @@ const Image = styled.img`
   padding: 0 10% 80px 10%;
 `;
 
-const ButtonCustomStyle=`
-  width : 100%;
+const ButtonCustomStyle = `
+  width : 90%;
   background-color : #f4f4f4;
   color : var(--gray-clor);
   transition : 0.2s;
@@ -125,4 +121,4 @@ const ButtonCustomStyle=`
     background : var(--main-color);
     color : #fff;
   }
-`
+`;

@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import Content from "@/components/event/eventPage/Content";
@@ -6,7 +5,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import getEvent from "@/api/event/getEvent";
 import Loading from "@/layouts/Loading";
 import PageNoticeWithBanner from "@/components/common/PageNoticeWithBanner";
-import eventBanner from "@/assets/image/event-banner.png"
+import eventBanner from "@/assets/image/event-banner.png";
 
 const EventPage = () => {
   const { eventId } = useParams();
@@ -33,24 +32,24 @@ const EventPage = () => {
   if (isLoading) return <Loading />;
 
   return (
-    <div>
-      <PageNoticeWithBanner location={['Home','이벤트','상세 페이지']} banner={eventBanner}/>
-      <Wrapper>
-        <Container>
-          <Content event={event} />
-        </Container>
-      </Wrapper>
-    </div>
+    <Wrapper>
+      <PageNoticeWithBanner
+        location={["Home", "이벤트", "상세 페이지"]}
+        banner={eventBanner}
+      />
+      <Container>
+        <Content event={event} />
+      </Container>
+    </Wrapper>
   );
 };
 
 export default EventPage;
 
-const Wrapper = styled.div`
-  width: 100%;
-  margin-bottom: 150px;
-`;
+const Wrapper = styled.div``;
 
 const Container = styled.div`
-  padding: 0px 342px;
+  margin-bottom: 150px;
+  width: 1238px;
+  margin: 0 auto;
 `;
