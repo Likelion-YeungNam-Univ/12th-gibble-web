@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import MailAgreement from "./MailAgreement";
 import Input from "@/components/common/Input";
@@ -8,8 +8,24 @@ import { useForm } from "react-hook-form";
 import signupHandler from "@/api/signup/signupHandler";
 import { useNavigate } from "react-router-dom";
 import store from "@/store/store";
+import dupCheck from "@/api/login/dupCheck";
 
 const InformationForm = ({ setStepNum }) => {
+  const [nickname, setNickname] = useState();
+  const [dup, setDup] = useState(false);
+  const [firstCheck, setFirstCheck] = useState(false);
+
+  const checkDup = async () => {
+    setFirstCheck(true);
+    const result = await dupCheck(nickname);
+    if (result.data.isDuplicated) {
+      setDup(true);
+    } else {
+      setDup(false);
+      alert("사용 가능한 닉네임입니다!");
+    }
+  };
+
   const {
     register,
     handleSubmit,
@@ -38,7 +54,7 @@ const InformationForm = ({ setStepNum }) => {
             data.phoneNumber3,
         });
 
-        if (result.statusCode === 200) {
+        if (result.statusCode === 201) {
           setStepNum((prev) => prev + 1);
         } else {
           navigate("/error");
@@ -78,31 +94,49 @@ const InformationForm = ({ setStepNum }) => {
         </InputContainer>
 
         {/* 닉네임 */}
-        <InputContainer>
+        <InputContainer style={{ paddingBottom: "0px" }}>
           <InputLabel text={"닉네임"} isEssential={true} />
           <NicknameInputContainer>
-            <Input
-              type={"text"}
-              placeholder={"닉네임을 입력해주세요."}
-              $customStyles={`
+            <DupContainer>
+              <Input
+                type={"text"}
+                placeholder={"닉네임을 입력해주세요."}
+                style={{
+                  border: dup
+                    ? "1px solid var(--main-color)"
+                    : "1px solid #dbdbdb",
+                }}
+                $customStyles={`
                 width: 420px;
+                height: 54px;
                 border : 1px solid ${
                   isSubmitted && errors.nickname
                     ? "var(--main-color)"
                     : "#dbdbdb"
                 }`}
-              {...register("nickname", {
-                required: "닉네임 입력은 필수입니다.",
-              })}
-            />
-            <Button $customStyles={{ width: "15%", marginLeft: "16px;" }}>
-              중복확인
-            </Button>
+                {...register("nickname", {
+                  required: "닉네임 입력은 필수입니다.",
+                  onChange: (e) => {
+                    setNickname(e.target.value);
+                    console.log("입력값 변경:", e.target.value);
+                  },
+                })}
+              />
+
+              <Button
+                type="button"
+                $customStyles={{ width: "15%", marginLeft: "16px;" }}
+                onClick={checkDup}
+              >
+                중복확인
+              </Button>
+            </DupContainer>
           </NicknameInputContainer>
         </InputContainer>
+        {dup && <Error>중복된 닉네임입니다.</Error>}
 
         {/* 폰 번호 */}
-        <InputContainer>
+        <InputContainer style={{ marginTop: "32px" }}>
           <InputLabel
             text={"휴대폰 번호"}
             isEssential={true}
@@ -111,7 +145,7 @@ const InformationForm = ({ setStepNum }) => {
           <PhoneNumberInputContainer>
             <Input
               type={"number"}
-              placeholder={"000"}
+              value="010"
               $customStyles={`
                 width: 120px; 
                 text-align: center;
@@ -167,7 +201,7 @@ const InformationForm = ({ setStepNum }) => {
           width: 100%;
           transition:0.2s;
           `}
-        disabled={!isValid}
+        disabled={!isValid || dup || !firstCheck}
       >
         회원가입
       </Button>
@@ -191,6 +225,19 @@ const FormContainer = styled.div`
   width: 80%;
   box-sizing: border-box;
   padding: 50px 5%;
+`;
+
+const DupContainer = styled.div`
+  display: flex;
+`;
+
+const Error = styled.div`
+  padding: 5px;
+  color: var(--main-color);
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  margin-left: 135px;
 `;
 
 const InputContainer = styled.div`
@@ -223,6 +270,7 @@ const NicknameInputContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  position: relative;
 `;
 
 const PhoneNumberInputContainer = styled.div`
