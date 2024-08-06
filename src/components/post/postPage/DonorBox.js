@@ -14,6 +14,7 @@ const DonorBox = ({ post }) => {
   const { postId } = useParams();
 
   const [isLoading, setIsLoading] = useState(true);
+  const [reportClicked, setReportClicked] = useState(false);
   const navigate = useNavigate();
 
   const {
@@ -47,12 +48,19 @@ const DonorBox = ({ post }) => {
         <TitleContainer>
           <Title>기부자들의 따뜻한 손길 감사합니다.</Title>
           {post.isPermitted && (
-            <Report>
+            <Report onClick={()=> setReportClicked(prev => !prev)}>
               신고하기
               <Notice />
             </Report>
           )}
+          {
+            reportClicked && <ReportNotice>
+              거짓으로 기부 개수를 입력한 사람을 신고하여 주세요. 
+            </ReportNotice>
+          }
+
         </TitleContainer>
+        
         {post.isPermitted && (
           <WriteReviewButton
             onClick={() =>
@@ -138,6 +146,8 @@ const TitleContainer = styled.div`
   display: flex;
   align-items: baseline;
   gap: 10px;
+  height : 40px;
+  box-sizing : border-box;
 `;
 
 const Title = styled.div`
@@ -246,5 +256,20 @@ const DonateSep = styled.div`
   height: 54px;
   background: #dbdbdb;
 `;
+
+const ReportNotice = styled.div`
+  display: inline-flex;
+  padding: 10px 24px;
+  align-items: center;
+  gap: 10px;
+  border-radius: 6px;
+  background: #FEF3F4;
+  color: #767676;
+  font-family: Pretendard;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  letter-spacing: -0.45px;
+`
 
 export default DonorBox;
