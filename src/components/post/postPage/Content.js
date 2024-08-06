@@ -107,9 +107,9 @@ const Wrapper = styled.div`
 
 const Container = styled.div`
   margin-top: 66px;
+  padding: 0 50px;
   padding-bottom: 70px;
   margin-bottom: 80px;
-  padding-left: 50px;
   border-bottom: 2px solid #dbdbdb;
 `;
 
@@ -122,7 +122,8 @@ const Description = styled.div`
   line-height: 32px; /* 145.455% */
   letter-spacing: -0.55px;
   margin-bottom: 70px;
-  padding-right: 100px;
+  padding : 0 40px;
+  word-break : break-all;
 `;
 
 const PostBtnContainer = styled.div`
