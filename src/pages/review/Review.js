@@ -62,7 +62,7 @@ const Review = () => {
 
   return (
     <Wrapper>
-      <PageNotice location={["Home", "커뮤니티", "투명 후기"]} />
+      <PageNotice location={["Home", "투명 후기"]} />
       <ContentWrapper>
         <Separator title={"투명후기"} setKey={setKey} />
         <Container>
