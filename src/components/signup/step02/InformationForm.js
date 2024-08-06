@@ -18,6 +18,13 @@ const InformationForm = ({ setStepNum }) => {
   const checkDup = async () => {
     setFirstCheck(true);
     const result = await dupCheck(nickname);
+
+
+    if(result.statusCode === '555'){
+      alert(result.message);
+      return;
+    }
+
     if (result.data.isDuplicated) {
       setDup(true);
     } else {
@@ -119,6 +126,9 @@ const InformationForm = ({ setStepNum }) => {
                 }`}
                 {...register("nickname", {
                   required: "닉네임 입력은 필수입니다.",
+
+                  pattern : '^[ㄱ-ㅎ가-힣a-zA-Z0-9-_]{2,10}$',
+
                   onChange: (e) => {
                     setNickname(e.target.value);
                     console.log("입력값 변경:", e.target.value);

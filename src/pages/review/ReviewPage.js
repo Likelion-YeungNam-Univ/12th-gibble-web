@@ -10,7 +10,6 @@ import GoToMyPost from "@/components/review/reviewPage/GoToMyPost";
 import PageNoticeWithBanner from "@/components/common/PageNoticeWithBanner";
 import reviewBanner from "@/assets/image/review-banner.png";
 import showPost from "@/api/post/showPost";
-import DonorBox from "@/components/post/postPage/DonorBox";
 import DonorCard from "@/components/post/postPage/DonorCard";
 
 const ReviewPage = () => {
@@ -194,7 +193,7 @@ const Description = styled.div`
   line-height: 32px; /* 145.455% */
   letter-spacing: -0.55px;
   box-sizing: border-box;
-  padding: 46px 0px 0px 46px;
+  padding: 46px;
   border-bottom: 1px solid var(--gray-color);
   display: flex;
   flex-direction: column;

@@ -5,13 +5,17 @@
 .
 ├── App.js   
 ├── index.js
-├── assets
+├── GlobalStyle.js
+├── ProtectedRoute.js
 ├── api
-├── config
+├── assets
 ├── components
-├── pages
+├── config
+├── firebase
 ├── layouts
-└── store
+├── pages
+├── store
+└── utils
 ```
 
 ## 📌 컨벤션 
