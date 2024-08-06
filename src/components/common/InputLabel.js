@@ -18,7 +18,6 @@ const InputLabel = ({ text, customStyles, isEssential, condition }) => {
 const Wrapper = styled.div`
   height: 100%;
   display: flex;
-  align-items: center;
   font-size: 18px;
   font-weight: 500;
   line-height: var(--18, 26px); /* 144.444% */

@@ -4,8 +4,7 @@ import styled from "styled-components";
 import { ReactComponent as Check } from "@/assets/svg/circle-check-solid.svg";
 import { useNavigate } from "react-router-dom";
 
-const Content = ({review}) => {
-
+const Content = ({ review }) => {
   const navigate = useNavigate();
   return (
     <Wrapper>
@@ -21,14 +20,17 @@ const Content = ({review}) => {
       </Notice>
       <ButtonsWrapper>
         <Button
-          onClick={() => navigate('/review')}
-          customStyles={ComunityBtnStyle}
-        >투명후기 가기</Button>
+          onClick={() => navigate("/review")}
+          $customStyles={ComunityBtnStyle}
+        >
+          투명후기 가기
+        </Button>
         <Button
           onClick={() => navigate(`/review/${review}`)}
-          customStyles={PostBtnStyle}
-        > 
-        작성글 보러가기</Button>
+          $customStyles={PostBtnStyle}
+        >
+          작성글 보러가기
+        </Button>
       </ButtonsWrapper>
     </Wrapper>
   );
@@ -96,10 +98,13 @@ const ButtonsWrapper = styled.div`
 `;
 
 const ComunityBtnStyle = `
+  padding: 14px 24px;
+  border-radius: 6px;
   border: 1px solid var(--main-color);
-  background-color: white;
+  background: white;
   color: var(--main-color);
   text-align: center;
+  font-family: Pretendard;
   font-size: 22px;
   font-style: normal;
   font-weight: 700;

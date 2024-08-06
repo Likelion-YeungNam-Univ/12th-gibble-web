@@ -124,7 +124,7 @@ const ReviewForm = () => {
         <TitleNotice />
 
         <TextCount>{content.length}/500</TextCount>
-        <InputWrapper>
+        <InputWrapper style={{ display: "flex", alignItems: "start" }}>
           <InputLabel
             text={"내용"}
             isEssential={true}
