@@ -78,6 +78,7 @@ const PostForm = () => {
                 value: 30,
                 message : "최대 30자 이하"
               },
+              validate: value => value.trim() !== '' || 'No spaces allowed'
             })}
 
           />
@@ -106,6 +107,7 @@ const PostForm = () => {
               maxLength: {
                 value: 500,
               },
+              validate: value => value.trim() !== '' || '공백은 입력 불가입니다.'
             })}
           />
         </InputWrapper>
