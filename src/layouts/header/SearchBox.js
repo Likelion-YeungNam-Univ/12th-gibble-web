@@ -40,6 +40,7 @@ const SearchBox = () => {
         placeholder="찾고싶은 게시글을 입력해주세요"
         {...register("key", {
           required: "검색어를 입력해주세요",
+          validate: value => value.trim() !== '' || '공백 입력은 불가합니다.'
         })}
       ></Input>
       <Button type="submit">
