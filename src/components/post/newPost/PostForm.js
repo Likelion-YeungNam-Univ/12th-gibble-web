@@ -134,6 +134,18 @@ const PostForm = () => {
               min: {
                 value: 1,
                 message: "최소 1개 이상의 필요 헌혈 증서 갯수를 등록해주세요.",
+              },
+              validate: value => {
+                if (value.trim() === '') {
+                  return '공백은 허용되지 않습니다.';
+                }
+                if (isNaN(value)) {
+                  return '반드시 숫자여야 합니다.1';
+                }
+                if (Number(value) < 0) {
+                  return '마이너스 값은 허용되지 않습니다.';
+                }
+                return true;
               }
             })}
           />
