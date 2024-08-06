@@ -144,6 +144,7 @@ const DeleteContainer = styled.div`
   justify-content: center;
   gap: 6px;
   cursor: pointer;
+  margin-bottom: 58px;
 `;
 
 const DonateSep = styled.div`
@@ -161,7 +162,6 @@ const DeleteText = styled.div`
   font-weight: 400;
   line-height: var(--18, 26px); /* 144.444% */
   letter-spacing: -0.45px;
-  padding-bottom: 58px;
 `;
 
 const Wrapper = styled.div`
