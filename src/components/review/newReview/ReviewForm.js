@@ -290,11 +290,7 @@ const ReviewForm = () => {
                   background: "var(--main-color)",
                   color: "#f4f4f4",
                   transition: "0.2s",
-                  padding: "12px 24px",
-                  "&:hover": {
-                    background: "var(--gray-color)",
-                    color: "#fff",
-                  },
+                  padding: "12px 24px"
                 }}
               >사진찾기</Button>
           </Right>
