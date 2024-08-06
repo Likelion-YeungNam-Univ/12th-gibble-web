@@ -27,6 +27,7 @@ function App() {
       <GlobalStyle />
       <BrowserRouter>
         <Routes>
+          <Route path="signup" element={<SignUp />} />
           <Route element={<Layout />}>
             <Route path="" element={<Main />} />
             <Route path="login" element={<Login />} />
@@ -50,7 +51,7 @@ function App() {
               />
             </Route>
 
-            <Route path="signup" element={<SignUp />} />
+            
             <Route path="post">
               <Route
                 path=""
