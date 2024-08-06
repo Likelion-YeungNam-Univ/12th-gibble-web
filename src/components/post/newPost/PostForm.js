@@ -160,17 +160,27 @@ const PostForm = () => {
         </InputWrapper>
         {errors.address && <Error text={errors.address.message} />}
       </FormWrapper>
-      <Button
-        type="submit"
-        $customStyles={CustomButtonStyle}
-      >
-        작성하기
-      </Button>
+      <ButtonWrapper>
+        <Button
+          type="submit"
+          $customStyles={CustomButtonStyle}
+        >
+          작성하기
+        </Button>
+      </ButtonWrapper>
     </Wrapper>
   );
 };
 
-const Wrapper = styled.form``;
+const ButtonWrapper = styled.div`
+  box-sizing : border-box;
+  display : flex;
+  justify-content : center;
+
+`
+
+const Wrapper = styled.form`
+`;
 
 const FormWrapper = styled.div`
   margin: 0 168px;
@@ -215,11 +225,13 @@ const CustomInputStyle = `
 `
 
 const CustomButtonStyle = `
-  width : 100%;
+  width : 1064px;
   background : #f4f4f4;
   color : var(--gray-color);
   margin-top : 108px;
   transition : 0.2s;
+  
+
   &:hover {
     background : var(--main-color);
     color :  #fff;

@@ -236,6 +236,9 @@ const ReviewForm = () => {
               }}
               value={selectedPostTitle}
               readOnly={searchParams.get("title")}
+              {...register("link",{
+                required : "게시글을 선택해주세요."
+              })}
             />
           </Middle>
           <Right>
@@ -251,6 +254,14 @@ const ReviewForm = () => {
                 disabled={searchParams.get("title")}
               >찾아보기</Button>
           </Right>
+        </InputWrapper>
+
+        <InputWrapper>
+          <Left/>
+          <Middle>
+            {errors.link && <Error text={errors.link.message}/>}
+          </Middle>
+          <Right/>
         </InputWrapper>
 
         <InputWrapper>

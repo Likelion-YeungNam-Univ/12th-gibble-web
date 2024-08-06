@@ -146,12 +146,14 @@ const DeleteBtn = styled.div`
   cursor: pointer;
   display: flex;
   gap: 5px;
+  align-items : center;
 `;
 
 const ModifyBtn = styled.div`
   cursor: pointer;
   display: flex;
   gap: 5px;
+  align-items  : center;
 `;
 
 const PenIcon = styled(Pen)`
