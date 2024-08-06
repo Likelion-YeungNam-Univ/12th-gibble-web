@@ -131,7 +131,7 @@ const PostForm = () => {
               required: "희망 개수를 입력해주세요.",
               min: {
                 value: 1,
-                message: "최소 0 이상의 숫자",
+                message: "최소 1개 이상의 필요 헌혈 증서 갯수를 등록해주세요.",
               }
             })}
           />
