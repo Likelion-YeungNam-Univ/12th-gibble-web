@@ -1,17 +1,22 @@
-import React, { useEffect, useState } from 'react';
-import styled from 'styled-components';
+import React, { useEffect, useState } from "react";
+import styled from "styled-components";
 import Button from "@/components/common/Button";
-import getMyPosts from '@/api/mypage/getMyPosts';
-import { useNavigate } from 'react-router-dom';
+import getMyPosts from "@/api/mypage/getMyPosts";
+import { useNavigate } from "react-router-dom";
 
-const Modal = ({ isOpen, onClose, onPostSelect, setPostId, setSelectedPostTitle }) => {
+const Modal = ({
+  isOpen,
+  onClose,
+  onPostSelect,
+  setPostId,
+  setSelectedPostTitle,
+}) => {
   const [selectedPost, setSelectedPost] = useState(null);
   const [myPostList, setMyPostList] = useState([]);
   const navigate = useNavigate();
-  
 
   const handlePostClick = (event) => {
-    console.log('event.postid',event.postId);
+    console.log("event.postid", event.postId);
     setPostId(event.postId);
     setSelectedPostTitle(event.title);
     setSelectedPost(event.postId);
@@ -22,14 +27,14 @@ const Modal = ({ isOpen, onClose, onPostSelect, setPostId, setSelectedPostTitle 
       try {
         const result = await getMyPosts();
         setMyPostList(result.data);
-        console.log('typeof', typeof(result.data[0].createdAt));
-
-      } catch(error){
-        navigate('/error');
+        console.log("typeof", typeof result.data[0].createdAt);
+      } catch (error) {
+        alert("작성한 게시글이 없습니다.");
+        navigate("/review");
       }
-    }
+    };
     fetchPost();
-  },[])
+  }, []);
 
   if (!isOpen) return null; // 에러 유의
 
@@ -53,8 +58,8 @@ const Modal = ({ isOpen, onClose, onPostSelect, setPostId, setSelectedPostTitle 
               isSelected={selectedPost === post.postId}
             >
               <PostTitle>{post.title}</PostTitle>
-              <PostContent>{post.content}</PostContent>  {/* 체크 */}
-              <PostDate>{post.createdAt.substring(0,10)}</PostDate>
+              <PostContent>{post.content}</PostContent> {/* 체크 */}
+              <PostDate>{post.createdAt.substring(0, 10)}</PostDate>
             </Post>
           ))}
         </PostList>
@@ -92,9 +97,9 @@ const ModalContainer = styled.div`
 
 const Title = styled.div`
   height: 100px;
-  display:flex;
+  display: flex;
   align-items: center;
-  color: var(--main-color, #F42E3D);
+  color: var(--main-color, #f42e3d);
   font-family: Pretendard;
   font-size: 26px;
   font-style: normal;
@@ -133,12 +138,13 @@ const Post = styled.div`
   margin-bottom: 15px;
   cursor: pointer;
   border-radius: 6px;
-  background: ${props => props.isSelected ? '#FEF3F4' : '#F4F4F4'};
-  border: ${props => props.isSelected ? '2px solid #F42E3D' : '2px solid transparent'};
+  background: ${(props) => (props.isSelected ? "#FEF3F4" : "#F4F4F4")};
+  border: ${(props) =>
+    props.isSelected ? "2px solid #F42E3D" : "2px solid transparent"};
   transition: background-color 0.1s ease, border-color 0.1s ease;
 
   &:hover {
-    background-color: #FEF3F4;
+    background-color: #fef3f4;
   }
 `;
 
@@ -148,7 +154,6 @@ const Position = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-                
 `;
 
 const PostTitle = styled.h3`
@@ -160,10 +165,10 @@ const PostContent = styled.p`
   font-size: 14px;
   color: #666;
   margin-bottom: 10px;
-  overflow : hidden;
-  display : blox;
-  white-space : nowrap;
-  text-overflow : ellipsis;
+  overflow: hidden;
+  display: blox;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 `;
 
 const PostDate = styled.span`
