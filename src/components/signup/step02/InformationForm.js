@@ -105,7 +105,6 @@ const InformationForm = ({ setStepNum }) => {
               //   noSpace: (value) =>
               //     !/\s/.test(value) || "이름에 공백이 포함될 수 없습니다.",
               // },
-
             })}
           />
         </InputContainer>
@@ -139,7 +138,6 @@ const InformationForm = ({ setStepNum }) => {
                   //     !value.includes(" ") ||
                   //     "닉네임에 공백이 포함될 수 없습니다.",
                   // },
-
                   onChange: (e) => {
                     setNickname(e.target.value);
                     console.log("입력값 변경:", e.target.value);
